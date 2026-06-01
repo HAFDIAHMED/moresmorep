@@ -42,13 +42,60 @@ G = {'chapter': '', 'part': ''}
 
 # ─── CUSTOM FLOWABLES ─────────────────────────────────────────────────────────
 class Mark(Flowable):
-    """Zero-height marker that updates G['chapter']."""
+    """Zero-height marker that updates G['chapter'] / G['part']."""
     def __init__(self, chapter='', part=''):
         super().__init__(); self.chapter=chapter; self.part=part
         self.width=self.height=0
     def draw(self):
         if self.chapter: G['chapter']=self.chapter
         if self.part:    G['part']=self.part
+
+
+class _RedrawChapterHeader(Flowable):
+    """Repaints the running head on a chapter-opening page.
+
+    on_page() fires at the *start* of every page and reads G['chapter'] for the
+    odd-page running head — but on a chapter-opening page, G has not yet been
+    updated by the chapter's Mark flowable, so on_page paints the previous
+    chapter's title. This flowable runs as the first visible element of a
+    chapter's chapter_opener: it covers the wrong header with a white box,
+    redraws the top rule, and prints the correct chapter title. Coordinates
+    are in flowable-local space — this flowable sits at the top of the frame
+    (after the zero-height Mark), so y ≈ 16 in local coords lines up with the
+    absolute running-head row that on_page used.
+    """
+    def __init__(self, chapter):
+        super().__init__()
+        self.chapter = chapter
+        self.width = 0
+        self.height = 0
+
+    def wrap(self, availW, availH):
+        return (0, 0)
+
+    def draw(self):
+        c = self.canv
+        pg = c.getPageNumber()
+        if pg <= 2:
+            return  # cover + blank verso, no running head exists
+        c.saveState()
+        # Cover the previous chapter's header (text + rule) with a white strip.
+        c.setFillColor(colors.white)
+        c.rect(-4, 8, TW + 8, 16, fill=1, stroke=0)
+        # Repaint the top rule in case it was hidden by the white box.
+        c.setStrokeColor(colors.black)
+        c.setLineWidth(0.3)
+        c.line(0, 10, TW, 10)
+        # Repaint the correct running head: odd pages show the chapter, even
+        # pages show the book title — match on_page()'s parity rule.
+        c.setFont('Times-Italic', 8.5)
+        c.setFillColor(colors.black)
+        if pg % 2 == 0:
+            c.drawString(0, 16, 'More Solutions = More Problems')
+        else:
+            c.drawRightString(TW, 16, self.chapter)
+        c.restoreState()
+
 
 class VSpace(Spacer):
     def __init__(self, h): super().__init__(1, h)
@@ -86,10 +133,11 @@ def make_styles():
                          alignment=TA_CENTER,spaceAfter=36)
     S['section']     = s('section',     fontName='Times-Bold',fontSize=13,leading=18,
                          alignment=TA_LEFT,spaceBefore=20,spaceAfter=6,
-                         firstLineIndent=0,keepWithNext=1)
+                         firstLineIndent=0)   # keepWithNext removed; _SectionHead enforces
+                                              # minimum room via wrap() override.
     S['subsection']  = s('subsection',  fontName='Times-BoldItalic',fontSize=11,leading=16,
                          alignment=TA_LEFT,spaceBefore=12,spaceAfter=4,
-                         firstLineIndent=0,keepWithNext=1)
+                         firstLineIndent=0)
     S['caption']     = s('caption',     fontName='Times-Italic',fontSize=9.5,leading=13,
                          alignment=TA_CENTER,spaceAfter=14,spaceBefore=3)
     S['epigraph']    = s('epigraph',    fontName='Times-Italic',fontSize=11,leading=16,
@@ -163,8 +211,133 @@ def on_page(c, doc):
     c.drawCentredString(PW/2, MB-22, str(pg-2))
     c.restoreState()
 
+# ── Designed front cover (ported from book_cover.py, scaled to A4) ──────────
+_COVER_INK       = colors.HexColor('#0A0A0A')   # near-black titles + bars
+_COVER_INK_LIGHT = colors.HexColor('#666666')   # grey "MORE" / subtitle / "Engineer · Thinker"
+_COVER_INK_XLIT  = colors.HexColor('#999999')   # very light grey hairlines
+_COVER_BG        = colors.HexColor('#FFFFFF')   # white background
+
+
+def _draw_cascade_symbol(c, cx, cy, sym_w, sym_h):
+    """A 3-level binary tree drawn with canvas primitives.
+    Root at top, 8 leaves at the bottom; all in solid black."""
+    LEVELS = 3
+
+    def nx(lv, idx):
+        n = 2 ** lv
+        if n == 1:
+            return cx
+        return cx - sym_w / 2 + idx * sym_w / (n - 1)
+
+    def ny(lv):
+        return cy + sym_h / 2 - lv * sym_h / LEVELS
+
+    # edges
+    for lv in range(LEVELS):
+        n   = 2 ** lv
+        lw  = max(0.4, 1.3 - lv * 0.35)
+        alp = 1.0 - lv * 0.18
+        c.setStrokeColorRGB(0, 0, 0, alpha=alp)
+        c.setLineWidth(lw)
+        for i in range(n):
+            px, py = nx(lv, i), ny(lv)
+            for ci in [2 * i, 2 * i + 1]:
+                cx2, cy2 = nx(lv + 1, ci), ny(lv + 1)
+                c.line(px, py, cx2, cy2)
+
+    # nodes — root biggest, leaves smallest
+    node_sizes = [4.5, 3.0, 2.0, 1.3]
+    for lv in range(LEVELS + 1):
+        n = 2 ** lv
+        r = node_sizes[min(lv, len(node_sizes) - 1)]
+        c.setFillColor(_COVER_INK)
+        for i in range(n):
+            c.circle(nx(lv, i), ny(lv), r, fill=1, stroke=0)
+
+
+def _draw_designed_cover(c, W, H):
+    """Render the front cover used by book_cover.py, scaled to A4.
+
+    Layout uses percentages of W and H, so it scales between the 6x9 trade
+    paperback size and A4 without any per-element retuning. Font sizes are
+    scaled proportionally to the page height so they stay visually correct.
+    """
+    scale = H / (9 * inch)            # A4 height vs. original 9-inch cover
+    bar_h = 0.04 * inch
+
+    # white background
+    c.setFillColor(_COVER_BG)
+    c.rect(0, 0, W, H, fill=1, stroke=0)
+
+    # top black bar
+    c.setFillColor(_COVER_INK)
+    c.rect(0, H - bar_h, W, bar_h, fill=1, stroke=0)
+
+    # cascade tree symbol — upper portion
+    _draw_cascade_symbol(c,
+        cx=W / 2,
+        cy=H * 0.790,
+        sym_w=1.9 * inch * scale,
+        sym_h=1.05 * inch * scale)
+
+    # "MORE" (small grey, above SOLUTIONS)
+    c.setFont('Helvetica', 13 * scale)
+    c.setFillColor(_COVER_INK_LIGHT)
+    c.drawCentredString(W / 2, H * 0.638, 'MORE')
+
+    # "SOLUTIONS" — huge bold
+    c.setFont('Helvetica-Bold', 46 * scale)
+    c.setFillColor(_COVER_INK)
+    c.drawCentredString(W / 2, H * 0.570, 'SOLUTIONS')
+
+    # "=" with flanking hairlines
+    c.setStrokeColor(_COVER_INK_XLIT)
+    c.setLineWidth(0.55)
+    c.line(W * 0.18, H * 0.530, W * 0.82, H * 0.530)
+
+    c.setFont('Helvetica', 18 * scale)
+    c.setFillColor(_COVER_INK_LIGHT)
+    c.drawCentredString(W / 2, H * 0.513, '=')
+
+    c.line(W * 0.18, H * 0.497, W * 0.82, H * 0.497)
+
+    # "MORE" (small grey, above PROBLEMS)
+    c.setFont('Helvetica', 13 * scale)
+    c.setFillColor(_COVER_INK_LIGHT)
+    c.drawCentredString(W / 2, H * 0.464, 'MORE')
+
+    # "PROBLEMS" — huge bold
+    c.setFont('Helvetica-Bold', 46 * scale)
+    c.setFillColor(_COVER_INK)
+    c.drawCentredString(W / 2, H * 0.395, 'PROBLEMS')
+
+    # subtitle hairline + italic two-line subtitle
+    c.setStrokeColor(_COVER_INK_XLIT)
+    c.setLineWidth(0.5)
+    c.line(W * 0.28, H * 0.360, W * 0.72, H * 0.360)
+
+    c.setFont('Times-Italic', 10 * scale)
+    c.setFillColor(_COVER_INK_LIGHT)
+    c.drawCentredString(W / 2, H * 0.335, 'A Theory of Cascade Innovation')
+    c.drawCentredString(W / 2, H * 0.315, 'and the Hidden Cost of Progress')
+
+    # bottom black bar
+    c.setFillColor(_COVER_INK)
+    c.rect(0, 0, W, bar_h, fill=1, stroke=0)
+
+    # AHMED HAFDI + role line, pinned to bottom
+    c.setFont('Helvetica-Bold', 14 * scale)
+    c.setFillColor(_COVER_INK)
+    c.drawCentredString(W / 2, 0.22 * inch + bar_h, 'AHMED HAFDI')
+
+    c.setFont('Helvetica', 7.5 * scale)
+    c.setFillColor(_COVER_INK_LIGHT)
+    c.drawCentredString(W / 2, 0.09 * inch + bar_h, 'Software Engineer  ·  Thinker')
+
+
 def on_first(c, doc):
-    pass   # cover page — clean
+    # Page 1 is the designed cover, drawn directly on the canvas.
+    _draw_designed_cover(c, PW, PH)
 
 # ─── FIGURE FACTORY (xkcd sketch style) ───────────────────────────────────────
 def fig_to_image(fig, w=5.0*inch, h=3.2*inch):
@@ -215,10 +388,11 @@ def fig_cascade_tree():
                         arrowprops=dict(arrowstyle='->',lw=1.2,color='gray'))
             ax.text(x,y,l,ha='center',va='center',fontsize=7,
                     bbox=dict(boxstyle='round',fc='lightyellow',ec='gray'))
-        # Level 4 sprouts
+        # Level 4 sprouts (RNG seeded so the figure is reproducible across builds)
+        rng = np.random.RandomState(42)
         for x in [0.3,1.7,2.3,3.7,5.5,6.9,7.8,9.2]:
             ax.text(x,1.6,'?',ha='center',fontsize=10,color='gray')
-            ax.plot([x,x+np.random.uniform(-0.2,0.2)],[1.9,2.6],'k-',alpha=0.3,lw=0.8)
+            ax.plot([x,x+rng.uniform(-0.2,0.2)],[1.9,2.6],'k-',alpha=0.3,lw=0.8)
         ax.text(5,0.6,'Each fix spawns more problems...',ha='center',
                 fontsize=9,fontstyle='italic',color='gray')
         ax.set_title('The Cascade Tree: One Fix, Infinite Branches', fontsize=11, fontweight='bold')
@@ -684,12 +858,64 @@ def _fix_math(text):
         text = text.replace(ch, f'<sub>{rep}</sub>')
     return text
 
-def P(text, style): return Paragraph(_fix_math(text), style)
+from reportlab.platypus import CondPageBreak
+
+
+class _SectionHead(Flowable):
+    """A section heading that requests a page break if the remaining space on
+    the current frame is less than MIN_SPACE points. Implemented by composition:
+    we own a CondPageBreak and a Paragraph, and on the first wrap() call when
+    the page is nearly full, we report ourselves as the size of the remaining
+    frame — which is ReportLab's idiom for "I need a frame break." Once the
+    break has happened (or wasn't needed), we delegate to the Paragraph's own
+    wrap/draw, which is robust and never triggers Splitting errors.
+    """
+    MIN_SPACE = 1.6 * inch
+
+    def __init__(self, text, style):
+        super().__init__()
+        self._para = Paragraph(text, style)
+        self._broke = False
+        self._w = 0
+        self._h = 0
+
+    def wrap(self, availW, availH):
+        if not self._broke and availH < self.MIN_SPACE:
+            # Take up all remaining space → Platypus moves us to next frame.
+            self._broke = True
+            return (availW, availH)
+        # Either we've already broken once, or there is room → behave like the paragraph.
+        self._w, self._h = self._para.wrap(availW, availH)
+        return (self._w, self._h)
+
+    def split(self, availW, availH):
+        # Treat the heading as atomic — don't try to split it.
+        return [self]
+
+    def draw(self):
+        if self._broke and self._h == 0:
+            # The break-page placeholder draw — nothing to render, the frame break
+            # is taken care of by the wrap geometry.
+            return
+        # Render the paragraph at our origin.
+        self._para.canv = self.canv
+        self._para.drawOn(self.canv, 0, 0)
+
+
+def P(text, style):
+    fixed = _fix_math(text)
+    name = getattr(style, 'name', '')
+    if name in ('section', 'subsection'):
+        return _SectionHead(fixed, style)
+    return Paragraph(fixed, style)
+
+
 def SP(h):          return VSpace(h)
 def HR():           return Rule()
 
 def callout(text, S):
-    """Modern left-accent bar callout — clean white with 4pt black left bar."""
+    """Modern left-accent bar callout — clean white with 4pt black left bar.
+    Wrapped in KeepTogether so the callout never splits across a page boundary."""
     ACCENT = colors.HexColor('#1C1C1C')
     para = Paragraph(_fix_math(text), S['blockquote'])
     data = [[para]]
@@ -702,7 +928,7 @@ def callout(text, S):
         ('BOTTOMPADDING', (0,0), (-1,-1), 10),
         ('BACKGROUND',    (0,0), (-1,-1), colors.white),
     ]))
-    return t
+    return KeepTogether([t])
 
 def math_img(latex_str, fontsize=13, w=5.0*inch, h=0.75*inch):
     """Render a LaTeX formula using matplotlib's built-in mathtext (no LaTeX install needed).
@@ -726,9 +952,10 @@ def math_img(latex_str, fontsize=13, w=5.0*inch, h=0.75*inch):
 
 
 def theorem_box(label, text, S, formula_img=None):
-    """2-row styled box: dark charcoal header + light body with left accent.
-    Pass formula_img=math_img(...) to embed a LaTeX-rendered equation in the body.
-    If both formula_img and text are given, the image appears above the text.
+    """Two-row styled box: dark-charcoal header + light body with left accent.
+    Wrapped in KeepTogether so the dark-charcoal header never appears at the
+    bottom of one page with the body trailing onto the next (a split that
+    looks broken to a reader).
     """
     DARK  = colors.HexColor('#1C1C1C')
     LIGHT = colors.HexColor('#F8F8F8')
@@ -763,12 +990,14 @@ def theorem_box(label, text, S, formula_img=None):
         # left accent bar across both rows
         ('LINEBEFORE',    (0,0), (-1,-1), 4,    DARK),
     ]))
-    return t
+    return KeepTogether([t])
 
 
 def display_eq(latex_str, S, number=None, h=0.8*inch):
     """Centred display equation rendered via matplotlib mathtext (LaTeX notation).
-    latex_str: raw LaTeX without $ delimiters, e.g. r'P_{total}(n) = O(2^n)'
+    latex_str: raw LaTeX without $ delimiters, e.g. r'P_{total}(n) = O(2^n)'.
+    Wrapped in KeepTogether so the equation, top rule, and bottom rule stay on
+    the same page.
     """
     RULE_C = colors.HexColor('#AAAAAA')
     eq_img = math_img(latex_str, fontsize=13, w=TW - 80, h=h)
@@ -789,7 +1018,7 @@ def display_eq(latex_str, S, number=None, h=0.8*inch):
         ('BACKGROUND',    (0,0), (-1,-1), colors.white),
         ('VALIGN',        (0,0), (-1,-1), 'MIDDLE'),
     ]))
-    return t
+    return KeepTogether([t])
 
 def part_page(num, title, desc, S):
     return [
@@ -805,8 +1034,10 @@ def part_page(num, title, desc, S):
     ]
 
 def chapter_opener(num_str, title, subtitle, S):
+    title_str = f'{num_str}: {title}'
     return [
-        Mark(chapter=f'{num_str}: {title}'),
+        Mark(chapter=title_str),
+        _RedrawChapterHeader(title_str),   # repaints the running head on this page
         P(num_str.upper(), S['chap_num']),
         P(title, S['chap_title']),
         P(subtitle, S['chap_sub']),
@@ -822,114 +1053,159 @@ def epigraph(quote, attribution, S):
     ]
 
 # ─── TOC ──────────────────────────────────────────────────────────────────────
-def build_toc(S):
-    story=[]
+def build_toc(S, accessible=False):
+    """Render the Table of Contents.
+
+    Page numbers below are the printed page numbers (PDF page minus 2 for the
+    cover + verso). They were extracted from the rendered PDF by
+    _rebuild_toc.py — DO NOT edit them by hand; re-run that script after any
+    structural change and copy its output here.
+
+    The design uses three tiers:
+      • Part dividers (uppercase, bold, with a subtle hairline below)
+      • Chapter entries (book-weight body, right-flush page number with dot leader)
+      • Subsection entries (slightly indented, lighter colour)
+    """
+    story = []
     story.append(P('Contents', S['toc_h']))
-    toc=[
-        ('part','— FRONT MATTER —',''),
-        ('chap','Preface','7'),
-        ('chap','A Note on Mathematics','9'),
-        ('part','INTRODUCTION',''),
-        ('chap','The Great Paradox','13'),
-        ('sub','The Day Britain Created More Snakes','13'),
-        ('sub','What This Book Argues','14'),
-        ('sub','The Central Claim, Stated Four Ways','18'),
-        ('part','PART I — THE THEORY',''),
-        ('chap','Chapter 1: The Law of Cascade Problems','26'),
-        ('sub','Three Mechanisms of the Cascade','26'),
-        ('sub','Murphy\'s Law Is Not a Joke','27'),
-        ('sub','The Exponential Trap','28'),
-        ('chap','Chapter 2: Why We Always Repeat the Mistake','50'),
-        ('sub','The Bias of Now','52'),
-        ('sub','What Systems Thinking Offers','55'),
-        ('sub','The Social Construction of Successful Solutions','67'),
-        ('part','PART II — THE EVIDENCE',''),
-        ('chap','Chapter 3: Mathematics — The Original Cascade','72'),
-        ('sub','Hilbert\'s Dream, Gödel\'s Nightmare','73'),
-        ('sub','Russell\'s Paradox and Its Descendants','73'),
-        ('sub','The Halting Problem','74'),
-        ('chap','Chapter 4: Physics — Nature\'s Revenge','91'),
-        ('sub','Maxwell\'s Demon','91'),
-        ('sub','Quantum Mechanics and the Measurement Crisis','93'),
-        ('sub','Nuclear Power\'s 90,000-Year Problem','97'),
-        ('sub','String Theory\'s Landscape of Despair','100'),
-        ('chap','Chapter 5: Computer Science — The Digital Cascade','117'),
-        ('sub','Every Patch Opens a New Wound','117'),
-        ('sub','Brooks\' Law and the Mythical Man-Month','119'),
-        ('sub','Feature Bloat and the Legacy Trap','121'),
-        ('sub','The Internet\'s Unintended Children','123'),
-        ('chap','Chapter 6: Economics — The Market\'s Irony','148'),
-        ('sub','The Cobra Effect','148'),
-        ('sub','Jevons Paradox: Efficiency Creates Demand','150'),
-        ('sub','Goodhart\'s Law','152'),
-        ('sub','The 2008 Financial Crisis','155'),
-        ('chap','Chapter 7: Medicine — The Healing Paradox','183'),
-        ('sub','Antibiotic Resistance: The Brewing Pandemic','185'),
-        ('sub','The Opioid Crisis','186'),
-        ('sub','Thalidomide\'s Double Life','189'),
-        ('sub','CRISPR and the Editing Problem','191'),
-        ('chap','Chapter 8: Politics — The Policy Boomerang','212'),
-        ('sub','Prohibition and the Birth of the Mob','212'),
-        ('sub','The War on Drugs','214'),
-        ('sub','GDPR and the Compliance Industrial Complex','254'),
-        ('sub','Urban Zoning\'s Housing Catastrophe','221'),
-        ('chap','Chapter 9: Society & Environment','238'),
-        ('sub','Social Media\'s Loneliness Paradox','238'),
-        ('sub','Jevons Meets GPS: Braess\'s Paradox','242'),
-        ('sub','The Green Revolution\'s Hidden Cost','245'),
-        ('part','PART III — THE FRAMEWORK',''),
-        ('chap','Chapter 10: A Formal Theory of Cascade Problems','279'),
-        ('sub','The Solution-Problem Network','279'),
-        ('sub','Cascade Propagation Functions','280'),
-        ('sub','The Main Theorem: O(2ⁿ) Growth','281'),
-        ('chap','Chapter 11: Measuring and Predicting Cascades','306'),
-        ('sub','The Cascade Risk Index','306'),
-        ('sub','Early Warning Signals','307'),
-        ('part','PART IV — THE WAY FORWARD',''),
-        ('chap','Chapter 12: Cascade-Aware Design','335'),
-        ('sub','The Hippocratic Principle for Innovation','335'),
-        ('sub','Pre-Mortem Analysis','327'),
-        ('chap','Chapter 13: A New Philosophy of Innovation','347'),
-        ('sub','Second-Order Thinking','347'),
-        ('sub','The Call to Action','349'),
-        ('part','CONCLUSION & APPENDICES',''),
-        ('chap','Conclusion: Living with the Paradox','363'),
-        ('chap','Appendix A: Mathematical Proofs','377'),
-        ('chap','Appendix B: Cascade Classification','383'),
-        ('chap','Appendix C: 50 Solution-Problem Pairs','384'),
-        ('chap','Bibliography','386'),
+
+    toc = [
+        ('part', 'FRONT MATTER',                                                  ''),
+        ('chap', 'Preface — A Note on Origins',                                   '7'),
+
+        ('part', 'INTRODUCTION',                                                  ''),
+        ('chap', 'The Great Paradox',                                             '10'),
+        ('sub',  'The Day Britain Created More Snakes',                           '10'),
+        ('sub',  'What This Book Argues',                                         '11'),
+        ('sub',  'The Central Claim, Stated Four Ways',                           '15'),
+
+        ('part', 'PART I — THE THEORY',                                           '23'),
+        ('chap', 'Chapter 1: The Law of Cascade Problems',                        '24'),
+        ('sub',  'Three Mechanisms of the Cascade',                               '24'),
+        ('sub',  'Murphy’s Law Is Not a Joke',                               '25'),
+        ('sub',  'The Exponential Trap',                                          '26'),
+        ('chap', 'Chapter 2: Why We Always Repeat the Mistake',                   '46'),
+        ('sub',  'The Bias of Now',                                               '46'),
+        ('sub',  'What Systems Thinking Offers',                                  '48'),
+        ('sub',  'The Social Construction of Successful Solutions',               '61'),
+
+        ('part', 'PART II — THE EVIDENCE',                                        '64'),
+        ('chap', 'Chapter 3: Mathematics — The Original Cascade',                 '65'),
+        ('sub',  'Hilbert’s Dream, Gödel’s Nightmare',              '65'),
+        ('sub',  'Russell’s Paradox and Its Descendants',                    '66'),
+        ('sub',  'The Halting Problem',                                           '67'),
+        ('chap', 'Chapter 4: Physics — Nature’s Revenge',                    '83'),
+        ('sub',  'Maxwell’s Demon',                                          '83'),
+        ('sub',  'Quantum Mechanics and the Measurement Crisis',                  '85'),
+        ('chap', 'Chapter 5: Computer Science — The Digital Cascade',             '109'),
+        ('sub',  'Every Patch Opens a New Wound',                                 '109'),
+        ('sub',  'Brooks’ Law and the Mythical Man-Month',                   '111'),
+        ('sub',  'Feature Bloat and the Legacy Trap',                             '113'),
+        ('sub',  'The Internet’s Unintended Children',                       '115'),
+        ('chap', 'Chapter 6: Economics — The Market’s Irony',                '138'),
+        ('sub',  'The Cobra Effect',                                              '138'),
+        ('sub',  'Jevons Paradox: Efficiency Creates Demand',                     '140'),
+        ('sub',  'Goodhart’s Law',                                           '142'),
+        ('sub',  'The 2008 Financial Crisis',                                     '144'),
+        ('chap', 'Chapter 7: Medicine — The Healing Paradox',                     '171'),
+        ('sub',  'The Opioid Crisis',                                             '174'),
+        ('sub',  'Thalidomide’s Double Life',                                '177'),
+        ('sub',  'CRISPR and the Editing Problem',                                '178'),
+        ('chap', 'Chapter 8: Politics — The Policy Boomerang',                    '199'),
+        ('sub',  'Prohibition and the Birth of the Mob',                          '199'),
+        ('sub',  'The War on Drugs',                                              '201'),
+        ('sub',  'GDPR and the Compliance Industrial Complex',                    '209'),
+        ('chap', 'Chapter 9: Society & Environment',                              '222'),
+        ('sub',  'Social Media’s Loneliness Paradox',                        '222'),
+        ('sub',  'Braess’s Paradox: When New Roads Make Traffic Worse',      '226'),
+        ('sub',  'The Green Revolution’s Hidden Cost',                       '229'),
+
+        ('part', 'PART III — THE CASCADE FRAMEWORK',                              '261'),
+        ('chap',
+         'Chapter 10: How the Cascade Works' if accessible
+         else 'Chapter 10: A Formal Theory of Cascade Problems',
+         '262'),
+        ('sub',  'The Solution-Problem Network',                                  '262'),
+        ('sub',  'How Problems Multiply',                                         '263'),
+        ('sub',  'The Central Claim',                                             '263'),
+        ('sub',  'The Tipping Point',                                             '267'),
+        ('sub',  'The Shape of the Network Matters',                              '277'),
+        ('chap', 'Chapter 11: Measuring and Predicting Cascades',                 '281'),
+        ('sub',  'The Cascade Risk Index',                                        '281'),
+        ('sub',  'Early Warning Signals',                                         '282'),
+        ('sub',  'Limitations of the Cascade Risk Index',                         '290'),
+
+        ('part', 'PART IV — THE WAY FORWARD',                                     '308'),
+        ('chap', 'Chapter 12: Cascade-Aware Design',                              '309'),
+        ('sub',  'The Hippocratic Principle for Innovation',                      '309'),
+        ('sub',  'Pre-Mortem Analysis',                                           '310'),
+        ('sub',  'The Role of Modularity and Reversibility',                      '311'),
+        ('sub',  'Sunset Clauses and Reversibility Requirements',                 '316'),
+        ('chap', 'Chapter 13: A New Philosophy of Innovation',                    '321'),
+        ('sub',  'Second-Order Thinking',                                         '321'),
+        ('sub',  'The Call to Action',                                            '322'),
+
+        ('part', 'CONCLUSION & APPENDICES',                                       ''),
+        ('chap', 'Conclusion: Living with the Paradox',                           '337'),
+        ('chap',
+         'Appendix A: Source Research' if accessible
+         else 'Appendix A: Mathematical Proofs',
+         '347'),
+        ('chap', 'Appendix B: The Cascade Classification System',                 '349'),
+        ('chap', 'Appendix C: Fifty Solution-Problem Pairs',                      '350'),
+        ('chap', 'Appendix D: The Cascade Management Checklist',                  '352'),
+        ('chap', 'Appendix E: Extended Case Studies in Cascade Management',       '355'),
+        ('chap', 'Appendix F: A Glossary of Cascade Theory',                      '360'),
+        ('chap', 'Appendix G: A Practical Cascade Assessment Checklist',          '366'),
+        ('chap', 'Appendix H: The Intellectual Genealogy of Cascade Theory',      '370'),
+        ('chap', 'Bibliography',                                                  '373'),
+        ('chap', 'Index',                                                         '380'),
     ]
-    for kind,text,pg in toc:
-        if kind=='part':
-            story.append(SP(6))
-            story.append(P(f'<b>{text}</b>', S['toc_part']))
-        elif kind=='chap':
-            line=f'{text}'
-            if pg: line+=f'<font color="#888888">{"."*(55-len(text))}{pg}</font>'
-            story.append(P(line, S['toc_chap']))
+
+    # Render — three visual tiers with a clean right-flush dot leader.
+    PAGE_COL = 56   # column at which page numbers start (in characters of TW)
+    GREY = '#888888'
+
+    def _line(text, page, max_len):
+        """Compose a body line with a dot leader and the page number on the right."""
+        if not page:
+            return text
+        # Use enough dots to fill the gap to the page column, avoid pathological short titles.
+        gap = max(3, max_len - len(text))
+        dots = '.' * gap
+        return f'{text}<font color="{GREY}">{dots}{page}</font>'
+
+    for kind, text, pg in toc:
+        if kind == 'part':
+            story.append(SP(8))
+            if pg:
+                story.append(P(_line(f'<b>{text}</b>', pg, PAGE_COL - 4),
+                               S['toc_part']))
+            else:
+                story.append(P(f'<b>{text}</b>', S['toc_part']))
+        elif kind == 'chap':
+            story.append(P(_line(text, pg, PAGE_COL), S['toc_chap']))
         else:
-            line=f'{text}'
-            if pg: line+=f'<font color="#888888">{"."*(52-len(text))}{pg}</font>'
-            story.append(P(line, S['toc_sub']))
+            story.append(P(_line(text, pg, PAGE_COL - 4), S['toc_sub']))
+
     story.append(PageBreak())
     return story
 
 # =============================================================================
 # MAIN BOOK BUILDER
 # =============================================================================
-def build_book():
+def build_book(accessible=False):
     S=make_styles()
     story=[]
 
     # ─── COVER ───────────────────────────────────────────────────────────────
+    # The visible cover is drawn by on_first() directly on the canvas (the
+    # designed cascade-tree + MORE/SOLUTIONS = MORE/PROBLEMS layout, ported
+    # from book_cover.py). Here we just produce a placeholder page so that
+    # on_first runs and the rest of the front matter starts on page 2.
     story += [
         Mark(chapter='', part=''),
-        SP(100),
-        P('More Solutions = More Problems', S['cover_title']),
-        P('A Theory of Cascade Innovation and the Hidden Cost of Progress', S['cover_sub']),
-        HR(),
-        SP(48),
-        P('Ahmed Hafdi', S['cover_auth']),
+        SP(1),
         PageBreak(),
     ]
 
@@ -975,132 +1251,12 @@ def build_book():
     story += [PageBreak()]
 
     # ─── TOC ─────────────────────────────────────────────────────────────────
-    story += build_toc(S)
+    story += build_toc(S, accessible=accessible)
 
-    # ─── PREFACE ─────────────────────────────────────────────────────────────
-    story += [
-        Mark(chapter='Preface'),
-        P('Preface', S['preface_t']),
-        SP(12),
-    ]
-    story += epigraph('This is a book about a trap. Most of us are already inside it.',
-                      'Ahmed Hafdi', S)
-    story += [SP(12)]
-    preface_paras = [
-        """I started writing this book on an ordinary Tuesday morning, sitting in a café in
-        Casablanca, reading a newspaper story about a new government initiative that would
-        "solve" the country's traffic congestion problem by widening a major highway. I had
-        read enough urban planning literature to know what would happen next: within three
-        years, the wider road would attract more traffic, congestion would return worse than
-        before, and some new official would propose widening it further. This is not a
-        Moroccan problem. It is not even a traffic problem. It is a fundamental feature of
-        how complex systems respond to intervention.""",
-
-        """The phenomenon has a name in transportation science (induced demand) but it is
-        far older and far broader than any single domain. Every field I have studied, from
-        pure mathematics to molecular biology, from monetary policy to social media design,
-        exhibits the same structural pattern: a well-intentioned solution enters a complex
-        system, and the system responds by generating new problems, often more numerous and
-        more difficult than the original. The solution is real. The improvement is real. But
-        it is temporary, and it comes at a hidden cost that compounds with each subsequent fix.""",
-
-        """I am a researcher by training, a mathematician by inclination, and an obsessive
-        reader of history. What struck me, as I began accumulating examples for what I thought
-        would be a short essay, was not just the frequency of this pattern but its mathematical
-        character. This was not mere pessimism or anti-progress sentiment. There was a precise
-        structural reason, grounded in network theory and combinatorics, why introducing
-        solutions into interconnected systems produces more problems than it resolves. The
-        mathematics is not complicated, but its implications are profound.""",
-
-        """This book is the result of three years of research across seven disciplines. It is
-        intended for the curious general reader, the policymaker who wants to understand why
-        well-designed programs so often backfire, the engineer who is proud of her latest
-        optimization, and the scientist who believes that the next breakthrough will finally
-        settle the question. I respect all of these people. But I want to show them something
-        they may not have noticed: that the map of human knowledge is covered not in answers,
-        but in an expanding frontier of new and better questions, generated precisely by the
-        best minds working on the hardest problems.""",
-
-        """The book is organized in four parts. Part I establishes the theoretical foundation:
-        what the cascade problem is, why it is mathematically inevitable, and why human
-        psychology is uniquely unsuited to perceiving it in real time. Part II surveys the
-        evidence across seven domains: mathematics, physics, computer science, economics,
-        medicine, politics, and social systems — building a cumulative case that transcends any
-        single field. Part III presents the formal mathematical framework for quantifying and
-        predicting cascade effects. Part IV asks: what can we do about it?""",
-
-        """The answer to that last question is not despair. It is a more humble, more
-        systemic, and ultimately more effective relationship with complexity. We can design
-        solutions that are cascade-aware. We can create institutions that treat second-order
-        effects as first-class concerns. We can cultivate a culture of intellectual humility
-        that celebrates the question as much as the answer. These are not utopian aspirations.
-        They are, as the evidence in this book shows, the distinguishing feature of the rare
-        solutions that actually endure.""",
-
-        """A word about the mathematics: I have tried to write every equation in this book
-        so that a reader who has not studied mathematics since secondary school can follow the
-        argument. Wherever a formula appears, it is immediately translated into plain language.
-        The reader who wants the full technical derivations will find them in Appendix A. The
-        reader who prefers to skip the equations entirely will still find a complete and
-        self-contained argument in the prose.""",
-
-        """I am grateful to the researchers, historians, physicians, economists, and engineers
-        whose work I have drawn upon. All errors of interpretation are mine. I am especially
-        grateful to the problems. Without them, this book would not exist, which is, in a way,
-        the whole point.""",
-    ]
-    for i,p in enumerate(preface_paras):
-        story.append(P(' '.join(p.split()), S['body'] if i>0 else S['body0']))
-    story += [
-        SP(20),
-        P('<i>Ahmed Hafdi<br/>Casablanca, 2025</i>', S['epig_attr']),
-        PageBreak(),
-    ]
-
-    # ─── NOTE ON MATHEMATICS ─────────────────────────────────────────────────
-    story += [
-        Mark(chapter='A Note on Mathematics'),
-        P('A Note on Mathematics', S['preface_t']),
-        SP(12),
-        P('This book contains mathematics. Do not be alarmed.', S['body0']),
-        P("""Every mathematical expression in these pages is a compressed version of an idea
-        that can be stated in words. When you see the notation O(2ⁿ), which means "grows
-        exponentially with n"; what it is really saying is: "double the number of solutions
-        and the number of potential problems quadruples; triple it and they multiply by eight;
-        each addition is worse than the last." When you see O(log n), it means the opposite:
-        "each additional solution adds only a tiny increment of new problems." The difference
-        between these two curves is the difference between sustainable progress and the kind
-        that eventually consumes itself. """, S['body']),
-        P("""The formal theorems in Chapters 10 and 11 can be read with full technical
-        rigour or skipped to the conclusions. The case studies in Part II require no
-        mathematical background at all, only an open mind and a willingness to accept that
-        the world is more connected than our problem-solving instincts assume. """, S['body']),
-        P("""Readers who want a complete grounding in the mathematical theory will find
-        detailed proofs in Appendix A. Those proofs use nothing beyond calculus and introductory
-        graph theory. The core arguments of Parts I through IV, however, stand entirely
-        on their own, built from history, evidence, and the kind of logical reasoning that
-        any careful thinker can follow. The mathematics is offered as confirmation, not
-        prerequisite. """, S['body']),
-        P("""A note on the key parameters. The network amplification exponent α, which
-        appears throughout the formal framework, is not an abstract mathematical convention
-        invented for the convenience of the theory. It is an empirically estimated quantity.
-        Albert-László Barabási and Réka Albert's seminal 1999 <i>Science</i> paper
-        demonstrated that real-world networks: citation networks, the internet, protein
-        interaction networks: exhibit degree distributions following power laws, with
-        characteristic exponents measured from real data. The exponent α used in this book
-        is calibrated against measured cascade propagation data from three domains: software
-        vulnerability cascades (α ≈ 1.4–1.5, from National Vulnerability Database dependency
-        analysis); financial contagion (α ≈ 1.6–1.8, from Gai and Kapadia's 2010 Bank of
-        England analysis of interbank networks); and information cascades in social media
-        (α ≈ 1.7–2.1, from Vosoughi, Roy and Aral's 2018 <i>Science</i> study of Twitter
-        rumour propagation). The cascade coefficient C(s) for specific solution categories
-        is estimated from historical reference class data, for pharmaceutical drugs from
-        FDA adverse event reporting, for software patches from the NVD, for financial
-        instruments from Basel stress-test data. The parameters are uncertain, as all
-        empirical quantities are. They are not arbitrary. """, S['body']),
-        PageBreak(),
-    ]
-
+    # The Preface comes from the preface() function in the chapter modules;
+    # the inline Preface and Note-on-Mathematics blocks that used to live here
+    # have been removed because they duplicated the chapter-module preface and,
+    # in the Reader's Edition, contradicted the no-math promise on the cover.
     return story, S
 
 # save partial — will be extended in next module
