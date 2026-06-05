@@ -1,14 +1,14 @@
 # Baseline Inventory — Reader's Edition (Phase 0)
 
-**Total prose words (approx):** 142,808
+**Total prose words (approx):** 142,973
 
 Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-tuple calls, inline tags stripped. Excludes figure-internal matplotlib text and PDF chrome.
 
 | Module | Chapter fn | Words | Sections | Callouts | Theorem boxes | Epigraphs | Figures |
 |---|---|--:|--:|--:|--:|--:|--:|
 | intro | `preface` | 688 | 0 | 0 | 0 | 1 | 0 |
-| intro | `intro_chapter` | 5,250 | 9 | 2 | 0 | 1 | 2 |
-| intro | `chapter1` | 8,915 | 16 | 5 | 3 | 2 | 4 |
+| intro | `intro_chapter` | 5,301 | 9 | 2 | 0 | 1 | 2 |
+| intro | `chapter1` | 8,941 | 16 | 5 | 3 | 2 | 4 |
 | intro | `chapter2` | 7,123 | 16 | 4 | 0 | 3 | 0 |
 | intro | `chapter3` | 6,753 | 15 | 4 | 0 | 2 | 6 |
 | 4to6 | `chapter4` | 10,463 | 17 | 5 | 0 | 1 | 3 |
@@ -17,14 +17,14 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | 7to9 | `chapter7` | 11,080 | 16 | 7 | 0 | 1 | 6 |
 | 7to9 | `chapter8` | 9,094 | 14 | 4 | 0 | 2 | 5 |
 | 7to9 | `chapter9` | 15,035 | 20 | 10 | 0 | 3 | 5 |
-| 10to13 | `chapter10` | 7,919 | 19 | 8 | 0 | 1 | 2 |
-| 10to13 | `chapter11` | 10,649 | 17 | 6 | 0 | 2 | 4 |
+| 10to13 | `chapter10` | 7,997 | 19 | 8 | 0 | 1 | 2 |
+| 10to13 | `chapter11` | 10,654 | 17 | 6 | 0 | 2 | 4 |
 | 10to13 | `chapter12` | 4,889 | 9 | 1 | 0 | 1 | 2 |
-| 10to13 | `chapter13` | 6,536 | 11 | 3 | 0 | 1 | 0 |
+| 10to13 | `chapter13` | 6,541 | 11 | 3 | 0 | 1 | 0 |
 | 10to13 | `conclusion` | 4,189 | 5 | 1 | 0 | 0 | 0 |
 | 10to13 | `appendices` | 9,504 | 1 | 1 | 0 | 1 | 0 |
 
-**TOTAL** — 142,808 words
+**TOTAL** — 142,973 words
 
 ---
 
@@ -33,7 +33,7 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 ### `preface`  (688 words)
 _(no detected section headings — opener-only or list-driven)_
 
-### `intro_chapter`  (5,250 words)
+### `intro_chapter`  (5,301 words)
 - The Day Britain Created More Snakes
 - A Pattern Across All of Human Knowledge
 - What This Book Argues
@@ -44,7 +44,7 @@ _(no detected section headings — opener-only or list-driven)_
 - A Map of the Book
 - A Message for Leaders, Founders, and Policymakers
 
-### `chapter1`  (8,915 words)
+### `chapter1`  (8,941 words)
 - The Three Mechanisms
 - Murphy's Law Is Not a Joke
 - The Exponential Trap
@@ -55,7 +55,7 @@ _(no detected section headings — opener-only or list-driven)_
 - Why Previous Theories Are Insufficient
 - The Three Mechanisms, Looked At More Closely
 - Five Historical Cases: The Cascade in Four Centuries
-- The Three Laws of Cascade Innovation
+- Three Principles of Cascade Innovation
 - The Industrial Revolution: The Ur-Cascade of Modernity
 - The Digital Revolution as Second Industrial Revolution
 - Game Theory and the Strategic Cascade
@@ -215,7 +215,7 @@ _(no detected section headings — opener-only or list-driven)_
 - The Food System Cascade: From Abundance to Fragility
 - The Energy Transition and the Resource Cascade
 
-### `chapter10`  (7,919 words)
+### `chapter10`  (7,997 words)
 - The Solution-Problem Network
 - How Problems Multiply
 - The Central Claim
@@ -230,13 +230,13 @@ _(no detected section headings — opener-only or list-driven)_
 - How Fast Cascades Move
 - Information-Theoretic Interpretation of Cascade Complexity
 - The Cascade Theory in Context: Related Frameworks
-- Empirical Validation of the Main Theorem
+- Empirical Support for the Central Claim
 - The Shape of the Network Matters
 - Why Cascades Cannot Be Predicted in Full
 - What the Framework Tells Us
 - The Cascade as a Signature of Complex Systems
 
-### `chapter11`  (10,649 words)
+### `chapter11`  (10,654 words)
 - The Cascade Risk Index
 - Early Warning Signals
 - Case Study: Computing the CRI for Software Security
@@ -266,7 +266,7 @@ _(no detected section headings — opener-only or list-driven)_
 - Minimum Viable Deployment and Staged Rollout
 - Cascade Governance: Building Institutions for the Long Run
 
-### `chapter13`  (6,536 words)
+### `chapter13`  (6,541 words)
 - Second-Order Thinking
 - Institutional Structures for Cascade Awareness
 - The Call to Action

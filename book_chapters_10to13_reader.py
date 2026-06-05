@@ -180,11 +180,14 @@ which means doubling every time a new solution is added. For systems of any
 meaningful size, this last term dominates everything else."""),
 
         ('body', """In plain language: in any system where solutions interact and
-reinforce each other, the number of problems doesn't just <i>add up</i> — it
-<i>multiplies</i>. The cascade is the natural consequence, not an aberration."""),
+reinforce each other, the number of <i>ways</i> a problem can arise doesn't just
+<i>add up</i> — it <i>multiplies</i>. Most of those possible interactions are
+harmless; but the share that are not is never zero, so the count of real problems
+still tends to climb far faster than the count of solutions. The cascade is the
+natural consequence of this arithmetic, not an aberration."""),
 
-        ('body', """A second result follows immediately. If problems multiply this fast,
-can we ever add solutions quickly enough to catch up? The answer is no. The rate at
+        ('body', """A second consequence follows. If real problems can multiply even a fraction this fast,
+can we ever add solutions quickly enough to catch up? In the long run, no. The rate at
 which we add solutions is, at best, linear in time — even the fastest organisations
 can only deploy so many things at once. An exponentially growing quantity will always,
 eventually, outrun any linearly growing quantity, no matter how generously the linear
@@ -209,10 +212,12 @@ designed to handle."""),
 
     story.append(SP(10))
     story.append(callout(
-        '<b>The central claim, in one line.</b> When solutions interact, the total '
-        'number of problems they generate grows roughly by <i>doubling</i> each time '
-        'a new solution is added. The formal proof of this result, and the precise '
-        'statement in symbolic form, are in the source research paper.', S))
+        '<b>The central claim, in one line.</b> When solutions interact, the number '
+        'of <i>ways</i> new problems can arise grows roughly by <i>doubling</i> each time '
+        'a new solution is added — and because the share of those interactions that turn '
+        'harmful is never zero, real problems tend to outpace the solutions that spawn them. '
+        'A fuller treatment of this reasoning, and its statement in symbolic form, is in '
+        'the author\'s source research paper.', S))
     story.append(SP(10))
     story.append(fig_to_image(fig_exponential_cascade(), w=5.5*72, h=3.6*72))
     story.append(P('Figure 10.1: Visualisation of the central claim. The three curves show '
@@ -510,8 +515,8 @@ are."""),
         'Taleb\'s Black Swan is a highly improbable event with massive impact, '
         'an outlier beyond normal expectation. The cascade is related but distinct: '
         'the cascade is not improbable in the sense Taleb defines; it is, as this '
-        'book has argued, mathematically inevitable in systems above the percolation '
-        'threshold. The cascade\'s appearance of surprise is a consequence of the '
+        'book has argued, the rule rather than the exception in highly interconnected '
+        'systems above the percolation threshold. The cascade\'s appearance of surprise is a consequence of the '
         'observer\'s failure to model the interaction structure of the system, not '
         'of the event\'s genuine rarity. Taleb\'s Antifragile contributes the concept '
         'of systems that gain from disorder, a property that corresponds, in the '
@@ -534,13 +539,13 @@ are."""),
 
     # ── Chapter 10 extended: empirical evidence ────────────────────────────
     story.append(SP(18))
-    story.append(P('Empirical Validation of the Main Theorem', S['section']))
+    story.append(P('Empirical Support for the Central Claim', S['section']))
     story.append(P(
-        'The Main Theorem is a mathematical result about the asymptotic behaviour '
+        'The central claim is a structural argument about the long-run behaviour '
         'of cascade systems. Its practical relevance depends on whether real '
-        'solution ecosystems exhibit the exponential problem-generation dynamics '
-        'the theorem predicts. This section examines three domains in which '
-        'sufficient quantitative data exists to test the theorem\'s predictions '
+        'solution ecosystems exhibit the super-linear problem-generation dynamics '
+        'the argument predicts. This section examines three domains in which '
+        'sufficient quantitative data exists to compare the argument\'s expectations '
         'against empirical evidence: software vulnerability accumulation, '
         'pharmaceutical adverse event reporting, and scientific literature growth.',
         S['body0']))
@@ -556,7 +561,7 @@ are."""),
         'the number of deployed software solutions (applications, libraries, '
         'operating systems, firmware) grew by a factor of approximately 100-1,000 '
         '— a much faster growth rate than the vulnerability discovery rate, '
-        'which appears to contradict the Main Theorem. However, the relevant '
+        'which appears to contradict the central claim. However, the relevant '
         'quantity is not the absolute number of vulnerabilities but the '
         'interaction cascade, the number of vulnerabilities generated by the '
         'interaction of two or more software components. The Log4Shell cascade '
@@ -566,7 +571,7 @@ are."""),
         'or by any of its dependent applications alone, but by the interaction '
         'between Log4j and the full ecosystem of software that depended on it. '
         'The interaction cascade grew combinatorially with the number of '
-        'dependencies, exactly as the Main Theorem predicts.',
+        'dependencies, broadly as the central claim anticipates.',
         S['body']))
     story.append(SP(14))
     story.append(P(
@@ -578,19 +583,19 @@ are."""),
         'drugs grew from approximately 10,000 to approximately 20,000 over the '
         'same period, a two-fold increase. The adverse event rate grew three '
         'times faster than the drug approval rate, which is consistent with '
-        'the Main Theorem\'s prediction of super-linear cascade growth. More '
+        'the central claim\'s prediction of super-linear cascade growth. More '
         'specifically, the growth in drug-drug interaction adverse events, '
         'events generated by the interaction between two or more approved drugs '
         '— grew faster than the growth in single-drug adverse events, which '
         'is precisely the interaction cascade signature predicted by the '
         'pairwise interaction term of the cascade function. The pharmaceutical '
-        'data supports the Main Theorem\'s quantitative structure at the '
+        'data is consistent with the central claim\'s quantitative structure at the '
         'interaction level.',
         S['body']))
     story.append(SP(14))
     story.append(P(
         '<b>Scientific literature growth.</b> The growth of the scientific '
-        'literature provides a different kind of evidence for the Main Theorem. '
+        'literature provides a different kind of evidence for the central claim. '
         'Scientific papers are, in a meaningful sense, solutions: each paper '
         'proposes a result, a method, or a theory that addresses a scientific '
         'question. The cascade from scientific solutions is the generation of '
@@ -608,14 +613,14 @@ are."""),
         'That it has grown exponentially for four centuries is strong evidence '
         'that solution deployment in science generates problems at a rate '
         'exceeding the solution rate, the qualitative prediction of the '
-        'Main Theorem.',
+        'central claim.',
         S['body']))
     story.append(SP(14))
     story.append(callout(
-        '<b>Empirical Consistency of the Main Theorem:</b> Three independent '
+        '<b>Empirical Consistency of the Central Claim:</b> Three independent '
         'data sets: software vulnerability accumulation, pharmaceutical adverse '
         'event reporting, and scientific literature growth, all exhibit the '
-        'super-linear problem generation dynamics predicted by the Main Theorem. '
+        'super-linear problem generation dynamics predicted by the central claim. '
         'In each case, the interaction cascade (problems generated by the '
         'combination of multiple solutions) grows faster than the individual '
         'cascade (problems generated by each solution independently), consistent '
@@ -1554,8 +1559,8 @@ confirms: software security is an ongoing cascade, not a solvable problem."""),
         'cascade channels), N ≈ 8 billion (all of humanity), around 2.1 '
         '(highly super-linear network amplification in the Earth system). '
         'The CRI of industrial civilisation\'s energy system is, by this '
-        'measure, indistinguishable from 1.0. The cascade was both '
-        'mathematically inevitable and practically unmanageable within the '
+        'measure, indistinguishable from 1.0. On this account the cascade was both '
+        'close to structurally unavoidable and practically unmanageable within the '
         'institutional frameworks that governed energy deployment.',
         S))
     story.append(SP(14))
@@ -3195,8 +3200,8 @@ available."""),
         'innovation; it is intelligent innovation.',
         S['body']))
     story.append(P(
-        '<b>Third proposition: Cascade wisdom is the next stage of civilisational '
-        'maturity.</b> Human civilisation has passed through several stages '
+        '<b>Third proposition: cascade awareness is a necessary next step in how we '
+        'mature as problem-solvers.</b> Human civilisation has passed through several stages '
         'of cumulative knowledge that transformed the relationship between '
         'human agency and natural consequence. The scientific revolution '
         'taught us to understand natural phenomena rather than attribute '
@@ -3206,7 +3211,7 @@ available."""),
         'planetary scale. Each of these revolutions expanded human capability '
         'dramatically, and each generated cascades that the civilisation '
         'was not initially equipped to manage. We are now in the early stages '
-        'of a cascade wisdom revolution: the development of intellectual tools, '
+        'of a shift toward cascade awareness: the development of intellectual tools, '
         'professional norms, and institutional structures adequate to the '
         'cascade dynamics of the solution ecosystems we have built. This '
         'revolution does not require abandoning what previous revolutions '
@@ -4915,7 +4920,7 @@ def appendices(S):
         ('<b>L</b>', ''), ('Landauer\'s Principle', 'Chapter 4'),
         ('Law of Cascade Problems', 'Chapter 1'),
         ('Leverage Points (Meadows)', 'Chapters 12, 13'),
-        ('<b>M</b>', ''), ('Main Theorem', 'Chapter 10'),
+        ('<b>M</b>', ''), ('central claim', 'Chapter 10'),
         ('Marks, Howard', 'Chapter 13'),
         ('Maxwell\'s Demon', 'Chapter 4'),
         ('Meadows, Donella', 'Chapters 12, 13'),

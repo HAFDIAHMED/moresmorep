@@ -3729,7 +3729,7 @@ def chapter9(S):
     story.append(SP(14))
 
     story.append(callout(
-        '<b>The Cascade Theorem:</b> Every solution introduced into a complex system is itself a perturbation '
+        '<b>The Cascade Pattern:</b> Every solution introduced into a complex system is itself a perturbation '
         'of that system. The perturbation propagates through the system according '
         'to dynamics that the designers of the solution did not model, generating '
         'second-order effects that become the problems requiring the next solution. '
