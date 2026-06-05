@@ -1,6 +1,6 @@
 # Baseline Inventory — Reader's Edition (Phase 0)
 
-**Total prose words (approx):** 140,629
+**Total prose words (approx):** 131,996
 
 Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-tuple calls, inline tags stripped. Excludes figure-internal matplotlib text and PDF chrome.
 
@@ -10,13 +10,13 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | intro | `intro_chapter` | 5,301 | 9 | 2 | 0 | 1 | 2 |
 | intro | `chapter1` | 8,973 | 16 | 5 | 3 | 2 | 4 |
 | intro | `chapter2` | 7,123 | 16 | 4 | 0 | 3 | 0 |
-| intro | `chapter3` | 6,753 | 15 | 4 | 0 | 2 | 6 |
-| 4to6 | `chapter4` | 10,463 | 17 | 5 | 0 | 1 | 3 |
-| 4to6 | `chapter5` | 11,556 | 18 | 7 | 0 | 1 | 8 |
-| 4to6 | `chapter6` | 13,165 | 21 | 11 | 0 | 3 | 5 |
+| intro | `chapter3` | 6,123 | 13 | 4 | 0 | 1 | 6 |
+| 4to6 | `chapter4` | 8,720 | 14 | 2 | 0 | 1 | 3 |
+| 4to6 | `chapter5` | 9,372 | 14 | 4 | 0 | 1 | 8 |
+| 4to6 | `chapter6` | 11,482 | 18 | 9 | 0 | 3 | 5 |
 | 7to9 | `chapter7` | 8,701 | 12 | 4 | 0 | 1 | 6 |
-| 7to9 | `chapter8` | 9,094 | 14 | 4 | 0 | 2 | 5 |
-| 7to9 | `chapter9` | 15,035 | 20 | 10 | 0 | 3 | 5 |
+| 7to9 | `chapter8` | 8,295 | 13 | 3 | 0 | 2 | 5 |
+| 7to9 | `chapter9` | 13,441 | 17 | 8 | 0 | 3 | 5 |
 | 10to13 | `chapter10` | 8,000 | 19 | 8 | 0 | 1 | 2 |
 | 10to13 | `chapter11` | 10,655 | 17 | 6 | 0 | 2 | 4 |
 | 10to13 | `chapter12` | 4,887 | 9 | 1 | 0 | 1 | 2 |
@@ -24,7 +24,7 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | 10to13 | `conclusion` | 4,187 | 5 | 1 | 0 | 0 | 0 |
 | 10to13 | `appendices` | 9,507 | 1 | 1 | 0 | 1 | 0 |
 
-**TOTAL** — 140,629 words
+**TOTAL** — 131,996 words
 
 ---
 
@@ -80,7 +80,7 @@ _(no detected section headings — opener-only or list-driven)_
 - The Social Construction of the Successful Solution
 - Narrative and Metaphor in Innovation Discourse
 
-### `chapter3`  (6,753 words)
+### `chapter3`  (6,123 words)
 - Hilbert's Dream
 - Russell's Paradox and Its Descendants
 - The Halting Problem: When Computation Discovers Its Own Limits
@@ -90,33 +90,28 @@ _(no detected section headings — opener-only or list-driven)_
 - Complexity Theory: The Cascade of Computational Questions
 - Statistics and the Replication Crisis: The Cascade of Measurement
 - Information Theory and the Cascade of Communication
-- The Computability Cascade: From Turing to Undecidability
 - Chapter 3 Synthesis: Mathematics as the Purest Cascade
 - Cryptography: Mathematics as the Backbone of Digital Trust
 - Number Theory and the Distribution of Primes: An Unsolved Cascade
-- Chapter 3 Extended Synthesis: Why Mathematics Is Not Exempt
 - Formal Languages, Specification, and the Verification Cascade
 
-### `chapter4`  (10,463 words)
+### `chapter4`  (8,720 words)
 - Maxwell's Demon and the Birth of Information Theory
 - Quantum Mechanics and the Measurement Crisis
 - Nuclear Fission and the 100,000-Year Problem
 - The Nuclear Waste Cascade: 90,000 Years of Consequences
 - String Theory and the Landscape of Unfalsifiability
 - Dark Matter, Dark Energy, and the 95% Problem
-- The Cascade Synthesis: What Physics Teaches Us
 - The Hierarchy Problem and the Naturalness Crisis
 - Climate Science: Solving the Greenhouse Problem and the Attribution Cascade
-- Chapter 4 Synthesis: The Physicist's Melancholy
 - Thermodynamics and the Energy Cascade
 - Quantum Computing: The Next Physics Cascade
 - The Neutrino Problem: Particles That Break Models
 - Artificial Intelligence and Physics: When Solutions Self-Modify
 - The Replication Crisis: When the Scientific Method Cascades
 - Chapter 4 Synthesis: Physics and the Limits of Knowability
-- The Measurement Problem and the Cascade of Interpretation
 
-### `chapter5`  (11,556 words)
+### `chapter5`  (9,372 words)
 - Every Patch Opens a New Wound
 - Brooks' Law and the Coordination Collapse
 - Feature Bloat and the Legacy Trap
@@ -126,17 +121,13 @@ _(no detected section headings — opener-only or list-driven)_
 - The Internet of Things: Security Cascade at Civilisational Scale
 - Platform Monopolies: The Winner-Take-All Cascade
 - Open Source Software: The Gift That Keeps Taking
-- Chapter 5 Synthesis: Software Eating the World and Choking on the Cascade
-- The Artificial Intelligence Inflection: When the Solution Learns
-- Open Source and the Dependency Cascade
 - The Cloud Cascade: Centralisation in a Distributed Infrastructure
 - Chapter 5 Synthesis: Software Eating Cascades
-- Platform Economics and the Network Effect Cascade
 - Apple Inc. and the Trillion-Dollar Cascade
 - Amazon: The Cascade of Convenience
 - The Cybersecurity Arms Race: A Perpetual Cascade
 
-### `chapter6`  (13,165 words)
+### `chapter6`  (11,482 words)
 - The Cobra Effect — The Canonical Perverse Incentive
 - Jevons Paradox: Efficiency Is Its Own Enemy
 - Goodhart's Law: The Measurement Problem
@@ -150,13 +141,10 @@ _(no detected section headings — opener-only or list-driven)_
 - The Automation Cascade: From Power Looms to Artificial Intelligence
 - The Financialisation Cascade: When Finance Dominates the Economy
 - The Regulatory Cascade: When Rules Create New Loopholes
-- Trade Policy and the Cascade of Comparative Advantage
 - Intellectual Property and the Innovation Paradox
 - Chapter 6 Synthesis: Economics as the Study of Cascade
 - The Housing Crisis: When Affordability Becomes a Cascade System
 - The Gig Economy and the Labour Market Cascade
-- The Inequality Cascade: When Economic Solutions Concentrate Wealth
-- Chapter 6 Extended Synthesis: The Self-Referential Economy
 - Google: Organising the World's Information — and Its Attention
 
 ### `chapter7`  (8,701 words)
@@ -173,7 +161,7 @@ _(no detected section headings — opener-only or list-driven)_
 - Chapter 7 Synthesis: The Healer's Infinite Task
 - Mental Health Treatment and the Diagnostic Cascade
 
-### `chapter8`  (9,094 words)
+### `chapter8`  (8,295 words)
 - Prohibition — The American Cautionary Tale
 - The War on Drugs — Policy in a Feedback Loop
 - Soviet Collectivisation — How Solving Food Distribution Killed Millions
@@ -183,13 +171,12 @@ _(no detected section headings — opener-only or list-driven)_
 - The Governance Cascade: Why Good Policy Makes Bad Systems
 - The Immigration Cascade: Solutions to Migration and the Migration They Generate
 - Austerity Economics: Solving Debt by Generating More Debt
-- Chapter 8 Synthesis: The State as Cascade Generator
 - Economic Sanctions: The Foreign Policy Cascade
 - The European Union: Integration as Managed Cascade
 - Chapter 8 Synthesis: The State as Cascade Architecture
 - Infrastructure Policy and the Cascade of Lock-in
 
-### `chapter9`  (15,035 words)
+### `chapter9`  (13,441 words)
 - Social Media — Connecting Humanity, Disconnecting Minds
 - GPS — Navigating Away from Our Own Minds
 - Air Conditioning — Solving Heat, Making It Worse
@@ -204,11 +191,8 @@ _(no detected section headings — opener-only or list-driven)_
 - The Urban Planning Cascade: When Cities Solve Themselves Into Crisis
 - The Digital Governance Cascade
 - Environmental Policy: The Cascade of Conservation
-- Chapter 9 Extended Synthesis: The Cascade in Daily Life
 - Artificial Intelligence and the Cognition Cascade
 - The Surveillance Capitalism Cascade
-- Transportation, Mobility, and the Urban Cascade
-- The Food System Cascade: From Abundance to Fragility
 - The Energy Transition and the Resource Cascade
 
 ### `chapter10`  (8,000 words)

@@ -2851,57 +2851,6 @@ that something has gone very, very right, and that right enough was not enough."
         S))
     story.append(SP(14))
 
-    # ── Computability Cascade ───────────────────────────────────────────────
-    story.append(SP(18))
-    story.append(P('The Computability Cascade: From Turing to Undecidability', S['section']))
-    story.append(P(
-        'Alan Turing\'s 1936 paper "On Computable Numbers, with an Application '
-        'to the Entscheidungsproblem" provided the mathematical foundation for '
-        'what would become computer science, and simultaneously delivered the '
-        'first rigorous proof that there are problems computation cannot solve. '
-        'The halting problem is undecidable: no algorithm can determine in general '
-        'whether an arbitrary program will halt. Turing\'s solution to the question '
-        'of what computation is generated, as an immediate consequence, the '
-        'permanent boundary of what computation can do.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The cascade from undecidability has spread through theoretical computer '
-        'science like a fractal, revealing undecidable problems in every domain '
-        'that touches computation. Program verification — determining whether a '
-        'given program meets its specification is undecidable in general. '
-        'Virus detection (determining whether a program contains malware) is '
-        'undecidable in general, a result that directly limits what any antivirus '
-        'software can guarantee. The tiling problem, the word problem for groups, '
-        'the equivalence problem for context-free grammars, all shown by reduction '
-        'to the halting problem to be undecidable. Each result is both an '
-        'intellectual achievement and a permanent limitation on its domain.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The practical cascade from computational complexity is more consequential '
-        'for everyday life. The discovery in the 1970s that a large class of '
-        'optimisation problems are NP-complete created the intellectual foundation '
-        'of modern cryptography. Public-key cryptography, invented by Diffie and '
-        'Hellman in 1976, depends on the presumed computational hardness of '
-        'factoring large integers. The security of every HTTPS connection, every '
-        'encrypted email, every digital signature rests on this assumption. '
-        'The cascade from this solution is quantum computing: Peter Shor\'s 1994 '
-        'quantum factoring algorithm would render all RSA cryptography insecure '
-        'on a sufficiently powerful quantum computer. The resulting cascade is '
-        'a multi-trillion-dollar global cryptographic infrastructure migration, '
-        'post-quantum cryptographic standards, now in progress and expected to '
-        'take decades to complete.',
-        S['body']))
-    story.append(SP(14))
-    story += epigraph(
-        'The development of mathematics toward greater precision has led, '
-        'as is well known, to the formalisation of large tracts of it, '
-        'so that one can prove any theorem using nothing but a few mechanical rules.',
-        'Kurt Gödel, 1931, stated before proving that this formalisation is fundamentally incomplete',
-        S)
-    story.append(SP(14))
-
     # ── Chapter 3 Synthesis ─────────────────────────────────────────────────
     story.append(SP(18))
     story.append(P('Chapter 3 Synthesis: Mathematics as the Purest Cascade', S['section']))
@@ -3059,65 +3008,6 @@ that something has gone very, very right, and that right enough was not enough."
         'cascade into practical consequences in ways '
         'that were not anticipated when the mathematics '
         'was developed.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('Chapter 3 Extended Synthesis: Why Mathematics Is Not Exempt', S['section']))
-    story.append(P(
-        'The reader might object that the cascades of mathematics '
-        'are somehow different from the cascades of medicine, '
-        'economics, or technology, that mathematical cascades '
-        'are abstract, benign, or inevitable in a way that '
-        'other cascades are not. This objection misunderstands '
-        'the significance of the mathematical examples.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The significance of mathematics in cascade theory is '
-        'precisely that it is the domain most remote from '
-        'the messiness of social, biological, and '
-        'technological systems. If cascade generation '
-        'were a consequence of unpredictability, '
-        'human error, political interference, or '
-        'market irrationality — then mathematics '
-        'would be exempt. But mathematics is not '
-        'exempt. The cascade occurs in the most '
-        'controlled, formal, rule-governed '
-        'domain that human thought has constructed. '
-        'This demonstrates that cascade generation '
-        'is not a contingent feature of messy '
-        'reality; it is a structural feature '
-        'of the relationship between problem-solving '
-        'systems and the problem spaces they address. '
-        'The cascade is not an accident of '
-        'implementation; it is a consequence of logic.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'This has a profound practical implication: '
-        'cascade management cannot be achieved by '
-        'perfecting our solutions. Perfect solutions '
-        'in perfect formal systems still generate '
-        'cascades, as Gödel, Turing, Cohen, and '
-        'the entire history of mathematical '
-        'foundations demonstrates. The cascade '
-        'is the price of asking hard questions. '
-        'The goal of cascade management is '
-        'not to eliminate the cascade; it is '
-        'to ensure that the problems generated '
-        'by solutions are managed with the same '
-        'rigour, resources, and institutional '
-        'commitment that was applied to the '
-        'original problems. In mathematics, '
-        'this means celebrating Gödel\'s '
-        'incompleteness as much as Hilbert\'s '
-        'programme, recognising that '
-        'the discovery of limits is as '
-        'valuable as the achievement of '
-        'completeness. In every other '
-        'domain of human endeavour, '
-        'the same principle applies.',
         S['body']))
     story.append(SP(14))
 
