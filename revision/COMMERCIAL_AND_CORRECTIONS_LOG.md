@@ -4,11 +4,11 @@ Principle: make the book more sellable through **packaging and accuracy**, not b
 claims we just spent Phase 1 deflating. No overclaiming was reintroduced.
 
 ## Commercial
-- **Cover subtitle** changed from the academic "A Theory of Cascade Innovation and the Hidden Cost of
-  Progress" to the curiosity-driven, agency-promising **"Why Progress Breeds New Problems — and How
-  to Get Ahead of the Cascade."** Keeps the coined hook word ("cascade") while leading with a benefit
-  ("get ahead"). Updated in `generate_book.py` (cover) and `book_main_reader.py` (PDF metadata).
-  *Title unchanged — "More Solutions = More Problems" is already strong/equation-style.*
+- **Cover: reverted to the original at the author's request.** A punchier subtitle was trialled
+  ("Why Progress Breeds New Problems — and How to Get Ahead of the Cascade") but the author chose to
+  keep the original cover and design unchanged: title "More Solutions = More Problems", subtitle
+  "A Theory of Cascade Innovation and the Hidden Cost of Progress". Cover, PDF metadata, and file
+  docstring all restored to the original. (Subtitle remains an available future lever; not applied.)
 
 ## Corrections applied (from KNOWN_ISSUES.md — the ones safe without external verification)
 - **Fake-Einstein epigraph removed.** Ch13's apocryphal "The measure of intelligence is the ability

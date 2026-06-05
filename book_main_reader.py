@@ -102,7 +102,7 @@ def main():
         bottomMargin=MB,
         title="More Solutions = More Problems — Reader's Edition",
         author='Ahmed Hafdi',
-        subject="Why Progress Breeds New Problems, and How to Get Ahead of the Cascade — Reader's Edition",
+        subject="A Theory of Cascade Innovation — Reader's Edition",
     )
     doc.build(story, onFirstPage=on_first, onLaterPages=on_page)
     print(f"Done. PDF written to: {OUTPUT}")
