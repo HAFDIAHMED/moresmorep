@@ -8,6 +8,20 @@ Legend — **[AI]** I can execute in the source/PDF • **[Author]** needs you/d
 
 ---
 
+## STATUS (revision 2.0, branch `revision-2.0`) — see `revision/REVISION_SUMMARY.md`
+- **Phase 0 — Baseline:** ✅ done (143,008-word baseline; `v22-baseline` tag).
+- **Phase 1 — Reframe/de-overclaim:** ✅ done. Zero self-overclaim phrases remain.
+- **Phase 2 — Structural cut:** ✅ dedupe done (−10.6% → ~128k); −40% target retired (deeper trim → copyedit).
+- **Phase 3 — Integrity:** ✅ done. New Ch14 "The Case Against This Book" + falsifiability + CRI honesty caveat.
+- **Phase 4 — Sourcing:** ✅ triage done (`claims_triage.csv`, `KNOWN_ISSUES.md`); **verification ⏳ [fact-checker]**.
+- **Phase 5 — Polish:** ✅ figures (clean vs sketch) done; **copyedit + legal ⏳ [Pro]**.
+- **Phase 6 — Review/publish:** ⏳ **[Author/Pro]** — needs the PDF render, expert/beta reads, and the publishing decision. Handoff kit in `revision/handoff/`.
+
+**The AI-executable work across Phases 0–5 is complete and pushed.** Remaining items are
+render + human/professional review (see the status table in `revision/REVISION_SUMMARY.md`).
+
+---
+
 ## Phase 0 — Setup & baseline (0.5 week)
 *Make the work measurable and reversible.*
 
