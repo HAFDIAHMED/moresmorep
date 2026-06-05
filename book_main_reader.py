@@ -21,7 +21,7 @@ from book_chapters_intro_reader   import preface, intro_chapter, chapter1, chapt
 from book_chapters_4to6_reader    import chapter4, chapter5, chapter6
 from book_chapters_7to9_reader    import chapter7, chapter8, chapter9
 from book_chapters_10to13_reader  import (chapter10, chapter11, chapter12, chapter13,
-                                          conclusion, appendices)
+                                          chapter14, conclusion, appendices)
 
 from reportlab.lib.pagesizes import A4
 from reportlab.platypus import SimpleDocTemplate
@@ -83,9 +83,10 @@ def main():
     story += chapter10(S)
     story += chapter11(S)
 
-    print("Building Part IV (Chapters 12–13)…")
+    print("Building Part IV (Chapters 12–14)…")
     story += chapter12(S)
     story += chapter13(S)
+    story += chapter14(S)
 
     print("Building Conclusion & Appendices…")
     story += conclusion(S)

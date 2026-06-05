@@ -1,13 +1,13 @@
 # Baseline Inventory — Reader's Edition (Phase 0)
 
-**Total prose words (approx):** 127,903
+**Total prose words (approx):** 129,836
 
 Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-tuple calls, inline tags stripped. Excludes figure-internal matplotlib text and PDF chrome.
 
 | Module | Chapter fn | Words | Sections | Callouts | Theorem boxes | Epigraphs | Figures |
 |---|---|--:|--:|--:|--:|--:|--:|
 | intro | `preface` | 688 | 0 | 0 | 0 | 1 | 0 |
-| intro | `intro_chapter` | 4,782 | 9 | 2 | 0 | 1 | 2 |
+| intro | `intro_chapter` | 4,944 | 9 | 2 | 0 | 1 | 2 |
 | intro | `chapter1` | 7,706 | 13 | 5 | 3 | 1 | 4 |
 | intro | `chapter2` | 5,812 | 13 | 4 | 0 | 2 | 0 |
 | intro | `chapter3` | 6,123 | 13 | 4 | 0 | 1 | 6 |
@@ -18,13 +18,14 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | 7to9 | `chapter8` | 8,295 | 13 | 3 | 0 | 2 | 5 |
 | 7to9 | `chapter9` | 12,445 | 15 | 7 | 0 | 2 | 5 |
 | 10to13 | `chapter10` | 8,000 | 19 | 8 | 0 | 1 | 2 |
-| 10to13 | `chapter11` | 10,655 | 17 | 6 | 0 | 2 | 4 |
+| 10to13 | `chapter11` | 10,739 | 17 | 6 | 0 | 2 | 4 |
 | 10to13 | `chapter12` | 4,887 | 9 | 1 | 0 | 1 | 2 |
 | 10to13 | `chapter13` | 6,541 | 11 | 3 | 0 | 1 | 0 |
+| 10to13 | `chapter14` | 1,687 | 8 | 2 | 0 | 1 | 0 |
 | 10to13 | `conclusion` | 4,187 | 5 | 1 | 0 | 0 | 0 |
 | 10to13 | `appendices` | 9,507 | 1 | 1 | 0 | 1 | 0 |
 
-**TOTAL** — 127,903 words
+**TOTAL** — 129,836 words
 
 ---
 
@@ -33,7 +34,7 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 ### `preface`  (688 words)
 _(no detected section headings — opener-only or list-driven)_
 
-### `intro_chapter`  (4,782 words)
+### `intro_chapter`  (4,944 words)
 - The Day Britain Created More Snakes
 - A Pattern Across All of Human Knowledge
 - What This Book Argues
@@ -208,7 +209,7 @@ _(no detected section headings — opener-only or list-driven)_
 - What the Framework Tells Us
 - The Cascade as a Signature of Complex Systems
 
-### `chapter11`  (10,655 words)
+### `chapter11`  (10,739 words)
 - The Cascade Risk Index
 - Early Warning Signals
 - Case Study: Computing the CRI for Software Security
@@ -250,6 +251,16 @@ _(no detected section headings — opener-only or list-driven)_
 - The Ethics of Innovation: From Heroism to Responsibility
 - The Cascade in Education and the Formation of Cascade-Aware Professionals
 - Chapter 13 Synthesis: The Philosophy of Cascade Wisdom
+
+### `chapter14`  (1,687 words)
+- Why This Chapter Exists
+- Objection 1: You Went Looking for Cascades
+- Objection 2: The Ledger Is Overwhelmingly Positive
+- Objection 3: The Theory Is Unfalsifiable
+- Objection 4: Cascade Thinking Can Do Real Harm
+- Objection 5: The Numbers Are Theatre
+- Objection 6: None of This Is New
+- What Survives
 
 ### `conclusion`  (4,187 words)
 - A Summary of the Evidence

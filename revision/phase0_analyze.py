@@ -27,7 +27,7 @@ MODULES = [
     ("book_chapters_7to9_reader.py",
      ["chapter7", "chapter8", "chapter9"]),
     ("book_chapters_10to13_reader.py",
-     ["chapter10", "chapter11", "chapter12", "chapter13", "conclusion", "appendices"]),
+     ["chapter10", "chapter11", "chapter12", "chapter13", "chapter14", "conclusion", "appendices"]),
 ]
 
 # Style keys / short control strings we never want to count as prose.

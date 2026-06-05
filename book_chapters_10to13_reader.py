@@ -880,10 +880,15 @@ def chapter11(S):
         ('body0', """Theory is valuable precisely to the extent that it generates practical
 tools. The mathematical framework of Chapter 10 translates directly into a practical
 metric for evaluating the cascade risk of a proposed solution before it is deployed:
-the Cascade Risk Index (CRI). The CRI is not a perfect predictor, no metric can
-perfectly predict cascade behaviour in truly complex systems. But it is a systematic,
-reproducible way of surfacing the cascade risks that are most commonly missed in
-conventional impact assessments."""),
+the Cascade Risk Index (CRI). One caution belongs before any number appears: the CRI is
+not a validated instrument that measures a real quantity, and it has not yet been tested
+prospectively. It is a structured checklist — a disciplined way of surfacing the cascade
+risks most commonly missed in conventional impact assessments. Its value lies in the
+questions it forces a team to ask, not in the digits it returns. Every worked score in
+this chapter is a retrospective illustration of the procedure, computed with the outcome
+already known; none of it is evidence that the procedure can predict. A genuine test would
+be prospective — scoring solutions before their fates are known and checking the
+calibration years later — and that test has not been run."""),
 
         ('body', """The Cascade Risk Index is the framework\'s headline output: a single
 number between 0 and 1 that summarises the cascade risk of deploying a given solution
@@ -3223,6 +3228,52 @@ available."""),
         S['body']))
 
     story.append(SP(14))
+    story.append(PageBreak())
+    return story
+
+
+def chapter14(S):
+    story = []
+    story += chapter_opener('Chapter Fourteen',
+        'The Case Against This Book',
+        'The strongest objections to the cascade argument — and what survives them', S)
+    story += epigraph(
+        'He who knows only his own side of the case knows little of that.',
+        'John Stuart Mill, On Liberty (1859)', S)
+    story += [SP(12)]
+
+    story.append(P('Why This Chapter Exists', S['section']))
+    story.append(P("A theory that cannot be argued against is not a theory; it is a faith. The preceding chapters built the case for cascade thinking as strongly as the evidence allows. This chapter does the opposite. It assembles the strongest objections a sceptical, well-informed reader could raise, states each in its most forceful form, and then says honestly how much of the book survives it. Some of these objections are fatal to the book's grander phrasings, and have already reshaped them. Others mark real limits the reader should carry forward. A few, I will argue, do not land. The aim is not to win the exchange; it is to show exactly where the argument is load-bearing and where it is decoration.", S['body0']))
+
+    story.append(P('Objection 1: You Went Looking for Cascades', S['section']))
+    story.append(P("The most serious objection is methodological. This book surveys celebrated solutions — antibiotics, the automobile, the internet, collateralised debt obligations — and in every case finds a cascade. But that is exactly what a search designed to find cascades would produce. If you go looking for the dark side of famous innovations you will always find one, because every large intervention in a complex world has some downside. The procedure has no control group. It never tallies the solutions that generated trivial cascades, nor the problems that were simply solved and stayed solved. A pattern found in a sample selected for the pattern is not evidence; it is a mirror.", S['body0']))
+    story.append(P("This objection is largely correct, and it is the reason the book's claims are now stated as a tendency rather than a law. The honest position is narrower than 'every solution cascades.' It is this: in sufficiently interconnected systems, solutions interact, and the number of possible interactions grows far faster than the number of solutions — so the opportunity for new problems compounds, and a non-zero fraction of those opportunities are realised. That claim is about structure, not about a hand-picked roll of famous disasters. The case studies illustrate it; they do not prove it. A reader who treats Part II as decoration around the structural argument of Chapter 10, rather than as the argument itself, has read the book the way it should be read.", S['body']))
+
+    story.append(P('Objection 2: The Ledger Is Overwhelmingly Positive', S['section']))
+    story.append(P("Even granting that solutions generate problems, the second objection insists the accounting still comes out hugely in favour of progress. Smallpox is gone. Childhood mortality has collapsed. A person born today lives decades longer than one born in 1900. Vaccination, sanitation, anaesthesia, and the Haber-Bosch process that feeds roughly half the planet did not merely cascade; they delivered benefits so large that no honest tally of their side effects comes close to cancelling them. To dwell on the cascade, the objection runs, is to slander the greatest achievements of the species.", S['body0']))
+    story.append(P("This is right, and the book should say so without flinching: the net ledger of human problem-solving is positive, often spectacularly so. Cascade thinking is not an argument against solving problems, any more than double-entry bookkeeping is an argument against revenue. It is an argument against single-entry bookkeeping — against recording only the benefit and leaving the cascade off the page until it arrives as a surprise. The claim is not that antibiotics were a mistake. It is that the resistance cascade was foreseeable, was in fact foreseen (Fleming said so in 1945), and was still left out of the decisions that mattered. A positive ledger and an incomplete ledger are not in tension. The book's quarrel is only with the second.", S['body']))
+
+    story.append(P('Objection 3: The Theory Is Unfalsifiable', S['section']))
+    story.append(P("The third objection is the sharpest, because the book itself invokes Popper. If every solution generates a cascade, and any apparent exception is explained away as 'too recent to have cascaded yet' or 'contained by cascade-aware design', then no observation could ever count against the theory. A claim that survives every possible piece of evidence explains nothing.", S['body0']))
+    story.append(P("The objection has force, and it deserves an answer rather than a dodge. Here is what would refute the central claim. It predicts that, holding a domain's connectivity roughly fixed, the count of distinct interaction problems should grow faster than the count of deployed solutions — and faster in more connected domains than in sparse ones. A domain that deployed solutions for decades, grew steadily more interconnected, and still showed a flat or falling rate of new interaction problems would falsify it. So would a finding that the problem-to-solution ratio is essentially unrelated to connectivity. So would a large class of solutions whose realised harmful-interaction fraction is, on measurement, indistinguishable from zero. None of these is a rhetorical impossibility; each is a measurement someone could make, and the book could lose. The 'too recent' and 'contained' replies are legitimate only when paired with that commitment — and the argument is weaker every time it reaches for them instead of for data.", S['body']))
+    story.append(callout("<b>What would prove this book wrong.</b> Find a class of solutions, deployed at scale into an increasingly connected system over decades, whose rate of new interaction-problems stays flat or falls — or show that a domain's problem-to-solution ratio is unrelated to how connected it is. Either result would refute the central claim. The claim earns the name only because it could lose it.", S))
+
+    story.append(P('Objection 4: Cascade Thinking Can Do Real Harm', S['section']))
+    story.append(P("The fourth objection is practical, and to my mind the most important. A book that teaches readers to see the hidden costs of every solution hands a loaded weapon to the status quo. Every delay, every refusal, every call to 'study this further' can now be dressed in the respectable language of cascade prudence. The same lens that flags a reckless deployment also flags the nuclear plant that would have displaced coal, the engineered crop that would have fed people, the vaccine shipped fast in a pandemic. Over-weighting hypothetical future cascades against certain present suffering is itself a cascade — of preventable harm from inaction.", S['body0']))
+    story.append(P("This is the objection the book must hold closest, because it is the one most likely to come true in practice. Cascade awareness can genuinely be weaponised by incumbents, by regulators protecting their turf, and by anyone whose interest lies in nothing changing. The defence is not to soften the analysis but to insist on its symmetry: the cascade of acting must always be weighed against the cascade of not acting, because inaction is a choice that cascades too. Used honestly, the framework scores the status quo as a deployed solution with cascades of its own — and coal's are catastrophic. A framework that only ever counsels delay is being misused. If this book is ever cited to justify blanket inaction, it is being read against its own argument.", S['body']))
+
+    story.append(P('Objection 5: The Numbers Are Theatre', S['section']))
+    story.append(P("The fifth objection targets the Cascade Risk Index directly. Assigning OxyContin a CRI of 0.85, or the 2008 derivatives complex a 0.95, lends the appearance of measurement to what is in fact a structured guess — and worse, a guess made after the outcomes were already known. Retro-scoring famous disasters to two decimal places is not validation; it is numerology with a citation.", S['body0']))
+    story.append(P("Granted, and the book is corrected accordingly. The CRI is not an instrument that measures a real quantity. It is a checklist that forces a structured conversation about cascade coefficient, reach, complexity, and interaction before deployment. Its value is in the questions it makes you ask, not in the number it emits, and the retrospective scores in Chapter 11 should be read as worked illustrations of the procedure, not as evidence that the procedure predicts. A real test of the CRI would be prospective: score solutions before their outcomes are known, then check the calibration years later. Until someone does that, the two-decimal scores carry no more authority than the judgement that went into them — exactly as much as any careful pre-mortem, and no more.", S['body']))
+
+    story.append(P('Objection 6: None of This Is New', S['section']))
+    story.append(P("The final objection is the historian's. Robert Merton described unanticipated consequences in 1936. Edward Tenner catalogued 'revenge effects' in 1996. Charles Perrow's normal accidents, Donella Meadows' systems thinking, and Nassim Taleb's work on fragility all stake out this ground. What, exactly, does this book add that they did not already say, and in several cases say better?", S['body0']))
+    story.append(P("Less than its most excited passages imply, and more than nothing. The contribution is not the observation that solutions bite back — Tenner owns that — but the attempt to give it a single structural spine in the combinatorial growth of interactions, a shared vocabulary across domains that normally never speak to each other, and a deployable checklist. Whether that synthesis is worth a book or merely a long essay is a fair question, and a reader is entitled to conclude the latter. What the book should not do is claim priority over its predecessors. It stands on them, and it has been revised to say so plainly.", S['body']))
+
+    story.append(P('What Survives', S['section']))
+    story.append(P("Strip away what these objections fairly take, and a narrower book remains — a better one. It does not claim a proven law of progress. It claims a structural tendency, falsifiable in principle, that the costs of interacting solutions compound faster than the solutions themselves; that this is systematically under-counted; and that a small set of practices — pre-mortems, reach limits, reversibility, monitoring — measurably reduce the damage. It concedes that the ledger of progress is positive, that cascade thinking can be abused to justify inaction, that its index is a discipline rather than a measurement, and that its central insight has honourable ancestors. None of those concessions touches the one recommendation that finally matters: when you deploy a solution into a complex system, count the cascade before it counts you.", S['body0']))
+    story.append(callout("<b>The argument, after its critics have had their say:</b> not 'every solution is a mistake', but 'every solution is an incomplete ledger.' The cascade is usually worth paying — once you have actually added it up.", S))
+    story.append(SP(12))
     story.append(PageBreak())
     return story
 
