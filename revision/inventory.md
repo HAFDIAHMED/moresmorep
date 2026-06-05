@@ -1,6 +1,6 @@
 # Baseline Inventory — Reader's Edition (Phase 0)
 
-**Total prose words (approx):** 129,954
+**Total prose words (approx):** 127,466
 
 Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-tuple calls, inline tags stripped. Excludes figure-internal matplotlib text and PDF chrome.
 
@@ -17,15 +17,15 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | 7to9 | `chapter7` | 8,742 | 12 | 4 | 0 | 1 | 6 |
 | 7to9 | `chapter8` | 8,295 | 13 | 3 | 0 | 2 | 5 |
 | 7to9 | `chapter9` | 12,450 | 15 | 7 | 0 | 2 | 5 |
-| 10to13 | `chapter10` | 8,000 | 19 | 8 | 0 | 1 | 2 |
-| 10to13 | `chapter11` | 10,739 | 17 | 6 | 0 | 2 | 4 |
+| 10to13 | `chapter10` | 6,686 | 15 | 5 | 0 | 1 | 2 |
+| 10to13 | `chapter11` | 9,565 | 15 | 6 | 0 | 1 | 4 |
 | 10to13 | `chapter12` | 4,887 | 9 | 1 | 0 | 1 | 2 |
 | 10to13 | `chapter13` | 6,554 | 11 | 3 | 0 | 1 | 0 |
 | 10to13 | `chapter14` | 1,687 | 8 | 2 | 0 | 1 | 0 |
 | 10to13 | `conclusion` | 4,193 | 5 | 1 | 0 | 0 | 0 |
 | 10to13 | `appendices` | 9,508 | 1 | 1 | 0 | 1 | 0 |
 
-**TOTAL** — 129,954 words
+**TOTAL** — 127,466 words
 
 ---
 
@@ -188,7 +188,7 @@ _(no detected section headings — opener-only or list-driven)_
 - Environmental Policy: The Cascade of Conservation
 - The Energy Transition and the Resource Cascade
 
-### `chapter10`  (8,000 words)
+### `chapter10`  (6,686 words)
 - The Solution-Problem Network
 - How Problems Multiply
 - The Central Claim
@@ -199,17 +199,13 @@ _(no detected section headings — opener-only or list-driven)_
 - What Would It Take to Slow the Cascade?
 - Three Historical Cascades, Side by Side
 - Why Better Regulation Alone Is Not Enough
-- Where the Amplification Numbers Come From
 - How Fast Cascades Move
 - Information-Theoretic Interpretation of Cascade Complexity
 - The Cascade Theory in Context: Related Frameworks
 - Empirical Support for the Central Claim
 - The Shape of the Network Matters
-- Why Cascades Cannot Be Predicted in Full
-- What the Framework Tells Us
-- The Cascade as a Signature of Complex Systems
 
-### `chapter11`  (10,739 words)
+### `chapter11`  (9,565 words)
 - The Cascade Risk Index
 - Early Warning Signals
 - Case Study: Computing the CRI for Software Security
@@ -221,11 +217,9 @@ _(no detected section headings — opener-only or list-driven)_
 - The Cascade Monitoring Dashboard
 - Applying Cascade Measurement to Artificial Intelligence Systems
 - Sectoral Applications of the CRI Framework
-- Cascade Measurement in Practice: The Five-Step Protocol
 - The Climate System as Cascade Architecture
 - Nuclear Technology: The Ultimate Dual-Use Cascade
 - The Cascade Forecasting Problem
-- Comparative Cascade Analysis: Lessons Across Domains
 - Systemic Risk Assessment: Tools for Cascade Quantification
 
 ### `chapter12`  (4,887 words)
