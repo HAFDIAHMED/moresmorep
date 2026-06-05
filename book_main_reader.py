@@ -15,7 +15,7 @@ Run: python3 book_main_reader.py
 import sys, os, re
 sys.path.insert(0, os.path.dirname(__file__))
 
-from generate_book import build_book, on_first, on_page, PW, PH, ML, MR, MT, MB
+from generate_book import build_book, on_first, on_page, PW, PH, ML, MR, MT, MB, _SectionHead
 
 from book_chapters_intro_reader   import preface, intro_chapter, chapter1, chapter2, chapter3
 from book_chapters_4to6_reader    import chapter4, chapter5, chapter6
@@ -24,7 +24,42 @@ from book_chapters_10to13_reader  import (chapter10, chapter11, chapter12, chapt
                                           chapter14, conclusion, appendices)
 
 from reportlab.lib.pagesizes import A4
-from reportlab.platypus import SimpleDocTemplate
+from reportlab.platypus import SimpleDocTemplate, Image, KeepTogether, Spacer, Paragraph
+
+
+def _is_caption(f):
+    return isinstance(f, Paragraph) and getattr(getattr(f, 'style', None), 'name', '') == 'caption'
+
+
+def _bind_flowables(story):
+    """Prevent two layout bugs by binding flowables that must stay together:
+      • a figure (Image) and its caption — never split across a page break;
+      • a section/subsection heading and its first paragraph — no orphaned headings.
+    Implemented as a post-pass over the assembled story so every call site is
+    covered without editing each chapter. Groups are wrapped in KeepTogether,
+    which moves the whole group to the next page if it would otherwise split.
+    """
+    out, i, n = [], 0, len(story)
+    while i < n:
+        f = story[i]
+        # ── figure + caption (allow one spacer between) ──
+        if isinstance(f, Image):
+            grp, j = [f], i + 1
+            if j < n and isinstance(story[j], Spacer) and j + 1 < n and _is_caption(story[j + 1]):
+                grp += [story[j], story[j + 1]]; j += 2
+            elif j < n and _is_caption(story[j]):
+                grp += [story[j]]; j += 1
+            out.append(KeepTogether(grp)); i = j; continue
+        # ── heading + following spacer(s) + first content flowable ──
+        if isinstance(f, _SectionHead):
+            grp, j = [f], i + 1
+            while j < n and isinstance(story[j], Spacer):
+                grp.append(story[j]); j += 1
+            if j < n and not isinstance(story[j], (_SectionHead, Image)):
+                grp.append(story[j]); j += 1
+            out.append(KeepTogether(grp)); i = j; continue
+        out.append(f); i += 1
+    return out
 
 
 BASENAME = 'More_Solutions_More_Problems_Reader_Edition'
@@ -91,6 +126,8 @@ def main():
     print("Building Conclusion & Appendices…")
     story += conclusion(S)
     story += appendices(S)
+
+    story = _bind_flowables(story)
 
     print(f"Assembling PDF -> {OUTPUT}")
     doc = SimpleDocTemplate(
