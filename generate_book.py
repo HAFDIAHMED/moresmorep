@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 MORE SOLUTIONS = MORE PROBLEMS
-A Theory of Cascade Innovation and the Hidden Cost of Progress
+Why Progress Breeds New Problems, and How to Get Ahead of the Cascade
 By Ahmed Hafdi
 
 Run: python3 generate_book.py
@@ -318,8 +318,8 @@ def _draw_designed_cover(c, W, H):
 
     c.setFont('Times-Italic', 10 * scale)
     c.setFillColor(_COVER_INK_LIGHT)
-    c.drawCentredString(W / 2, H * 0.335, 'A Theory of Cascade Innovation')
-    c.drawCentredString(W / 2, H * 0.315, 'and the Hidden Cost of Progress')
+    c.drawCentredString(W / 2, H * 0.335, 'Why Progress Breeds New Problems —')
+    c.drawCentredString(W / 2, H * 0.315, 'and How to Get Ahead of the Cascade')
 
     # bottom black bar
     c.setFillColor(_COVER_INK)

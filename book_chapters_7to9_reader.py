@@ -380,10 +380,12 @@ def chapter7(S):
         'The scale of the coming mortality cascade was quantified by the O\'Neill Review '
         'on Antimicrobial Resistance, commissioned by the UK government and chaired by '
         'economist Jim O\'Neill, whose final report was published in 2016. The review '
-        'found that antibiotic-resistant infections currently kill approximately 700,000 '
-        'people annually worldwide \u2014 more than prostate cancer and breast cancer '
-        'combined. On current trends, the review projected that antimicrobial resistance '
-        'will kill 10 million people annually by 2050, surpassing cancer as the world\'s '
+        'found that antibiotic-resistant infections were then killing around 700,000 '
+        'people a year worldwide; the more rigorous 2019 estimate \u2014 the Lancet GRAM '
+        'study (2022) \u2014 put the toll far higher, at 1.27 million deaths directly '
+        'attributable and nearly 5 million associated. On current trends, the review '
+        'projected that resistance could kill 10 million people annually by 2050 (a widely '
+        'cited but much-debated forecast), surpassing cancer as the world\'s '
         'leading cause of death, with cumulative economic losses of more than $100 trillion. '
         'The WHO\'s 2023 priority pathogen list identifies nineteen bacterial families '
         'posing the greatest threat, including carbapenem-resistant Acinetobacter '
@@ -396,7 +398,7 @@ def chapter7(S):
     story.append(callout(
         '<b>The O\'Neill Report (2016):</b> If no action is taken, antimicrobial resistance will kill 10 million people '
         'per year by 2050 \u2014 more than cancer. The cumulative cost to global GDP '
-        'would exceed $100 trillion. Currently 700,000 people die annually from '
+        'would exceed $100 trillion. At the time of the report some 700,000 people died annually from '
         'drug-resistant infections; no new classes of antibiotics have reached the '
         'market since 1987.',
         S))
@@ -874,7 +876,7 @@ def chapter7(S):
     story.append(P('The explanation for this apparent irrationality is institutional rather than individual. Individual physicians, prescribing antibiotics for patients with uncertain diagnoses (viral infections that might be bacterial, bacterial infections whose pathogen is unknown), were making individually rational decisions: the benefit to the current patient of prescribing an antibiotic when there is uncertainty is immediate and certain; the contribution to aggregate resistance is diffuse and distant. No individual prescription tips the resistance balance. But the aggregate of individually rational prescribing decisions (across millions of physicians and billions of prescriptions) generates the resistance cascade through a classic collective action problem. This is the public goods structure of the antibiotic resistance cascade: the antibiotic is a shared resource (its effectiveness depends on bacteria not being resistant), and each user depletes that resource marginally while capturing the full benefit of the current prescription. Without external coordination mechanisms: antibiotic stewardship programs, prescribing guidelines, prescription monitoring, agricultural antibiotic use restrictions, the rational individual choice generates the catastrophic collective outcome.', S['body']))
     story.append(P('The opioid cascade has a different institutional structure but a similar logic. The immediate benefit of an opioid prescription is borne by the patient; the addiction risk is borne partly by the patient, partly by the patient\'s family and community, and partly by the public health system. The marketing-driven over-prescription of OxyContin was individually rational for each prescribing physician (paid in relative-value units that rewarded volume, not long-term patient outcomes), individually rational for Purdue Pharma (maximising revenue during the patent window), and individually rational for insurance companies (reimbursing short-term prescriptions without funding long-term addiction treatment). The cascade was generated not by any single actor\'s irrationality but by the interaction of individually rational actors whose incentive structures were not aligned with the system-level outcome.', S['body']))
     story.append(P('What medicine has learned (imperfectly, slowly) from these cascades is the concept of pharmacovigilance: the ongoing monitoring of a drug\'s effects across its entire population of users, throughout the full duration of its clinical use, with specific attention to rare and delayed adverse effects that controlled clinical trials cannot detect. The FDA\'s Adverse Event Reporting System, the EU\'s EudraVigilance database, and the WHO\'s VigiBase are imperfect implementations of this concept. Their imperfection is instructive: they rely on voluntary reporting by physicians and patients, creating systematic under-reporting of adverse events; they are designed to detect signals in the data that are large enough to trigger regulatory attention, not small enough to guide prescribing at the individual level; and they do not capture the systemic cascade effects (resistance, diversion, community-level impacts) that are often more important than the individual-patient adverse effects. Medicine has learned to monitor for Type I cascades (individual complexity) but not yet for Type II cascades (incentive structures) or Type IV cascades (network propagation). The most severe cascades of the next generation of pharmaceutical and genetic medicine will likely involve exactly the cascade types that current pharmacovigilance is worst at detecting.', S['body']))
-    story.append(callout('<b>The Medical Cascade in Four Numbers:</b> 200 million lives saved by antibiotics in the 20th century. 700,000 lives lost annually to antibiotic resistance in 2024. 500,000+ opioid overdose deaths in the United States since 1999. 10 million: the projected annual death toll from antibiotic resistance by 2050. The cascade has not yet exceeded the benefit but the benefit is fixed (the infections already cured) while the cascade is still growing.', S))
+    story.append(callout('<b>The Medical Cascade in Four Numbers:</b> An estimated 200 million lives saved by antibiotics in the 20th century. 1.27 million lives lost annually to antibiotic resistance (2019, the most rigorous estimate to date). 500,000+ opioid overdose deaths in the United States since 1999. 10 million: a widely cited but contested projection of resistance deaths by 2050. The cascade has not yet exceeded the benefit but the benefit is fixed (the infections already cured) while the cascade is still growing.', S))
 
     story.append(SP(22))
     story.append(P('Organ Transplantation and the Immunosuppression Cascade', S['section']))
@@ -3345,7 +3347,7 @@ def chapter9(S):
         'mechanisms from the outset; one that explicitly asks, before the solution '
         'is deployed at scale, who benefits from the solution and who bears the '
         'costs of its cascade, and whether those populations are the same people. '
-        'Fleming saved hundreds of millions of lives. Borlaug saved a billion. '
+        'Fleming\'s penicillin saved hundreds of millions of lives. Borlaug is credited with helping save a billion. '
         'The engineers at Carrier created the conditions for the Sun Belt economies '
         'that generate trillions of dollars of GDP. The cascades they generated '
         'are real and serious and in some cases existential. They are also the '

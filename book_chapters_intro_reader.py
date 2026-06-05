@@ -168,8 +168,9 @@ annually (Cybersecurity Ventures, 2023), mass misinformation that now threatens
 democratic institutions, and digital addiction affecting an estimated 400 million people
 worldwide. Again: not inevitable. Structural."""),
         ('body', """Antibiotics solved the problem of bacterial infection. They created
-antibiotic-resistant superbugs that now kill 700,000 people annually and are projected
-to kill 10 million per year by 2050, more than cancer. The O'Neill Review on
+antibiotic-resistant superbugs that now directly kill an estimated 1.27 million people a
+year (and contribute to nearly 5 million more), with one widely cited projection putting
+the toll at 10 million a year by 2050. The O'Neill Review on
 Antimicrobial Resistance (2016), commissioned by the British government, described
 this as "an apocalyptic scenario" caused directly by the overuse of the very drugs
 that represented medicine's greatest triumph."""),

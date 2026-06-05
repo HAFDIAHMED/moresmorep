@@ -1,31 +1,31 @@
 # Baseline Inventory — Reader's Edition (Phase 0)
 
-**Total prose words (approx):** 129,869
+**Total prose words (approx):** 129,954
 
 Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-tuple calls, inline tags stripped. Excludes figure-internal matplotlib text and PDF chrome.
 
 | Module | Chapter fn | Words | Sections | Callouts | Theorem boxes | Epigraphs | Figures |
 |---|---|--:|--:|--:|--:|--:|--:|
 | intro | `preface` | 688 | 0 | 0 | 0 | 1 | 0 |
-| intro | `intro_chapter` | 4,977 | 9 | 2 | 0 | 1 | 2 |
+| intro | `intro_chapter` | 4,990 | 9 | 2 | 0 | 1 | 2 |
 | intro | `chapter1` | 7,706 | 13 | 5 | 3 | 1 | 4 |
 | intro | `chapter2` | 5,812 | 13 | 4 | 0 | 2 | 0 |
 | intro | `chapter3` | 6,123 | 13 | 4 | 0 | 1 | 6 |
 | 4to6 | `chapter4` | 8,720 | 14 | 2 | 0 | 1 | 3 |
 | 4to6 | `chapter5` | 9,372 | 14 | 4 | 0 | 1 | 8 |
-| 4to6 | `chapter6` | 11,482 | 18 | 9 | 0 | 3 | 5 |
-| 7to9 | `chapter7` | 8,701 | 12 | 4 | 0 | 1 | 6 |
+| 4to6 | `chapter6` | 11,488 | 18 | 9 | 0 | 3 | 5 |
+| 7to9 | `chapter7` | 8,742 | 12 | 4 | 0 | 1 | 6 |
 | 7to9 | `chapter8` | 8,295 | 13 | 3 | 0 | 2 | 5 |
-| 7to9 | `chapter9` | 12,445 | 15 | 7 | 0 | 2 | 5 |
+| 7to9 | `chapter9` | 12,450 | 15 | 7 | 0 | 2 | 5 |
 | 10to13 | `chapter10` | 8,000 | 19 | 8 | 0 | 1 | 2 |
 | 10to13 | `chapter11` | 10,739 | 17 | 6 | 0 | 2 | 4 |
 | 10to13 | `chapter12` | 4,887 | 9 | 1 | 0 | 1 | 2 |
-| 10to13 | `chapter13` | 6,541 | 11 | 3 | 0 | 1 | 0 |
+| 10to13 | `chapter13` | 6,554 | 11 | 3 | 0 | 1 | 0 |
 | 10to13 | `chapter14` | 1,687 | 8 | 2 | 0 | 1 | 0 |
-| 10to13 | `conclusion` | 4,187 | 5 | 1 | 0 | 0 | 0 |
-| 10to13 | `appendices` | 9,507 | 1 | 1 | 0 | 1 | 0 |
+| 10to13 | `conclusion` | 4,193 | 5 | 1 | 0 | 0 | 0 |
+| 10to13 | `appendices` | 9,508 | 1 | 1 | 0 | 1 | 0 |
 
-**TOTAL** — 129,869 words
+**TOTAL** — 129,954 words
 
 ---
 
@@ -34,7 +34,7 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 ### `preface`  (688 words)
 _(no detected section headings — opener-only or list-driven)_
 
-### `intro_chapter`  (4,977 words)
+### `intro_chapter`  (4,990 words)
 - The Day Britain Created More Snakes
 - A Pattern Across All of Human Knowledge
 - What This Book Argues
@@ -122,7 +122,7 @@ _(no detected section headings — opener-only or list-driven)_
 - Amazon: The Cascade of Convenience
 - The Cybersecurity Arms Race: A Perpetual Cascade
 
-### `chapter6`  (11,482 words)
+### `chapter6`  (11,488 words)
 - The Cobra Effect — The Canonical Perverse Incentive
 - Jevons Paradox: Efficiency Is Its Own Enemy
 - Goodhart's Law: The Measurement Problem
@@ -142,7 +142,7 @@ _(no detected section headings — opener-only or list-driven)_
 - The Gig Economy and the Labour Market Cascade
 - Google: Organising the World's Information — and Its Attention
 
-### `chapter7`  (8,701 words)
+### `chapter7`  (8,742 words)
 - The Antibiotic Revolution — and Its Reversal
 - The Opioid Crisis — A Pharmaceutical Cascade
 - Thalidomide — The Drug That Keeps Cascading
@@ -171,7 +171,7 @@ _(no detected section headings — opener-only or list-driven)_
 - Chapter 8 Synthesis: The State as Cascade Architecture
 - Infrastructure Policy and the Cascade of Lock-in
 
-### `chapter9`  (12,445 words)
+### `chapter9`  (12,450 words)
 - Social Media — Connecting Humanity, Disconnecting Minds
 - GPS — Navigating Away from Our Own Minds
 - Air Conditioning — Solving Heat, Making It Worse
@@ -239,7 +239,7 @@ _(no detected section headings — opener-only or list-driven)_
 - Minimum Viable Deployment and Staged Rollout
 - Cascade Governance: Building Institutions for the Long Run
 
-### `chapter13`  (6,541 words)
+### `chapter13`  (6,554 words)
 - Second-Order Thinking
 - Institutional Structures for Cascade Awareness
 - The Call to Action
@@ -262,14 +262,14 @@ _(no detected section headings — opener-only or list-driven)_
 - Objection 6: None of This Is New
 - What Survives
 
-### `conclusion`  (4,187 words)
+### `conclusion`  (4,193 words)
 - A Summary of the Evidence
 - The Irreducibility of the Paradox
 - The Hopeful Case: Cascade-Aware Societies
 - What Progress Looks Like in a Cascade-Aware World
 - A Letter to Future Problem-Solvers
 
-### `appendices`  (9,507 words)
+### `appendices`  (9,508 words)
     - Case Study E.1: The Montreal Protocol (1987): A Managed Cascade
     - Case Study E.2: Leaded Petrol (1921–1996): A Delayed Management Cascade
     - Case Study E.3: The Green Revolution: Managed Success with Residual Cascades

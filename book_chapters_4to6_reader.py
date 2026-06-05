@@ -3434,8 +3434,9 @@ def chapter6(S):
         S['body']))
     story.append(SP(14))
     story += epigraph(
-        'Not everything that can be counted counts, and not everything that counts can be counted.',
-        'Attributed to Albert Einstein',
+        'What we measure affects what we do; and if our measurements are flawed, '
+        'decisions may be distorted.',
+        'Stiglitz, Sen and Fitoussi, Mismeasuring Our Lives (2010)',
         S)
     story.append(SP(14))
 
