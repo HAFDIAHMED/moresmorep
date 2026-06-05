@@ -1,6 +1,6 @@
 # Baseline Inventory — Reader's Edition (Phase 0)
 
-**Total prose words (approx):** 127,466
+**Total prose words (approx):** 122,272
 
 Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-tuple calls, inline tags stripped. Excludes figure-internal matplotlib text and PDF chrome.
 
@@ -10,13 +10,13 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | intro | `intro_chapter` | 4,990 | 9 | 2 | 0 | 1 | 2 |
 | intro | `chapter1` | 7,706 | 13 | 5 | 3 | 1 | 4 |
 | intro | `chapter2` | 5,812 | 13 | 4 | 0 | 2 | 0 |
-| intro | `chapter3` | 6,123 | 13 | 4 | 0 | 1 | 6 |
-| 4to6 | `chapter4` | 8,720 | 14 | 2 | 0 | 1 | 3 |
-| 4to6 | `chapter5` | 9,372 | 14 | 4 | 0 | 1 | 8 |
+| intro | `chapter3` | 4,812 | 10 | 3 | 0 | 1 | 6 |
+| 4to6 | `chapter4` | 7,285 | 11 | 1 | 0 | 1 | 3 |
+| 4to6 | `chapter5` | 8,559 | 13 | 4 | 0 | 1 | 8 |
 | 4to6 | `chapter6` | 11,488 | 18 | 9 | 0 | 3 | 5 |
 | 7to9 | `chapter7` | 8,742 | 12 | 4 | 0 | 1 | 6 |
 | 7to9 | `chapter8` | 8,295 | 13 | 3 | 0 | 2 | 5 |
-| 7to9 | `chapter9` | 12,450 | 15 | 7 | 0 | 2 | 5 |
+| 7to9 | `chapter9` | 10,815 | 12 | 5 | 0 | 2 | 5 |
 | 10to13 | `chapter10` | 6,686 | 15 | 5 | 0 | 1 | 2 |
 | 10to13 | `chapter11` | 9,565 | 15 | 6 | 0 | 1 | 4 |
 | 10to13 | `chapter12` | 4,887 | 9 | 1 | 0 | 1 | 2 |
@@ -25,7 +25,7 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | 10to13 | `conclusion` | 4,193 | 5 | 1 | 0 | 0 | 0 |
 | 10to13 | `appendices` | 9,508 | 1 | 1 | 0 | 1 | 0 |
 
-**TOTAL** — 127,466 words
+**TOTAL** — 122,272 words
 
 ---
 
@@ -75,7 +75,7 @@ _(no detected section headings — opener-only or list-driven)_
 - Chapter 2 Synthesis: Redesigning Human Reasoning for a Cascade World
 - The Social Construction of the Successful Solution
 
-### `chapter3`  (6,123 words)
+### `chapter3`  (4,812 words)
 - Hilbert's Dream
 - Russell's Paradox and Its Descendants
 - The Halting Problem: When Computation Discovers Its Own Limits
@@ -84,13 +84,10 @@ _(no detected section headings — opener-only or list-driven)_
 - The Calculus Cascade: Three Centuries of Foundations
 - Complexity Theory: The Cascade of Computational Questions
 - Statistics and the Replication Crisis: The Cascade of Measurement
-- Information Theory and the Cascade of Communication
 - Chapter 3 Synthesis: Mathematics as the Purest Cascade
 - Cryptography: Mathematics as the Backbone of Digital Trust
-- Number Theory and the Distribution of Primes: An Unsolved Cascade
-- Formal Languages, Specification, and the Verification Cascade
 
-### `chapter4`  (8,720 words)
+### `chapter4`  (7,285 words)
 - Maxwell's Demon and the Birth of Information Theory
 - Quantum Mechanics and the Measurement Crisis
 - Nuclear Fission and the 100,000-Year Problem
@@ -99,21 +96,17 @@ _(no detected section headings — opener-only or list-driven)_
 - Dark Matter, Dark Energy, and the 95% Problem
 - The Hierarchy Problem and the Naturalness Crisis
 - Climate Science: Solving the Greenhouse Problem and the Attribution Cascade
-- Thermodynamics and the Energy Cascade
 - Quantum Computing: The Next Physics Cascade
-- The Neutrino Problem: Particles That Break Models
 - Artificial Intelligence and Physics: When Solutions Self-Modify
-- The Replication Crisis: When the Scientific Method Cascades
 - Chapter 4 Synthesis: Physics and the Limits of Knowability
 
-### `chapter5`  (9,372 words)
+### `chapter5`  (8,559 words)
 - Every Patch Opens a New Wound
 - Brooks' Law and the Coordination Collapse
 - Feature Bloat and the Legacy Trap
 - The Internet's Unintended Children
 - The AI Alignment Cascade
 - The Digital Cascade: An Accounting
-- The Internet of Things: Security Cascade at Civilisational Scale
 - Platform Monopolies: The Winner-Take-All Cascade
 - Open Source Software: The Gift That Keeps Taking
 - The Cloud Cascade: Centralisation in a Distributed Infrastructure
@@ -171,7 +164,7 @@ _(no detected section headings — opener-only or list-driven)_
 - Chapter 8 Synthesis: The State as Cascade Architecture
 - Infrastructure Policy and the Cascade of Lock-in
 
-### `chapter9`  (12,450 words)
+### `chapter9`  (10,815 words)
 - Social Media — Connecting Humanity, Disconnecting Minds
 - GPS — Navigating Away from Our Own Minds
 - Air Conditioning — Solving Heat, Making It Worse
@@ -182,9 +175,6 @@ _(no detected section headings — opener-only or list-driven)_
 - The Architecture of the Cascade — What Medicine, Politics, and Environment Share
 - Social and Ecological Systems: The Long Memory
 - Chapter 9 Synthesis: Technology and the Acceleration of Cascade
-- The Biotechnology Cascade: Engineering Life
-- The Urban Planning Cascade: When Cities Solve Themselves Into Crisis
-- The Digital Governance Cascade
 - Environmental Policy: The Cascade of Conservation
 - The Energy Transition and the Resource Cascade
 
