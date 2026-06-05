@@ -339,14 +339,38 @@ def on_first(c, doc):
     # Page 1 is the designed cover, drawn directly on the canvas.
     _draw_designed_cover(c, PW, PH)
 
-# ─── FIGURE FACTORY (xkcd sketch style) ───────────────────────────────────────
+# ─── FIGURE FACTORY ───────────────────────────────────────────────────────────
+# Two styles are used deliberately:
+#   • clean_style()  — for charts that plot numbers (data or mathematical curves).
+#                      A sober, professional look so quantitative figures are not
+#                      undermined by a hand-drawn aesthetic.
+#   • plt.xkcd()     — kept ONLY for conceptual diagrams (trees, timelines, concept
+#                      maps) where the sketch look correctly signals "schematic idea,
+#                      not measurement."
+from contextlib import contextmanager
+
+@contextmanager
+def clean_style():
+    """Professional chart style for quantitative figures (replaces the xkcd sketch)."""
+    rc = {
+        'font.family': 'serif',
+        'font.size': 10,
+        'axes.titlesize': 12, 'axes.titleweight': 'bold',
+        'axes.grid': True, 'grid.alpha': 0.30, 'grid.linewidth': 0.6,
+        'axes.spines.top': False, 'axes.spines.right': False,
+        'axes.edgecolor': '#333333', 'axes.linewidth': 0.8,
+        'lines.linewidth': 2.0,
+    }
+    with plt.rc_context(rc):
+        yield
+
 def fig_to_image(fig, w=5.0*inch, h=3.2*inch):
     buf=BytesIO(); fig.savefig(buf,format='png',dpi=160,bbox_inches='tight',
                                facecolor='white',edgecolor='none')
     buf.seek(0); plt.close(fig); return Image(buf,width=w,height=h)
 
 def fig_exponential_cascade():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.8))
         n=np.arange(0,11)
         ax.plot(n, 2**n, 'k-', lw=2.5, label='Problems (traditional): $O(2^n)$')
@@ -400,7 +424,7 @@ def fig_cascade_tree():
     return fig
 
 def fig_antibiotic_resistance():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         years=np.array([1945,1955,1965,1975,1985,1995,2005,2015,2025])
         drugs=np.array([2,5,12,18,22,28,35,40,43])
@@ -419,7 +443,7 @@ def fig_antibiotic_resistance():
     return fig
 
 def fig_jevons_paradox():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         years=np.arange(1850,1920)
         efficiency=50+np.cumsum(np.random.RandomState(42).uniform(0.3,0.8,len(years)))
@@ -439,7 +463,7 @@ def fig_jevons_paradox():
     return fig
 
 def fig_brooks_law():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         n=np.arange(1,21)
         links=n*(n-1)/2
@@ -455,7 +479,7 @@ def fig_brooks_law():
     return fig
 
 def fig_opioid_crisis():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         years=np.array([1999,2002,2005,2008,2011,2014,2017,2020,2023])
         deaths=np.array([6,9,15,20,26,35,47,70,81])
@@ -470,7 +494,7 @@ def fig_opioid_crisis():
     return fig
 
 def fig_prohibition():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         cats=['Alcohol-related\nhomicides (index)','Organized crime\ngroups','Police\ncorruption cases',
               'Illegal speakeasies\n(thousands)']
@@ -518,7 +542,7 @@ def fig_godel_timeline():
     return fig
 
 def fig_windows_complexity():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         versions=['Win 1.0\n(1985)','Win 95\n(1995)','Win XP\n(2001)','Win 7\n(2009)','Win 10\n(2015)','Win 11\n(2021)']
         loc_million=[0.001,15,45,40,80,100]
@@ -535,7 +559,7 @@ def fig_windows_complexity():
     return fig
 
 def fig_social_media():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         years=np.array([2004,2007,2010,2013,2016,2019,2022])
         users_bn=np.array([0.001,0.05,0.5,1.2,2.1,3.5,4.7])
@@ -599,7 +623,7 @@ def fig_crispr():
     return fig
 
 def fig_goodhart():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         t=np.linspace(0,10,200)
         real=2+0.5*t+np.sin(t)*0.8+np.random.RandomState(3).randn(200)*0.3
@@ -677,7 +701,7 @@ def fig_historical_timeline():
     return fig
 
 def fig_green_revolution():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         years=np.array([1960,1970,1980,1990,2000,2010,2020])
         yield_idx=np.array([100,142,175,198,220,250,270])
@@ -726,7 +750,7 @@ def fig_quantum_problems():
     return fig
 
 def fig_drug_war():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         years=np.array([1971,1980,1990,2000,2010,2020])
         spending_bn=np.array([1,3.5,7,18,26,35])

@@ -1,13 +1,13 @@
 # Baseline Inventory — Reader's Edition (Phase 0)
 
-**Total prose words (approx):** 129,836
+**Total prose words (approx):** 129,869
 
 Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-tuple calls, inline tags stripped. Excludes figure-internal matplotlib text and PDF chrome.
 
 | Module | Chapter fn | Words | Sections | Callouts | Theorem boxes | Epigraphs | Figures |
 |---|---|--:|--:|--:|--:|--:|--:|
 | intro | `preface` | 688 | 0 | 0 | 0 | 1 | 0 |
-| intro | `intro_chapter` | 4,944 | 9 | 2 | 0 | 1 | 2 |
+| intro | `intro_chapter` | 4,977 | 9 | 2 | 0 | 1 | 2 |
 | intro | `chapter1` | 7,706 | 13 | 5 | 3 | 1 | 4 |
 | intro | `chapter2` | 5,812 | 13 | 4 | 0 | 2 | 0 |
 | intro | `chapter3` | 6,123 | 13 | 4 | 0 | 1 | 6 |
@@ -25,7 +25,7 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | 10to13 | `conclusion` | 4,187 | 5 | 1 | 0 | 0 | 0 |
 | 10to13 | `appendices` | 9,507 | 1 | 1 | 0 | 1 | 0 |
 
-**TOTAL** — 129,836 words
+**TOTAL** — 129,869 words
 
 ---
 
@@ -34,7 +34,7 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 ### `preface`  (688 words)
 _(no detected section headings — opener-only or list-driven)_
 
-### `intro_chapter`  (4,944 words)
+### `intro_chapter`  (4,977 words)
 - The Day Britain Created More Snakes
 - A Pattern Across All of Human Knowledge
 - What This Book Argues
