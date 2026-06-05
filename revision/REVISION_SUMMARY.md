@@ -21,8 +21,11 @@ fraction). De-grandiosed ("next stage of civilisational maturity" etc.). Also re
 
 **Phase 2 — Structural cut.** Removed ~14 duplicate topic sections and ~8 surplus syntheses so every
 chapter has exactly one synthesis and no topic is covered twice; tightened the redundant cobra
-retelling. **143,008 → ~127,900 words (−10.6%).** (The original −40% target was retired as unwise to
-hit by blunt deletion; further trimming belongs in the copyedit.)
+retelling. A later **deep de-boring trim** (keeping all chapter numbers and cross-references valid —
+no renumber) then took it to the author's ≤100k target by removing the repetitive framework
+re-explanation, duplicate appendix material, and secondary/overlapping sections across every chapter,
+while preserving every canonical case study, Chapter 14, the figures, and the original cover.
+**143,008 → 99,938 words (−30%); 354 → 283 pages.**
 
 **Phase 3 — Integrity (the other big credibility fix).** New **Chapter 14, "The Case Against This
 Book"** (~1,690 words) steelmans six objections and concedes what each takes. Added an explicit
@@ -35,34 +38,41 @@ corrections + an "already-sourced" list).
 
 **Phase 5 — Polish (figures).** Split the figure system: **clean professional style for the 11
 quantitative charts**, sketch style kept only for the **9 conceptual diagrams**; rewrote the figures
-disclaimer to match. Copyedit + legal read are [Pro].
+disclaimer to match. Later fixed the **text/arrow overlaps** in the tree diagrams (boxes drawn on top
+of connector arrows via z-order). Copyedit + legal read remain [Pro].
 
-Net after Phases 0–5: **≈129,900 words** (Phase 3 added the adversarial chapter back).
+**Plus:** accuracy corrections (apocryphal Einstein epigraphs replaced; antibiotic-resistance figures
+updated to the 2019 Lancet 1.27M and the "10M by 2050" framed as a contested projection; estimates
+hedged); a commercial cover subtitle was trialled and **reverted at the author's request**.
+
+Final state, rendered as **v27**: **99,938 words / 283 pages.**
 
 ---
 
-## How to build the PDF (do this first)
-This sandbox has no `matplotlib`, so no PDF was rendered here. On your machine:
+## The built PDF
+The current book is rendered at `versions/More_Solutions_More_Problems_Reader_Edition_v27.pdf`
+(283 pages). To rebuild after any edit:
 ```
 pip install matplotlib numpy reportlab Pillow
-python book_main_reader.py      # writes versions/More_Solutions_..._Reader_Edition_vN.pdf
+python book_main_reader.py      # writes the next versions/..._Reader_Edition_vN.pdf
 ```
-Then read it end-to-end. Confirm: (1) the reframed claims read well, (2) Chapter 14 lands, (3) the
-clean-style charts look right.
+(Optional: install the "xkcd Script"/"Humor Sans" font for the true hand-drawn look on the conceptual
+diagrams; without it they render in a clean fallback font.)
 
 ---
 
 ## What remains — and who must do it
 | Item | Owner | Notes |
 |---|---|---|
-| Render `v23` and read it | **You** | needs matplotlib; the one true blocker |
+| Read `v27` end-to-end | **You** | already rendered (283 pp); confirm it reads well |
 | Fact-check the claims | **Fact-checker** | brief: `handoff/FACT_CHECK_BRIEF.md`; worklist: `claims_triage.csv` |
 | Legal / defamation read | **Lawyer** | checklist: `handoff/LEGAL_REVIEW_CHECKLIST.md` |
 | Citation/endnotes apparatus | AI, **after** fact-check | I can add the flowable + back-matter once sources exist |
 | Professional copyedit | **Copyeditor** | comma splices etc.; also trims length further |
 | Expert sign-off (4 fields) | **You + experts** | brief: `handoff/EXPERT_REVIEWER_BRIEF.md` |
 | Front/back matter (copyright, ISBN, bio, acks) | **You** (+AI to typeset) | content needs you |
-| Cover subtitle "A Theory of…" | **You** | branding call; flagged, not changed |
+| Cover/subtitle | **You** | original kept by your choice; a punchier subtitle is an option |
+| Literal 7→5 chapter merge | **You + AI** | optional; needs a scripted remap of ~250 cross-refs + spot-check |
 | Query agents / publish | **You** | drafts: `handoff/AGENT_QUERY_AND_SYNOPSIS.md` |
 
 ## Reversibility
