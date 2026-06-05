@@ -101,12 +101,15 @@ class VSpace(Spacer):
     def __init__(self, h): super().__init__(1, h)
 
 class Rule(Flowable):
-    def __init__(self, w=None, thick=0.4, spaceAfter=4):
+    def __init__(self, w=None, thick=0.4, spaceAfter=4, center=False):
         super().__init__()
-        self.w=w or TW; self.thick=thick; self.height=thick+spaceAfter; self.width=self.w
+        self.w=w or TW; self.thick=thick; self.height=thick+spaceAfter
+        self.center=center
+        self.width=TW if center else self.w
     def draw(self):
         self.canv.setLineWidth(self.thick); self.canv.setStrokeColor(colors.black)
-        self.canv.line(0,self.thick,self.w,self.thick)
+        x0=(TW-self.w)/2 if self.center else 0
+        self.canv.line(x0,self.thick,x0+self.w,self.thick)
 
 # ─── STYLES ───────────────────────────────────────────────────────────────────
 def make_styles():
@@ -153,12 +156,14 @@ def make_styles():
     S['theorem_b']   = s('theorem_b',   fontName='Times-Italic',fontSize=11,leading=16,
                          leftIndent=12,firstLineIndent=0,spaceAfter=8)
     S['list']        = s('list',        leftIndent=24,firstLineIndent=-12,spaceAfter=3)
-    S['part_label']  = s('part_label',  fontName='Times-Roman',fontSize=12,
-                         alignment=TA_CENTER,spaceBefore=100,spaceAfter=10,tracking=4)
-    S['part_title']  = s('part_title',  fontName='Times-Bold',fontSize=36,leading=44,
-                         alignment=TA_CENTER,spaceAfter=16)
-    S['part_desc']   = s('part_desc',   fontName='Times-Italic',fontSize=13,leading=19,
-                         alignment=TA_CENTER,leftIndent=48,rightIndent=48)
+    S['part_label']  = s('part_label',  fontName='Times-Roman',fontSize=15,
+                         alignment=TA_CENTER,spaceBefore=0,spaceAfter=16,tracking=6,
+                         textColor=colors.HexColor('#666666'))
+    S['part_title']  = s('part_title',  fontName='Times-Bold',fontSize=58,leading=64,
+                         alignment=TA_CENTER,spaceAfter=18)
+    S['part_desc']   = s('part_desc',   fontName='Times-Italic',fontSize=13.5,leading=20,
+                         alignment=TA_CENTER,leftIndent=54,rightIndent=54,
+                         textColor=colors.HexColor('#444444'))
     S['cover_title'] = s('cover_title', fontName='Times-Bold',fontSize=46,leading=56,
                          alignment=TA_CENTER,spaceAfter=18,spaceBefore=108)
     S['cover_sub']   = s('cover_sub',   fontName='Times-Italic',fontSize=18,leading=26,
@@ -1045,15 +1050,21 @@ def display_eq(latex_str, S, number=None, h=0.8*inch):
     return KeepTogether([t])
 
 def part_page(num, title, desc, S):
+    # A clean, vertically-centred divider: small-cap PART label, a large title
+    # that fills the page, framing rules, and an italic description.
     return [
         PageBreak(),
         Mark(chapter=title, part=num),
+        SP(165),                       # push the block toward the vertical centre
+        Rule(w=1.1*inch, thick=1.0, spaceAfter=14, center=True),
         P(f'PART {num}', S['part_label']),
         P(title, S['part_title']),
-        SP(18),
+        SP(20),
         HR(),
-        SP(12),
+        SP(16),
         P(desc, S['part_desc']),
+        SP(14),
+        Rule(w=1.1*inch, thick=1.0, spaceAfter=0, center=True),
         PageBreak(),
     ]
 
