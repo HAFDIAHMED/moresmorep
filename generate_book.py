@@ -961,16 +961,17 @@ def callout(text, S):
     """Modern left-accent bar callout — clean white with 4pt black left bar.
     Wrapped in KeepTogether so the callout never splits across a page boundary."""
     ACCENT = colors.HexColor('#1C1C1C')
+    CREAM  = colors.HexColor('#F3F2EE')
     para = Paragraph(_fix_math(text), S['blockquote'])
     data = [[para]]
-    t = Table(data, colWidths=[TW - 48])
+    t = Table(data, colWidths=[TW - 40])
     t.setStyle(TableStyle([
-        ('LINEBEFORE',    (0,0), (-1,-1), 4,  ACCENT),
+        ('LINEBEFORE',    (0,0), (-1,-1), 3.5, ACCENT),
         ('LEFTPADDING',   (0,0), (-1,-1), 16),
-        ('RIGHTPADDING',  (0,0), (-1,-1), 12),
-        ('TOPPADDING',    (0,0), (-1,-1), 10),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 10),
-        ('BACKGROUND',    (0,0), (-1,-1), colors.white),
+        ('RIGHTPADDING',  (0,0), (-1,-1), 16),
+        ('TOPPADDING',    (0,0), (-1,-1), 11),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 12),
+        ('BACKGROUND',    (0,0), (-1,-1), CREAM),
     ]))
     return KeepTogether([t])
 
@@ -996,45 +997,30 @@ def math_img(latex_str, fontsize=13, w=5.0*inch, h=0.75*inch):
 
 
 def theorem_box(label, text, S, formula_img=None):
-    """Two-row styled box: dark-charcoal header + light body with left accent.
-    Wrapped in KeepTogether so the dark-charcoal header never appears at the
-    bottom of one page with the body trailing onto the next (a split that
-    looks broken to a reader).
-    """
-    DARK  = colors.HexColor('#1C1C1C')
-    LIGHT = colors.HexColor('#F8F8F8')
-    head  = Paragraph(_fix_math(label.upper()), S['theorem_head'])
+    """Editorial 'principle' treatment (no box): a heavy top rule, a small
+    letter-spaced label, the statement set in large italic, and a light closing
+    rule. Reads like a framed epigraph and sits naturally with the serif body.
+    Wrapped in KeepTogether so it never splits across a page boundary."""
+    CH   = colors.HexColor('#1C1C1C')
+    GREY = colors.HexColor('#6a6a6a')
+    INK  = colors.HexColor('#1a1a1a')
+    lab_style  = ParagraphStyle('pr_label', fontName='Helvetica-Bold', fontSize=8,
+                                textColor=GREY, leading=12, spaceBefore=0, spaceAfter=0,
+                                alignment=TA_LEFT)
+    stmt_style = ParagraphStyle('pr_stmt', fontName='Times-Italic', fontSize=12.5, leading=18,
+                                textColor=INK, leftIndent=10, rightIndent=10,
+                                spaceBefore=7, spaceAfter=0, alignment=TA_LEFT)
+    lab = _fix_math(label.upper())   # subtle letter-spacing
+    flows = [HRFlowable(width='100%', thickness=1.1, color=CH, spaceBefore=2, spaceAfter=8),
+             Paragraph(lab, lab_style)]
     if formula_img is not None:
-        if text:
-            body_content = [formula_img,
-                            Paragraph(_fix_math(text), S['theorem_b'])]
-        else:
-            body_content = formula_img
-    else:
-        body_content = Paragraph(_fix_math(f'<i>{text}</i>'), S['theorem_b'])
-    data  = [[head], [body_content]]
-    t = Table(data, colWidths=[TW - 36])
-    t.setStyle(TableStyle([
-        # outer border
-        ('BOX',           (0,0), (-1,-1), 0.8,  colors.black),
-        # header row
-        ('BACKGROUND',    (0,0), (0,0),   DARK),
-        ('TOPPADDING',    (0,0), (0,0),   7),
-        ('BOTTOMPADDING', (0,0), (0,0),   7),
-        ('LEFTPADDING',   (0,0), (0,0),   12),
-        ('RIGHTPADDING',  (0,0), (0,0),   12),
-        # divider
-        ('LINEBELOW',     (0,0), (0,0),   0.5,  colors.HexColor('#444444')),
-        # body row
-        ('BACKGROUND',    (0,1), (0,1),   LIGHT),
-        ('TOPPADDING',    (0,1), (0,1),   10),
-        ('BOTTOMPADDING', (0,1), (0,1),   12),
-        ('LEFTPADDING',   (0,1), (0,1),   14),
-        ('RIGHTPADDING',  (0,1), (0,1),   14),
-        # left accent bar across both rows
-        ('LINEBEFORE',    (0,0), (-1,-1), 4,    DARK),
-    ]))
-    return KeepTogether([t])
+        flows += [Spacer(1, 9), formula_img]
+    if text:
+        flows += [Paragraph(_fix_math(text), stmt_style)]
+    flows += [Spacer(1, 9),
+              HRFlowable(width='100%', thickness=0.4, color=colors.HexColor('#9a9a9a'),
+                         spaceBefore=0, spaceAfter=2)]
+    return KeepTogether(flows)
 
 
 def display_eq(latex_str, S, number=None, h=0.8*inch):
