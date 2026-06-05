@@ -1,6 +1,6 @@
 # Baseline Inventory — Reader's Edition (Phase 0)
 
-**Total prose words (approx):** 131,996
+**Total prose words (approx):** 128,422
 
 Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-tuple calls, inline tags stripped. Excludes figure-internal matplotlib text and PDF chrome.
 
@@ -8,15 +8,15 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 |---|---|--:|--:|--:|--:|--:|--:|
 | intro | `preface` | 688 | 0 | 0 | 0 | 1 | 0 |
 | intro | `intro_chapter` | 5,301 | 9 | 2 | 0 | 1 | 2 |
-| intro | `chapter1` | 8,973 | 16 | 5 | 3 | 2 | 4 |
-| intro | `chapter2` | 7,123 | 16 | 4 | 0 | 3 | 0 |
+| intro | `chapter1` | 7,706 | 13 | 5 | 3 | 1 | 4 |
+| intro | `chapter2` | 5,812 | 13 | 4 | 0 | 2 | 0 |
 | intro | `chapter3` | 6,123 | 13 | 4 | 0 | 1 | 6 |
 | 4to6 | `chapter4` | 8,720 | 14 | 2 | 0 | 1 | 3 |
 | 4to6 | `chapter5` | 9,372 | 14 | 4 | 0 | 1 | 8 |
 | 4to6 | `chapter6` | 11,482 | 18 | 9 | 0 | 3 | 5 |
 | 7to9 | `chapter7` | 8,701 | 12 | 4 | 0 | 1 | 6 |
 | 7to9 | `chapter8` | 8,295 | 13 | 3 | 0 | 2 | 5 |
-| 7to9 | `chapter9` | 13,441 | 17 | 8 | 0 | 3 | 5 |
+| 7to9 | `chapter9` | 12,445 | 15 | 7 | 0 | 2 | 5 |
 | 10to13 | `chapter10` | 8,000 | 19 | 8 | 0 | 1 | 2 |
 | 10to13 | `chapter11` | 10,655 | 17 | 6 | 0 | 2 | 4 |
 | 10to13 | `chapter12` | 4,887 | 9 | 1 | 0 | 1 | 2 |
@@ -24,7 +24,7 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | 10to13 | `conclusion` | 4,187 | 5 | 1 | 0 | 0 | 0 |
 | 10to13 | `appendices` | 9,507 | 1 | 1 | 0 | 1 | 0 |
 
-**TOTAL** — 131,996 words
+**TOTAL** — 128,422 words
 
 ---
 
@@ -44,25 +44,22 @@ _(no detected section headings — opener-only or list-driven)_
 - A Map of the Book
 - A Message for Leaders, Founders, and Policymakers
 
-### `chapter1`  (8,973 words)
+### `chapter1`  (7,706 words)
 - The Three Mechanisms
 - Murphy's Law Is Not a Joke
 - The Exponential Trap
 - Comparison: Murphy, Merton, Jevons, and Streisand
 - A Brief Taxonomy of Cascade Types
 - Four Technological Revolutions: A Comparative Analysis
-- The Cascade and Murphy's Law: A Precise Relationship
 - Why Previous Theories Are Insufficient
-- The Three Mechanisms, Looked At More Closely
 - Five Historical Cases: The Cascade in Four Centuries
 - Three Principles of Cascade Innovation
 - The Industrial Revolution: The Ur-Cascade of Modernity
-- The Digital Revolution as Second Industrial Revolution
 - Game Theory and the Strategic Cascade
 - Chapter 1 Synthesis: The Pattern Is the Message
 - Complexity Theory and the Limits of Anticipation
 
-### `chapter2`  (7,123 words)
+### `chapter2`  (5,812 words)
 - The Bias of Now
 - The Dunning-Kruger Effect in Innovation
 - Institutional Incentives to Ignore Cascades
@@ -72,13 +69,10 @@ _(no detected section headings — opener-only or list-driven)_
 - The Cascade and Group Psychology
 - The Innovator's Dilemma and the Cascade
 - The Narrative Fallacy and Cascade Invisibility
-- Temporal Discounting and the Cascade Horizon
-- Scope Insensitivity and the Collapse of Cascade Accounting
 - Institutional Memory and the Cascade of Forgetting
 - The Innovator's Blindspot: Why Creators Miss Cascades
 - Chapter 2 Synthesis: Redesigning Human Reasoning for a Cascade World
 - The Social Construction of the Successful Solution
-- Narrative and Metaphor in Innovation Discourse
 
 ### `chapter3`  (6,123 words)
 - Hilbert's Dream
@@ -176,7 +170,7 @@ _(no detected section headings — opener-only or list-driven)_
 - Chapter 8 Synthesis: The State as Cascade Architecture
 - Infrastructure Policy and the Cascade of Lock-in
 
-### `chapter9`  (13,441 words)
+### `chapter9`  (12,445 words)
 - Social Media — Connecting Humanity, Disconnecting Minds
 - GPS — Navigating Away from Our Own Minds
 - Air Conditioning — Solving Heat, Making It Worse
@@ -191,8 +185,6 @@ _(no detected section headings — opener-only or list-driven)_
 - The Urban Planning Cascade: When Cities Solve Themselves Into Crisis
 - The Digital Governance Cascade
 - Environmental Policy: The Cascade of Conservation
-- Artificial Intelligence and the Cognition Cascade
-- The Surveillance Capitalism Cascade
 - The Energy Transition and the Resource Cascade
 
 ### `chapter10`  (8,000 words)

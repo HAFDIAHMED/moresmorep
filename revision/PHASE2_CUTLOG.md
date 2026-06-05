@@ -49,6 +49,20 @@ Each chapter reduced to exactly **one** synthesis; blatant duplicate topic secti
 Ch9 is still the longest (13.4k) and has further candidates (surveillance capitalism, AI cognition,
 energy transition) held back as borderline.
 
+### Round 2 — theory chapters + Ch9 borderline  ✅  131,996 → 128,422 (−3,574)
+- **Ch1:** cut "The Cascade and Murphy's Law: A Precise Relationship" (dup of "Murphy's Law Is Not a
+  Joke"), "The Three Mechanisms, Looked At More Closely" (dup of "The Three Mechanisms"), and "The
+  Digital Revolution as Second Industrial Revolution" (overlaps "Four Technological Revolutions").
+- **Ch2:** cut "Temporal Discounting and the Cascade Horizon" and "Scope Insensitivity and the
+  Collapse of Cascade Accounting" (both already covered as sub-parts of "The Bias of Now"), and
+  "Narrative and Metaphor in Innovation Discourse" (overlaps "The Narrative Fallacy").
+- **Ch9:** cut "The Surveillance Capitalism Cascade" and "Artificial Intelligence and the Cognition
+  Cascade" (overlap social-media / GPS-cognition / Ch5 AI). **Kept** "The Energy Transition and the
+  Resource Cascade" — genuinely distinct (lithium/rare-earth), not a dup.
+
+**Cumulative Phase 2: 143,008 → 128,422 (−14,586, −10.2%).** Safe whole-block dedupe is now
+essentially exhausted — remaining sections are distinct topics.
+
 ## Reality check on the −40% target
 Dedupe + redundant-synthesis removal alone yields roughly **−15%** (≈120–125k). The remaining
 ~35k words needed to reach ~86k cannot be removed without **editorial decisions that are the
