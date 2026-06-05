@@ -392,25 +392,25 @@ def fig_cascade_tree():
         fig,ax=plt.subplots(figsize=(6.5,4.2))
         ax.set_xlim(0,10); ax.set_ylim(0,10); ax.axis('off')
         # Root
-        ax.annotate('', xy=(5,8), xytext=(5,9.2),
+        ax.annotate('', xy=(5,8), xytext=(5,9.2), zorder=1,
                     arrowprops=dict(arrowstyle='->', lw=2))
-        ax.text(5,9.5,'ORIGINAL\nPROBLEM',ha='center',va='center',fontsize=9,
+        ax.text(5,9.5,'ORIGINAL\nPROBLEM',ha='center',va='center',fontsize=9,zorder=5,
                 bbox=dict(boxstyle='round',fc='white',ec='black',lw=1.5))
-        ax.text(5,7.5,'SOLUTION',ha='center',va='center',fontsize=9,
+        ax.text(5,7.5,'SOLUTION',ha='center',va='center',fontsize=9,zorder=5,
                 bbox=dict(boxstyle='round',fc='lightgray',ec='black',lw=1.5))
         # Level 2
         for x,label in [(2.5,'New Problem A'),(7.5,'New Problem B')]:
-            ax.annotate('',xy=(x,5.8),xytext=(5,7.2),
+            ax.annotate('',xy=(x,5.8),xytext=(5,7.2),zorder=1,
                         arrowprops=dict(arrowstyle='->',lw=1.5,color='black'))
-            ax.text(x,5.4,label,ha='center',va='center',fontsize=8,
+            ax.text(x,5.4,label,ha='center',va='center',fontsize=8,zorder=5,
                     bbox=dict(boxstyle='round',fc='white',ec='black'))
         # Level 3
         positions=[(1,3.2,'Fix A.1'),(3,3.2,'Fix A.2'),(6.2,3.2,'Fix B.1'),(8.5,3.2,'Fix B.2')]
         parents=[(2.5,5.1),(2.5,5.1),(7.5,5.1),(7.5,5.1)]
         for (px,py),(x,y,l) in zip(parents,positions):
-            ax.annotate('',xy=(x,y+0.5),xytext=(px,py),
+            ax.annotate('',xy=(x,y+0.5),xytext=(px,py),zorder=1,
                         arrowprops=dict(arrowstyle='->',lw=1.2,color='gray'))
-            ax.text(x,y,l,ha='center',va='center',fontsize=7,
+            ax.text(x,y,l,ha='center',va='center',fontsize=7,zorder=5,
                     bbox=dict(boxstyle='round',fc='lightyellow',ec='gray'))
         # Level 4 sprouts (RNG seeded so the figure is reproducible across builds)
         rng = np.random.RandomState(42)
@@ -583,7 +583,7 @@ def fig_cascade_risk_index():
         ax.set_xlim(0,10); ax.set_ylim(0,10); ax.axis('off')
         ax.text(5,9.3,'Cascade Risk Index (CRI)', ha='center', fontsize=13, fontweight='bold')
         formula=r'CRI(s, E) = C(s) × Φ(s) × N(s)^α'
-        ax.text(5,7.8,formula,ha='center',fontsize=14,family='monospace',
+        ax.text(5,7.8,formula,ha='center',fontsize=14,family='monospace',zorder=5,
                 bbox=dict(boxstyle='round',fc='lightyellow',ec='black',lw=2))
         components=[
             (2,5.8,'C(s)','Cascade\nCoefficient\n(0–1)'),
@@ -591,11 +591,11 @@ def fig_cascade_risk_index():
             (8,5.8,'N(s)^α','Network\nReach\n(α > 1)'),
         ]
         for x,y,sym,desc in components:
-            ax.text(x,y+0.5,sym,ha='center',fontsize=12,fontweight='bold',
-                    bbox=dict(boxstyle='round',fc='white',ec='black',lw=1.5))
-            ax.text(x,y-0.6,desc,ha='center',fontsize=8.5,color='gray')
-            ax.annotate('',xy=(x,y+0.0),xytext=(5,7.2),
+            ax.annotate('',xy=(x,y+0.0),xytext=(5,7.2),zorder=1,
                         arrowprops=dict(arrowstyle='-',lw=0.8,color='gray'))
+            ax.text(x,y+0.5,sym,ha='center',fontsize=12,fontweight='bold',zorder=5,
+                    bbox=dict(boxstyle='round',fc='white',ec='black',lw=1.5))
+            ax.text(x,y-0.6,desc,ha='center',fontsize=8.5,color='gray',zorder=5)
         ax.text(5,2.8,'CRI < 0.3 -> Safe to deploy',ha='center',fontsize=9)
         ax.text(5,2.1,'CRI 0.3–0.6 -> Proceed with caution',ha='center',fontsize=9)
         ax.text(5,1.4,'CRI > 0.6 -> Redesign required',ha='center',fontsize=9,color='gray')

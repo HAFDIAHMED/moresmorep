@@ -38,5 +38,20 @@ follow from it, all compile-checked and reversible.
   similar) on the cover in `generate_book.py` and the metadata in `book_main_reader.py`. Flagged, not
   changed — it's a branding call.
 
+## Figure overlap fix (v24)
+Reported issue: in the conceptual **tree/concept diagrams**, connector arrows were drawn *through*
+the node boxes, slicing across the second line of label text ("solving homeownership" → cut, "C. diff"
+→ cut, "World Wide Web" → cut). Root cause: arrows start/pass inside the boxes (and were painted over
+the text). Fix: draw node boxes at **`zorder=5`** and connector arrows at **`zorder=1`**, so the
+solid box always covers any line segment inside it and arrows emerge cleanly from the edges. No
+coordinates moved.
+Figures fixed (verified by rendering each to PNG and inspecting):
+- chapter files: `fig_internet_cascade_tree`, `fig_cdo_cascade`, `fig_microbiome_cascade`,
+  `fig_crispr_cascade`, `fig_quantum_interpretations`, `fig_attention_economy`.
+- `generate_book.py`: `fig_cascade_tree`, `fig_cascade_risk_index`.
+- Checked and left alone (arrows already run in the gaps between boxes): `fig_godel_timeline`,
+  `fig_p_vs_np`; data charts unaffected.
+Rebuilt as **v24**.
+
 ## Net
 Prose ≈ 129,869 words (figure work is code, not prose). All touched modules pass `py_compile`.

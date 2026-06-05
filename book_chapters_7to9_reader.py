@@ -48,17 +48,17 @@ def fig_crispr_cascade():
     with plt.xkcd():
         fig, ax = plt.subplots(figsize=(6.5, 3.8))
         ax.text(0.5,0.92,'CRISPR (2012): "Cure genetic disease"',
-               ha='center',va='top',fontsize=10,fontweight='bold',
+               ha='center',va='top',fontsize=10,fontweight='bold',zorder=5,
                bbox=dict(boxstyle='round',facecolor='white',edgecolor='black',lw=2))
         probs=[(0.12,0.58,'Off-target\nedits'),(0.35,0.58,'Mosaicism\n(incomplete)'),(0.62,0.58,'Germline\nchanges'),(0.88,0.58,'Designer\nbabies')]
         for x,y,text in probs:
-            ax.annotate('',xy=(x,y+0.10),xytext=(0.5,0.82),arrowprops=dict(arrowstyle='->',color='black'))
-            ax.text(x,y,text,ha='center',va='top',fontsize=8,
+            ax.annotate('',xy=(x,y+0.10),xytext=(0.5,0.82),zorder=1,arrowprops=dict(arrowstyle='->',color='black'))
+            ax.text(x,y,text,ha='center',va='top',fontsize=8,zorder=5,
                    bbox=dict(boxstyle='round',facecolor='#f0f0f0',edgecolor='black'))
         subs=[(0.12,0.28,'Cancer\nrisk?'),(0.35,0.28,'Unknown\ncell mix'),(0.62,0.28,'Eugenics\nfear'),(0.88,0.28,'Genetic\ninequality')]
         for (x,y,text),(px,_,_) in zip(subs,probs):
-            ax.annotate('',xy=(x,y+0.08),xytext=(px,0.52),arrowprops=dict(arrowstyle='->',color='#666'))
-            ax.text(x,y,text,ha='center',va='top',fontsize=7,bbox=dict(boxstyle='round',facecolor='#e0e0e0',edgecolor='#888'))
+            ax.annotate('',xy=(x,y+0.08),xytext=(px,0.52),zorder=1,arrowprops=dict(arrowstyle='->',color='#666'))
+            ax.text(x,y,text,ha='center',va='top',fontsize=7,zorder=5,bbox=dict(boxstyle='round',facecolor='#e0e0e0',edgecolor='#888'))
         ax.set_xlim(0,1); ax.set_ylim(0.18,1.0); ax.axis('off')
         ax.set_title('The CRISPR Cascade: Each Benefit Creates New Risks',fontsize=10)
         buf=BytesIO(); fig.savefig(buf,format='png',dpi=150,bbox_inches='tight'); buf.seek(0); plt.close(fig)
@@ -68,15 +68,15 @@ def fig_crispr_cascade():
 def fig_microbiome_cascade():
     with plt.xkcd():
         fig, ax = plt.subplots(figsize=(6.5, 3.5))
-        ax.text(0.5,0.92,'ANTIBIOTICS (solving infection)',ha='center',va='top',fontsize=11,fontweight='bold',
+        ax.text(0.5,0.92,'ANTIBIOTICS (solving infection)',ha='center',va='top',fontsize=11,fontweight='bold',zorder=5,
                bbox=dict(boxstyle='round',facecolor='white',edgecolor='black',lw=2))
         effects=[(0.15,0.60,'C. diff\n30K deaths/yr'),(0.4,0.60,'Gut\ndysbiosis'),(0.65,0.60,'Immune\ndysregulation'),(0.88,0.60,'Resistance\nspread')]
         downstream=[(0.15,0.28,'FMT\n(poop pills)'),(0.4,0.28,'Allergy\nAsthma\nObesity'),(0.65,0.28,'Type 1\nDiabetes(+)'),(0.88,0.28,'Untreatable\ninfections')]
         for (x,y,text),(dx,dy,dt) in zip(effects,downstream):
-            ax.annotate('',xy=(x,y+0.09),xytext=(0.5,0.82),arrowprops=dict(arrowstyle='->',color='black'))
-            ax.text(x,y,text,ha='center',va='top',fontsize=8,bbox=dict(boxstyle='round',facecolor='#f0f0f0',edgecolor='black'))
-            ax.annotate('',xy=(dx,dy+0.08),xytext=(x,y-0.01),arrowprops=dict(arrowstyle='->',color='#555'))
-            ax.text(dx,dy,dt,ha='center',va='top',fontsize=7,bbox=dict(boxstyle='round',facecolor='#e0e0e0',edgecolor='#888'))
+            ax.annotate('',xy=(x,y+0.09),xytext=(0.5,0.82),zorder=1,arrowprops=dict(arrowstyle='->',color='black'))
+            ax.text(x,y,text,ha='center',va='top',fontsize=8,zorder=5,bbox=dict(boxstyle='round',facecolor='#f0f0f0',edgecolor='black'))
+            ax.annotate('',xy=(dx,dy+0.08),xytext=(x,y-0.01),zorder=1,arrowprops=dict(arrowstyle='->',color='#555'))
+            ax.text(dx,dy,dt,ha='center',va='top',fontsize=7,zorder=5,bbox=dict(boxstyle='round',facecolor='#e0e0e0',edgecolor='#888'))
         ax.set_xlim(0,1); ax.set_ylim(0.18,1.0); ax.axis('off')
         ax.set_title('The Antibiotic-Microbiome Cascade',fontsize=10)
         buf=BytesIO(); fig.savefig(buf,format='png',dpi=150,bbox_inches='tight'); buf.seek(0); plt.close(fig)
@@ -258,7 +258,7 @@ def fig_attention_economy():
             ('Mental\nHealth\nDeclines', -1.0, 0.3),
         ]
         for label, nx, ny in nodes:
-            ax.text(nx, ny, label, ha='center', va='center', fontsize=8,
+            ax.text(nx, ny, label, ha='center', va='center', fontsize=8, zorder=5,
                     bbox=dict(boxstyle='round,pad=0.4', fc='white', ec='black', lw=1.5))
         # arrows in a circle
         angles = [90, 90-72, 90-144, 90-216, 90-288]
@@ -268,7 +268,7 @@ def fig_attention_economy():
             a2 = np.radians(angles[(i+1) % 5] + 28)
             x1, y1 = r*np.cos(a1), r*np.sin(a1)
             x2, y2 = r*np.cos(a2), r*np.sin(a2)
-            ax.annotate('', xy=(x2, y2), xytext=(x1, y1),
+            ax.annotate('', xy=(x2, y2), xytext=(x1, y1), zorder=1,
                         arrowprops=dict(arrowstyle='->', color='black', lw=1.5))
         fig.tight_layout()
     return fig

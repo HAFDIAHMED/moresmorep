@@ -41,13 +41,13 @@ def fig_quantum_interpretations():
     with plt.xkcd():
         fig, ax = plt.subplots(figsize=(6.5, 3.8))
         ax.text(0.5,0.92,'QUANTUM MECHANICS\n(solving atomic spectra, 1900-1930)',
-               ha='center',va='top',fontsize=10,fontweight='bold',
+               ha='center',va='top',fontsize=10,fontweight='bold',zorder=5,
                bbox=dict(boxstyle='round',facecolor='white',edgecolor='black',lw=2))
         interps=[(0.1,0.48,'Copenhagen\n"Don\'t ask"'),(0.3,0.58,'Many-Worlds\n10^(10^100)\nuniverse splits'),
                  (0.5,0.48,'Pilot Wave\n(de Broglie)'),(0.7,0.58,'QBism\n"Beliefs only"'),(0.9,0.48,'Relational\n(Rovelli)')]
         for x,y,label in interps:
-            ax.annotate('',xy=(x,y+0.10),xytext=(0.5,0.82),arrowprops=dict(arrowstyle='->',color='black'))
-            ax.text(x,y,label,ha='center',va='top',fontsize=8,
+            ax.annotate('',xy=(x,y+0.10),xytext=(0.5,0.82),zorder=1,arrowprops=dict(arrowstyle='->',color='black'))
+            ax.text(x,y,label,ha='center',va='top',fontsize=8,zorder=5,
                    bbox=dict(boxstyle='round',facecolor='#f5f5f5',edgecolor='black'))
         ax.text(0.5,0.08,'Each interpretation solves the measurement problem\nbut creates new philosophical problems',
                ha='center',fontsize=9,style='italic')
@@ -112,12 +112,12 @@ def fig_internet_cascade_tree():
             (0.82,0.36,'Data monopolies',8,'normal'),
         ]
         for x,y,text,fs,weight in nodes:
-            ax.text(x,y,text,ha='center',va='top',fontsize=fs,fontweight=weight,
+            ax.text(x,y,text,ha='center',va='top',fontsize=fs,fontweight=weight,zorder=5,
                    bbox=dict(boxstyle='round,pad=0.3',facecolor='white',edgecolor='black',lw=1))
         for (x1,y1),(x2,y2) in [((0.5,0.85),(0.5,0.73)),
             ((0.5,0.73),(0.18,0.65)),((0.5,0.73),(0.5,0.65)),((0.5,0.73),(0.82,0.65)),
             ((0.18,0.55),(0.18,0.43)),((0.5,0.55),(0.5,0.43)),((0.82,0.55),(0.82,0.43))]:
-            ax.annotate('',xy=(x2,y2),xytext=(x1,y1),arrowprops=dict(arrowstyle='->',color='black',lw=1))
+            ax.annotate('',xy=(x2,y2),xytext=(x1,y1),zorder=1,arrowprops=dict(arrowstyle='->',color='black',lw=1))
         ax.set_xlim(0,1); ax.set_ylim(0.28,1.0); ax.axis('off')
         ax.set_title('The Internet Cascade Tree',fontsize=11)
         buf = BytesIO(); fig.savefig(buf,format='png',dpi=150,bbox_inches='tight'); buf.seek(0); plt.close(fig)
@@ -154,13 +154,13 @@ def fig_cdo_cascade():
             (0.5,0.32,'SYSTEMIC\nCOLLAPSE 2008'),
         ]
         for x,y,text in layers:
-            ax.text(x,y,text,ha='center',va='top',fontsize=8,
+            ax.text(x,y,text,ha='center',va='top',fontsize=8,zorder=5,
                    bbox=dict(boxstyle='round',facecolor='white',edgecolor='black',lw=1.5))
         connections=[((0.5,0.89),(0.28,0.81)),((0.5,0.89),(0.72,0.81)),
                      ((0.28,0.72),(0.12,0.63)),((0.5,0.72),(0.5,0.63)),((0.72,0.72),(0.88,0.63)),
                      ((0.12,0.54),(0.5,0.38)),((0.5,0.54),(0.5,0.38)),((0.88,0.54),(0.5,0.38))]
         for (x1,y1),(x2,y2) in connections:
-            ax.annotate('',xy=(x2,y2),xytext=(x1,y1),arrowprops=dict(arrowstyle='->',color='black'))
+            ax.annotate('',xy=(x2,y2),xytext=(x1,y1),zorder=1,arrowprops=dict(arrowstyle='->',color='black'))
         ax.set_xlim(0,1); ax.set_ylim(0.22,1.0); ax.axis('off')
         ax.set_title('The 2008 Financial Cascade: Solutions Stacked on Solutions',fontsize=10)
         buf = BytesIO(); fig.savefig(buf,format='png',dpi=150,bbox_inches='tight'); buf.seek(0); plt.close(fig)
