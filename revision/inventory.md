@@ -1,6 +1,6 @@
 # Baseline Inventory — Reader's Edition (Phase 0)
 
-**Total prose words (approx):** 143,008
+**Total prose words (approx):** 140,629
 
 Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-tuple calls, inline tags stripped. Excludes figure-internal matplotlib text and PDF chrome.
 
@@ -14,7 +14,7 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | 4to6 | `chapter4` | 10,463 | 17 | 5 | 0 | 1 | 3 |
 | 4to6 | `chapter5` | 11,556 | 18 | 7 | 0 | 1 | 8 |
 | 4to6 | `chapter6` | 13,165 | 21 | 11 | 0 | 3 | 5 |
-| 7to9 | `chapter7` | 11,080 | 16 | 7 | 0 | 1 | 6 |
+| 7to9 | `chapter7` | 8,701 | 12 | 4 | 0 | 1 | 6 |
 | 7to9 | `chapter8` | 9,094 | 14 | 4 | 0 | 2 | 5 |
 | 7to9 | `chapter9` | 15,035 | 20 | 10 | 0 | 3 | 5 |
 | 10to13 | `chapter10` | 8,000 | 19 | 8 | 0 | 1 | 2 |
@@ -24,7 +24,7 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | 10to13 | `conclusion` | 4,187 | 5 | 1 | 0 | 0 | 0 |
 | 10to13 | `appendices` | 9,507 | 1 | 1 | 0 | 1 | 0 |
 
-**TOTAL** — 143,008 words
+**TOTAL** — 140,629 words
 
 ---
 
@@ -159,7 +159,7 @@ _(no detected section headings — opener-only or list-driven)_
 - Chapter 6 Extended Synthesis: The Self-Referential Economy
 - Google: Organising the World's Information — and Its Attention
 
-### `chapter7`  (11,080 words)
+### `chapter7`  (8,701 words)
 - The Antibiotic Revolution — and Its Reversal
 - The Opioid Crisis — A Pharmaceutical Cascade
 - Thalidomide — The Drug That Keeps Cascading
@@ -169,11 +169,7 @@ _(no detected section headings — opener-only or list-driven)_
 - The Medical Cascade: What Medicine Has Learned — and Not Learned
 - Organ Transplantation and the Immunosuppression Cascade
 - The Diagnostic Cascade: More Tests, More Problems
-- Chapter 7 Synthesis: The Healer's Paradox
 - The Mental Health Cascade: Solving Suffering at Scale
-- Vaccination and the Trust Cascade
-- The Transplantation Cascade and the Organ Allocation Dilemma
-- Personalised Medicine and the Diagnostic Expansion Cascade
 - Chapter 7 Synthesis: The Healer's Infinite Task
 - Mental Health Treatment and the Diagnostic Cascade
 
