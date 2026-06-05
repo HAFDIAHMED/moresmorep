@@ -1,13 +1,13 @@
 # Baseline Inventory — Reader's Edition (Phase 0)
 
-**Total prose words (approx):** 128,422
+**Total prose words (approx):** 127,903
 
 Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-tuple calls, inline tags stripped. Excludes figure-internal matplotlib text and PDF chrome.
 
 | Module | Chapter fn | Words | Sections | Callouts | Theorem boxes | Epigraphs | Figures |
 |---|---|--:|--:|--:|--:|--:|--:|
 | intro | `preface` | 688 | 0 | 0 | 0 | 1 | 0 |
-| intro | `intro_chapter` | 5,301 | 9 | 2 | 0 | 1 | 2 |
+| intro | `intro_chapter` | 4,782 | 9 | 2 | 0 | 1 | 2 |
 | intro | `chapter1` | 7,706 | 13 | 5 | 3 | 1 | 4 |
 | intro | `chapter2` | 5,812 | 13 | 4 | 0 | 2 | 0 |
 | intro | `chapter3` | 6,123 | 13 | 4 | 0 | 1 | 6 |
@@ -24,7 +24,7 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | 10to13 | `conclusion` | 4,187 | 5 | 1 | 0 | 0 | 0 |
 | 10to13 | `appendices` | 9,507 | 1 | 1 | 0 | 1 | 0 |
 
-**TOTAL** — 128,422 words
+**TOTAL** — 127,903 words
 
 ---
 
@@ -33,12 +33,12 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 ### `preface`  (688 words)
 _(no detected section headings — opener-only or list-driven)_
 
-### `intro_chapter`  (5,301 words)
+### `intro_chapter`  (4,782 words)
 - The Day Britain Created More Snakes
 - A Pattern Across All of Human Knowledge
 - What This Book Argues
 - How to Read This Book
-- The Cobra Effect — An Extended Narrative
+- The Cobra Effect Recurs Everywhere
 - The Central Claim, Stated Four Ways
 - Why This Book Is Different
 - A Map of the Book

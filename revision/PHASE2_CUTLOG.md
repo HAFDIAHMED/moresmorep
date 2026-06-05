@@ -63,6 +63,18 @@ energy transition) held back as borderline.
 **Cumulative Phase 2: 143,008 → 128,422 (−14,586, −10.2%).** Safe whole-block dedupe is now
 essentially exhausted — remaining sections are distinct topics.
 
+### Prose-tightening sub-phase — STARTED  (128,422 → 127,903)
+Safe block-dedupe is exhausted; further reduction now comes from tightening padded prose inside
+surviving sections (quality-improving, but incremental — roughly 0.5–1k words per careful edit).
+- **Introduction:** the chapter opens with the full Delhi cobra story, then re-told it across four
+  more paragraphs in "The Cobra Effect — An Extended Narrative." Dropped the redundant Delhi
+  re-telling, kept the *unique* cross-cultural cases (Hanoi rat-tails, Prague dog-tails, Cambodia
+  UXO), renamed the section "The Cobra Effect Recurs Everywhere," and added a one-line reconnect.
+
+This sub-phase will proceed chapter by chapter over multiple passes. Realistic landing with
+quality preserved: ~95–105k. Hitting exactly 86k would require either chapter merges (architectural)
+or trimming that starts to cost substance — not recommended without sign-off.
+
 ## Reality check on the −40% target
 Dedupe + redundant-synthesis removal alone yields roughly **−15%** (≈120–125k). The remaining
 ~35k words needed to reach ~86k cannot be removed without **editorial decisions that are the
