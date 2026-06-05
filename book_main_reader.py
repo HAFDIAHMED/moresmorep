@@ -89,59 +89,47 @@ def next_version_path():
 OUTPUT, VERSION = next_version_path()
 
 
-def main():
-    print(f"=== Reader's Edition build — version {VERSION} ===")
-    print(f"Output: {OUTPUT}\n")
-    print("Building front matter (Reader's Edition)…")
+def make_story():
+    """Assemble the full flowable list (front matter + all chapters), with
+    figure/heading binding applied. Re-called per build pass so each pass gets
+    fresh flowables."""
     story, S = build_book(accessible=True)
-
-    print("Building Preface…")
     story += preface(S)
-
-    print("Building Introduction…")
     story += intro_chapter(S)
-
-    print("Building Part I (Chapters 1–2)…")
-    story += chapter1(S)
-    story += chapter2(S)
-
-    print("Building Part II (Chapters 3–9)…")
-    story += chapter3(S)
-    story += chapter4(S)
-    story += chapter5(S)
-    story += chapter6(S)
-    story += chapter7(S)
-    story += chapter8(S)
-    story += chapter9(S)
-
-    print("Building Part III (Chapters 10–11)…")
-    story += chapter10(S)
-    story += chapter11(S)
-
-    print("Building Part IV (Chapters 12–14)…")
-    story += chapter12(S)
-    story += chapter13(S)
-    story += chapter14(S)
-
-    print("Building Conclusion & Appendices…")
+    story += chapter1(S);  story += chapter2(S)
+    story += chapter3(S);  story += chapter4(S);  story += chapter5(S)
+    story += chapter6(S);  story += chapter7(S);  story += chapter8(S);  story += chapter9(S)
+    story += chapter10(S); story += chapter11(S)
+    story += chapter12(S); story += chapter13(S); story += chapter14(S)
     story += conclusion(S)
     story += appendices(S)
+    return _bind_flowables(story)
 
-    story = _bind_flowables(story)
 
-    print(f"Assembling PDF -> {OUTPUT}")
-    doc = SimpleDocTemplate(
-        OUTPUT,
-        pagesize=A4,
-        leftMargin=ML,
-        rightMargin=MR,
-        topMargin=MT,
-        bottomMargin=MB,
+def _doc(target):
+    return SimpleDocTemplate(
+        target, pagesize=A4, leftMargin=ML, rightMargin=MR, topMargin=MT, bottomMargin=MB,
         title="More Solutions = More Problems — Reader's Edition",
         author='Ahmed Hafdi',
         subject="A Theory of Cascade Innovation — Reader's Edition",
     )
-    doc.build(story, onFirstPage=on_first, onLaterPages=on_page)
+
+
+def main():
+    import generate_book as gb
+    from io import BytesIO
+    print(f"=== Reader's Edition build — version {VERSION} ===")
+    print(f"Output: {OUTPUT}\n")
+    # Pass 1 (discovery): render to a throwaway buffer so the _MarkDivider
+    # flowables record which page numbers are Part-divider pages.
+    gb.DIVIDER_PAGES.clear()
+    print("Pass 1/2: discovering Part-divider pages…")
+    _doc(BytesIO()).build(make_story(), onFirstPage=on_first, onLaterPages=on_page)
+    print(f"  clean divider pages: {sorted(gb.DIVIDER_PAGES)}")
+    # Pass 2 (final): same content → identical pagination; on_page now leaves
+    # the divider pages free of running head and folio.
+    print(f"Pass 2/2: assembling PDF -> {OUTPUT}")
+    _doc(OUTPUT).build(make_story(), onFirstPage=on_first, onLaterPages=on_page)
     print(f"Done. PDF written to: {OUTPUT}")
 
 

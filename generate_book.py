@@ -39,6 +39,10 @@ TW      = PW - ML - MR   # text width
 
 # ─── GLOBAL STATE for running headers ─────────────────────────────────────────
 G = {'chapter': '', 'part': ''}
+# Page numbers (1-based, as the canvas sees them) of Part-divider pages, so the
+# page callback can leave them as clean title pages (no running head, no folio).
+# Populated during a discovery build pass; see book_main_reader.py.
+DIVIDER_PAGES = set()
 
 # ─── CUSTOM FLOWABLES ─────────────────────────────────────────────────────────
 class Mark(Flowable):
@@ -49,6 +53,16 @@ class Mark(Flowable):
     def draw(self):
         if self.chapter: G['chapter']=self.chapter
         if self.part:    G['part']=self.part
+
+
+class _MarkDivider(Flowable):
+    """Zero-height marker recording its own page number as a Part-divider page."""
+    def __init__(self):
+        super().__init__(); self.width=self.height=0
+    def wrap(self, *a):
+        return (0, 0)
+    def draw(self):
+        DIVIDER_PAGES.add(self.canv.getPageNumber())
 
 
 class _RedrawChapterHeader(Flowable):
@@ -201,6 +215,7 @@ def make_styles():
 def on_page(c, doc):
     pg = doc.page
     if pg <= 2: return  # cover + blank
+    if pg in DIVIDER_PAGES: return  # Part dividers are clean title pages
     c.saveState()
     c.setFont('Times-Italic',8.5)
     c.setStrokeColor(colors.black); c.setLineWidth(0.3)
@@ -1055,6 +1070,7 @@ def part_page(num, title, desc, S):
     return [
         PageBreak(),
         Mark(chapter=title, part=num),
+        _MarkDivider(),                # records this page as a clean divider page
         SP(165),                       # push the block toward the vertical centre
         Rule(w=1.1*inch, thick=1.0, spaceAfter=14, center=True),
         P(f'PART {num}', S['part_label']),
