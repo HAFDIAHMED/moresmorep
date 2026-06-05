@@ -473,7 +473,7 @@ def chapter1(S):
 understand how they create problems. Three mechanisms are at work, each operating at a
 different scale and timescale. Together, they produce the cascade. Individually, each
 one is manageable. Combined (which is how they always appear in complex systems) they
-produce exponential problem growth that no amount of well-intentioned fixing can outrun."""),
+produce the kind of compounding problem growth that no amount of well-intentioned fixing can reliably outrun."""),
 
         ('body', """The first mechanism is <b>individual complexity</b>. Every solution
 introduces new complexity into its operating environment. A new drug requires a new
@@ -534,7 +534,7 @@ of network diffusion, with amplification proportional to network connectivity.""
         ('body0', """Most people treat Murphy's Law — "Anything that can go wrong will go
 wrong", as a sardonic joke, a piece of folk wisdom too cynical to take seriously in
 an age of engineering precision. They are wrong. Murphy's Law is a mathematical
-observation disguised as humour. It is a special case of the cascade theorem, and it
+observation disguised as humour. It is a special case of the cascade framework, and it
 is quantitatively supported by decades of reliability engineering data."""),
 
         ('body', """Edward Murphy Jr. formulated his law in 1949 while working on US Air
@@ -563,10 +563,11 @@ they had not modelled. The failure was not in their competence. It was in the
 combinatorial complexity of the system they were intervening in."""),
 
         ('section', 'The Exponential Trap'),
-        ('body0', """The most important mathematical fact about cascade problems is not that
-they exist (every thoughtful person suspects they do) but that they grow
-<i>exponentially</i>. This distinction matters enormously. Linear growth is manageable.
-Quadratic growth is uncomfortable. Exponential growth is catastrophic."""),
+        ('body0', """The most important fact about cascade problems is not that
+they exist (every thoughtful person suspects they do) but how quickly the <i>ways</i> they
+can arise pile up. Linear growth is manageable. Quadratic growth is uncomfortable. The
+near-doubling growth of <i>possible</i> interactions is the kind that overwhelms — and even a
+small, fixed fraction of it turning harmful is enough to outrun our fixes."""),
     ]
 
     for kind, text in paras:
@@ -621,7 +622,7 @@ followed added more complexity, creating new interactions that are still being m
 today."""),
 
         ('section', 'Comparison: Murphy, Merton, Jevons, and Streisand'),
-        ('body0', """The cascade theorem is not born in isolation. It belongs to a family
+        ('body0', """The cascade framework is not born in isolation. It belongs to a family
 of related observations made across different disciplines over the past century and a
 half. Understanding how these related ideas connect and differ helps to clarify what
 is distinctive about the cascade framework presented here."""),
@@ -633,9 +634,9 @@ Merton identified five sources of unintended consequences: ignorance, error, imm
 of interest (short-term thinking), basic values that mandate certain actions regardless
 of consequences, and self-defeating prophecies. Merton's framework is sociological —
 it explains the human factors that make unintended consequences likely. The cascade
-theorem presented here is mathematical; it explains the structural reasons why
-unintended consequences are not merely likely but inevitable in complex systems,
-regardless of the quality of human decision-making."""),
+framework presented here is structural; it explains why
+unintended consequences are not merely likely but extremely hard to avoid in complex systems,
+largely regardless of the quality of human decision-making."""),
 
         ('body', """<b>Jevons Paradox (1865):</b> The economist William Stanley Jevons
 observed that improvements in the efficiency of coal-burning steam engines, rather
@@ -755,21 +756,21 @@ in public, over decades."""),
     story.append(P(
         'Murphy\'s Law ("anything that can go wrong, will go wrong") is usually '
         'treated as a pessimistic folk observation or an engineering joke. But it '
-        'has a precise relationship to the cascade theorem that clarifies both '
+        'has a precise relationship to the cascade framework that clarifies both '
         'its validity and its limitations. Murphy\'s Law applies to single systems '
         'in isolation: a component that has a non-zero failure probability will '
-        'eventually fail. The cascade theorem applies to systems of systems: '
+        'eventually fail. The cascade framework applies to systems of systems: '
         'as the number of interacting solutions grows, the number of interaction '
         'pathways grows exponentially, and the number of pathways through which '
         'a cascade can propagate grows with it.',
         S['body0']))
     story.append(SP(14))
     story.append(P(
-        'Murphy\'s Law and the cascade theorem together predict a more specific '
+        'Murphy\'s Law and the cascade framework together predict a more specific '
         'claim than either does alone: not only will things go wrong, but they '
-        'will go wrong in ways that generate new wrongnesses at an exponential '
+        'will go wrong in ways that generate new wrongnesses at a compounding '
         'rate. The original Murphy\'s Law, applied to the single component, '
-        'predicts eventual failure. The cascade theorem, applied to the system '
+        'predicts eventual failure. The cascade framework, applied to the system '
         'of solutions, predicts that the failure will not be a dead end but a '
         'branching point: the failure of component A will interact with '
         'components B, C, and D in ways that generate new failure modes for '
@@ -777,7 +778,7 @@ in public, over decades."""),
         'further failure modes. The cascade is Murphy\'s Law elevated from '
         'the component level to the system level, and the mathematics confirm '
         'the qualitative intuition: the consequences of Murphy\'s Law grow '
-        'exponentially in the number of system components, not linearly.',
+        'combinatorially in the number of system components, not linearly.',
         S['body']))
     story.append(SP(14))
     story.append(P(
@@ -790,7 +791,7 @@ in public, over decades."""),
         'resources. Jevons\' Paradox is a Type V cascade in the taxonomy '
         'of Appendix B: the efficiency solution generates a demand rebound that '
         'overwhelms the efficiency gain. It is a special case of the cascade '
-        'theorem where the interaction term interaction amplification(s, demand) > 1: the solution '
+        'framework where the interaction term interaction amplification(s, demand) > 1: the solution '
         'amplifies demand rather than reducing it, converting what appears to be '
         'a subtraction (less resource per unit) into a multiplication (more '
         'units because of lower cost per unit).',
@@ -804,9 +805,9 @@ in public, over decades."""),
         'basic values (value commitments that prevent the consideration of cascade '
         'effects), and the self-defeating prophecy (public awareness of a '
         'prediction changes behaviour in ways that invalidate the prediction). '
-        'The cascade theorem formalises Merton\'s observation and extends it: '
-        'while Merton described the mechanisms qualitatively, the cascade theorem '
-        'provides a quantitative framework that allows the magnitude of unintended '
+        'The cascade framework formalises Merton\'s observation and extends it: '
+        'while Merton described the mechanisms qualitatively, this framework '
+        'provides a quantitative account that allows the magnitude of unintended '
         'consequences to be estimated before deployment. The doubling-with-each-solution '
         'growth in the number of possible interactions is not just a metaphor for Merton\'s '
         'insight; it gives that insight a concrete, quantitative form.',
@@ -832,7 +833,7 @@ in public, over decades."""),
         'unexpected dynamics through feedback. The standard systems dynamics '
         'approach, however, typically models a fixed system structure and '
         'examines how different policies affect that structure\'s dynamics. '
-        'The cascade theorem adds to systems dynamics by addressing a question '
+        'The cascade framework adds to systems dynamics by addressing a question '
         'it does not ask: what happens to the complexity of the system structure '
         'itself as the number of solutions deployed into it grows? Systems '
         'dynamics takes the structure as given; cascade theory explains how the '
@@ -847,11 +848,11 @@ in public, over decades."""),
         'emergent effects that cannot be predicted from the properties of the '
         'components. Its primary contribution is the concept of emergence: '
         'properties that arise at the system level from component-level '
-        'interactions. The cascade theorem identifies a specific category of '
-        'emergent property (cascade problems) and derives a mathematical '
-        'expression for its growth rate. Where complexity theory says "emergent '
-        'properties are possible and sometimes surprising," cascade theory says '
-        '"cascade problems are inevitable and grow exponentially."',
+        'interactions. The cascade framework identifies a specific category of '
+        'emergent property (cascade problems) and offers a quantitative estimate '
+        'of its growth rate. Where complexity theory says "emergent '
+        'properties are possible and sometimes surprising," cascade thinking says '
+        '"cascade problems are pervasive and can grow combinatorially."',
         S['body']))
     story.append(SP(14))
     story.append(P(
@@ -867,7 +868,7 @@ in public, over decades."""),
         'assessment evaluates the risk of adverse events in the treated patient '
         'population; it does not evaluate the risk of the drug\'s prescribing '
         'incentive structure generating an epidemic of misuse. The cascade '
-        'theorem extends risk management beyond the system boundary to the '
+        'framework extends risk management beyond the system boundary to the '
         'full ecosystem of interactions.',
         S['body']))
     story.append(SP(14))
@@ -1419,8 +1420,8 @@ in public, over decades."""),
         'to monitor; know what institutional mechanisms to build '
         'before deployment to manage the cascade when it arrives. '
         'The chapters of this book provide the evidence that the '
-        'cascade is universal, the mathematics that show why it '
-        'is inevitable, and the frameworks that show how it can '
+        'cascade is widespread, the reasoning that shows why it '
+        'is so hard to avoid, and the frameworks that show how it can '
         'be managed. The case for cascade awareness rests not '
         'on pessimism about human ingenuity but on respect for '
         'the complexity of the systems our ingenuity operates in.',

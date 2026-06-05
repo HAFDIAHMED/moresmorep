@@ -60,11 +60,39 @@ grandiosity — without touching the evidence. This removes the largest reviewer
 - Word count: 142,808 → **142,973** (+165). Phase 1 reframes, it does not cut — the small rise is the
   added honesty caveats minus the removed phantom-chapter text. The cut is Phase 2.
 
+## Residual sweep (Phase 1 completion pass)
+A second pass closed the deliberately-deferred items so the source side of Phase 1 is now complete:
+- Softened the book's *own* "grows exponentially / problems multiply / exponential growth is
+  catastrophic" assertions to combinatorial / compounding / "near-doubling of *possible*
+  interactions" language — while **leaving legitimate technical uses intact** (NP-completeness,
+  EXPTIME, quantum inefficiency, scientific-literature doubling, state-space explosion, resistance
+  evolution).
+- "The Exponential Trap" body, the Murphy's-Law passages, the Merton/complexity-theory comparisons,
+  and the Conclusion's "single mathematical fact… grows exponentially" all reframed.
+- Demoted every remaining lowercase **"cascade theorem"** → **"cascade framework"** (incl. two that
+  had escaped because "cascade" and "theorem" sat on different source lines), and the stray
+  **"network amplification theorem"** → "network-amplification mechanism".
+- Removed dangling numbered-theorem pointers that no longer exist in the Reader's Edition:
+  "Theorem 1 and 2" → "the first two principles", "Chapter 10's Theorem 2" → "central claim",
+  "Theorem 5" monitoring references → "the frequency the framework recommends" / "adequate
+  monitoring frequency", and "theorem statements in Chapters 10 and 11" → "statements of the central
+  claims".
+- "as a mathematical certainty" → "as a structural tendency"; "this mathematical fact" (the
+  incompressibility limit) → "this limit".
+- **Left intact (legitimately):** Gödel/Rice/Bell/Nash/Carnot/virial/Ricardo/Shannon theorems, the
+  `theorem_box` flowable, the Cook (1971) citation, and the Appendix A / Preface pointers that
+  honestly attribute the formal proofs to the source research paper (incl. its named results in the
+  back-matter index).
+
+Final audit grep: **zero** remaining instances of the book presenting its *own* claim as a proven
+law/theorem/mathematical certainty/inevitability. Word count after both passes: **143,008**
+(reframing is roughly length-neutral; the cut is Phase 2).
+
 ## Deliberately left for later
-- Scattered "grows exponentially / problems multiply" phrasings in later chapters are now
-  contextualised by the Ch 10 caveat; a finer pass can be folded into Phase 2.
 - The **standard (non-reader) edition** (`book_chapters_*.py`, no `_reader`) was *not* touched — it is
   a separate build and should get the same reframe before it ships.
+- Author read-through + approval of the new framing, and the **`v23` PDF render** (needs an
+  environment with `matplotlib`), remain to close Gate 1.
 
 ## Next
 Phase 2 — structural cut & de-pad (target −35–40%, ~86k words). The map is already reconciled.

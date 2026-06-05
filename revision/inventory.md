@@ -1,6 +1,6 @@
 # Baseline Inventory — Reader's Edition (Phase 0)
 
-**Total prose words (approx):** 142,973
+**Total prose words (approx):** 143,008
 
 Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-tuple calls, inline tags stripped. Excludes figure-internal matplotlib text and PDF chrome.
 
@@ -8,7 +8,7 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 |---|---|--:|--:|--:|--:|--:|--:|
 | intro | `preface` | 688 | 0 | 0 | 0 | 1 | 0 |
 | intro | `intro_chapter` | 5,301 | 9 | 2 | 0 | 1 | 2 |
-| intro | `chapter1` | 8,941 | 16 | 5 | 3 | 2 | 4 |
+| intro | `chapter1` | 8,973 | 16 | 5 | 3 | 2 | 4 |
 | intro | `chapter2` | 7,123 | 16 | 4 | 0 | 3 | 0 |
 | intro | `chapter3` | 6,753 | 15 | 4 | 0 | 2 | 6 |
 | 4to6 | `chapter4` | 10,463 | 17 | 5 | 0 | 1 | 3 |
@@ -17,14 +17,14 @@ Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-
 | 7to9 | `chapter7` | 11,080 | 16 | 7 | 0 | 1 | 6 |
 | 7to9 | `chapter8` | 9,094 | 14 | 4 | 0 | 2 | 5 |
 | 7to9 | `chapter9` | 15,035 | 20 | 10 | 0 | 3 | 5 |
-| 10to13 | `chapter10` | 7,997 | 19 | 8 | 0 | 1 | 2 |
-| 10to13 | `chapter11` | 10,654 | 17 | 6 | 0 | 2 | 4 |
-| 10to13 | `chapter12` | 4,889 | 9 | 1 | 0 | 1 | 2 |
+| 10to13 | `chapter10` | 8,000 | 19 | 8 | 0 | 1 | 2 |
+| 10to13 | `chapter11` | 10,655 | 17 | 6 | 0 | 2 | 4 |
+| 10to13 | `chapter12` | 4,887 | 9 | 1 | 0 | 1 | 2 |
 | 10to13 | `chapter13` | 6,541 | 11 | 3 | 0 | 1 | 0 |
-| 10to13 | `conclusion` | 4,189 | 5 | 1 | 0 | 0 | 0 |
-| 10to13 | `appendices` | 9,504 | 1 | 1 | 0 | 1 | 0 |
+| 10to13 | `conclusion` | 4,187 | 5 | 1 | 0 | 0 | 0 |
+| 10to13 | `appendices` | 9,507 | 1 | 1 | 0 | 1 | 0 |
 
-**TOTAL** — 142,973 words
+**TOTAL** — 143,008 words
 
 ---
 
@@ -44,7 +44,7 @@ _(no detected section headings — opener-only or list-driven)_
 - A Map of the Book
 - A Message for Leaders, Founders, and Policymakers
 
-### `chapter1`  (8,941 words)
+### `chapter1`  (8,973 words)
 - The Three Mechanisms
 - Murphy's Law Is Not a Joke
 - The Exponential Trap
@@ -215,7 +215,7 @@ _(no detected section headings — opener-only or list-driven)_
 - The Food System Cascade: From Abundance to Fragility
 - The Energy Transition and the Resource Cascade
 
-### `chapter10`  (7,997 words)
+### `chapter10`  (8,000 words)
 - The Solution-Problem Network
 - How Problems Multiply
 - The Central Claim
@@ -236,7 +236,7 @@ _(no detected section headings — opener-only or list-driven)_
 - What the Framework Tells Us
 - The Cascade as a Signature of Complex Systems
 
-### `chapter11`  (10,654 words)
+### `chapter11`  (10,655 words)
 - The Cascade Risk Index
 - Early Warning Signals
 - Case Study: Computing the CRI for Software Security
@@ -255,7 +255,7 @@ _(no detected section headings — opener-only or list-driven)_
 - Comparative Cascade Analysis: Lessons Across Domains
 - Systemic Risk Assessment: Tools for Cascade Quantification
 
-### `chapter12`  (4,889 words)
+### `chapter12`  (4,887 words)
 - The Hippocratic Principle for Innovation
 - Pre-Mortem Analysis
 - The Homogeneous Ecosystem Approach
@@ -279,14 +279,14 @@ _(no detected section headings — opener-only or list-driven)_
 - The Cascade in Education and the Formation of Cascade-Aware Professionals
 - Chapter 13 Synthesis: The Philosophy of Cascade Wisdom
 
-### `conclusion`  (4,189 words)
+### `conclusion`  (4,187 words)
 - A Summary of the Evidence
 - The Irreducibility of the Paradox
 - The Hopeful Case: Cascade-Aware Societies
 - What Progress Looks Like in a Cascade-Aware World
 - A Letter to Future Problem-Solvers
 
-### `appendices`  (9,504 words)
+### `appendices`  (9,507 words)
     - Case Study E.1: The Montreal Protocol (1987): A Managed Cascade
     - Case Study E.2: Leaded Petrol (1921–1996): A Delayed Management Cascade
     - Case Study E.3: The Green Revolution: Managed Success with Residual Cascades

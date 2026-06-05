@@ -239,12 +239,12 @@ Demon. The cascade generates entropy at the same exponential rate at which it
 generates problems."""),
 
         ('body', """The consequence is operational, not abstract. As the cascade unfolds,
-the number of distinct patterns that need to be tracked grows exponentially. The
+the number of distinct patterns that need to be tracked can grow combinatorially. The
 size of any monitoring team, regulatory body, or engineering org, by contrast,
-grows at best linearly. Institutional capacity is bounded; cascade complexity is
-not. There is a moment in every complex system at which the cascade's complexity
-exceeds the governance system's capacity to follow it. That moment is when crises
-become inevitable, regardless of how competent the people in the governance system
+grows at best linearly. Institutional capacity is bounded; cascade complexity often is
+not. There is a moment in many complex systems at which the cascade's complexity
+exceeds the governance system's capacity to follow it. That is the moment when crises
+become very likely, regardless of how competent the people in the governance system
 are."""),
     ]
     for kind, text in more:
@@ -252,7 +252,7 @@ are."""),
 
     story.append(SP(14))
     story.append(P('Connection to Complexity Theory', S['section']))
-    story.append(P('The cascade theorem does not exist in isolation. It connects to three of the deepest results in theoretical computer science, and these connections explain why the cascade is not merely hard to manage but, in a precise formal sense, computationally intractable. The detailed proofs are given in the source research paper; the implications are summarised here so that readers without a background in computer science can grasp the practical consequences.', S['body0']))
+    story.append(P('The cascade framework does not exist in isolation. It connects to three of the deepest results in theoretical computer science, and these connections explain why the cascade is not merely hard to manage but, in a precise formal sense, computationally intractable. The detailed proofs are given in the source research paper; the implications are summarised here so that readers without a background in computer science can grasp the practical consequences.', S['body0']))
     story.append(P('The first connection concerns the question every innovation manager, regulator, and system architect ultimately faces: given a list of candidate solutions, which subset can we deploy simultaneously without triggering an unacceptable cascade? This decision problem can be shown to be NP-complete, in the same complexity class as the famous travelling-salesman problem. NP-completeness is the technical name for a class of problems for which no algorithm is known that finds the optimal answer quickly: as the number of solutions grows, the work required to compute the best deployment plan grows faster than any polynomial. The practical implication is stark. There is no efficient algorithm, and almost certainly never will be, for finding the optimal cascade-minimising deployment plan in a complex system. Decision-makers must accept that they will be choosing under irreducible computational uncertainty, not for lack of effort, but as a mathematical fact about the structure of the problem.', S['body']))
     story.append(P('The second connection is to the halting problem, the famous undecidability result proved by Alan Turing in 1936 (and discussed at length in Chapter 3). The cascade propagation function describes the evolution of a dynamical system, and a natural question is whether this system will ever reach a stable state where problem generation equals problem resolution. That question turns out to be formally equivalent to asking whether a Turing machine halts on a given input, which is provably undecidable. One cannot, in general, determine from the structure of the cascade network alone whether a cascade will eventually stabilise or grow without bound. This is not merely a practical limitation due to missing data; it is a fundamental mathematical impossibility. Any governance framework that promises to achieve cascade stability in all cases is making a promise that no algorithm can keep.', S['body']))
     story.append(P('The third connection is to Kolmogorov complexity, the theoretical measure of how much information is required to fully describe a system. As more solutions are deployed, the amount of information needed to describe the resulting cascade network grows at least quadratically and potentially exponentially. The system becomes incompressible: it cannot be summarised without loss of essential information. The consequence is that no finite description, no regulatory document, no engineering specification, no policy framework can remain a complete, accurate description of a complex system as solutions multiply. This is the formal basis for the observation, made empirically in every case study in Part II, that governance documentation always lags the cascade.', S['body']))
@@ -446,7 +446,7 @@ are."""),
         'The practical consequence of this incompressibility is the epistemological '
         'humility imperative developed in Chapter 2 and reinforced throughout Part II: '
         'we cannot, even in principle, predict all cascade effects of complex solutions '
-        'in complex systems. The appropriate response to this mathematical fact is not '
+        'in complex systems. The appropriate response to this limit is not '
         'resignation; it is the design of monitoring systems that detect cascade '
         'effects as they emerge, and the cultivation of the institutional reversibility '
         'discussed in Chapter 12 that allows corrections to be made as the cascade '
@@ -748,10 +748,10 @@ are."""),
         S['body']))
     story.append(SP(14))
     story.append(P(
-        'These three mathematical results, taken together, '
-        'provide the formal basis for the institutional '
+        'These three arguments, taken together, '
+        'provide the basis for the institutional '
         'prescriptions of Part IV. If cascades are '
-        'inevitable and accelerating (Theorem 1 and 2), '
+        'pervasive and tend to accelerate (the first two principles), '
         'then the appropriate institutional response '
         'is not to try to prevent cascades but to '
         'build systems that detect them early, '
@@ -850,7 +850,7 @@ are."""),
         'solution-problem networks exhibit self-organised criticality, '
         'then cascade management is not about returning the system '
         'to a stable equilibrium; there is no such equilibrium. '
-        'It is about managing the inevitable cascade avalanches '
+        'It is about managing the recurring cascade avalanches '
         'with partitioned architecture (preventing small avalanches '
         'from propagating to large ones), real-time monitoring '
         '(detecting avalanche onset while they are still small), '
@@ -1467,7 +1467,7 @@ confirms: software security is an ongoing cascade, not a solvable problem."""),
         'through mechanism modification, before deployment at intended '
         'scale. If the CRI is between 0.7 and 0.9 (High), the solution '
         'can be deployed with pre-specified cascade monitoring at '
-        'the monitoring frequency required by Theorem 5. If the CRI '
+        'the frequency the framework recommends (see Chapter 11). If the CRI '
         'is below 0.5 (Low to Moderate), standard risk assessment is '
         'sufficient and cascade-specific monitoring is optional but '
         'recommended for novel solution types.',
@@ -2032,9 +2032,9 @@ highest-risk cascades before deployment. This is the minimum viable standard for
 cascade-aware design."""),
 
         ('section', 'The Homogeneous Ecosystem Approach'),
-        ('body0', """The formal theory of Chapter 10 suggests a structural path to
-cascade reduction that goes beyond individual solution design. Recall that the Main
-Theorem's exponential growth rate depends critically on the interaction term:
+        ('body0', """The framework of Chapter 10 suggests a structural path to
+cascade reduction that goes beyond individual solution design. Recall that the central
+claim's combinatorial growth rate depends critically on the interaction term:
 the sum<ⱼ I(sᵢ, sⱼ). This term is large when solutions have high domain overlap domain overlap and
 high synergy amplification interaction amplification. It is small (potentially very small) when solutions
 are designed with compatibility as a primary design criterion, such that domain overlap is low
@@ -2165,7 +2165,7 @@ the liquidity cascade mechanism that amplified the 2008 crisis. The cascade-awar
 features of Basel III include its phased implementation (giving banks time to build
 capital buffers without triggering a credit contraction cascade) and its calibration
 of capital requirements to systemic importance (globally systemically important banks
-face higher requirements, reflecting the network amplification theorem). Its cascade-
+face higher requirements, reflecting the network-amplification mechanism). Its cascade-
 incomplete features include insufficient attention to shadow banking (the cascade has
 largely migrated from regulated banks to less-regulated non-bank financial institutions)
 and the procyclicality of risk-weighted capital requirements (which tend to be most
@@ -3038,7 +3038,7 @@ available."""),
         'cascade-aware imperative avant la lettre. The "permanence of genuine '
         'human life" requires that solution ecosystems do not expand their '
         'problem generation rate faster than humanity\'s capacity to address '
-        'them, which is precisely the condition that Chapter 10\'s Theorem 2 '
+        'them, which is precisely the condition that Chapter 10\'s central claim '
         'identifies as the critical cascade threshold. Jonas\'s ethics, '
         'translated into the language of cascade theory, demands that the '
         'cascade coefficient cascade coefficient and the interaction amplification the domain overlap '
@@ -3263,9 +3263,9 @@ def conclusion(S):
     story.append(SP(18))
     paras = [
         ('body0', """This book began with a story about snakes. It ends with a claim about
-the future of human civilisation. The two are connected by a single mathematical fact:
-that the introduction of solutions into complex systems generates problems at a rate that
-grows exponentially with the number of solutions. This fact is uncomfortable. It implies
+the future of human civilisation. The two are connected by a single structural tendency:
+that introducing solutions into complex systems tends to generate problems far faster
+than the solutions themselves. This is uncomfortable. It implies
 that progress (genuine, valuable, life-improving progress) carries within it the seeds
 of future crises. It implies that the more we solve, the more we create to be solved.
 It implies that the arc of human knowledge does not bend inexorably toward resolution
@@ -3297,9 +3297,9 @@ deployment, the question that this book has asked of every innovation in its pag
 what problems will this solution create?"""),
 
         ('body', """The answer, invariably, is: more than we think. But knowing that — really
-knowing it, as a mathematical certainty and a historical pattern rather than a vague
+knowing it, as a structural tendency and a historical pattern rather than a vague
 concern is itself the beginning of wisdom. And wisdom, in the age of global
-connectivity and exponential cascade amplification, is the most urgent technology
+connectivity and rapid cascade amplification, is among the most urgent capacities
 humanity has ever needed to develop."""),
 
         ('body', """The age of solution chaos is not ending. It is accelerating. But the
@@ -3460,7 +3460,7 @@ to that beginning."""),
     story.append(SP(14))
     story.append(P(
         'You have the accounting now. The mathematics of '
-        'Chapter 10 shows you why cascades are inevitable '
+        'Chapter 10 shows you why cascades are so hard to avoid '
         'and how to estimate their magnitude. The case studies '
         'of Chapters 3 through 9 show you what cascades '
         'look like in seven domains, and how similar they '
@@ -3559,7 +3559,7 @@ def appendices(S):
     story.append(SP(14))
     story.append(P(
         'Readers who do not require the formal machinery will find that the '
-        'theorem statements in Chapters 10 and 11, together with the plain-language '
+        'statements of the central claims in Chapters 10 and 11, together with the plain-language '
         'explanations of their meaning given in those chapters, are sufficient to '
         'understand the cascade theory and to apply the Cascade Risk Index in '
         'practice.',
@@ -3728,7 +3728,7 @@ def appendices(S):
             '4.5 Can the solution ecosystem be made more compatible (reducing interaction cascade coefficients domain overlap and interaction amplification for the most dangerous interaction pairs)?',
         ]),
         ('Section 5: Monitoring and Response', [
-            '5.1 Is there a monitoring system capable of detecting cascade effects at the required velocity (Theorem 5 compliance)?',
+            '5.1 Is there a monitoring system capable of detecting cascade effects at the required velocity (adequate monitoring frequency)?',
             '5.2 Are the cascade indicators clearly defined, with threshold values that trigger response?',
             '5.3 Is there an institutional owner for the cascade monitoring function with authority to act on cascade signals?',
             '5.4 Is there a pre-specified response protocol for the most likely cascade scenarios?',
