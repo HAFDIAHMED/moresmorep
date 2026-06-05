@@ -98,6 +98,26 @@ carries the argument retained, zero cross-reference breakage. Rebuilt as **v26**
 *A literal 7→5 chapter merge (with full renumber) remains a human-verified job because of the
 cross-reference count.*
 
+### Target reached — ≤100k words  ✅  122,272 → 99,938 (v27, 283 pages)
+Continued the safe no-renumber trim to hit the author's 100k-max target, cutting secondary,
+overlapping, and synthesis-y connective sections across every chapter while keeping the canonical
+case studies and all cross-references valid:
+- **Appendices:** dropped Case Studies E.2–E.5 (duplicate chapter content; kept E.1 Montreal) and the
+  duplicate Appendix G checklist (relabelled H→G). 9.5k → 7.3k.
+- **Economics (ch6):** Agricultural Subsidies, Automation, Intellectual Property, Gig Economy,
+  Financialisation, Regulatory Cascade, Universal Market, Economics-of-Cascade (kept Cobra, Jevons,
+  Goodhart, 2008, QE, Trade Liberalisation, Cryptocurrency, Google). 11.5k → 7.3k.
+- **Framework (ch10–11):** Sectoral CRI Applications (the repetitive sector-by-sector list),
+  Monitoring Dashboard, Cascade Forecasting, Statistical Methods, Nuclear/Climate CRI (overlap ch4),
+  Cascade-Theory-in-Context, Three Historical Cascades, Why-Better-Regulation, What-Would-It-Take.
+- **Physics (ch4):** Quantum Computing, AI-and-Physics. **CS (ch5):** Cloud, Digital-Cascade-Accounting.
+- **Politics (ch8):** Sanctions, Austerity, Immigration, Infrastructure, Governance-Cascade.
+- **Theory (ch1–2):** Four Technological Revolutions, Industrial Revolution, Innovator's Dilemma,
+  Social Construction, Planning Fallacy, Group Psychology, Institutional Memory.
+
+Cumulative from the 143,008 baseline: **−43,070 words (−30%)**, 354 → 283 pages, while preserving
+Chapter 14, the figures, the original cover, and every "Chapter N" cross-reference. Rebuilt as **v27**.
+
 ## Reality check on the −40% target
 Dedupe + redundant-synthesis removal alone yields roughly **−15%** (≈120–125k). The remaining
 ~35k words needed to reach ~86k cannot be removed without **editorial decisions that are the
