@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <title>More Solutions = More Problems — Ahmed Hafdi · Polyfdor</title>
 <meta name="description" content="Why Every Solution Creates the Next Problem. A new book by Ahmed Hafdi (Polyfdor) — out now on Amazon. From the Delhi cobra bounty of 1880 to the OxyContin approval of 1995, the architecture of the catastrophe is identical.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -511,6 +512,113 @@ section.excerpt .cta-line {
   text-align: center; margin-top: 50px;
 }
 
+/* ───────────────────────── reserve (free signed copies) ───────────────────────── */
+section.reserve {
+  padding: 130px 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+}
+section.reserve .header { text-align: center; margin-bottom: 60px; }
+section.reserve .header .eyebrow { display: inline-block; padding-bottom: 6px; border-bottom: 1px solid var(--ink); margin-bottom: 28px; }
+section.reserve h2 {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(32px, 4.4vw, 60px);
+  letter-spacing: -0.015em; line-height: 1.04;
+  margin-bottom: 28px;
+}
+section.reserve .tagline {
+  font-family: var(--book); font-style: italic;
+  font-size: clamp(17px, 2vw, 21px); color: var(--muted);
+  max-width: 660px; margin: 0 auto;
+  line-height: 1.55;
+}
+
+#reserve-state { max-width: 600px; margin: 0 auto; }
+
+.counter { margin-bottom: 56px; text-align: center; }
+.counter .dots { display: inline-flex; gap: 12px; margin-bottom: 18px; }
+.counter .dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  display: inline-block;
+}
+.counter .dot.filled { background: var(--ink); }
+.counter .count-label {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink); font-weight: 600;
+}
+
+.reserve-form .field { margin-bottom: 26px; }
+.reserve-form label {
+  display: block; font-family: var(--sans); font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 600; color: var(--ink);
+  margin-bottom: 10px;
+}
+.reserve-form label .optional {
+  color: var(--muted); font-weight: 500; letter-spacing: 0.12em;
+  text-transform: none; font-style: italic; font-size: 11px;
+}
+.reserve-form input, .reserve-form textarea {
+  width: 100%; padding: 14px 16px;
+  font-family: var(--book); font-size: 16px;
+  background: transparent; border: 1px solid var(--ink);
+  color: var(--ink); border-radius: 0;
+  transition: border-width 0.15s ease, background 0.15s ease;
+  -webkit-appearance: none; appearance: none;
+}
+.reserve-form input:focus, .reserve-form textarea:focus {
+  outline: none; background: var(--paper-warm);
+}
+.reserve-form textarea { resize: vertical; min-height: 110px; font-family: var(--book); }
+
+.reserve-form .submit-btn {
+  width: 100%; padding: 18px 28px; font-size: 13px;
+  margin-top: 12px;
+}
+.reserve-form .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.form-note {
+  margin-top: 22px; text-align: center;
+  font-family: var(--book); font-style: italic;
+  font-size: 13px; color: var(--muted);
+  line-height: 1.55;
+}
+.form-error {
+  margin-top: 20px; padding: 12px 16px;
+  background: var(--ink); color: var(--paper);
+  font-family: var(--sans); font-size: 12px;
+  letter-spacing: 0.06em; text-align: center;
+}
+.form-error:empty { display: none; }
+
+.full-message, .success-message {
+  text-align: center; padding: 50px 30px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.full-message .big-mark, .success-message .big-mark {
+  font-family: var(--serif); font-weight: 900;
+  font-size: 88px; line-height: 1; margin-bottom: 24px;
+}
+.full-message h3, .success-message h3 {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(26px, 3.4vw, 40px);
+  letter-spacing: -0.01em; line-height: 1.1;
+  margin-bottom: 22px;
+}
+.full-message p, .success-message p {
+  font-family: var(--book); font-size: 16px;
+  line-height: 1.65; color: var(--ink);
+  max-width: 480px; margin: 0 auto 14px;
+}
+.success-message .thank {
+  font-style: italic; color: var(--muted); margin-top: 26px;
+}
+.full-message .btn { margin-top: 28px; }
+
+
 /* ───────────────────────── buy ───────────────────────── */
 section.buy {
   padding: 140px 0;
@@ -542,7 +650,9 @@ section.buy .options {
   text-align: left;
   display: flex; flex-direction: column;
   transition: background 0.2s ease;
+  color: var(--paper);
 }
+.opt, .opt:visited { color: var(--paper); }
 .opt:hover { background: rgba(255,255,255,0.04); text-decoration: none; }
 .opt .kind {
   font-family: var(--sans); font-size: 11px;
@@ -928,6 +1038,29 @@ footer .colophon a { color: var(--muted); }
 </section>
 
 
+<!-- ─────────────────────── RESERVE (10 free signed copies) ─────────────────────── -->
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <div class="header">
+      <span class="caps eyebrow">A gift from the author</span>
+      <h2>Ten signed copies.<br>Free. With a hand-written dedication.</h2>
+      <p class="tagline">The first ten readers to reserve below receive a signed paperback shipped to their door at no cost — with a dedication written by my own hand, just for them.</p>
+    </div>
+    <div id="reserve-state">
+      <div class="counter">
+        <div class="dots" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <div class="count-label">loading…</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- ─────────────────────── BUY ─────────────────────── -->
 <section class="buy" id="buy">
   <div class="wrap">
@@ -1019,4 +1152,126 @@ document.querySelectorAll('section').forEach(s => { s.classList.add('reveal'); i
 // Smooth nav active states (simple)
 const navLinks = document.querySelectorAll('nav.top ul a');
 navLinks.forEach(a => a.addEventListener('click', () => { /* allow default smooth scroll */ }));
+
+
+// ─────────────────────── Reservation form (10 signed copies) ───────────────────────
+(function () {
+  const STATUS_URL  = '/api/status';
+  const RESERVE_URL = '/api/reserve';
+  const LIMIT = 10;
+  const state = document.getElementById('reserve-state');
+
+  function dotsHTML(filled, total) {
+    let html = '<div class="dots" aria-hidden="true">';
+    for (let i = 0; i < total; i++) {
+      html += '<span class="dot' + (i < filled ? ' filled' : '') + '"></span>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function renderForm(count, limit) {
+    const remaining = limit - count;
+    state.innerHTML =
+      '<div class="counter">' +
+        dotsHTML(count, limit) +
+        '<div class="count-label">' + remaining + ' of ' + limit + ' spots remaining</div>' +
+      '</div>' +
+      '<form id="rform" class="reserve-form" novalidate>' +
+        '<div class="field">' +
+          '<label for="rf-name">Your full name</label>' +
+          '<input type="text" id="rf-name" name="name" required autocomplete="name" maxlength="120">' +
+        '</div>' +
+        '<div class="field">' +
+          '<label for="rf-address">Complete shipping address</label>' +
+          '<textarea id="rf-address" name="address" required rows="5" autocomplete="street-address" maxlength="800" placeholder="Street, building, postal code, city, country"></textarea>' +
+        '</div>' +
+        '<div class="field">' +
+          '<label for="rf-location">Where you\'ll be reading this <span class="optional">— optional</span></label>' +
+          '<input type="text" id="rf-location" name="location" maxlength="120" placeholder="A city, a cafe, a beach, somewhere">' +
+        '</div>' +
+        '<button type="submit" class="btn submit-btn" id="rf-submit">Reserve my signed copy</button>' +
+        '<div class="form-note">No charge. No tracking. Shipped from Kenitra, by the author personally.</div>' +
+        '<div class="form-error" id="rf-error"></div>' +
+      '</form>';
+    document.getElementById('rform').addEventListener('submit', handleSubmit);
+  }
+
+  function renderFull() {
+    state.innerHTML =
+      '<div class="full-message">' +
+        '<div class="big-mark">×</div>' +
+        '<h3>The ten spots are gone.</h3>' +
+        '<p>Every signed copy has been reserved. Thank you to the ten readers who claimed theirs — the books are being signed by hand and shipped.</p>' +
+        '<p>The book is still available, in paperback or Kindle, on Amazon:</p>' +
+        '<a class="btn" href="#buy">You can buy from Amazon</a>' +
+      '</div>';
+  }
+
+  function renderSuccess(position, limit) {
+    state.innerHTML =
+      '<div class="success-message">' +
+        '<div class="big-mark">✓</div>' +
+        '<h3>Reserved.</h3>' +
+        '<p>You are reader <strong>number ' + position + '</strong> of ' + limit + '. Your signed copy will be shipped to the address you gave. I\'ll write the dedication myself, by hand, before it goes in the post.</p>' +
+        '<p class="thank">Thank you. Genuinely.</p>' +
+      '</div>';
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('rf-submit');
+    const errorEl = document.getElementById('rf-error');
+    errorEl.textContent = '';
+
+    const data = {
+      name:     form.name.value.trim(),
+      address:  form.address.value.trim(),
+      location: form.location.value.trim()
+    };
+
+    if (!data.name || !data.address) {
+      errorEl.textContent = 'Please fill in your name and your shipping address.';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Reserving…';
+
+    try {
+      const r = await fetch(RESERVE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await r.json();
+
+      if (result.ok) {
+        renderSuccess(result.position, result.limit);
+      } else if (result.error === 'full') {
+        renderFull();
+      } else {
+        errorEl.textContent = result.error || 'Something went wrong. Please try again.';
+        btn.disabled = false;
+        btn.textContent = 'Reserve my signed copy';
+      }
+    } catch (err) {
+      errorEl.textContent = 'Network error. Please try again in a moment.';
+      btn.disabled = false;
+      btn.textContent = 'Reserve my signed copy';
+    }
+  }
+
+  fetch(STATUS_URL, { cache: 'no-store' })
+    .then(r => r.json())
+    .then(data => {
+      if (data.full) renderFull();
+      else renderForm(data.count || 0, data.limit || LIMIT);
+    })
+    .catch(() => {
+      // Backend unreachable — still show the form so the page isn't broken.
+      renderForm(0, LIMIT);
+    });
+})();
 </script>

@@ -191,7 +191,7 @@ def fig_big_tech_cascade():
         cri = [8.7, 7.9, 6.4, 8.1, 5.8]
         bars = ax.barh(companies, cri, color='black', alpha=0.75, height=0.55)
         ax.set_xlim(0, 11)
-        ax.set_xlabel('Cascade Risk Index (CRI), higher = more cascade-prone')
+        ax.set_xlabel('Cobra Score (CRI), higher = more cascade-prone')
         ax.set_title('Big Tech Cascade Risk Scores (estimated CRI, 0–10 scale)')
         for bar, val in zip(bars, cri):
             ax.text(val + 0.15, bar.get_y() + bar.get_height()/2,
@@ -963,6 +963,7 @@ def chapter4(S):
         'of the applications built on the '
         'affected knowledge base.',
         S['body']))
+    story.append(PageBreak())
     return story
 
 
@@ -989,35 +990,31 @@ def chapter5(S):
     story.append(SP(14))
 
     story.append(P(
-        "The National Vulnerability Database maintained by the United States National "
-        "Institute of Standards and Technology contains, as of early 2024, over 230,000 "
-        "recorded software security vulnerabilities. The database was established in 2000. "
-        "In 1999, the year before it opened, the CVE programme — Common Vulnerabilities "
-        "and Exposures — recorded 894 vulnerabilities. In 2023, it recorded 28,902: a "
-        "32-fold increase in 24 years. The trajectory is not linear; it is accelerating. "
-        "The more software exists in the world, the more attack surface exists; the more "
-        "patches are written to close known vulnerabilities, the more new code is introduced "
-        "that contains new vulnerabilities; the more security tools are deployed, the more "
-        "security tools themselves become targets. The security patch is one of the "
-        "clearest examples in computer science of a solution that systematically generates "
-        "the problem it is designed to solve.",
+        "In 1999, the US government's Common Vulnerabilities and Exposures programme "
+        "recorded 894 software security flaws for the entire year. In 2023, it recorded "
+        "28,902 — a thirty-two-fold rise in twenty-four years. And the curve is not "
+        "straightening; it is bending upward. The reason is structural. The more software "
+        "exists, the more attack surface exists. The more patches are written, the more "
+        "new code is introduced — and new code contains new flaws. The more security tools "
+        "are deployed, the more security tools themselves become targets. The security "
+        "patch is one of the clearest examples in any field of a solution that "
+        "systematically generates the very problem it is meant to solve.",
         S['body0']))
     story.append(SP(14))
 
     story.append(P(
-        "The mechanism is structural. A software vulnerability is an interaction between "
-        "a piece of code and an input that the code's author did not anticipate: a buffer "
-        "that can be overflowed, a format string that can be manipulated, a race condition "
-        "that can be exploited. Fixing a vulnerability requires changing the code, and "
-        "every change to a large codebase potentially introduces new interactions with "
-        "other code that was not affected by the vulnerability. Microsoft's Security "
-        "Response Center has documented cases where patches for critical vulnerabilities "
-        "introduced new critical vulnerabilities in neighbouring subsystems, and the "
-        "broader literature on regression rates in open-source projects (see, for "
-        "example, the empirical work by Sliwerski, Zimmermann, and Zeller on fix-inducing "
-        "changes) is consistent: a non-trivial fraction of every security patch unsolves "
-        "something previously solved. The industry term for this is <i>regression</i>, "
-        "and it is the everyday face of the cascade in software.",
+        "Here is the mechanism. A vulnerability is an interaction between a piece of code "
+        "and an input the author did not anticipate — a buffer that can overflow, a string "
+        "that can be manipulated, a race condition that can be triggered. Fixing it means "
+        "changing the code. And every change to a large codebase potentially introduces "
+        "new interactions with code that the original vulnerability never touched. "
+        "Microsoft's Security Response Center has documented case after case of patches "
+        "for critical vulnerabilities introducing new critical vulnerabilities in neighbouring "
+        "subsystems. The empirical literature on fix-inducing changes in open-source "
+        "projects (Sliwerski, Zimmermann, Zeller) says the same thing in plainer language: "
+        "a non-trivial fraction of every patch unsolves something previously solved. The "
+        "industry has a name for this. It is called <i>regression</i>, and it is the "
+        "everyday face of the cascade in software.",
         S['body']))
     story.append(SP(14))
 
@@ -1090,37 +1087,29 @@ def chapter5(S):
     story.append(SP(14))
 
     story.append(P(
-        "In 1961, IBM launched its most ambitious software project: OS/360, the operating "
-        "system for the IBM System/360 series of computers. System/360 was itself a "
-        "revolutionary product, the first family of computers designed to share a common "
-        "instruction set, allowing software written for one model to run on all others. "
-        "OS/360, the software that would make this possible, was placed under the "
-        "management of Fred Brooks, a thirty-year-old computer scientist from North "
-        "Carolina. The project was supposed to take three years. It took five. Its budget "
-        "was exceeded by a factor of roughly ten. When it was delivered in 1965-66, it "
-        "was so full of bugs that some subsystems were effectively unusable, and IBM "
-        "published a list of known defects that ran to thousands of items. Brooks "
-        "documented the experience in a 1975 book, 'The Mythical Man-Month', that "
-        "remains the most widely read book in software engineering fifty years after "
-        "its publication.",
+        "In 1961, IBM started its most ambitious software project ever: OS/360, the "
+        "operating system for the new IBM System/360 line. It was supposed to take three "
+        "years. It took five. The budget was exceeded by a factor of roughly ten. When it "
+        "shipped in 1965, it had so many bugs that whole subsystems were unusable. The "
+        "manager of the project — a thirty-year-old computer scientist named Fred Brooks — "
+        "spent the next decade thinking about what had gone wrong. His 1975 book, "
+        "<i>The Mythical Man-Month</i>, remains the most widely read book in software "
+        "engineering half a century later. Its central observation is this. Adding people "
+        "to a late software project makes it later.",
         S['body0']))
     story.append(SP(14))
 
     story.append(P(
-        "The central observation of 'The Mythical Man-Month' is now known as Brooks' Law: "
-        "adding manpower to a late software project makes it later. The law rests on a "
-        "precise mathematical fact about coordination complexity. A software project "
-        "with n developers requires approximately n(n-1)/2 communication channels, the "
-        "number of unique pairs of people who might need to coordinate their work. The "
-        "growth is quadratic: with 5 developers there are 10 channels; with 10 developers "
-        "there are 45; with 20 developers there are 190; with 50 developers there are "
-        "1,225; with 100 developers there are 4,950. When a project is running late and "
-        "additional developers are hired, each new developer adds n new communication "
-        "channels on day one, one with each existing developer. Before the new developer "
-        "can contribute anything, the existing developers must spend time explaining "
-        "the codebase, the architecture, and the current state of the project. During "
-        "this onboarding period, the new developer is a net drain on the team's "
-        "productivity. The solution makes the problem worse.",
+        "The reason is a piece of arithmetic about coordination. A project with n "
+        "developers needs roughly n(n-1)/2 communication channels — every pair of people "
+        "who might need to talk to each other. The growth is quadratic. Five developers, "
+        "ten channels. Ten developers, forty-five. Twenty, a hundred and ninety. Fifty, "
+        "twelve hundred and twenty-five. One hundred, just under five thousand. When you "
+        "add a developer to a late project, every existing developer has to spend time "
+        "explaining the codebase, the architecture, and the current state of the work. "
+        "During that period, the new developer is a net drain. The solution makes the "
+        "problem worse — not because the manager was foolish, but because the geometry "
+        "of communication won.",
         S['body']))
     story.append(SP(14))
 
@@ -1181,32 +1170,27 @@ def chapter5(S):
     story.append(SP(14))
 
     story.append(P(
-        "Windows NT 3.1, released by Microsoft in 1993, contained approximately 4.5 "
-        "million lines of code. Windows 2000 contained 29 million. Windows XP, released "
-        "in 2001, contained approximately 45 million. Windows Vista (2007) approximately "
-        "50 million. Windows 10 (2015) approximately 80 million. Windows 11 (2021) is "
-        "estimated at approximately 100 million lines of code. In 28 years, the Windows "
-        "codebase grew by a factor of 22. Every feature added in every version was, at "
-        "the time of its addition, a solution to a real problem: a driver that enabled "
-        "a new class of hardware, a protocol that enabled a new kind of network "
-        "connection, a security mechanism that closed a known vulnerability. The cumulative "
-        "result is a system so large and complex that it is impossible for any individual "
-        "to understand more than a small fraction of it.",
+        "Windows NT 3.1, in 1993, was four and a half million lines of code. Windows 2000 "
+        "was twenty-nine million. Windows XP, forty-five million. Vista, fifty. Windows 10, "
+        "eighty million. Windows 11, in 2021, is estimated at roughly a hundred million. "
+        "In twenty-eight years, the Windows codebase grew by a factor of twenty-two. "
+        "Every feature added in every version was, at the moment it was added, a solution "
+        "to a real problem — a driver for a new kind of hardware, a protocol for a new "
+        "kind of network, a security mechanism for a known threat. None of those decisions "
+        "were wrong. The cumulative result is still a system so large that no individual "
+        "on the planet understands more than a small slice of it.",
         S['body0']))
     story.append(SP(14))
 
     story.append(P(
-        "The structural reason for feature bloat is the quadratic growth of interaction "
-        "complexity. If a software system has n features, the number of potential "
-        "interactions between those features is n(n-1)/2, the same formula that governs "
-        "Brooks' Law, applied to software components rather than team members. Windows "
-        "NT 3.1 had, perhaps, a thousand significant internal features; their pairwise "
-        "interactions number approximately 500,000. Windows 11, with ten times as many "
-        "features, has approximately fifty million pairwise interactions to test, "
-        "maintain, and keep consistent. No test suite can exercise all of them; no "
-        "engineering team can reason about all of them. The interactions that nobody "
-        "has thought about are where the bugs live, and the proportion of unexamined "
-        "interactions grows with every feature added.",
+        "The reason is the same quadratic that drove Brooks' Law, applied to software "
+        "rather than to people. A system with n features has roughly n(n-1)/2 pairwise "
+        "interactions. Windows NT 3.1 had, perhaps, a thousand significant internal "
+        "features, and so about half a million pairwise interactions to keep consistent. "
+        "Windows 11, with ten times the features, has on the order of fifty million. No "
+        "test suite can exercise that many. No engineering team can reason about that "
+        "many. The interactions that no one has thought about are where the bugs live, "
+        "and the share of unexamined interactions grows with every feature added.",
         S['body']))
     story.append(SP(14))
 
@@ -1262,21 +1246,18 @@ def chapter5(S):
     story.append(SP(14))
 
     story.append(P(
-        "On October 29, 1969, the first message was sent over ARPANET, a network "
-        "funded by the US Defense Advanced Research Projects Agency connecting four "
-        "universities: UCLA, Stanford Research Institute, UC Santa Barbara, and the "
-        "University of Utah. The message was supposed to be 'login'; the system "
-        "crashed after the first two characters, so the actual first message transmitted "
-        "over the internet was 'lo'. The network was designed to solve a specific "
-        "military communications problem: existing centralised telecommunications "
-        "networks could be disabled by destroying their central nodes. ARPANET's "
-        "packet-switched architecture had no central nodes; data was routed around "
-        "damage automatically. The solution was an end-to-end architecture of radical "
-        "openness: any computer that could speak the protocol could join the network; "
-        "the network imposed no restrictions on what could be transmitted. This "
-        "architectural principle, the 'end-to-end principle' articulated by Saltzer, "
-        "Reed, and Clark in 1981 is both what makes the internet work and what makes "
-        "it dangerous.",
+        "October 29, 1969. The first message ever sent over ARPANET, the US Defense "
+        "Department's experimental network linking four universities, was supposed to "
+        "be the word <i>login</i>. The system crashed after the first two characters. "
+        "So the actual first message transmitted over what would become the internet "
+        "was <i>lo</i>. The network had been designed to solve a specific Cold War "
+        "problem: existing telecommunications networks could be disabled by destroying "
+        "their central switching nodes. ARPANET had no central nodes. Data was routed "
+        "around damage automatically. To make that work, the architects chose radical "
+        "openness — any machine that could speak the protocol could join, and the "
+        "network imposed no restrictions on what could be transmitted. The principle "
+        "(later named the end-to-end principle, by Saltzer, Reed, and Clark in 1981) is "
+        "both what makes the internet work and what makes it dangerous.",
         S['body0']))
     story.append(SP(14))
 
@@ -1316,23 +1297,21 @@ def chapter5(S):
     story.append(SP(14))
 
     story.append(P(
-        "Surveillance capitalism — Shoshana Zuboff's term from her 2019 book 'The Age "
-        "of Surveillance Capitalism', describes the business model that emerged when "
-        "the internet's openness met the economic logic of advertising. Google and "
-        "Facebook, the dominant platforms, offer services free of charge in exchange "
-        "for detailed behavioural data that is used to predict and influence user "
-        "behaviour for advertising customers. This model incentivises the collection "
-        "of maximal data, the maximisation of engagement, and the development of "
-        "predictive models of individual psychology. The filter bubble effect, described "
-        "by Eli Pariser in his 2011 book of that title, is one consequence: "
-        "recommendation algorithms tuned for engagement systematically show users "
-        "content that confirms their existing views, reinforcing beliefs and reducing "
-        "exposure to disconfirming information. A 2020 MIT study by Sinan Aral and "
-        "colleagues found that false news spreads six times faster on Twitter than true "
-        "news and is 70% more likely to be retweeted, because false news tends to be "
-        "more novel and emotionally arousing, making it more engaging. The internet "
-        "that was designed to democratise information access spreads misinformation "
-        "more efficiently than information.",
+        "Then came surveillance capitalism — Shoshana Zuboff's term, from her 2019 book "
+        "of that title, for the business model that emerged when the internet's openness "
+        "met the economic logic of advertising. Google and Facebook offer services free "
+        "of charge in exchange for detailed behavioural data, which is then used to "
+        "predict and influence the user for advertising customers. The model rewards "
+        "three things at once: collect as much data as possible, maximise engagement, "
+        "and build ever-better predictive models of individual psychology. The filter "
+        "bubble — Eli Pariser's term, 2011 — is one downstream effect: recommendation "
+        "engines tuned for engagement systematically show people content that confirms "
+        "their existing views. A 2018 MIT study by Sinan Aral and colleagues found that "
+        "false news spreads six times faster on Twitter than true news, and is seventy "
+        "per cent more likely to be retweeted, because falsehood is more novel and more "
+        "emotionally arousing — and therefore more engaging. The internet that was "
+        "designed to democratise information access turns out to be better at spreading "
+        "misinformation than information.",
         S['body']))
     story.append(SP(14))
 
@@ -1996,10 +1975,11 @@ def chapter5(S):
     story.append(SP(14))
     story.append(fig_to_image(fig_big_tech_cascade(), w=5.5*72, h=3.4*72))
     story.append(P(
-        'Figure 5.1: Estimated Cascade Risk Index scores for five major technology platforms. '
-        'Social networks score highest due to network amplification (alpha > 1) and '
-        'near-zero reversibility once adopted at scale. Infrastructure platforms (AWS) '
-        'score lower due to modular architecture and formal SLA accountability.',
+        'Figure 5.1: Estimated Cobra Score (CRI) values for five major technology '
+        'platforms. Social networks score highest because of strong network amplification '
+        'and near-zero reversibility once adopted at scale. Infrastructure platforms '
+        'such as AWS score lower because of modular architecture and formal SLA '
+        'accountability.',
         S['caption']))
     story.append(SP(12))
     story.append(fig_to_image(fig_ai_alignment_gap(), w=5.5*72, h=3.4*72))
@@ -2059,22 +2039,20 @@ def chapter6(S):
     story.append(SP(14))
 
     story.append(P(
-        "In the 1890s, the British colonial administration of India faced a serious "
-        "public health problem: Delhi was overrun with venomous cobras. The solution "
-        "devised by the colonial authorities was straightforward and economically "
-        "rational: offer a bounty of one rupee for every dead cobra brought to the "
-        "government. In the short term, the policy succeeded. Cobra hunters fanned "
-        "out across Delhi and began collecting bounties; the reported kill rate was "
-        "impressive. But the logic of incentives, operating perfectly and relentlessly, "
-        "produced a consequence the administrators had not considered: enterprising "
-        "residents of Delhi discovered that it was far more efficient to breed cobras "
-        "in captivity and bring them to the government for the bounty than to hunt "
-        "wild cobras, which were becoming scarce. When the colonial administration "
-        "eventually discovered the breeding operations and cancelled the bounty, the "
-        "breeders, left with worthless snakes, released them. The cobra population "
-        "of Delhi ended up higher after the bounty programme than before it. The German "
-        "economist Horst Siebert coined the term 'cobra effect' in his 2001 book of "
-        "that title to describe this class of perverse incentive outcome.",
+        "The reader has met this story before, in the Introduction. Here it returns in "
+        "its canonical economic form, because this is the chapter that explains why it "
+        "keeps happening. In the 1890s, the British colonial administration in Delhi "
+        "faced a real public health problem: too many cobras, too many deaths. The "
+        "solution was textbook economics. Offer a bounty — one rupee per dead snake — "
+        "and let rational agents do the rest. In the short term it worked. Cobra hunters "
+        "fanned out across Delhi; the kill numbers climbed. Then the logic of incentives, "
+        "operating exactly as economists would predict, produced the consequence the "
+        "administrators had not considered. Breeding cobras in a backyard was easier than "
+        "hunting them in the streets. Cobra farms appeared. The bounty payments flowed. "
+        "When the administration finally caught on and cancelled the programme, the "
+        "breeders released their suddenly worthless stock. Delhi ended up with more "
+        "cobras than it had started with. The German economist Horst Siebert gave the "
+        "pattern its name a century later, in a 2001 book of that title.",
         S['body0']))
     story.append(SP(14))
 
@@ -2086,19 +2064,17 @@ def chapter6(S):
     story.append(SP(14))
 
     story.append(P(
-        "The same structure appeared in Hanoi in 1902. The French colonial administration "
-        "was alarmed by the rat population in the city's newly constructed sewers and "
-        "offered a bounty for rat tails. Enterprising Hanoians caught rats, cut off "
-        "their tails, and released the rats to breed and produce more tails. The sewers "
-        "of Hanoi filled with tailless rats. The bounty was cancelled; the rat population "
-        "was, if anything, higher than before. The mechanism of the cobra effect is "
-        "always the same: the incentive identifies a proxy (dead cobras, rat tails) "
-        "that correlates with the desired outcome (fewer cobras, fewer rats) under "
-        "normal conditions, but an agent who treats the proxy as the objective can "
-        "decouple it from the underlying goal. The partial-equilibrium analysis "
-        "(people will hunt cobras) is correct. The general-equilibrium analysis (people "
-        "will find the cheapest way to produce dead cobras, including farming them) "
-        "reveals the cascade.",
+        "The pattern is not Indian. It is structural. Hanoi, 1902. The French colonial "
+        "administration is alarmed by rats in the city's newly built sewers and offers a "
+        "bounty per rat tail. Hanoians catch rats, cut off their tails, and release them "
+        "to breed more rats with more tails. The sewers of Hanoi fill with tailless, "
+        "still-breeding rats. The mechanism is always the same. The incentive identifies "
+        "a proxy — dead cobras, rat tails — that <i>under normal conditions</i> tracks "
+        "the desired outcome (fewer cobras, fewer rats). An agent who treats the proxy as "
+        "the objective can decouple it from the underlying goal. The first-pass economic "
+        "analysis (people will hunt cobras) is right. The second-pass economic analysis "
+        "(people will find the cheapest way to produce dead cobras, including farming them) "
+        "is what reveals the cascade.",
         S['body']))
     story.append(SP(14))
 
@@ -2139,19 +2115,18 @@ def chapter6(S):
     story.append(SP(14))
 
     story.append(P(
-        "In 1865, the twenty-nine-year-old economist William Stanley Jevons published "
-        "'The Coal Question: An Inquiry Concerning the Progress of the Nation, and the "
-        "Probable Exhaustion of Our Coal Mines'. Jevons had been watching the deployment "
-        "of James Watt's improved steam engine, which was dramatically more efficient "
-        "than the Newcomen engine it was replacing: it required far less coal per unit "
-        "of mechanical output. The common assumption was that this improvement would "
-        "reduce Britain's coal consumption and extend the life of its coal reserves. "
-        "Jevons observed the opposite. The more efficient the steam engine became, the "
-        "more economical coal-powered production became, which expanded the market for "
-        "coal-powered machinery, which expanded total coal consumption. The efficiency "
-        "gain was real; the reduction in total consumption was a fantasy. Jevons "
-        "wrote: 'It is a confusion of ideas to suppose that the economical use of fuel "
-        "is equivalent to diminished consumption. The very contrary is the truth.'",
+        "In 1865, the twenty-nine-year-old British economist William Stanley Jevons "
+        "published <i>The Coal Question</i>. Jevons had been watching the spread of "
+        "James Watt's improved steam engine — dramatically more efficient than the "
+        "Newcomen engine it replaced, and burning far less coal per unit of mechanical "
+        "output. The common-sense assumption was that this would reduce Britain's coal "
+        "consumption and extend the life of its reserves. Jevons saw the opposite. The "
+        "more efficient the engine, the more economical coal-powered production became. "
+        "The more economical the production, the larger the market for it. The larger "
+        "the market, the more coal was burned in total. The efficiency was real. The "
+        "reduction in consumption was a fantasy. <i>It is a confusion of ideas</i>, "
+        "Jevons wrote, <i>to suppose that the economical use of fuel is equivalent to "
+        "diminished consumption. The very contrary is the truth.</i>",
         S['body0']))
     story.append(SP(14))
 
@@ -2248,20 +2223,19 @@ def chapter6(S):
 
     story.append(P(
         "In 1975, Charles Goodhart, a monetary economist at the Bank of England, was "
-        "analysing the Thatcher government's attempt to control inflation by targeting "
-        "monetary aggregates, measures of the money supply such as M1, M2, and M3. "
-        "The theoretical basis was sound: in the quantity theory of money, inflation "
-        "is driven by money supply growth, so controlling money supply growth should "
-        "control inflation. Goodhart observed that once these aggregates became targets "
-        "of monetary policy — once the Bank of England began publicly targeting them "
-        "and adjusting policy based on them; they ceased to behave as they had "
-        "previously, because banks and individuals changed their behaviour in response "
-        "to the targeting. Financial instruments that had not previously counted as "
-        "money were reclassified; savings patterns shifted; the measured aggregates no "
+        "studying the Thatcher government's attempt to control inflation by targeting "
+        "monetary aggregates — the official measures of how much money was in the "
+        "economy, called M1, M2, and M3. The theoretical basis was sound. Inflation is "
+        "driven by money supply growth; control the supply, control the inflation. "
+        "Goodhart watched what happened next. The moment the Bank of England began "
+        "publicly targeting those aggregates and steering policy by them, the "
+        "aggregates stopped behaving the way they had behaved before. Banks reclassified "
+        "instruments that had once counted as money so that they no longer did. "
+        "Customers shifted their savings between products. The measured numbers no "
         "longer tracked the underlying economic phenomenon they had been chosen to "
-        "measure. Goodhart stated the principle in its most general form: 'Any "
+        "measure. Goodhart wrote the principle down in its most general form: <i>Any "
         "observed statistical regularity will tend to collapse once pressure is placed "
-        "upon it for control purposes.'",
+        "upon it for control purposes.</i>",
         S['body0']))
     story.append(SP(14))
 
@@ -2369,40 +2343,37 @@ def chapter6(S):
     story.append(SP(14))
 
     story.append(P(
-        "The 2008 global financial crisis was, at its structural core, a cascade problem "
-        "of extraordinary complexity and velocity. The financial instruments at the heart "
-        "of the crisis: mortgage-backed securities (MBS), collateralised debt obligations "
-        "(CDOs), CDO-squared (CDOs backed by tranches of other CDOs), synthetic CDOs "
-        "(CDOs backed by credit default swaps rather than actual mortgages), and credit "
-        "default swaps (CDS, financial insurance against CDO defaults) were not simple "
-        "frauds. Each was a genuine financial innovation designed by sophisticated "
-        "mathematicians and economists to solve a real problem. MBS solved the liquidity "
-        "problem of mortgage lending: banks that issued mortgages could now sell them to "
-        "investors rather than holding them, freeing capital for more lending. CDOs solved "
-        "the risk distribution problem: by bundling mortgages and slicing the bundle into "
-        "tranches with different risk profiles, they allowed risk to be allocated to "
-        "investors with different risk appetites. CDS solved the hedging problem: they "
-        "allowed institutions holding CDOs to insure against the risk of default. Each "
-        "solution was layered on top of the previous one, and each introduced interaction "
-        "complexity that its designers did not fully understand.",
+        "The 2008 financial crisis was, at its structural core, a cascade problem. The "
+        "instruments at the heart of it — mortgage-backed securities, collateralised "
+        "debt obligations, CDO-squared, synthetic CDOs, credit default swaps — were not "
+        "frauds. They were genuine financial innovations, built by sophisticated people "
+        "to solve real problems. Mortgage-backed securities solved a liquidity problem: "
+        "banks that wrote mortgages could now sell them to investors rather than "
+        "hold them on their balance sheets, freeing capital to lend again. CDOs solved "
+        "a risk-distribution problem: bundle mortgages, slice the bundle into tranches "
+        "with different risk profiles, sell each slice to whichever investor wanted "
+        "that profile. Credit default swaps solved a hedging problem: insure the "
+        "tranches against default, so the buyer could sleep at night. Each solution "
+        "sat on top of the one below it. Each, taken on its own, was clever. The "
+        "cascade was what those clever solutions did to each other.",
         S['body0']))
     story.append(SP(14))
 
     story.append(P(
-        "The critical failure in the CDO structure was the independence assumption. CDO "
-        "pricing models, developed by David Li in a 2000 paper using a Gaussian copula "
-        "function, calculated the default correlation between mortgages, the probability "
-        "that two mortgages would default simultaneously — based on historical data "
-        "from a period of generally rising home prices. In that historical period, "
-        "mortgage defaults were relatively independent: a job loss in Ohio did not "
-        "predict a job loss in California. The copula model assigned low correlations; "
-        "CDOs rated AAA by the credit rating agencies were priced on the assumption "
-        "that defaults would remain largely uncorrelated. This assumption held during "
-        "normal conditions. In a nationwide housing bubble, it failed: when home prices "
-        "fell simultaneously across all major US markets beginning in 2006-07, mortgage "
-        "defaults became highly correlated across geographies. The diversification "
-        "that was supposed to make CDOs safe had been an artefact of favourable "
-        "historical conditions rather than a structural feature.",
+        "The critical failure inside the CDO was an assumption. The model that priced "
+        "CDOs — David Li's 2000 paper on the Gaussian copula — calculated the "
+        "probability that two mortgages would default simultaneously using historical "
+        "data from a period of generally rising home prices. In that historical "
+        "period, mortgage defaults were close to independent. A job loss in Ohio did "
+        "not predict a job loss in California. The model said default correlations "
+        "were low. The credit rating agencies stamped AAA on CDO tranches priced on "
+        "that assumption. The assumption held in normal conditions. In a nationwide "
+        "housing bubble, it broke. When home prices began falling simultaneously "
+        "across every major US market in 2006 and 2007, mortgage defaults stopped "
+        "being independent and became highly correlated everywhere at once. The "
+        "diversification that was supposed to make CDOs safe turned out to have been "
+        "an artefact of favourable historical conditions, not a structural feature of "
+        "the instrument.",
         S['body']))
     story.append(SP(14))
 

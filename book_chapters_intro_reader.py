@@ -38,16 +38,33 @@ def preface(S):
         'the parts of the system they were never meant to touch — was not '
         'just an engineering inconvenience. It was, I came to believe, a '
         'general feature of complex systems everywhere: from software to '
-        'medicine, from finance to public policy. The book that follows is '
-        'what happened when I started looking for that same pattern '
-        'outside the codebase.',
+        'medicine, from finance to public policy.',
+        S['preface']))
+    story.append(SP(12))
+    story.append(P(
+        'A few weeks later, the second formative conversation arrived from '
+        'a different direction. My friend <b>Badreddine Otky</b> — a chief '
+        'technology officer with more than twenty years building and breaking '
+        'large systems for a living — and I were talking about a wave of '
+        'cascading outages that had been hitting the industry that year. He '
+        'made the point, with the easy confidence of someone who had seen it '
+        'play out a hundred times, that the architecture and incentives of '
+        'modern systems make this kind of cascade not the exception but the '
+        'rule: the more layers you add to keep things working, the more '
+        'surfaces you create on which they can break. What Mariam had '
+        'noticed inside a single codebase, Badreddine had been watching '
+        'across a career\'s worth of organisations. Two independent '
+        'observations, separated by context, converging on the same shape. '
+        'The book that follows is what happened when I started looking for '
+        'that same shape outside both codebases and CTO offices.',
         S['preface']))
     story.append(SP(12))
     story.append(P(
         'What began as a software-engineering observation quickly became a '
-        'comparative question. Was Mariam\'s remark a feature of large software '
-        'systems specifically, or was it a specific instance of a more general '
-        'pattern? Antibiotic resistance, foreseen by Fleming as early as 1945 '
+        'comparative question. Were Mariam\'s and Badreddine\'s remarks a '
+        'feature of large software systems specifically, or were they '
+        'specific instances of a more general pattern? Antibiotic resistance, '
+        'foreseen by Fleming as early as 1945 '
         'and documented by microbiologists in the 1950s, had been deployed into '
         'the world anyway: the cascade was the most completely foreseeable '
         'medical crisis in history, and it had still happened. The 2008 '
@@ -102,8 +119,81 @@ def preface(S):
         S)
     story.append(SP(12))
     story.append(P(
-        '<i>Ahmed Hafdi<br/>Kenitra, Spring 2025</i>',
+        '<b>AHMED HAFDI</b><br/><i>Kenitra, Spring 2025</i>',
         S['epig_attr']))
+    story.append(PageBreak())
+    return story
+
+
+def read_this_first(S):
+    """A one-page executive summary placed between the Preface and the
+    Introduction. Designed for the airport-bookstore skim-reader: the whole
+    thesis stated in roughly 250 words, plus a one-line route map for the rest
+    of the book. The page that converts browsers into buyers."""
+    story = []
+    story += [Mark(chapter='Read This First')]
+    story += chapter_opener('Read This First',
+        'The Whole Book on One Page',
+        'For the reader who has thirty seconds and wants to know what they are buying', S)
+    story += [SP(8)]
+
+    story.append(P('The Argument', S['section']))
+    story.append(P(
+        'Every solution, released into a connected system, generates problems faster '
+        'than the system can absorb them — and the more connected the system, the '
+        'wider the gap. This is true of policies, drugs, products, regulations, code, '
+        'and ideas. It is not a moral failing of the people who design solutions. It '
+        'is a structural property of complex systems. The book calls this <i>the '
+        'cascade</i>, and it argues that the cascade can be measured, anticipated, '
+        'and managed — but never eliminated.',
+        S['body0']))
+
+    story.append(SP(8))
+    story.append(P('The Tool', S['section']))
+    story.append(P(
+        'The book builds a single practical instrument for estimating cascade risk '
+        'before deployment. It is called <b>the Cobra Score</b> — formally, the '
+        'Cascade Risk Index. It is a number between 0 and 1. It combines four '
+        'ingredients: how readily a solution turns into new problems, how complex '
+        'the solution is, how wide its reach, and how strongly it interacts with the '
+        'solutions already in the ecosystem. A score below 0.3 is low risk. Between '
+        '0.3 and 0.6 demands enhanced monitoring. Above 0.6 demands redesign before '
+        'shipping. The number is not magical. The discipline of computing it is.',
+        S['body']))
+
+    story.append(SP(8))
+    story.append(P('The Five Signals', S['section']))
+    story.append(P(
+        'If you read only one chapter, read Chapter Fifteen. It lists the five '
+        'signals that tell you, in any meeting, that you are looking at a cascade in '
+        'the making. <b>Reach without back-pressure. An incentive measured by a '
+        'proxy. Irreversibility. A confident projection with no monitoring plan. '
+        'Everyone in the room is a beneficiary.</b> When three of these light up, '
+        'you are no longer deciding whether to deploy a solution. You are deciding '
+        'whether to accept a cascade.',
+        S['body']))
+
+    story.append(SP(8))
+    story.append(P('How to Read the Rest', S['section']))
+    story.append(P(
+        '<b>Chapters 1–2</b> are the theory. <b>Chapters 3–9</b> are seven '
+        'independent bodies of evidence — mathematics, physics, computer science, '
+        'economics, medicine, politics, society. <b>Chapter 10</b> ties them '
+        'together into the framework. <b>Chapter 11</b> is the Cobra Score in '
+        'practice. <b>Chapters 12–13</b> are the constructive response — what '
+        'cascade-aware design looks like. <b>Chapter 14</b> is the case against this '
+        'book, stated as honestly as possible. <b>Chapter 15</b> is the practical '
+        'handle. <b>Chapter 16</b> applies the whole framework to artificial '
+        'intelligence — the live cascade you are living through right now.',
+        S['body']))
+
+    story.append(SP(10))
+    story.append(callout(
+        '<b>The book in one sentence.</b> The harder we work to solve problems in '
+        'connected systems, the faster new problems arrive — and the difference '
+        'between societies that manage this and societies that do not is not effort '
+        'or intelligence, but design.', S))
+
     story.append(PageBreak())
     return story
 
@@ -120,98 +210,70 @@ def intro_chapter(S):
 
     body = [
         ('section', 'The Day Britain Created More Snakes'),
-        ('body0', """In 1880s colonial India, the British administration in Delhi grew alarmed by
-the city's population of venomous cobras. The snakes were a genuine public health
-problem, people were dying. The solution seemed obvious: offer a cash bounty for
-every dead cobra delivered to the colonial offices. Citizens would be incentivised
-to hunt the snakes, the population would decline, and the city would be safer.
-The logic was impeccable. The outcome was a catastrophe."""),
-        ('body', """Within months, enterprising Delhiites had discovered something the
-administrators had not anticipated: it was far easier to breed cobras than to hunt wild
-ones. Cobra farms sprang up across the city. Dead snakes arrived at the colonial offices
-by the basketful. The bounty payments flowed. The administrators, seeing the numbers
-of delivered cobras climb, congratulated themselves on the program's success."""),
-        ('body', """Then the colonial government, realising what was happening, cancelled the
-bounty. The cobra farmers, now holding thousands of suddenly worthless snakes, did the
-rational thing: they released them. Delhi ended up with significantly more cobras than
-it had started with. The solution had created a problem larger than the one it was
-designed to solve."""),
-        ('body', """This story (known today as the Cobra Effect) has become a parable for
-a phenomenon so common that it spans every domain of human endeavour, from the most
-abstract reaches of pure mathematics to the most practical corridors of public policy.
-It is the phenomenon this book sets out to explain: the systematic, mathematically
-predictable tendency of solutions to generate more problems than they resolve."""),
-        ('body', """The Cobra Effect is not a story about stupidity. The British administrators
-were not fools; they were applying standard economic incentive theory, which was and
-remains perfectly sound. The failure was not in the intelligence of the individuals
-involved but in the structure of the system they were intervening in. They were thinking
-linearly in a world that responds non-linearly. They were solving a problem as if it
-existed in isolation, when it existed within a web of incentives, actors, and feedback
-loops that immediately reorganised itself around their intervention."""),
-        ('body', """This is the central insight of this book: the problem is not the solution.
-The problem is the way we design solutions, in isolation, without accounting for the
-system that will receive them, without asking what the system will do in response."""),
+        ('body0', """Delhi, the 1880s. The British administration has a problem: too many
+cobras. People are dying. So the colonial government does what any rational government
+would do — it offers a bounty. A rupee for every dead snake. The logic is impeccable.
+Citizens hunt the cobras, the population falls, the city becomes safer."""),
+        ('body', """That is not what happens."""),
+        ('body', """Within months, the people of Delhi discover something the administrators
+have not anticipated. It is much easier to <i>breed</i> cobras than to hunt them. Cobra
+farms appear across the city. Dead snakes arrive at the colonial offices by the basketful.
+The bounty payments flow. The administrators, watching their numbers climb, congratulate
+themselves on the program's success."""),
+        ('body', """When the government finally realises what is happening and cancels the
+bounty, the farmers are left with thousands of suddenly worthless snakes. They do the
+rational thing. They release them. Delhi ends up with more cobras than when it started."""),
+        ('body', """This is the Cobra Effect. It is not a story about stupidity. The
+administrators were not fools; they were applying standard incentive theory, which was and
+remains perfectly sound. The failure was not in the people. It was in the architecture of
+the solution. They were thinking linearly in a world that responds non-linearly. They were
+solving the problem as if it existed in isolation, when it existed inside a web of
+incentives, actors, and feedback loops that immediately reorganised itself around their
+intervention."""),
+        ('body', """That web is what this book is about. The bounty failed not because the
+British were stupid but because every solution, once released into a complex system, sets
+off a second story the designers did not write. Sometimes the second story is small.
+Sometimes it is larger than the first."""),
 
-        ('section', 'A Pattern Across All of Human Knowledge'),
-        ('body0', """The Cobra Effect is entertaining because it is exotic. But it is far from
-unique. Consider what happens when you trace the consequences of humanity's greatest
-innovations across time:"""),
-        ('body', """The automobile solved the problem of slow, expensive horse-based transport.
-It created traffic congestion, air pollution that kills approximately 4.2 million people
-annually (WHO, 2023), urban sprawl that has consumed billions of acres of farmland,
-and a global dependency on fossil fuels that now threatens the planet's climate. These
-were not inevitable consequences of "progress"; they were consequences of designing
-a transport solution without accounting for the system it would transform."""),
+        ('section', 'It Happens Everywhere'),
+        ('body0', """The Cobra Effect is entertaining because it is exotic. Cobras, colonial
+India, bounty hunters — the story has the feel of a folk parable. But the pattern is not
+exotic at all. It is everywhere. The interesting question is not whether you can find it
+in colonial Delhi. It is whether you can find a domain of modern life where it is
+<i>absent</i>."""),
+        ('body', """The automobile solved the problem of slow, expensive horse-based
+transport. It created traffic congestion, urban sprawl that has consumed billions of acres
+of farmland, an estimated 4.2 million annual deaths from air pollution (WHO, 2023), and a
+global dependency on fossil fuels that now threatens the climate."""),
         ('body', """The internet solved the problem of expensive, slow information exchange.
-It created surveillance capitalism, cybercrime costing the global economy $8 trillion
-annually (Cybersecurity Ventures, 2023), mass misinformation that now threatens
-democratic institutions, and digital addiction affecting an estimated 400 million people
-worldwide. Again: not inevitable. Structural."""),
+It created surveillance capitalism, cybercrime costing the global economy roughly $8
+trillion a year (Cybersecurity Ventures, 2023), industrial-scale misinformation, and
+digital addiction affecting an estimated 400 million people worldwide."""),
         ('body', """Antibiotics solved the problem of bacterial infection. They created
 antibiotic-resistant superbugs that now directly kill an estimated 1.27 million people a
-year (and contribute to nearly 5 million more), with one widely cited projection putting
-the toll at 10 million a year by 2050. The O'Neill Review on
-Antimicrobial Resistance (2016), commissioned by the British government, described
-this as "an apocalyptic scenario" caused directly by the overuse of the very drugs
-that represented medicine's greatest triumph."""),
-        ('body', """In every case, the solution was real. Automobiles genuinely enabled
-mobility. The internet genuinely democratised information. Antibiotics genuinely saved
-hundreds of millions of lives. The issue is not that these innovations were mistakes.
-The issue is that each of them entered a complex system, and the system responded by
-generating new problems, problems that were in many cases structurally guaranteed
-by the very nature of the intervention."""),
+year (and contribute to nearly 5 million more) — a toll one widely cited British government
+review projects could reach 10 million annually by 2050."""),
+        ('body', """In every case, the solution worked. The automobile really did enable
+mobility. The internet really did democratise information. Antibiotics really did save
+hundreds of millions of lives. The point of this book is not that these innovations were
+mistakes. They were not. The point is that each of them entered a complex system, and the
+system answered back. That answer is the cascade."""),
 
         ('section', 'What This Book Argues'),
-        ('body0', """This book makes three claims, each more specific than the last."""),
-        ('body', """<b>First claim:</b> The tendency of solutions to create new problems is
-not accidental, cultural, or political. It is a deep structural tendency of complex
-systems. When you introduce a handful of solutions into a system whose components
-interact, the number of potential new problems does not just rise — the possible
-combinations roughly double with each new solution added. This is not merely a
-metaphor; it follows from ordinary counting and network theory, as Chapter 10
-explains in plain terms. How many of those potential problems become real depends
-on how many interactions turn harmful — and this book argues the fraction is never
-zero. The
-underlying reasoning does not care whether the solution is a government policy, a
-software feature, a medical treatment, or a physical theory. The cascade is
-structural."""),
-        ('body', """<b>Second claim:</b> This mathematical reality is systematically invisible
-to human cognition. We are wired, by evolution, culture, and institutional incentive,
-to celebrate solutions and discount their future costs. We experience the benefit of a
-solution immediately and locally. We experience its cascade of new problems later,
-diffusely, and in contexts that rarely feel connected to the original intervention.
-This temporal and cognitive gap is not a bug in human thinking that better education
-can fix; it is a deep feature of how we process complex causality. Chapter 2 examines
-the psychology in detail."""),
-        ('body', """<b>Third claim:</b> The paradox can be managed, not eliminated, but
-managed. There exist design principles, analytical tools, and institutional structures
-that can significantly reduce the cascade rate. Ecosystems that are designed for
-internal compatibility — where each new solution is evaluated not just for its primary
-effect but for its interactions with existing solutions — generate problems at a slow,
-sustainable rate, rather than the explosive rate that doubles every time a new solution
-is added. The difference is the difference between a system that collapses under its
-own complexity and one that sustains itself indefinitely. Part IV of this book is about
-making that transition."""),
+        ('body0', """The argument of this book is simple, and the rest of the book is the
+evidence for it. Solutions in complex systems do not just solve. They <i>also</i> create.
+What they create grows faster than what they solve. This is not a moral failing of the
+people who design solutions. It is a structural property of the systems they design
+into."""),
+        ('body', """Three things follow from that one claim, and each gets its own
+treatment in the chapters to come. First, the cascade is structural — which is why
+Chapter 10 will show that the number of potential side-effects roughly doubles every time
+a new solution is added, by ordinary counting, regardless of how smart the designer is.
+Second, we don't see the cascade coming, even when we should — which is why Chapter 2
+will show that the temporal and cognitive gap between a solution's benefit and its
+cascade is not a bug in human thinking but a feature of it. Third, the cascade can be
+<i>managed</i>, even if it cannot be eliminated — which is why Part IV will show how
+the rare societies and institutions that have done so actually pulled it off."""),
 
         ('section', 'How to Read This Book'),
         ('body0', """The book is designed to be read front to back, but each part can stand alone.
@@ -247,19 +309,33 @@ not a wall. It is a terrain. This book is a map."""),
 
     story.append(SP(18))
     story.append(P("The Cobra Effect Recurs Everywhere", S['section']))
-    story.append(P("The Delhi debacle was no one-off. Reconstructed from colonial records and the scholarship of economists Horst Siebert and Werner Troesken, it stands at the head of a series in which the same structure recurs in complete institutional isolation. In 1902, French colonial authorities in Hanoi, facing a serious problem with rat-borne disease in the newly constructed European quarter, instituted a bounty payable on the production of rat tails, a scheme chosen because it was less gruesome than requiring whole carcasses. The incentive was carefully calculated, the sanitary motivation was genuine, and the administrative logic was identical to the Delhi cobra program. Within weeks, city workers began finding rats in the sewers that had been deliberately caught and had their tails removed before being re-released. The rats, left intact and reproductively active, continued their population growth unabated. Worse, when the scheme was eventually discovered and terminated, rat populations in affected neighborhoods were found to have increased substantially — rat farmers had been releasing surplus animals just as the Delhi cobra farmers had. The historian Michael Vann, in his definitive account of the program, documents the memo in which the colonial director of public health noted with evident frustration that the city now contained 'an abundance of tailless rats', a phrase that has since become a minor classic of bureaucratic understatement.", S['body']))
-    story.append(P("The Prague dog-tail bounty of the early twentieth century, though less well documented, follows the same structure. Municipal authorities, attempting to control the population of stray dogs, offered a bounty on dog tails. Entrepreneurial citizens discovered that a living dog could provide a continuous stream of tail-regrowth income if handled correctly, though in the case of dogs, of course, tails do not regenerate, so the scheme collapsed more quickly when authorities noticed the disproportion between tails delivered and stray-dog population reductions. What is remarkable about these three cases (Delhi, Hanoi, Prague) is not merely that they follow the same pattern but that they follow it in complete institutional isolation. There is no evidence that the Hanoi administrators knew of the Delhi failure, or that the Prague authorities knew of Hanoi. The cascade recurred not because bad information spread, but because the structural incentive created by the bounty mechanism is always and everywhere exploitable in the same way. The fault is not in the administrators. It is in the architecture of the solution.", S['body']))
-    story.append(P("The most modern equivalent comes from Cambodia in the early 2010s. The Cambodian government and several international NGOs, working to clear unexploded ordnance (UXO): landmines, cluster munitions, and artillery shells remaining from the Vietnam War era — instituted various reward programs for the discovery and reporting of live ordnance. In at least two documented instances, villagers in rural provinces began extracting already-neutralised ordnance from storage facilities and re-presenting it as newly discovered material, collecting multiple payments. In one case investigated by a Mines Advisory Group field team in 2013, a cache of 'newly discovered' anti-personnel mines was traced to a legitimate disposal site three kilometers away. The incentive to game the reporting system was not greed in the pejorative sense, in a province where average annual household income was under five hundred dollars, the per-item payments represented transformative sums. The structural logic was identical to Delhi in 1880: well-intentioned administrators, facing a genuine and deadly problem, created an incentive that the local population rationally gamed. The solution generated a problem of its own: a reporting ecosystem polluted with false positives, compromising the data on which future UXO clearance efforts depended. The administrators of Delhi, Hanoi, Prague, and Phnom Penh were not fools. They were humans operating in complex systems with tools designed for simple ones.", S['body']))
+    story.append(P("The Delhi debacle was not a one-off. The same structure recurs in complete institutional isolation across a century and across continents: Hanoi 1902 (a French rat-tail bounty that produced fields of tailless, still-breeding rats — documented by the historian Michael Vann); Prague in the early 1900s (a dog-tail bounty that collapsed once authorities noticed tails arriving faster than the stray-dog population could possibly produce); Cambodia in the early 2010s (a UXO reward programme in which villagers, facing transformative sums in a region of subsistence incomes, re-presented already-cleared ordnance for repeat payments, polluting the country's clearance data). Chapter 6 returns to these cases in detail and lays out their structural variants. What matters here is the cross-cultural point: none of these administrators knew of the others. The cascade recurred not because bad information spread, but because the architecture of an incentive-based solution is always and everywhere exploitable in the same way. The fault is not in the administrators. It is in the architecture of the solution.", S['body']))
     story.append(callout("<b>The Cobra Effect Template:</b> A genuine problem. A rational incentive-based solution. An agent population that optimises for the incentive rather than the underlying goal. Cancellation of the incentive. A problem larger than the original. This five-step template repeats with remarkable consistency across cultures, centuries, and domains.", S))
 
     story.append(SP(18))
-    story.append(P("The Central Claim, Stated Four Ways", S['section']))
-    story.append(P("This book has a single central argument. It can be stated simply, historically, mathematically, or philosophically. The level of precision increases with each formulation, but the argument is the same argument. The reader is invited to choose the formulation that is most persuasive and return to the others after the evidence of subsequent chapters has had its effect.", S['body0']))
-    story.append(P("The <b>colloquial formulation</b> is: every solution creates new problems, and the problems grow faster than the solutions. This is the version that most people have experienced directly, in their software, their organisations, their governments, their bodies. The new feature that creates three new bugs. The regulation that creates the loophole industry. The medication that requires the medication to manage its side effects. It feels like a law of life. This book argues that it is a strong and consistent regularity — motivated by the mathematics of complex systems and confirmed by the evidence of every major domain of human endeavour.", S['body']))
-    story.append(P("The <b>historical formulation</b> is: across every major domain of human endeavour surveyed in this book, the ratio of problems generated to problems solved by any given solution is greater than one, and this ratio increases over time as systems become more interconnected. This formulation is testable, and the test is what occupies Part II. Mathematics, medicine, economics, technology, ecology, law, and geopolitics each present their own evidence. The evidence is not cherry-picked from outliers. It emerges from the major, celebrated, paradigm-defining solutions in each field: the solutions we point to as our greatest achievements. The cascade is not generated by our failures. It is generated by our successes.", S['body']))
-    story.append(P("The <b>mathematical formulation</b> is: in any complex system whose solutions can interact with each other, the number of potential problem-generating combinations roughly doubles with every new solution added, while the number of solutions itself grows only linearly with time. Chapter 10 unpacks why. The essential point is that when solutions interact — when a new solution can combine with any existing solution, or any pair, or any triple — the number of potential problem-generating combinations explodes, while the number of solutions we can actually deploy grows only at the pace of human effort. The gap between the rate at which problems can be generated and the rate at which solutions can be deployed is the central quantitative claim of this book. It does not depend on the quality of solutions, the intelligence of their designers, or the resources available for implementation. It depends only on the structure of interaction in complex systems.", S['body']))
-    story.append(P("The <b>philosophical formulation</b> is: the act of intervening in a complex system is itself a perturbation of that system, and perturbations in complex systems generate cascades that exceed the scope of the intervention. This is the deepest formulation because it locates the source of the cascade not in the quality of the intervention but in the nature of complex systems themselves. A complex system is, by definition, one in which components interact non-linearly and in which the interactions produce emergent properties not predictable from the properties of the components. When you intervene in such a system (when you add a new component or modify an existing one) the system responds as a whole. The response includes effects in domains you were not targeting, through mechanisms you did not model, at timescales you did not consider. The intervention does not just solve the problem it was designed to solve. It perturbs the entire system. And the perturbation of a complex system is always, in principle, unbounded in its effects.", S['body']))
-    story.append(P("These four formulations reinforce each other. The colloquial formulation captures the phenomenology. This is what it feels like from the inside. The historical formulation provides the empirical support. This is what the evidence shows. The mathematical formulation provides the theoretical foundation. This is why it must be so. The philosophical formulation provides the deepest explanation. This is what it means about the nature of knowledge and action in a complex world. A reader who finds one formulation unsatisfying is invited to try another. The argument does not stand or fall on any single version of itself.", S['body']))
+    story.append(P("The Argument, in One Sentence", S['section']))
+    story.append(P(
+        "Every solution, once released into a connected system, creates problems faster "
+        "than the system can absorb them — and the more connected the system, the wider "
+        "the gap. That is the argument, the whole argument, and nothing else this book "
+        "says will contradict it.", S['body0']))
+    story.append(P(
+        "You have felt this before. The new feature that broke three other things. The "
+        "regulation that bred the loophole industry. The medication that needed a second "
+        "medication to manage its side effects. The road that was meant to relieve traffic "
+        "and made it worse. The fix that became the next thing your team had to fix. The "
+        "sense that the harder we work, the further behind we fall — that is not a feeling. "
+        "It is arithmetic. And it is the arithmetic this book will spend the next thirteen "
+        "chapters making visible.", S['body']))
+    story.append(P(
+        "Two consequences come with that one sentence, and both run through the rest of "
+        "the book. The first is that the cascade does not care what the solution is. A "
+        "policy, a drug, a product feature, a regulation, a piece of code, a mathematical "
+        "axiom — every one of them enters the same kind of connected system and triggers "
+        "the same kind of response. The mechanism is structural, not moral. The second "
+        "consequence is that the cascade is not destiny. Some systems contain it; most "
+        "do not. The difference between the two is not effort. It is design. Knowing the "
+        "difference is the practical payoff of this book.", S['body']))
 
     story.append(SP(18))
     story.append(P("Why This Book Is Different", S['section']))
@@ -278,113 +354,7 @@ not a wall. It is a terrain. This book is a map."""),
     story.append(P("<b>Chapters 4 through 9</b> present the evidence from physics (the unresolved foundations of the quantum world and the cosmos), computer science (software complexity and security), economics (perverse incentives, efficiency, and financial crisis), medicine (antibiotics, opioids, and the treatment cascade), politics (the policy boomerang), and the social and ecological systems that store and amplify our interventions. Each chapter follows the same structure: a major celebrated solution, the cascade it generated, the cascade of the cascade, and the current state of the problem-solution ratio in that domain. The chapters are designed to be read independently, but the cumulative effect of reading them in sequence is significant: by Chapter 9, the reader should find the cascade less surprising and more clearly patterned, which is exactly the cognitive shift this book is designed to produce.", S['body']))
     story.append(P("<b>Chapters 10 and 11</b> develop the framework. Chapter 10 sets out, in plain language, why interacting solutions tend to generate problems faster than solutions can be deployed, and where that reasoning comes from. Chapter 11 turns the argument into a practical tool — the Cascade Risk Index — and examines the empirical patterns and early-warning signals consistent with it. Neither chapter requires mathematics beyond basic counting; the formal derivations live in the source research paper referenced in the Preface.", S['body']))
     story.append(P("<b>Chapter 12 (Cascade-Aware Design)</b> opens Part IV, the constructive response. It presents the principles of designing solutions that create fewer problems than they solve: pre-mortem analysis, interaction auditing, modularity and reversibility, staged deployment, sunset provisions, and reference-class forecasting to calibrate optimism about new solutions — illustrated with cases such as the Montreal Protocol, smallpox eradication, and the EU's REACH regulation, where cascades were genuinely contained.", S['body']))
-    story.append(P("<b>Chapter 13 (A New Philosophy of Innovation)</b> closes Part IV by examining the institutional and educational changes — in government, industry, academia, and professional practice — that would be required to embed cascade awareness in decision-making at the scale at which the problem operates. <b>Chapter 14 (The Case Against This Book)</b> then turns the argument on itself, stating the strongest objections to the cascade thesis — selection bias, the overwhelmingly positive ledger of progress, unfalsifiability, and the risk that cascade thinking licenses harmful inaction — and judging honestly how much of the book survives them. A Conclusion and a set of appendices (a taxonomy of cascade types, worked case studies, checklists, and a glossary) complete the book. The cascade is among the most consequential and least recognised challenges of our era, and meeting it would require not new technology or new resources, only a more honest accounting of the costs of what we already do.", S['body']))
-
-    story.append(SP(18))
-    story.append(P('A Message for Leaders, Founders, and Policymakers', S['section']))
-    story.append(P(
-        'This book was written for everyone who has ever tried to make '
-        'something better. That is a wide audience. But there is a subset '
-        'of that audience for whom the stakes of the cascade argument are '
-        'particularly high, because the decisions they make operate at a '
-        'scale where even a marginal improvement in cascade awareness '
-        'translates into millions of lives and trillions of dollars. '
-        'To that subset, the heads of state, the CEOs, the central '
-        'bank governors, the platform architects, the generals, the '
-        'cabinet ministers, the WHO directors, the UN secretaries-general '
-        '— this section is addressed directly.',
-        S['body0']))
-    story.append(P(
-        'If you are a head of government, you will recognise this scenario: '
-        'your predecessor identified a genuine crisis, deployed a bold '
-        'solution, and left office celebrated. You inherited the cascade. '
-        'The solution is entrenched; its constituency is powerful; '
-        'its costs are diffuse and politically difficult to attribute. '
-        'You are managing the aftermath of someone else\'s triumph, '
-        'and your management of that aftermath will itself generate '
-        'the cascade that your successor inherits. This is not a '
-        'failure of governance. It is the structural condition of '
-        'governance in complex systems. Every major policy, '
-        'from the post-war welfare state to structural adjustment '
-        'programmes, from the War on Terror to COVID-19 lockdowns, '
-        'follows this pattern. The question is not whether your '
-        'solutions will generate cascades. They will. The question '
-        'is whether you have the analytical framework to anticipate '
-        'them, and the institutional architecture to manage them '
-        'when they arrive.',
-        S['body']))
-    story.append(P(
-        'If you are a CEO or founder, the cascade is already your daily '
-        'reality. Every product launch is a cascade event. The feature '
-        'that delights your customers creates the security vulnerability '
-        'your security team will spend six months closing. The efficiency '
-        'gain from automating your supply chain creates the single point '
-        'of failure that your operations team will panic about when a '
-        'port closes or a pandemic hits. The platform you build to connect '
-        'people creates the surveillance infrastructure that regulators '
-        'will eventually investigate. You live this already but '
-        'without a name for it, without a framework for anticipating it, '
-        'and without the vocabulary to communicate the cascade risk to '
-        'your board before it becomes a crisis. This book gives you '
-        'all three. Steve Jobs designed the most successful consumer '
-        'product in history. He did not design the attention economy, '
-        'the App Store monopoly litigation, or the e-waste mountain '
-        'that his product line would generate. These were the cascades '
-        'of his genius. His successors now manage them. They would '
-        'have been better positioned to do so if cascade theory had '
-        'been part of Apple\'s strategic vocabulary from the beginning.',
-        S['body']))
-    story.append(P(
-        'If you are a policymaker, regulator, or international official, '
-        'the cascade argument has a specific and urgent implication: '
-        'the timeline of political accountability does not match the '
-        'timeline of cascade development. A policy deployed in Year 1 '
-        'generates its primary benefits by Year 3, within the electoral '
-        'cycle. Its cascade costs emerge by Year 7 to Year 15, after '
-        'the architects have left office and the political credit for '
-        'the solution has been fully collected. The architects of '
-        'financial deregulation in the 1980s and 1990s were celebrated '
-        'as champions of growth and efficiency. The cascade arrived '
-        'in 2008, long after most of them had retired. The architects '
-        'of antibiotic proliferation in the 1950s and 1960s were '
-        'celebrated as saviours of millions of lives, which they '
-        'genuinely were. The resistance cascade arrived in the 2000s. '
-        'This temporal mismatch is not a moral failing of individual '
-        'policymakers. It is a structural feature of complex system '
-        'response. The correct institutional response is not to blame '
-        'individuals but to build sunset clauses, mandatory impact '
-        'reviews, and cascade monitoring into policy architecture, '
-        'so that the cascade assessment continues after the '
-        'policy architect has left the room.',
-        S['body']))
-    story.append(callout(
-        '<b>The Leader\'s Cascade Imperative:</b> The most consequential '
-        'question a leader can ask before deploying any major solution is '
-        'not "Will this work?"; it will work, or it would not be '
-        'proposed. The question is: "What will the system do in response, '
-        'and does that response create problems larger than the ones '
-        'I am solving?" This question is rarely asked systematically '
-        'before deployment. It is always asked, with great urgency '
-        'and far greater cost, after the cascade arrives.',
-        S))
-    story.append(SP(14))
-    story.append(P(
-        'The good news (and there is genuine good news in this book) '
-        'is that cascade awareness is a learnable skill, cascade '
-        'assessment is a practicable discipline, and cascade-resistant '
-        'design is achievable with existing tools and knowledge. '
-        'The leaders who understood this before their peers did not '
-        'avoid cascades entirely (no one does) but they managed them '
-        'more effectively, more cheaply, and with less human cost. '
-        'The architects of the Montreal Protocol managed the ozone '
-        'depletion cascade. The engineers behind the coordinated '
-        'disclosure standard managed the cybersecurity cascade. '
-        'The WHO\'s Intensified Eradication Programme managed the '
-        'smallpox vaccine cascade. None of them eliminated the cascade. '
-        'All of them contained it. That is the standard of success '
-        'available to leaders who take cascade awareness seriously. '
-        'It is a significantly better standard than the alternative.',
-        S['body']))
+    story.append(P("<b>Chapter 13 (A New Philosophy of Innovation)</b> closes Part IV by examining the institutional and educational changes — in government, industry, academia, and professional practice — that would be required to embed cascade awareness in decision-making at the scale at which the problem operates. <b>Chapter 14 (The Case Against This Book)</b> then turns the argument on itself, stating the strongest objections to the cascade thesis — selection bias, the overwhelmingly positive ledger of progress, unfalsifiability, and the risk that cascade thinking licenses harmful inaction — and judging honestly how much of the book survives them. <b>Chapter 15 (How to Spot a Cascade Before It Hits You)</b> hands the framework over to the reader: the five signals you can read in any room, the five questions to ask before adopting anything new, and a short personal cascade audit. <b>Chapter 16 (The AI Cascade)</b> then applies that framework to the technology every reader will be living with for the rest of the decade — the foundation models, generative systems, and large language models whose deployment is the central live cascade of our moment. A Conclusion and a set of appendices (a taxonomy of cascade types, worked case studies, checklists, and a glossary) complete the book. The cascade is among the most consequential and least recognised challenges of our era, and meeting it would require not new technology or new resources, only a more honest accounting of the costs of what we already do.", S['body']))
 
     story.append(SP(16))
     story.append(fig_to_image(fig_historical_timeline_local(), w=5.5*72, h=4.5*72))
@@ -468,106 +438,97 @@ def chapter1(S):
     story += [SP(12)]
 
     paras = [
-        ('section', 'The Three Mechanisms'),
-        ('body0', """Before we can understand why solutions create problems, we need to
-understand how they create problems. Three mechanisms are at work, each operating at a
-different scale and timescale. Together, they produce the cascade. Individually, each
-one is manageable. Combined (which is how they always appear in complex systems) they
-produce the kind of compounding problem growth that no amount of well-intentioned fixing can reliably outrun."""),
+        ('section', 'Three Mechanisms'),
+        ('body0', """The argument of the last chapter was the <i>what</i>. This one is the
+<i>how</i>. Three mechanisms — complexity, interaction, network — together make the
+cascade. On their own, each is manageable. Combined, and in complex systems they
+are always combined, they produce the kind of compounding problem growth that no
+amount of well-intentioned fixing can outrun."""),
 
-        ('body', """The first mechanism is <b>individual complexity</b>. Every solution
-introduces new complexity into its operating environment. A new drug requires a new
-production chain, a new regulatory pathway, new prescribing guidelines, new
-pharmacist training, new patient monitoring protocols, and new drug interaction
-databases. A new software feature requires new documentation, new test cases, new
-edge-case handling, new compatibility checks with every existing feature, and new
-security review. A new government regulation requires new enforcement mechanisms, new
-reporting infrastructure, new legal interpretation frameworks, and new bureaucratic
-processes. Each of these complexity additions creates its own surface area for
-new problems."""),
+        ('body', """The first mechanism is <b>complexity</b>. Every solution adds new
+moving parts to whatever it is deployed into. A new drug brings a production chain,
+a regulatory pathway, prescribing guidelines, pharmacist training, monitoring
+protocols, and a new entry in every drug-interaction database. A new software feature
+brings documentation, test cases, edge-case handling, security review, and
+compatibility checks with everything already there. A new regulation brings
+enforcement, reporting, legal interpretation, and a new layer of bureaucracy. Each of
+those additions is its own surface for things to go wrong."""),
 
-        ('body', """This is not a design failure. It is the nature of solutions. A solution
-that introduces zero complexity is a solution that does nothing. The complexity is
-the mechanism by which the solution achieves its effect. The price is that complexity
-is always a two-sided ledger: it enables the intended function, and it creates new
-failure modes that did not exist before the solution arrived."""),
+        ('body', """This is not a design failure. It is the nature of a solution. A
+solution that adds zero complexity is a solution that does nothing. Complexity is the
+mechanism by which solutions <i>work</i>. The price of that mechanism is that complexity
+is a two-sided ledger: it enables the intended function, and it opens up failure
+modes that did not exist before the solution arrived."""),
 
-        ('body', """The second mechanism is <b>interaction effects</b>. Solutions do not
-exist in isolation; they exist alongside other solutions. When you introduce solution
-A into a system that already contains solutions B, C, and D, you create not just the
-direct effects of A but the interaction effects A×B, A×C, A×D, and potentially
-A×B×C, A×B×D, A×C×D, and A×B×C×D. Each new arrival creates a number of potential
-interaction effects that doubles with every existing solution. Most of these
-interactions are benign. But in complex systems, even a small percentage of harmful
-interactions produces a large
-absolute number of new problems, because n is always growing."""),
+        ('body', """The second mechanism is <b>interactions</b>. Solutions never sit
+alone. They sit next to other solutions. Drop a new drug into a system that already
+contains a thousand approved medications and you have not added one new thing — you
+have added the new drug, plus a thousand new pairs of drugs, plus the three-way
+combinations, and so on. Most of those interactions are harmless. But complex systems
+guarantee that a small fraction will not be. A small fraction of a number that
+grows by doubling is, very quickly, a large absolute number of real problems."""),
 
-        ('body', """The drug interaction database maintained by the US National Library of
-Medicine currently tracks interactions among more than fourteen hundred approved
-medications. The number of possible pairwise interactions alone is close to a
-million. The number of three-way interactions is over four hundred million. No
-human physician can hold this space in mind. No clinical trial can test it. And
-every new drug approval expands it further. This is interaction cascade in its
-purest form."""),
+        ('body', """The US National Library of Medicine tracks interactions across more
+than fourteen hundred approved medications. The number of possible pairwise drug
+interactions is already close to a million. The number of three-way interactions is
+over four hundred million. No physician can hold that space in their head. No clinical
+trial can test it. And every new drug approval makes it bigger. This is the
+interaction mechanism at full scale."""),
 
-        ('body', """The third mechanism is <b>network amplification</b>. Modern solutions
-operate in highly connected networks (biological, social, digital, economic) that
-transmit both the benefits and the problems of any intervention with extraordinary
-speed and reach. A financial instrument created in a single bank in New York can,
-within eighteen months, trigger a global economic crisis affecting hundreds of millions
-of people who have never heard of the instrument. A social media algorithm tweak made
-by an engineer in Menlo Park can, within weeks, shift the political discourse of
-dozens of nations. A new respiratory pathogen arising in a single wet market can,
-within four months, shut down every economy on earth."""),
+        ('body', """The third mechanism is <b>network reach</b>. Modern solutions sit
+on top of networks — biological, social, digital, economic — that move things fast and
+far. A financial instrument designed in a single Manhattan bank triggers, eighteen
+months later, a crisis on every continent. An algorithm change made by an engineer
+in Menlo Park shifts the political discourse of dozens of countries in a few weeks.
+A new respiratory virus emerging in one market shuts down every economy on earth in
+four months."""),
 
-        ('body', """Network amplification means that the problems generated by a solution
-are not confined to the system the solution was designed to address. They propagate
-along every network connection to every adjacent domain. The automobile was designed to
-solve transport. Its cascade problems penetrated urban planning, atmospheric chemistry,
-geopolitics (oil dependency), public health (sedentary lifestyles, air pollution), and
-global economics. The internet was designed for information exchange. Its cascades now
-pervade democracy, mental health, criminal justice, national security, and the economics
-of attention. This propagation is not metaphorical; it follows the mathematical laws
-of network diffusion, with amplification proportional to network connectivity."""),
+        ('body', """Reach means that the problems a solution creates do not stay where
+the solution was deployed. They travel. The automobile was a transport solution; its
+cascades reached urban planning, atmospheric chemistry, geopolitics, public health,
+and the climate of the entire planet. The internet was an information-exchange
+solution; its cascades reach into democracy, mental health, criminal justice, national
+security, and the economics of attention. This is not metaphor. It follows the same
+mathematics that describes how a virus spreads on a network: the more connected the
+network, the further the cascade travels and the faster it gets there."""),
 
         ('section', 'Murphy\'s Law Is Not a Joke'),
-        ('body0', """Most people treat Murphy's Law — "Anything that can go wrong will go
-wrong", as a sardonic joke, a piece of folk wisdom too cynical to take seriously in
-an age of engineering precision. They are wrong. Murphy's Law is a mathematical
-observation disguised as humour. It is a special case of the cascade framework, and it
-is quantitatively supported by decades of reliability engineering data."""),
+        ('body0', """Most people treat Murphy's Law — <i>anything that can go wrong, will
+go wrong</i> — as a sardonic joke, folk wisdom too cynical to take seriously in an age
+of precision engineering. They are wrong. Murphy's Law is a mathematical observation
+disguised as a joke. And it is the cascade in its most compact form."""),
 
-        ('body', """Edward Murphy Jr. formulated his law in 1949 while working on US Air
-Force deceleration experiments. A colleague had connected a set of sensors in the only
-possible wrong configuration. Murphy observed that in a system with enough components,
-every possible failure mode will eventually be realised, because the probability of
-at least one failure approaches certainty as the number of components grows. This is
-not pessimism. It is probability theory."""),
+        ('body', """Edward Murphy Jr. coined the law in 1949 during US Air Force
+deceleration experiments. A technician had connected a set of sensors in the only
+possible wrong configuration. Murphy's observation: in a system with enough
+components, every possible failure mode will eventually be realised, because the
+probability of at least one failure approaches certainty as the components multiply.
+This is not pessimism. It is probability theory."""),
 
-        ('body', """If each component of a system has even a small chance of failure, and
-the components fail independently of one another, then the probability that the whole
-system works perfectly drops sharply as components are added. A system of a hundred
-components, each with a 1% failure rate, has under a 40% chance of working perfectly
-at any moment. A system of a thousand components has effectively no chance at all.
-The system is virtually certain to fail somewhere. Adding solutions — which means
-adding components — does not escape this logic. Each new solution multiplies the
-failure surface."""),
+        ('body', """Here is the arithmetic. If every component of a system has even a
+small chance of failure, and the components fail independently, then the probability
+that the whole system works perfectly drops sharply as components are added. A system
+of a hundred components, each with a 1% failure rate, has under a 40% chance of working
+perfectly at any moment. A system of a thousand components has effectively no chance
+at all. Adding solutions means adding components, and adding components escapes none
+of this. Every new solution makes the failure surface larger."""),
 
-        ('body', """The same logic applies to social and policy systems, though the
-"components" are incentives, actors, and feedback loops rather than mechanical parts.
-When the British administrators introduced the cobra bounty, they added a new
-incentive component to the colonial economy of Delhi. That component interacted with
-existing components, the entrepreneurial instincts of Delhiites, the economics of
-animal husbandry, the distance between government offices and the street, in ways
-they had not modelled. The failure was not in their competence. It was in the
-combinatorial complexity of the system they were intervening in."""),
+        ('body', """The same logic runs through social systems, except the "components"
+are incentives, actors, and feedback loops rather than mechanical parts. When the
+British administrators added the cobra bounty to Delhi, they introduced a new
+incentive into a system that already contained the entrepreneurial instincts of the
+city, the economics of animal husbandry, and the physical distance between government
+offices and the street. The new incentive interacted with all of them in ways the
+administrators had not modelled. The failure was not in their competence. It was in
+the combinatorial complexity of the system they were stepping into."""),
 
         ('section', 'The Exponential Trap'),
-        ('body0', """The most important fact about cascade problems is not that
-they exist (every thoughtful person suspects they do) but how quickly the <i>ways</i> they
-can arise pile up. Linear growth is manageable. Quadratic growth is uncomfortable. The
-near-doubling growth of <i>possible</i> interactions is the kind that overwhelms — and even a
-small, fixed fraction of it turning harmful is enough to outrun our fixes."""),
+        ('body0', """The point of this chapter — the one worth carrying out of it — is
+not that cascade problems exist. Every thoughtful reader already suspects they do. The
+point is how quickly the <i>ways</i> they can arise pile up. Linear growth is
+manageable. Quadratic growth is uncomfortable. The near-doubling growth of possible
+interactions is the kind that overwhelms — and even a small, fixed fraction of it
+turning harmful is enough to outrun our fixes."""),
     ]
 
     for kind, text in paras:
@@ -594,8 +555,8 @@ of four, and so on, all the way up to interacting with all of them at once."""),
 
         ('body', """The number of these possible interaction patterns roughly doubles with
 every new part added. Most of the patterns are harmless. But complex systems guarantee
-that a non-trivial fraction will not be — and a small fraction of a doubling-with-each-
-step number is, very quickly, a large number of real problems. This is the structural
+that a non-trivial fraction will not be — and a small fraction of
+a doubling-with-each-step number is, very quickly, a large number of real problems. This is the structural
 reason why complex systems get worse faster than they get bigger."""),
 
         ('body', """This is not theory. Software engineers know it as <i>integration
@@ -621,50 +582,47 @@ the failure spread through every connection at once. The bailout programmes that
 followed added more complexity, creating new interactions that are still being managed
 today."""),
 
-        ('section', 'Comparison: Murphy, Merton, Jevons, and Streisand'),
-        ('body0', """The cascade framework is not born in isolation. It belongs to a family
-of related observations made across different disciplines over the past century and a
-half. Understanding how these related ideas connect and differ helps to clarify what
-is distinctive about the cascade framework presented here."""),
+        ('section', 'Murphy, Merton, Jevons, Streisand'),
+        ('body0', """The cascade is not a new observation. Pieces of it have been written
+about for a century and a half, under different names, by people who saw their own
+corner of the problem clearly. Three are worth meeting briefly, because each captures
+something the cascade framework owes a debt to — and shows what the framework adds
+that none of them, on their own, do."""),
 
-        ('body', """<b>Merton's Unintended Consequences (1936):</b> The American sociologist
-Robert K. Merton was the first to provide a systematic academic treatment of the
-phenomenon. In his landmark 1936 paper in the <i>American Sociological Review</i>,
-Merton identified five sources of unintended consequences: ignorance, error, immediacy
-of interest (short-term thinking), basic values that mandate certain actions regardless
-of consequences, and self-defeating prophecies. Merton's framework is sociological —
-it explains the human factors that make unintended consequences likely. The cascade
-framework presented here is structural; it explains why
-unintended consequences are not merely likely but extremely hard to avoid in complex systems,
-largely regardless of the quality of human decision-making."""),
+        ('body', """<b>Merton's unintended consequences (1936).</b> The American
+sociologist Robert K. Merton was the first to put a name on the pattern. In a
+landmark paper in the <i>American Sociological Review</i>, he identified five reasons
+human action produces results no one wanted: ignorance, error, short-term thinking,
+values that compel action regardless of cost, and self-defeating prophecy. His
+framework is <i>sociological</i> — it explains the human factors that make unintended
+consequences likely. The cascade framework is structural. It explains why those
+consequences are not merely likely but extremely hard to avoid, even when the people
+involved are competent, well-informed, and honest."""),
 
-        ('body', """<b>Jevons Paradox (1865):</b> The economist William Stanley Jevons
-observed that improvements in the efficiency of coal-burning steam engines, rather
-than reducing coal consumption, actually increased it, because cheaper operation made
-coal-based industry more economically attractive, expanding its scale. This is a
-specific instance of cascade thinking: the solution (efficiency) creates a demand-side
-problem (rebound effect) that swamps the supply-side benefit. The Jevons Paradox
-applies wherever efficiency improvements lower the cost of an activity, which is most
-of the time. It is examined in detail in Chapter 6."""),
+        ('body', """<b>Jevons' paradox (1865).</b> William Stanley Jevons noticed that
+improving the efficiency of coal-burning engines did not reduce coal consumption — it
+increased it. Cheaper operation made coal-based industry more profitable, which
+expanded the market. This is the cascade in miniature: the solution (efficiency)
+creates a problem (more demand) that swamps the benefit. The pattern holds wherever
+efficiency lowers the cost of an activity, which is most places. Chapter 6 returns to
+Jevons in full."""),
 
-        ('body', """<b>The Streisand Effect:</b> In 2003, the singer Barbra Streisand
-attempted to suppress aerial photographs of her Malibu home by suing a photographer.
-Before the lawsuit, the photograph had been downloaded six times. After the lawsuit —
-which drew massive media attention to the very image she sought to suppress; it was
-downloaded over 420,000 times in a month. The Streisand Effect is a cascade problem
-in the domain of information: the solution (suppression) amplifies the very problem
-(publicity) it was designed to solve. The network amplification mechanism makes this
-not just possible but predictable."""),
+        ('body', """<b>The Streisand Effect (2003).</b> The singer sued a photographer
+to suppress aerial photographs of her Malibu home. Before the lawsuit, the photograph
+had been downloaded six times. After the lawsuit drew worldwide attention to it, it
+was downloaded over 420,000 times in a month. The Streisand Effect is the cascade in
+the domain of information: the solution (suppression) amplifies the very thing it was
+designed to suppress. Network reach makes that outcome predictable, not surprising."""),
 
-        ('body', """What unites all of these observations is a single structural feature:
-the solution modifies the system in a way that creates new problems, and the new
-problems are often <i>caused by the same mechanism that makes the solution work</i>.
-The antibiotic kills bacteria by disrupting their cell wall synthesis, and exactly
-this selective pressure drives the evolution of resistant strains. The cobra bounty
-creates an economic incentive to eliminate cobras, and exactly this incentive makes
-cobra breeding profitable. The efficiency improvement makes coal cheaper to use — and
-exactly this cost reduction expands the market for coal. The cascade is built into the
-solution at the level of mechanism, not at the level of implementation error."""),
+        ('body', """What ties these three together — and what every chapter in this
+book will return to — is a single structural fact: the solution creates new problems
+through <i>the same mechanism that makes the solution work</i>. Antibiotics kill
+bacteria by disrupting cell-wall synthesis, and that exact selective pressure
+breeds resistant strains. The cobra bounty rewards killing cobras, and that exact
+reward makes cobra breeding profitable. Efficiency makes coal cheaper to use, and that
+exact cheapness expands the market for coal. The cascade is not a bug bolted onto the
+solution after the fact. It is built into the solution at the level of the mechanism
+itself."""),
 
         ('section', 'A Brief Taxonomy of Cascade Types'),
         ('body0', """Not all cascades are alike. Before proceeding to the evidence in Part II,
@@ -743,510 +701,66 @@ in public, over decades."""),
     story.append(SP(14))
 
     story.append(SP(22))
-    story.append(P('Why Previous Theories Are Insufficient', S['section']))
+    story.append(P('What the Cascade Framework Adds', S['section']))
     story.append(SP(14))
     story.append(P(
-        'The cascade theory is not the first attempt to systematise the observation '
-        'that solutions generate problems. Several well-developed frameworks exist, '
-        'each of which captures a piece of the phenomenon. Understanding why each '
-        'is insufficient (and what the cascade theory adds) is essential for '
-        'establishing the theory\'s contribution rather than its repetition.',
+        'There are three older bodies of work that look, at a glance, as if they '
+        'have already done this job: systems dynamics, complexity theory, and risk '
+        'management. They have not. Each captures one slice of the cascade. Each '
+        'leaves out the slice that matters most.',
         S['body0']))
     story.append(SP(14))
     story.append(P(
-        'Systems dynamics, developed by Jay Forrester at MIT in the 1950s and '
-        'popularised by the Club of Rome\'s "Limits to Growth" (1972), models '
-        'complex systems as networks of stocks, flows, and feedback loops. It '
-        'correctly identifies that interventions in complex systems generate '
-        'unexpected dynamics through feedback. The standard systems dynamics '
-        'approach, however, typically models a fixed system structure and '
-        'examines how different policies affect that structure\'s dynamics. '
-        'The cascade framework adds to systems dynamics by addressing a question '
-        'it does not ask: what happens to the complexity of the system structure '
-        'itself as the number of solutions deployed into it grows? Systems '
-        'dynamics takes the structure as given; cascade theory explains how the '
-        'structure evolves.',
+        '<b>Systems dynamics</b> — Jay Forrester at MIT in the 1950s, made famous '
+        'by the Club of Rome\'s <i>Limits to Growth</i> in 1972 — models complex '
+        'systems as networks of stocks, flows, and feedback loops. It is right that '
+        'interventions in complex systems generate surprises through feedback. But '
+        'it takes the structure of the system as given and asks how policies move '
+        'inside that structure. The cascade framework asks the question one floor '
+        'down: what happens to the structure itself as the number of solutions '
+        'sitting on top of it grows? Systems dynamics watches the dynamics. Cascade '
+        'thinking watches the architecture changing under them.',
         S['body']))
     story.append(SP(14))
     story.append(P(
-        'Complexity theory, in the tradition of Santa Fe Institute researchers '
-        'Stuart Kauffman, W. Brian Arthur, and others, models complex adaptive '
-        'systems and their emergent behaviours. Complexity theory correctly '
-        'identifies that solutions operating in complex adaptive systems generate '
-        'emergent effects that cannot be predicted from the properties of the '
-        'components. Its primary contribution is the concept of emergence: '
-        'properties that arise at the system level from component-level '
-        'interactions. The cascade framework identifies a specific category of '
-        'emergent property (cascade problems) and offers a quantitative estimate '
-        'of its growth rate. Where complexity theory says "emergent '
-        'properties are possible and sometimes surprising," cascade thinking says '
-        '"cascade problems are pervasive and can grow combinatorially."',
+        '<b>Complexity theory</b> — Stuart Kauffman, W. Brian Arthur, and the rest '
+        'of the Santa Fe tradition — studies complex adaptive systems and the '
+        'emergent properties that arise when their components interact. It is right '
+        'that the behaviour of these systems cannot be predicted from the behaviour '
+        'of their parts. But complexity theory tends to be descriptive: it tells '
+        'you emergence is real, sometimes surprising, sometimes orderly, sometimes '
+        'chaotic. Cascade thinking is narrower and more committal. It says: there '
+        'is a specific kind of emergent property — cascade problems — that grows '
+        'combinatorially with the number of solutions in the system, and you can '
+        'estimate the rate before deployment.',
         S['body']))
     story.append(SP(14))
     story.append(P(
-        'Risk management, in the tradition of financial economics and engineering '
-        'reliability theory, addresses the probability and magnitude of adverse '
-        'outcomes. It uses techniques like fault tree analysis, failure mode '
-        'and effects analysis, and value-at-risk to quantify the risks of '
-        'specific systems or portfolios. Risk management correctly identifies '
-        'that adverse outcomes should be planned for. Its primary limitation, '
-        'from the cascade perspective, is scope: it assesses the risks of the '
-        'system as designed, not the risks generated by the system\'s interaction '
-        'with other solutions in the ecosystem. A drug\'s risk management '
-        'assessment evaluates the risk of adverse events in the treated patient '
-        'population; it does not evaluate the risk of the drug\'s prescribing '
-        'incentive structure generating an epidemic of misuse. The cascade '
-        'framework extends risk management beyond the system boundary to the '
-        'full ecosystem of interactions.',
+        '<b>Risk management</b> — financial economics, engineering reliability, '
+        'fault-tree analysis, value-at-risk — quantifies the chance and the size of '
+        'bad outcomes. It is right that bad outcomes deserve to be planned for. Its '
+        'limit is its scope. It assesses the risk of a system as designed, not the '
+        'risks generated by that system colliding with everything already around '
+        'it. A drug\'s risk-management dossier estimates adverse events in treated '
+        'patients. It does not estimate the chance that the drug\'s prescribing '
+        'incentive structure produces an epidemic. The cascade framework pushes '
+        'the boundary outward: from the system to the ecosystem.',
         S['body']))
     story.append(SP(14))
     story.append(P(
-        'The cascade theory\'s unique contribution is the combination of three '
-        'elements that no previous framework provides simultaneously: (1) an '
-        'explicit structural argument for why cascade problem generation can grow '
-        'combinatorially, far faster than the number of deployed solutions, largely '
-        'regardless of the quality of individual solutions; (2) a quantitative framework (the CRI) for '
-        'estimating cascade risk before deployment; and (3) an explicit '
-        'treatment of the ecosystem, the full set of existing solutions and '
-        'their interactions, as the determinant of cascade severity. This '
-        'combination allows the theory to do what its predecessors cannot: '
-        'predict, before deployment, not just whether a solution will fail '
-        'but how the failure will propagate and at what rate.',
+        'What the cascade framework actually adds is the combination of three '
+        'things no earlier framework provides at once: a structural argument for '
+        'why cascade problems grow far faster than the solutions that generate '
+        'them; a single risk score (the Cobra Score, formally the CRI) that can '
+        'be estimated before deployment; and an explicit treatment of the '
+        'ecosystem — every existing solution and every interaction — as the '
+        'determinant of how bad the cascade gets. Together, those three move the '
+        'question from "will this solution fail?" to "how far and how fast will '
+        'the failure spread, and what is the smallest version of the deployment '
+        'that finds out?"',
         S['body']))
     story.append(SP(14))
 
-    # ── Chapter 1 extended ─────────────────────────────────────────────────
-    story.append(SP(18))
-    story.append(P('Five Historical Cases: The Cascade in Four Centuries', S['section']))
-    story.append(P(
-        'The mathematical argument above is most convincing when grounded in '
-        'historical evidence. The following five cases are drawn from different '
-        'centuries, different domains, and different types of solution, '
-        'agricultural, biological, technological, financial, and regulatory. '
-        'Each demonstrates the full cascade structure: an original problem, '
-        'a genuine solution, a first-order cascade, and a second-order cascade '
-        'that is still active. Together they establish that the cascade is '
-        'not a modern phenomenon, not a feature of capitalism or technology, '
-        'and not a consequence of insufficient intelligence in the solution '
-        'designers. It is a permanent feature of problem-solving in complex systems.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>The Enclosure Movement (England, 1750-1830).</b> The problem: '
-        'common land farming generated the "tragedy of the commons" (Hardin\'s '
-        'formulation, but the phenomenon predates it) — collective overuse of '
-        'shared pasture. The solution: enclosure, converting common land to '
-        'privately owned fields, which would be managed by profit-motivated '
-        'owners who internalised the costs of overuse. The solution worked '
-        'for its primary objective: enclosed land was farmed more productively, '
-        'contributing to the agricultural revolution that fed England\'s growing '
-        'industrial population. The first-order cascade: displacement of hundreds '
-        'of thousands of rural workers who had depended on common land access, '
-        'driving them into industrial cities that were entirely unprepared '
-        'for their arrival, generating the squalor, disease, child labour, '
-        'and political unrest of early industrial urbanism. The second-order '
-        'cascade: the political response to industrial urbanism (Chartism, '
-        'trade unionism, eventually the Labour Party) restructured British '
-        'politics for the next century. The solution to the tragedy of the '
-        'commons created the conditions for the tragedy of industrial capitalism.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>Pasteur\'s Germ Theory (France, 1857-1877).</b> The problem: '
-        'infectious diseases killed at rates that seemed inevitable, because '
-        'they were attributed to miasmas (bad air) or spontaneous generation '
-        'of disease within the body. Pasteur\'s demonstration that specific '
-        'microorganisms cause specific diseases transformed medicine: it enabled '
-        'the development of vaccines (rabies, anthrax), antiseptic surgical '
-        'technique (Lister), and eventually antibiotics. The first-order cascade: '
-        'germ theory\'s focus on specific microbial pathogens as the cause '
-        'of disease created a medical model that was exquisitely effective '
-        'at treating acute infectious disease and systematically less attentive '
-        'to the chronic, multi-factorial conditions: cardiovascular disease, '
-        'metabolic syndrome, cancer, depression, that would become the '
-        'dominant causes of morbidity and mortality as infectious disease '
-        'mortality declined. The second-order cascade: the biomedical model\'s '
-        'dominance generated a pharmaceutical industry optimised for single-target '
-        'drug development (the "magic bullet" paradigm), which created the '
-        'drug-drug interaction problem, the antibiotic resistance crisis, and '
-        'the marginalisation of preventive and environmental medicine. '
-        'Pasteur\'s solution to infectious disease is the founding cascade '
-        'of modern medicine.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>The Haber-Bosch Process (Germany, 1909-present).</b> The problem: '
-        'nitrogen fixation, converting atmospheric nitrogen to ammonia for '
-        'fertiliser was the binding constraint on global food production. '
-        'Without fixed nitrogen, crops cannot grow beyond what soil bacteria '
-        'can provide. By 1900, the world\'s population was approaching the '
-        'Malthusian limit imposed by this constraint. Fritz Haber and Carl '
-        'Bosch\'s industrial nitrogen fixation process, commercialised from '
-        '1913, broke the Malthusian constraint: synthetic fertiliser enabled '
-        'agricultural yields that could feed a global population of eight '
-        'billion people. Without the Haber-Bosch process, demographers estimate '
-        'that approximately half the world\'s current population could not '
-        'be supported by available agricultural land. The first-order cascade: '
-        'nitrogen runoff from synthetic fertiliser use has created over 400 '
-        'coastal "dead zones" globally, including the 22,000 square kilometre '
-        'dead zone in the Gulf of Mexico, where excess nitrogen drives algal '
-        'blooms that consume all dissolved oxygen and kill marine life. '
-        'The second-order cascade: the global population explosion enabled '
-        'by the Haber-Bosch process has itself generated cascades in resource '
-        'depletion, land use change, and climate forcing that are among the '
-        'most consequential challenges of the twenty-first century. The '
-        'solution to the problem of feeding humanity created the conditions '
-        'for the challenge of sustaining eight billion people on a finite '
-        'planet.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>The Glass-Steagall Repeal (United States, 1999).</b> The problem: '
-        'the Glass-Steagall Act of 1933, which separated commercial banking '
-        '(taking deposits, making loans) from investment banking (underwriting '
-        'securities, trading for own account), was seen by 1990s financial '
-        'institutions as an inefficiency that prevented American banks from '
-        'competing with European universal banks. The Gramm-Leach-Bliley Act '
-        '(1999) repealed the Glass-Steagall separation, allowing the combination '
-        'of commercial and investment banking that had been prohibited for '
-        '66 years. The solution worked for its stated purpose: US financial '
-        'institutions could now operate as universal banks, competing more '
-        'effectively in global markets. The cascade: the combination of '
-        'deposit-taking (which is implicitly guaranteed by the federal government) '
-        'with proprietary trading (which is inherently speculative) created '
-        'an incentive structure in which financial institutions could privatise '
-        'gains from trading and socialise losses through the deposit insurance '
-        'backstop. This moral hazard was the core mechanism of the 2008 '
-        'financial crisis: banks took on excessive risk knowing that the '
-        'government would not allow large financial institutions to fail. '
-        'The solution to the Glass-Steagall inefficiency created the '
-        'conditions for the largest financial cascade in modern history, '
-        'nine years after its passage.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>The Bluetooth Standard (1998-present).</b> The problem: '
-        'short-range wireless communication between devices required '
-        'proprietary, incompatible radio protocols, creating consumer friction '
-        'and limiting the market for wireless peripherals. The Bluetooth '
-        'standard, developed by Ericsson and five partner companies in 1994-1998, '
-        'solved this problem by creating a universal wireless protocol that '
-        'any manufacturer could implement. The solution was extraordinarily '
-        'successful: approximately five billion Bluetooth-enabled devices '
-        'are shipped annually as of 2024. The first-order cascade: Bluetooth '
-        'created a universal attack surface. Any device within approximately '
-        '100 metres of a Bluetooth-enabled device is potentially accessible '
-        'to an attacker exploiting Bluetooth vulnerabilities. Security '
-        'researchers have discovered over 100 significant Bluetooth '
-        'vulnerabilities since 2000, including BlueBorne (2017), which '
-        'could compromise billions of devices simultaneously without any '
-        'user interaction. The second-order cascade: the proliferation of '
-        'Bluetooth-enabled medical devices (pacemakers, insulin pumps, '
-        'hearing aids) created the possibility of lethal remote attacks on '
-        'medical implants, a cascade whose probability is low but whose '
-        'severity is unbounded. The standard designed for consumer convenience '
-        'has become part of the healthcare security crisis.',
-        S['body']))
-    story.append(SP(14))
-    story.append(callout(
-        '<b>Five Cases, One Pattern:</b> In each case: (1) the original '
-        'problem was real; (2) the solution genuinely worked for its primary '
-        'purpose; (3) the first-order cascade was foreseeable in retrospect '
-        'and arguably in advance; (4) the second-order cascade was not '
-        'foreseeable but followed necessarily from the first-order cascade '
-        'interacting with the existing system. This is the invariant structure '
-        'of the cascade across all domains and all centuries.',
-        S))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('Three Principles of Cascade Innovation', S['section']))
-    story.append(P(
-        'The historical and structural evidence of this chapter can be '
-        'condensed into three principles that summarise the theory '
-        'of cascade innovation. They are not theorems in a strict mathematical '
-        'sense, and they could in principle be overturned by sufficient evidence; '
-        'they are empirical generalisations, motivated by the structure of complex '
-        'systems and supported by the cases assembled in this book. They are called '
-        '"laws" below only loosely — in the folk tradition of Murphy\'s Law and '
-        'Goodhart\'s Law — not as formal results carrying the status of proof.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(theorem_box(
-        'First Principle of Cascade Innovation',
-        'Every solution to a problem in a complex system generates at least '
-        'one new problem. The expected number of new problems generated by '
-        'a solution grows with the connectivity of the system in which the '
-        'solution is deployed. In connected systems with more than a critical '
-        'number of existing solutions, the expected number of new problems '
-        'generated by each new solution exceeds one.',
-        S))
-    story.append(SP(14))
-    story.append(P(
-        'The First Principle is the qualitative statement of the central claim: '
-        'solutions generate problems. The "at least one" quantification '
-        'is conservative: empirically, most solutions in complex systems '
-        'generate multiple new problems, with the number increasing with '
-        'system complexity. The criticality condition identifies the phase '
-        'transition beyond which the cascade becomes explosive: in sparse '
-        'systems (few solutions, low connectivity), cascades remain bounded; '
-        'in dense systems (many solutions, high connectivity), cascades '
-        'exceed the system\'s solution-generation capacity.',
-        S['body']))
-    story.append(SP(14))
-    story.append(theorem_box(
-        'Second Principle of Cascade Innovation',
-        'The rate at which a solution ecosystem generates problems eventually '
-        'outruns the rate at which solutions can be deployed. No matter how '
-        'fast new solutions arrive — whether the rate grows linearly, '
-        'quadratically, or at any ordinary pace — the rate of new problems '
-        'will, sooner or later, exceed it.',
-        S))
-    story.append(SP(14))
-    story.append(P(
-        'The Second Principle is the statement of the long-run divergence between '
-        'problem generation and problem solution. It says that no matter how '
-        'fast we solve problems, as long as the solving rate is polynomial '
-        '(which all physically realised solution processes are), the cascade '
-        'generation rate eventually overtakes it. The "eventually" is important: '
-        'for small n (few solutions), polynomial solving can keep pace with '
-        'cascade generation. The crisis emerges as n grows large. Modern '
-        'civilisation is already in the large-n regime in most domains.',
-        S['body']))
-    story.append(SP(14))
-    story.append(theorem_box(
-        'Third Principle of Cascade Innovation',
-        'Cascade management interventions are themselves solutions deployed '
-        'into the solution ecosystem, and are therefore subject to the First '
-        'and Second Principles. There is no meta-level from which cascade management '
-        'can operate that is immune to cascade generation.',
-        S))
-    story.append(SP(14))
-    story.append(P(
-        'The Third Principle is the most philosophically significant and the most '
-        'easily overlooked. It says that the FDA, created to manage the '
-        'pharmaceutical cascade, is itself a solution that generates cascades '
-        '(drug approval delays, regulatory capture, pharmaceutical arbitrage). '
-        'The Basel Committee, created to manage the financial cascade, is '
-        'itself a solution that generates cascades (regulatory arbitrage, '
-        'shadow banking migration, procyclical capital requirements). The '
-        'WHO\'s antimicrobial resistance programme, created to manage the '
-        'antibiotic resistance cascade, is itself a solution that generates '
-        'cascades (institutional competition with national health agencies, '
-        'political contestation of its recommendations). The Third Principle means '
-        'that cascade management cannot be perfected; it can only be improved. '
-        'Every improvement generates new problems. This is not a reason to '
-        'abandon cascade management; it is the reason cascade management '
-        'must be continuous, adaptive, and humble.',
-        S['body']))
-    story.append(SP(18))
-
-    # ------------------------------------------------------------------ #
-    # EXTENDED: Game Theory and the Prisoner's Dilemma Cascade             #
-    # ------------------------------------------------------------------ #
-    story.append(SP(18))
-    story.append(P('Game Theory and the Strategic Cascade', S['section']))
-    story.append(P(
-        'Game theory, the mathematical framework for analysing '
-        'strategic interaction between rational agents, '
-        'developed by von Neumann and Morgenstern in '
-        '<i>Theory of Games and Economic Behavior</i> (1944) '
-        'and substantially extended by Nash (1950), '
-        'solved the problem of modelling rational '
-        'strategic behaviour. Before game theory, '
-        'economics had no systematic framework for '
-        'analysing situations where one actor\'s '
-        'optimal strategy depends on what other '
-        'actors do. Game theory provided this '
-        'framework and immediately revealed '
-        'a cascade: the rational individual '
-        'strategies identified by game theory '
-        'frequently produce collectively irrational '
-        'outcomes.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The Prisoner\'s Dilemma, formalised by Merrill Flood '
-        'and Melvin Dresher in 1950, is the archetype. '
-        'Two suspects, questioned separately, each face '
-        'the choice of cooperating with the other '
-        '(staying silent) or defecting (betraying). '
-        'The Nash equilibrium, the rational strategy '
-        'for each individual is to defect. But '
-        'if both defect, both receive worse outcomes '
-        'than if both had cooperated. The solution '
-        'to the problem of individual rationality '
-        'cascades into the problem of collective '
-        'irrationality. The Prisoner\'s Dilemma '
-        'is not merely an abstract puzzle; it '
-        'is the mathematical structure of antibiotic '
-        'resistance (each physician\'s rational '
-        'prescription generates collective resistance), '
-        'of climate change (each country\'s rational '
-        'energy use generates collective warming), '
-        'and of financial crises (each institution\'s '
-        'rational leverage generates collective fragility).',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'Nash\'s 1950 proof of the existence of equilibria '
-        'in general n-player games extended the solution '
-        'to the most general form of strategic interaction. '
-        'The cascade from Nash\'s theorem is the cascade '
-        'of game-theoretic applications. Nuclear deterrence '
-        'strategy was developed using game-theoretic '
-        'frameworks, and generated the nuclear arms race '
-        'as a Nash equilibrium in which both superpowers '
-        'maximised their arsenals (the dominant strategy) '
-        'while both would have preferred mutual disarmament. '
-        'Auction design, mechanism design, and market '
-        'design, fields that have produced billions '
-        'in economic value through telecommunications '
-        'spectrum auctions and organ matching systems '
-        '— are cascades from Nash\'s general equilibrium '
-        'framework. Each application generates its own '
-        'strategic cascade: spectrum auctions designed '
-        'to maximise government revenue generate '
-        'telecom market concentration; mechanism '
-        'design for financial markets generates '
-        'high-frequency trading strategies that '
-        'were not anticipated by the mechanism\'s '
-        'designers.',
-        S['body']))
-    story.append(SP(14))
-    story.append(callout(
-        '<b>The Nash Cascade:</b> Game theory solved the problem of '
-        'modelling rational strategic behaviour and immediately revealed '
-        'that rational individual strategies produce collectively irrational '
-        'outcomes (the Prisoner\'s Dilemma structure). This insight, '
-        'the cascade from the solution of individual rationality, '
-        'underlies every collective action problem: climate change, '
-        'antibiotic resistance, financial crises, arms races.',
-        S))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('Chapter 1 Synthesis: The Pattern Is the Message', S['section']))
-    story.append(P(
-        'The historical cases in this chapter span four centuries, '
-        'seven domains of human activity, and five continents. '
-        'They involve solutions ranging from agricultural '
-        'enclosure to wireless protocols, from steam engines '
-        'to game-theoretic auction design. In each case, '
-        'a solution was deployed to address a genuine problem; '
-        'the solution worked; and the working of the solution '
-        'generated new problems that were, in retrospect, '
-        'foreseeable from the solution\'s mechanism and '
-        'its interaction with the systems it entered.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The pattern has no exceptions in the historical record '
-        'of this book, not because exceptions do not exist, '
-        'but because solutions that do not cascade are solutions '
-        'whose cascades have not yet manifested, whose cascades '
-        'are too small to have attracted historical attention, '
-        'or whose cascades were contained by cascade-aware '
-        'design in the rare instances where such design was '
-        'applied. The Montreal Protocol, smallpox eradication, '
-        'and coordinated disclosure are the exceptions that '
-        'prove the rule: they succeeded in managing their '
-        'cascades precisely because they were designed with '
-        'cascade management as an explicit objective, '
-        'by institutions with the authority and resources '
-        'to enforce cascade-limiting behaviours across '
-        'the relevant actor population.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The message of this chapter is not "do not solve problems." '
-        'It is "know what you are doing when you solve problems." '
-        'Specifically: know that the cascade is coming; know how '
-        'to estimate its magnitude; know what early warning signs '
-        'to monitor; know what institutional mechanisms to build '
-        'before deployment to manage the cascade when it arrives. '
-        'The chapters of this book provide the evidence that the '
-        'cascade is widespread, the reasoning that shows why it '
-        'is so hard to avoid, and the frameworks that show how it can '
-        'be managed. The case for cascade awareness rests not '
-        'on pessimism about human ingenuity but on respect for '
-        'the complexity of the systems our ingenuity operates in.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('Complexity Theory and the Limits of Anticipation', S['section']))
-    story.append(P(
-        'A final pillar of the theoretical case — this time for the '
-        'unpredictability of cascades — comes from computational complexity theory. '
-        'The question "can we, in principle, fully anticipate '
-        'the cascade from a given solution?" has a formal '
-        'answer that is deeply sobering: for most realistic '
-        'classes of solution-problem interaction, the answer '
-        'is provably no.',
-        S['body0']))
-    story.append(P(
-        'Rice\'s theorem (1953) establishes that for any '
-        'non-trivial semantic property of a computer program '
-        '— that is, any property that is true of some programs '
-        'and false of others; there is no general algorithm '
-        'that can determine whether an arbitrary program has '
-        'that property. This is a direct corollary of Turing\'s '
-        'undecidability result, and it implies that the general '
-        'problem of predicting the behaviour of an arbitrary '
-        'software system is computationally undecidable. '
-        'Software solutions (which are programs) '
-        'therefore have cascade properties that cannot '
-        'in general be predicted by any algorithm, '
-        'however sophisticated. The limits on software '
-        'cascade prediction are not engineering constraints '
-        'to be overcome by better tools; they are '
-        'mathematical constraints established by the '
-        'fundamental theory of computation.',
-        S['body']))
-    story.append(P(
-        'For non-software solutions, the equivalent '
-        'complexity-theoretic constraints arise from the '
-        'NP-hardness of the optimisation problems that '
-        'cascade prediction requires. Predicting the '
-        'full cascade from a solution deployment in a '
-        'complex network requires enumerating the '
-        'interactions between the solution and every '
-        'element of the network, which is an exponential-time '
-        'computation for networks of realistic size. '
-        'No polynomial-time approximation algorithm for '
-        'this problem is known, and the P ≠ NP conjecture '
-        '(if true, as almost all complexity theorists believe) '
-        'implies that none exists. The cascade prediction '
-        'problem is, in the formal sense, intractable: '
-        'it can be approximated, but not solved exactly, '
-        'for any but the smallest network instances.',
-        S['body']))
-    story.append(P(
-        'This formal intractability does not mean cascade management '
-        'is impossible; it means it is inherently approximate. '
-        'The CRI formula is an approximation; the five-stage '
-        'trajectory is a heuristic; the design principles '
-        'of Chapter 12 are rules of thumb that reduce '
-        'cascade risk without eliminating it. This is '
-        'exactly the right kind of tool for an intractable '
-        'problem: not an exact solution, but a principled '
-        'approximation that is better than no approximation. '
-        'Weather forecasters cannot predict the weather '
-        'exactly beyond a few days, but meteorology is '
-        'not useless — probabilistic forecasts with '
-        'quantified uncertainty are enormously valuable '
-        'even though they are not exact. Cascade theory '
-        'occupies the same epistemic position: '
-        'principled approximation of an inherently '
-        'uncertain process, delivering useful '
-        'probabilistic guidance despite formal '
-        'undecidability at the exact solution level.',
-        S['body']))
-
-    story.append(SP(18))
-
-    story.append(SP(14))
     story.append(PageBreak())
     return story
 
@@ -1263,20 +777,20 @@ def chapter2(S):
 
     paras = [
         ('section', 'The Bias of Now'),
-        ('body0', """The cascade is always there. So why don't we see it? The answer lies in
-a collection of cognitive biases that are not pathologies of the uneducated mind — they
-are features of the human brain that served our species well in the environments where
-we evolved, and that serve us catastrophically badly in the complex systems we have
-built around ourselves."""),
+        ('body0', """If the cascade is always there, why don't we see it? The answer is not
+that we are stupid. The answer is that the human brain is wired with a handful of biases
+that served us beautifully in the environments where we evolved, and serve us
+catastrophically badly in the complex systems we now build. We do not have a cascade
+problem because we lack the right people. We have a cascade problem because the people
+we have run on cognitive hardware that was never designed for this."""),
 
-        ('body', """The most fundamental of these is <b>temporal discounting</b>: the
+        ('body', """The most basic of those biases is <b>temporal discounting</b> — the
 tendency to value immediate benefits more than equivalent future benefits, and to
-discount future costs relative to equivalent present costs. This is not irrational in
-evolutionary terms. In an environment where you might not live to see next month, it
-makes perfect sense to prioritise the food you can eat today over the food that might
-be available next spring. But in a world where the consequences of a policy decision
-may take a decade to fully manifest, and where those consequences may affect people
-who are not yet born — temporal discounting is a recipe for systematic error."""),
+discount future costs against equivalent present costs. This is not irrational in
+evolutionary terms. If you might not live to see next month, prioritising the food on
+the table over the food you could grow in spring is the right move. But in a world
+where a policy decision may take a decade to fully play out, and where the consequences
+land on people who are not yet born, the same wiring is a recipe for systematic error."""),
 
         ('body', """The classic demonstration is the marshmallow test: children offered one
 marshmallow now or two marshmallows in fifteen minutes show strong preferences for
@@ -1310,13 +824,13 @@ marketing and over-prescription. By that point, the cascade had been running for
 twenty years."""),
 
         ('section', 'The Dunning-Kruger Effect in Innovation'),
-        ('body0', """In 1999, David Dunning and Justin Kruger published a study showing that
-incompetent individuals systematically overestimate their own competence, and that
-highly competent individuals systematically underestimate theirs. The mechanism is
-elegant: accurate self-assessment requires the same cognitive skills as the activity
-being assessed. If you lack those skills, you also lack the ability to perceive your
-lack. This is the Dunning-Kruger effect, and it maps with uncomfortable precision onto
-the pattern of innovation cascades."""),
+        ('body0', """In 1999, David Dunning and Justin Kruger published a study showing
+something that should have been more unsettling than it was. Incompetent people
+systematically overestimate their own competence. Highly competent people systematically
+underestimate theirs. The mechanism is elegant. Accurate self-assessment requires the
+same cognitive skills as the activity being assessed. If you lack those skills, you also
+lack the ability to perceive that you lack them. This is the Dunning-Kruger effect, and
+it maps with uncomfortable precision onto the pattern of innovation cascades."""),
 
         ('body', """The innovator who introduces a solution to a complex system must, to
 accurately assess its cascade risks, understand the system into which the solution is
@@ -1340,12 +854,13 @@ that each made sense within its own domain. The catastrophe emerged from the
 interactions between domains, exactly where the Dunning-Kruger effect is most
 dangerous."""),
 
-        ('section', 'Institutional Incentives to Ignore Cascades'),
-        ('body0', """Even when individual actors perceive cascade risks, institutional
-incentive structures routinely suppress the information. This is the third layer of
-cascade blindness, and in many ways the most important, because it is the layer that
-most directly explains why we repeat the same mistakes across institutions, across
-generations, and across cultures."""),
+        ('section', 'Institutions That Pay People to Look Away'),
+        ('body0', """Even when individuals do see the cascade coming, the institutions they
+work inside routinely punish them for saying so. This is the third layer of cascade
+blindness, and in many ways the most important — because it is the layer that explains
+why the same mistakes keep being made across institutions, across generations, across
+continents. It is not that no one knew. It is that the people who knew were not the
+people who got rewarded for knowing."""),
 
         ('body', """Consider the incentive structure of pharmaceutical drug development.
 A company invests billions of dollars in a new compound over a decade of development.
@@ -1648,6 +1163,7 @@ the level of systemic understanding they possessed at the time of intervention."
         'from the inventor, the physician '
         'from the pharmacologist.',
         S['body']))
+    story.append(PageBreak())
     return story
 
 

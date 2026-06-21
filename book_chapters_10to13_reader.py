@@ -32,7 +32,7 @@ def fig_cri_comparison():
         ax.set_xticklabels(domains, fontsize=8)
         ax.set_ylabel('Mean CRI Score (0–10)')
         ax.set_ylim(0, 11)
-        ax.set_title('Cascade Risk Index Comparison Across Domains')
+        ax.set_title('Cobra Score Comparison Across Domains')
         for bar, val in zip(bars, cri_total):
             ax.text(bar.get_x() + bar.get_width()/2, val + 0.2,
                     f'{val:.1f}', ha='center', fontsize=9)
@@ -330,7 +330,7 @@ are."""),
         'structural mechanism (supercritical network topology) explains both the '
         'eighteen-month financial crisis and the forty-eight-hour misinformation bloom: '
         'the network is the same; only the solution type changes the baseline '
-        'propagation rate λ.',
+        'propagation rate.',
         S['body']))
     story.append(SP(14))
     story.append(P(
@@ -559,57 +559,60 @@ def chapter11(S):
     story += [SP(12)]
 
     paras = [
-        ('section', 'The Cascade Risk Index'),
-        ('body0', """Theory is valuable precisely to the extent that it generates practical
-tools. The mathematical framework of Chapter 10 translates directly into a practical
-metric for evaluating the cascade risk of a proposed solution before it is deployed:
-the Cascade Risk Index (CRI). One caution belongs before any number appears: the CRI is
-not a validated instrument that measures a real quantity, and it has not yet been tested
-prospectively. It is a structured checklist — a disciplined way of surfacing the cascade
-risks most commonly missed in conventional impact assessments. Its value lies in the
-questions it forces a team to ask, not in the digits it returns. Every worked score in
-this chapter is a retrospective illustration of the procedure, computed with the outcome
-already known; none of it is evidence that the procedure can predict. A genuine test would
-be prospective — scoring solutions before their fates are known and checking the
-calibration years later — and that test has not been run."""),
-
-        ('body', """The Cascade Risk Index is the framework\'s headline output: a single
+        ('section', 'The Cobra Score'),
+        ('body0', """A theory worth having generates a tool worth using. The framework of
+Chapter 10 becomes one here. It is called, formally, the Cascade Risk Index. It is
+called, in this book, the Cobra Score. Same instrument, two names — one for academic
+citation, one a reader can remember at the dinner table. The Cobra Score is a single
 number between 0 and 1 that summarises the cascade risk of deploying a given solution
-into a given ecosystem. The number combines, in a single score, four ingredients: how
-heavily the solution tends to generate problems (its cascade coefficient), how complex
-it is (how many domains it touches), how broadly it reaches (its network connectivity),
-and how strongly it interacts with the solutions already in the ecosystem (the
-interaction profile)."""),
+into a given system. Before any of the numbers in this chapter are read, one caution
+belongs at the front. The Cobra Score is not a validated instrument and has not been
+tested prospectively. It is a structured checklist — a disciplined way of surfacing the
+cascade risks that conventional impact assessments routinely miss. Its value is in the
+questions it forces a team to ask, not in the digits it returns. Every worked score in
+this chapter is a retrospective illustration, computed with the outcome already known.
+None of it is evidence that the score can predict. A real test would be prospective —
+score the solution, ship it, check the calibration years later — and that test has not
+yet been run."""),
 
-        ('body', """The interpretation of the score is straightforward. A score below 0.3
-means the cascade risk is low and standard monitoring is enough. A score between 0.3
-and 0.6 means moderate risk: enhanced monitoring and an explicit cascade response
-plan are required. A score above 0.6 means high risk: the design should be revisited
-before deployment. The number itself is not magical — it is the discipline of
-computing it that matters, because it forces a structured conversation about cascade
-risk <i>before</i> the solution is shipped. The full mathematical form of the index
-is in the underlying research paper."""),
+        ('body', """The Cascade Risk Index — informally, <i>the Cobra Score</i>, after the
+parable that opened the book — is the framework's headline output: a single number between
+0 and 1 that summarises the cascade risk of deploying a given solution into a given
+ecosystem. The number combines four ingredients into one score: how heavily the solution
+tends to generate problems (its cascade coefficient), how complex it is (how many domains
+it touches), how broadly it reaches (its network connectivity), and how strongly it
+interacts with the solutions already in the ecosystem (the interaction profile)."""),
 
-        ('body', """Computing the CRI requires estimating four quantities: the cascade
-coefficient cascade coefficient, the complexity measure the solution complexity, the network connectivity reach, and
-the interaction terms the domain overlap and the interaction amplification for each existing solution sᵢ in the
-ecosystem. In practice, these can be estimated from domain expertise, historical
-analogues, and structural analysis of the system. The estimates will be imprecise —
-but imprecise CRI estimates are still more informative than the absence of any cascade
-assessment, which is the current standard in most domains."""),
+        ('body', """The interpretation is straightforward. A score below 0.3 means cascade
+risk is low and standard monitoring is enough. Between 0.3 and 0.6 means moderate risk:
+enhanced monitoring and an explicit cascade response plan are required. Above 0.6 means
+high risk: the design should be revisited before deployment. The number itself is not
+magical — it is the discipline of computing it that matters, because it forces a structured
+conversation about cascade risk <i>before</i> the solution is shipped. The full
+mathematical form of the index is in the underlying research paper."""),
 
-        ('body', """To illustrate: applying the CRI framework retrospectively to OxyContin's
-1995 FDA review would have identified high values of complexity (opioids affect pain management,
+        ('body', """Computing the Cobra Score requires estimating four quantities: the
+cascade coefficient (how readily the solution turns into new problems), the solution's
+complexity (how many domains it touches), its network reach (how many other nodes it
+connects to), and its interaction profile with the solutions already in the ecosystem
+(both the degree of domain overlap and the amplification when their effects combine).
+In practice, these can be estimated from domain expertise, historical analogues, and
+structural analysis of the system. The estimates will be imprecise — but imprecise
+Cobra Scores are still more informative than the absence of any cascade assessment,
+which is the current standard in most domains."""),
+
+        ('body', """To illustrate: applying the Cobra Score retrospectively to OxyContin's
+1995 FDA review would have identified high complexity (opioids touch pain management,
 addiction medicine, pharmacy, primary care, emergency medicine, psychiatry, and law
-enforcement, a large domain impact set), high N (the primary care prescribing system
-connects every US physician to every US patient), and high interaction amplification (the incentive structure
-of pharmaceutical marketing and prescribing remuneration were positively correlated
-with each other and with opioid over-prescription; they amplified rather than
-mitigated each other). The CRI would have flagged high cascade risk and called for
-redesign: specifically, for restrictions on prescribing context, mandatory addiction
-screening, and real-time prescription monitoring systems, before the drug was deployed
-into the general prescribing system. None of these controls were in place in 1995.
-All of them were implemented, reactively, by 2010, after the cascade had generated
+enforcement — a very large domain set), high reach (the primary-care prescribing system
+connects every US physician to every US patient), and a strongly amplifying interaction
+profile (the incentive structures of pharmaceutical marketing and prescribing remuneration
+were positively correlated with each other and with opioid over-prescription; they
+amplified rather than mitigated each other). The Cobra Score would have flagged high
+cascade risk and called for redesign: restrictions on prescribing context, mandatory
+addiction screening, and real-time prescription monitoring systems, before the drug was
+deployed into the general prescribing system. None of these controls were in place in
+1995. All of them were implemented, reactively, by 2010, after the cascade had generated
 500,000 deaths."""),
 
         ('section', 'Early Warning Signals'),
@@ -660,7 +663,7 @@ thanks to the National Vulnerability Database and decades of patch analysis rese
         ('body', """A typical enterprise software system (say, a large commercial bank's
 core banking platform) contains approximately 10,000–50,000 third-party software
 components, each requiring periodic security patches. For a single patch applied to
-this system, we estimate: cascade coefficient ≈ 0.05 (the empirically observed 5% regression rate
+this system, we estimate: cascade coefficient of roughly 0.05 (the empirically observed 5% regression rate
 documented in the Android patch study); the solution complexity ≈ log₂(12) + H_interaction ≈ 8.5
 (assuming the patch affects security, authentication, data integrity, audit logging,
 compliance reporting, and several other functional domains); reach ≈ 5,000 (the number
@@ -687,158 +690,85 @@ confirms: software security is an ongoing cascade, not a solvable problem."""),
     # source research paper at researchgate.net/publication/395720779.
     story.append(SP(12))
     story.append(fig_to_image(fig_cascade_risk_index(), w=5.5*72, h=3.6*72))
-    story.append(P('Figure 11.1: The Cascade Risk Index formula and interpretation thresholds. '
-                   'The three input components: cascade coefficient cascade coefficient, system complexity the solution complexity, '
-                   'and network reach reach raised to the amplification exponent — multiply to produce a risk score. '
-                   'Scores above 0.6 indicate that the solution is likely to generate more '
-                   'problems than it resolves in its current form.', S['caption']))
+    story.append(P('Figure 11.1: The Cobra Score (formally, the Cascade Risk Index) and '
+                   'its interpretation thresholds. Three input components — the cascade '
+                   'coefficient (what share of a solution’s effects turn into new problems), '
+                   'the solution’s complexity, and its network reach — combine into a single '
+                   'score. Values above 0.6 indicate that the solution is likely to generate '
+                   'more problems than it resolves in its current form.', S['caption']))
 
     story.append(SP(18))
-    story.append(P('Computing the CRI in Practice: A Step-by-Step Guide', S['section']))
+    story.append(P('Computing the Cobra Score in Practice', S['section']))
     story.append(P('The CRI formula is straightforward to state and considerably more demanding to compute. The challenge lies not in the mathematics but in the estimation of its inputs, which requires a structured inquiry spanning multiple domains. The following six-step process translates the formula into a practical assessment methodology that can be executed by any interdisciplinary team with access to subject-matter experts in the relevant domains.', S['body0']))
     story.append(P('Step 1 is to define the solution boundary precisely. A cascade assessment can only be as good as its definition of what is being assessed. The solution boundary must specify: (a) the technical mechanism of the solution, exactly what it does to the system; (b) the deployment context: where, to whom, at what scale, through what channels the solution will be implemented; and (c) the time horizon of the assessment, the period over which cascade effects will be monitored. A common error in impact assessment is to define the solution too narrowly (assessing only the technical mechanism while ignoring deployment context) or to define the time horizon too short (assessing only the first-generation effects while ignoring cascade propagation). For OxyContin, a sound boundary definition would have included not just the drug molecule but the full prescribing system: the marketing strategy, the prescribing incentive structure, the monitoring systems in place, and the ten-year post-approval monitoring horizon.', S['body']))
-    story.append(P('Step 2 is to estimate the cascade coefficient cascade coefficient. cascade coefficient is the fraction of the solution\'s complexity that converts to new problems. It can be estimated through three complementary methods. First, reference class analysis: what fraction of solutions in the same category (pharmaceutical drugs, software security patches, government regulations) have historically generated cascade problems? For pharmaceutical drugs, this fraction is approximately 15-20% in the first decade post-approval, rising to 30-40% over a 20-year horizon (calculated from FDA adverse event reporting data). Second, mechanism analysis: what are the specific pathways through which this solution generates complexity? Each identified pathway contributes to cascade coefficient. Third, expert elicitation: ask domain experts from multiple relevant fields (not just the solution\'s primary domain) to estimate, independently, the probability that the solution generates each identified cascade type.', S['body']))
+    story.append(P('Step 2 is to estimate the cascade coefficient — the fraction of the solution\'s complexity that converts to new problems. It can be estimated through three complementary methods. First, reference class analysis: what fraction of solutions in the same category (pharmaceutical drugs, software security patches, government regulations) have historically generated cascade problems? For pharmaceutical drugs, this fraction is approximately 15-20% in the first decade post-approval, rising to 30-40% over a 20-year horizon (calculated from FDA adverse event reporting data). Second, mechanism analysis: what are the specific pathways through which this solution generates complexity? Each identified pathway contributes to the cascade coefficient. Third, expert elicitation: ask domain experts from multiple relevant fields (not just the solution\'s primary domain) to estimate, independently, the probability that the solution generates each identified cascade type.', S['body']))
     story.append(P('Step 3 is to estimate the <i>complexity</i> of the solution. Begin by listing every domain the solution affects — not just its primary domain of operation but every domain that will be touched by its deployment. For each domain, give a score from 0 (no impact) to 3 (major impact). The number of significantly impacted domains (those scoring 2 or higher) is the starting point for the complexity score. Then ask how unpredictable the interactions between those domains are: if the solution connects previously unconnected domains, the interaction unpredictability is high; if it operates within a single, well-mapped domain, it is low. The sum of the two gives a working complexity score. For a new pharmaceutical drug of moderate complexity, the score is typically between 3 and 5; for a major digital platform, between 5 and 9.', S['body']))
-    story.append(P('Step 4 is to estimate the network connectivity reach. reach measures the number of other components of the system that the solution directly connects to or interacts with. For a pharmaceutical drug, reach is approximately the number of patient-physician-pharmacist triads through which the drug will be prescribed in its first five years of deployment, for a widely used drug, this can reach 10\u2077 or more. For a software component, reach is the number of downstream software components that depend on it, measurable from dependency graphs. For a government regulation, reach is the number of regulated entities directly subject to the regulation multiplied by the number of regulatory interactions each entity will have per year. The key distinction is between point-to-point connectivity (where N grows linearly with users) and network effects (where N grows as the square of users, because each user can interact with every other user). Solutions with network effects have dramatically higher N values and correspondingly higher CRI scores.', S['body']))
+    story.append(P('Step 4 is to estimate the network connectivity reach. reach measures the number of other components of the system that the solution directly connects to or interacts with. For a pharmaceutical drug, reach is approximately the number of patient-physician-pharmacist triads through which the drug will be prescribed in its first five years of deployment, for a widely used drug, this can reach 10\u2077 or more. For a software component, reach is the number of downstream software components that depend on it, measurable from dependency graphs. For a government regulation, reach is the number of regulated entities directly subject to the regulation multiplied by the number of regulatory interactions each entity will have per year. The key distinction is between point-to-point connectivity (where the count of interactions grows linearly with users) and network effects (where the count of interactions grows as the square of users, because each user can interact with every other user). Solutions with network effects have dramatically higher reach values and correspondingly higher CRI scores.', S['body']))
     story.append(P('Step 5 is to estimate the <i>interaction profile</i> of the solution against each major existing solution in the ecosystem. Begin by listing the five to ten existing solutions with the highest potential for adverse interaction with the new one — typically those with the highest domain overlap. For each, estimate two numbers: the <i>overlap</i> (what fraction of affected domains do the two solutions share?) and the <i>amplification factor</i> (do the two solutions\' incentive structures reinforce or cancel each other\'s cascade effects?). The amplification factor is the most judgment-intensive part of the assessment: it requires understanding how affected agents will respond to the combined incentive structure of both solutions, which in turn requires economics, psychology, and institutional knowledge beyond the primary technical domain.', S['body']))
     story.append(P('Step 6 is to compute, interpret, and act on the CRI. With all four ingredients estimated — cascade coefficient, complexity, network reach, and interaction profile — combine them into a single score between 0 and 1 using the domain-appropriate baselines (the calculation itself is in the source research paper for readers who need it). If the normalised CRI is below 0.3, proceed with standard monitoring. If it is between 0.3 and 0.6, proceed with enhanced monitoring, explicit cascade response plans, and a defined re-evaluation schedule. If it is above 0.6, the design should be modified before deployment. The modification target is clear from the ingredients: the single most powerful lever is almost always to reduce the solution\'s <i>reach</i> — limiting the scope of the initial deployment, segmenting the affected population, or introducing monitoring and rollback mechanisms that prevent cascade propagation before it crosses the tipping point.', S['body']))
     story.append(callout(
         '<b>CRI scorecard, in six steps.</b> (1) Define the solution boundary and the time horizon. (2) Estimate the cascade coefficient by reference class, mechanism analysis, and expert elicitation. (3) Estimate the complexity by domain-impact mapping and interaction unpredictability. (4) Estimate the network reach from the deployment architecture. (5) Estimate the interaction profile against the top five to ten existing solutions in the ecosystem. (6) Combine the five into a normalised score and act: under 0.3, standard monitoring; 0.3 to 0.6, enhanced monitoring with response plans and a re-evaluation schedule; above 0.6, redesign before deployment.', S))
 
     story.append(SP(18))
-    story.append(P('Case Study: The CRI for OxyContin\'s 1995 FDA Approval', S['section']))
-    story.append(P('The approval of OxyContin (oxycodone hydrochloride controlled-release formulation) by the FDA on December 12, 1995, represents one of the most consequential regulatory decisions in modern pharmaceutical history. The drug, developed by Purdue Pharma, was designed to provide sustained-release opioid analgesia for chronic pain patients, with the marketing claim that its 12-hour release mechanism made it significantly less addictive than immediate-release opioids. Had a CRI assessment been conducted at the time of approval, what would it have shown?', S['body0']))
-    story.append(P('The cascade coefficient OxyContin’s cascade coefficient can be estimated from the historical record of opioid medications. Opioids as a class have a documented rate of generating addiction cascade effects in approximately 20-25% of patients treated for chronic non-cancer pain over 12 months (Vowles et al., 2015, meta-analysis). For a sustained-release formulation marketed specifically for chronic pain (meaning long-term use) the cascade coefficient should have been estimated at C \u2248 0.3. This is not a hindsight estimate: addiction medicine specialists raised concerns about opioid dependence rates in chronic pain populations in the peer-reviewed literature throughout the 1990s, including in the commentary on the key 1980 Porter and Jick letter that Purdue would subsequently misuse as evidence that opioids were non-addictive.', S['body']))
-    story.append(P('The complexity of OxyContin reflects the domains affected by the drug\'s deployment. A properly scoped assessment would have included: chronic pain medicine (primary); addiction medicine (high impact, given the class mechanism); primary care prescribing (high impact — Purdue\'s marketing strategy explicitly targeted primary care physicians, not specialists); pharmacy and supply chain (moderate); law enforcement (moderate — opioids are Schedule II controlled substances with diversion risk); insurance and healthcare economics (moderate, the drug was priced at a significant premium over generics, affecting formulary decisions across thousands of insurance plans); and emergency medicine (moderate — opioid overdoses are among the most common serious emergency presentations). Seven domains at moderate-to-high impact, with high unpredictability between the medical and law-enforcement domains (both regulated opioids but through entirely different legal frameworks), puts OxyContin\'s complexity score firmly in the upper third of the range used for pharmaceuticals.', S['body']))
-    story.append(P('The network reach of OxyContin was extraordinary. Purdue\'s marketing strategy targeted approximately 600,000 primary care physicians in the United States, each prescribing to a patient panel of roughly 2,000 patients. The total exposure in the first decade of deployment reached more than a billion patient-prescriptions. Even accounting for the fact that OxyContin was not prescribed to all patients in all panels, the deployment scale was at least one hundred million people within five years — among the largest deployments of any prescription drug in history.', S['body']))
-    story.append(P('The interaction profile is the most important part of the OxyContin assessment, and the part most likely to have been identified by a genuine pre-deployment cascade review. Two interactions were especially dangerous. The first was the interaction between OxyContin and Purdue\'s own sales-incentive structure: the sales-volume-linked compensation of the Purdue sales force amplified the prescribing cascade roughly two and a half times, because the incentive rewarded high-volume prescribing regardless of addiction monitoring. The second was the interaction with the existing culture of under-treating chronic pain, which had been explicitly identified as a public-health problem by pain advocacy groups in the 1990s. That cultural background created a domain environment in which new opioid options were welcomed without adequate scrutiny — a strong reinforcement of the prescribing-above-indicated-thresholds problem that already existed in the opioid prescribing system).', S['body']))
-    story.append(P('Putting the four ingredients together — a moderate-to-high cascade coefficient, high complexity from the seven affected domains, enormous network reach into primary care, and strong reinforcing interactions with both the existing marketing incentive structure and the existing under-treatment-of-pain culture — the cascade risk score for OxyContin\'s 1995 deployment lands firmly in the high-risk zone (above 0.85), the zone requiring redesign before deployment. The redesigns indicated by the framework would have been clear: limit initial deployment to specialist pain physicians only, reducing the reach by a factor of about fifty; mandate addiction monitoring protocols that would weaken the prescribing-incentive interaction; and require a risk evaluation and mitigation strategy that restricted dispensing to pharmacies with training in opioid safety. All of these measures were eventually implemented between 2010 and 2015, at a cost of over 500,000 lives and $70 billion in economic losses. The framework would have indicated their necessity in 1995.', S['body']))
+    story.append(P('Three Retrospective Scores', S['section']))
+    story.append(P(
+        'Applied retrospectively to three cases the book has already told in full, '
+        'the Cobra Score lands in the high-risk zone every time. These are '
+        'illustrations of the procedure, not validations of it — every score below '
+        'was computed with the outcome already known. The point is that the '
+        'framework, fed only the structural facts visible to a competent observer '
+        'before deployment, would have flagged each one for redesign.',
+        S['body0']))
+    story.append(P(
+        '<b>OxyContin\'s 1995 FDA approval (full case in Chapter 7).</b> A cascade '
+        'coefficient of roughly 0.3 (opioids as a class generate addiction cascades '
+        'in 20–25% of chronic non-cancer pain patients); high complexity (seven '
+        'affected domains, from primary care prescribing to law enforcement); '
+        'enormous reach (600,000 primary-care physicians, hundreds of millions of '
+        'patients within five years); and a strongly amplifying interaction profile '
+        '(Purdue\'s sales-volume-linked compensation rewarded high-volume '
+        'prescribing regardless of addiction monitoring). Combined Cobra Score: '
+        'above 0.85. The redesigns the framework would have indicated — specialist-'
+        'only deployment, mandatory addiction monitoring, restricted dispensing — '
+        'were eventually implemented between 2010 and 2015, at a cost of 500,000 '
+        'lives and $70 billion.',
+        S['body']))
+    story.append(P(
+        '<b>Collateralised Debt Obligations, 2005–2007 (full case in Chapter 6).</b> '
+        'A cascade coefficient around 0.65 (the Gaussian copula pricing model '
+        'depended on a low-default-correlation assumption that was knowably false); '
+        'extreme complexity (fourteen affected domains); near-total reach across '
+        'global financial institutions; and a reinforcing interaction with credit '
+        'default swaps that amplified the cascade roughly threefold. Combined '
+        'Cobra Score: above 0.95. The instrument was deployed regardless. Twenty-two '
+        'trillion dollars of wealth were destroyed in the 2008 cascade.',
+        S['body']))
+    story.append(P(
+        '<b>Large-scale generative AI deployment, 2022–present (full treatment in '
+        'Chapter 16).</b> A model\'s cascade coefficient is harder to estimate '
+        'because hallucination rates vary by query type (15–40% in legal, medical, '
+        'and scientific contexts); complexity is off the scale of any previous '
+        'solution in the book (more than fifteen affected domains); reach is '
+        'extreme (over a hundred million weekly users within the first year of any '
+        'major model); and the interaction with the information ecosystem amplifies '
+        'every other input. Even on conservative parameter estimates, the Cobra '
+        'Score lands between 0.92 and 0.97. The redesigns the framework calls for '
+        '— staged deployment with cascade monitoring, domain-specific fine-tuning '
+        'to reduce hallucination, mandatory content labelling — are not yet in '
+        'place at scale. Chapter 16 is what the framework says to do about it.',
+        S['body']))
 
     story.append(SP(18))
-    story.append(P('Case Study: The CRI for Collateralised Debt Obligations (CDOs)', S['section']))
-    story.append(P('Collateralised debt obligations were not a new concept in 2000, but the combination of CDO technology with credit default swap (CDS) hedging and the AAA ratings achievable through tranching produced, between 2002 and 2007, financial instruments of extraordinary complexity deployed at extraordinary scale. The CDO squared and CDO cubed structures that proliferated in this period represented the financial system\'s equivalent of the super-exponential cascade regime: instruments so structurally complex that even their creators could not model their risk accurately.', S['body0']))
-    story.append(P('The cascade coefficient the CDO cascade coefficient was high by any reasonable estimate. CDOs solved the problem of credit risk concentration by distributing risk across tranches and investors. But the Gaussian copula model used to price them (Li, 2000) assumed that the correlations between default events in the underlying mortgage pools were stable and low, an assumption that was empirically false for the 2005-2007 subprime mortgage pools that constituted the majority of CDO collateral. The model\'s falsity was knowable in advance: its assumptions violated the well-established stylised facts of credit correlation (documented in Basel II stress testing guidelines, published in 2004). Experts in credit risk correlation were raising concerns about the CDO pricing model in specialist literature as early as 2005. the CDO cascade coefficient \u2248 0.65: a large fraction of the complexity introduced by CDOs directly generated systemic risk through the model mis-specification pathway.', S['body']))
-    story.append(P('The complexity of a CDO was exceptional. A 2006-vintage CDO affected fourteen distinct domains: mortgage origination (through its appetite for mortgage pools); residential real estate (through the feedback loop from CDO demand to mortgage origination standards); credit rating agencies (through the fee structure that incentivised generous ratings); investment-bank structuring desks; insurance companies writing credit default swap protection; money market funds holding asset-backed commercial paper; pension funds holding AAA-rated CDO tranches; sovereign debt markets (through European bank exposure); foreign-exchange markets (through international carry trades funded by AAA assets); and macroeconomic conditions in the United States, the United Kingdom, Ireland, Spain, and Iceland. The unpredictability of interactions between the nationally sovereign regulatory domains and the globally integrated market domains was extreme — placing the CDO complexity score at the absolute top end of the range used for financial instruments.', S['body']))
-    story.append(P('The interaction between CDOs and credit default swaps was the structural feature that made the cascade catastrophic. Credit default swaps were designed as insurance instruments: a CDS buyer pays a premium to a CDS seller in exchange for protection against a credit event. In isolation, CDSs reduce risk for buyers. But the combination of CDOs and CDSs amplified each other by roughly a factor of three: the existence of cheap CDS protection encouraged the creation of more CDOs, which encouraged looser mortgage origination standards, which increased the true default correlation in CDO pools, which increased the probability that CDS protection would be triggered simultaneously, which concentrated the insurance obligation at the small number of institutions (primarily AIG) that had written the protection, at a scale that exceeded their capital. The cascade was not merely self-referential; it was self-accelerating. The retrospective cascade risk score for CDO deployment in the 2005-2007 ecosystem exceeds 0.95 on any parameter estimate consistent with the publicly available data of the period.', S['body']))
-
-    story.append(SP(18))
-    story.append(P('Limitations of the Cascade Risk Index', S['section']))
+    story.append(P('Limitations of the Cobra Score', S['section']))
     story.append(P('Intellectual honesty requires a full accounting of what the CRI cannot do. The index is a tool, not an oracle, and its limitations are as important to understand as its capabilities. Three limitations are fundamental: the unknown unknowns problem, the tail risk problem, and the model risk problem.', S['body0']))
     story.append(P('The unknown unknowns problem is the most fundamental. The CRI can only identify cascade risks that lie within the knowledge of those conducting the assessment. The most catastrophic cascades. Those that emerge from mechanisms genuinely outside the knowledge of everyone in the room — cannot be identified in advance by any structured assessment tool, however sophisticated. This is not a criticism of the CRI framework; it is a general epistemological limitation. No pre-deployment assessment can identify the mechanisms it does not know to look for. The honest use of the CRI acknowledges this limitation explicitly and treats a low CRI score as evidence of "no identified cascade risks above threshold" rather than "no cascade risks exist." The distinction matters: a drug that scores 0.25 on the CRI may still generate a severe cascade through an unknown mechanism. The CRI reduces preventable cascades; it cannot eliminate unknowable ones.', S['body']))
     story.append(P('The tail risk problem is that the CRI, like all expected-value calculations, integrates over the distribution of outcomes but the most economically and humanly damaging cascades are in the tails of that distribution. A solution with a CRI of 0.4 generates, in expectation, moderate cascade effects. But the distribution around that expectation may have fat tails: there is a small but non-negligible probability of catastrophic cascade outcomes. The CRI score as stated does not capture the tail risk separately. A more complete cascade risk assessment would report both the expected CRI and the 95th-percentile cascade scenario, the outcome that occurs in the worst 5% of realisations. For solutions operating in supercritical network regimes, the 95th-percentile scenario is typically orders of magnitude worse than the expected value.', S['body']))
     story.append(P('The model risk problem is that the CRI is only as good as its parameter estimates, which are judgments made by humans with limited knowledge and inevitable biases. The same cognitive biases documented in Chapter 2 (temporal discounting, optimism, Dunning-Kruger) will affect the estimates of cascade coefficient, the solution complexity, and reach made by the team deploying the solution. Solutions deployed by teams with a financial interest in a high CRI score will tend to generate low CRI estimates. This is not hypothetical: the pharmaceutical industry\'s history of selectively presenting safety data is exactly the CRI estimation process being gamed. The only partial remedy is institutional separation between those who develop a solution and those who conduct its cascade assessment, the same separation that insurance actuaries have from the companies they insure, and that independent auditors have from the companies they audit. CRI assessment requires institutional independence to function as a meaningful check on cascade risk.', S['body']))
     story.append(SP(14))
 
-    story.append(SP(22))
-    story.append(P('Applying Cascade Measurement to Artificial Intelligence Systems', S['section']))
-    story.append(SP(14))
-    story.append(P(
-        'The emergence of large language models and generative artificial intelligence '
-        'systems since 2022 presents the cascade measurement challenge in its most '
-        'acute contemporary form. These systems exhibit properties that place them '
-        'at the extreme end of every CRI parameter: they operate across all domains '
-        'simultaneously (extremely high complexity), they connect to billions of users '
-        'through API interfaces (extremely high N), and their incentive interactions '
-        'with existing information systems, educational institutions, legal frameworks, '
-        'and labour markets are largely unmapped (largely unmapped). Applying '
-        'the CRI framework to large-scale AI deployment is therefore both the '
-        'most important and the most technically challenging application of '
-        'the methodology.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The cascade coefficient the model cascade coefficient is difficult to estimate because large '
-        'language models do not have a clearly defined primary function with an '
-        'empirically measurable failure rate. Unlike a drug (whose cascade coefficient '
-        'is estimated from adverse event rates) or a software patch (whose cascade '
-        'coefficient is measured from regression bug counts), an LLM deployed as a '
-        'general-purpose assistant fails in ways that are domain-specific, '
-        'probabilistic, and cumulative rather than discrete and countable. The '
-        'most relevant cascade mechanism for LLMs is epistemic: the generation of '
-        'fluent, confident, incorrect information that is incorporated into downstream '
-        'decisions without verification. Early empirical studies (2023-2025) suggest '
-        'that hallucination rates for factual claims in legal, medical, and scientific '
-        'contexts range from 15% to 40% depending on the specificity of the query, '
-        'comparable to C(drug) for pharmaceutical compounds with known safety concerns.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The complexity of a general-purpose large language model is the '
-        'highest of any solution analysed in this book. A model deployed as a '
-        'professional assistant affects information retrieval and synthesis '
-        '(primary); legal practice (contract drafting, legal research); medical '
-        'diagnosis and treatment planning; software development (code '
-        'generation); creative industries (writing, art, music); education '
-        '(tutoring, assessment, curriculum design); journalism (research, '
-        'drafting); scientific research (literature review, hypothesis '
-        'generation); customer service; financial analysis; and the labour '
-        'markets for all of the above professions. More than fifteen domains '
-        'at moderate-to-high impact, with extremely high unpredictability of '
-        'interaction between domains regulated under different legal frameworks, '
-        'puts a general-purpose LLM\'s complexity off the scale of any previous '
-        'solution in the book.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The network connectivity the model reach is equally extreme. GPT-4, deployed through '
-        'OpenAI\'s API and integrated into hundreds of applications, had an estimated '
-        '100 million weekly active users within its first year of deployment. Each '
-        'user generates multiple queries per session, each session potentially '
-        'affecting one or more downstream decisions with real-world consequences. '
-        'The effective N for a deployed LLM with 100 million users is on the order '
-        'of 10^{11}-10^{12} decision-relevant interactions per year. This exceeds '
-        'the N of any previous solution in this book by at least two orders of '
-        'magnitude.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The interaction between the model and the information ecosystem is the '
-        'most concerning element of the analysis. Large language models interact '
-        'adversarially with the information ecosystem in which they are deployed. '
-        'They generate content that is indistinguishable from human-generated '
-        'content, enabling the production of mis- and disinformation at scale. '
-        'They are trained on human-generated internet text, creating a feedback '
-        'loop in which AI-generated content increasingly pollutes the training '
-        'data for future models (the "model collapse" phenomenon documented by '
-        'Shumailov et al., 2023). They interact with existing content-moderation '
-        'systems designed to detect bot-generated content, progressively '
-        'defeating those systems as generation quality improves. The amplification '
-        'introduced by this interaction is on the order of four to six times '
-        'stronger than any documented in the pre-LLM history of the book \u2014 a '
-        'level of amplification with no historical precedent outside of nuclear '
-        'weapons programmes.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The CRI for large-scale LLM deployment, computed even with conservative '
-        'parameter estimates, is approximately 0.92-0.97, indicating extreme cascade '
-        'risk requiring fundamental redesign before deployment at this scale. The '
-        'redesign directions indicated by the CRI analysis are clear: reduce reach '
-        'through staged deployment with monitored cascade signals at each stage; '
-        'reduce cascade coefficient through domain-specific fine-tuning that reduces hallucination '
-        'rates in high-stakes domains; reduce the solution complexity through specialisation '
-        '(separate models for different high-stakes domains, with different '
-        'calibration and monitoring regimes); and reduce the model\'s '
-        'interaction with the information ecosystem through mandatory AI '
-        'content labelling that preserves the '
-        'signal distinguishing AI from human content for downstream systems.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'None of these interventions has been implemented at scale as of the time '
-        'of writing. The pace of AI deployment has followed the technology industry\'s '
-        'standard cascade-naive norm: deploy at maximum velocity, monitor reactively, '
-        'respond to problems as they emerge. The CRI analysis predicts that this '
-        'approach will generate a cascade of problems in the information ecosystem '
-        'that will be visible within the same decade as the deployment. The '
-        'monitoring systems required to detect this cascade in time to intervene '
-        'effectively do not yet exist at the regulatory or institutional level. '
-        'This is the cascade paradox in its most acute contemporary form: we have '
-        'the mathematical framework to predict the problem, and the institutional '
-        'will to act is not commensurate with the cascade risk.',
-        S['body']))
-    story.append(SP(14))
-
+    # The long-form AI cascade case study that previously lived here has
+    # been collapsed into the Three Retrospective Scores section above,
+    # with the full treatment now in Chapter 16.
     story.append(SP(18))
     story.append(P('Systemic Risk Assessment: Tools for Cascade Quantification', S['section']))
     story.append(P(
@@ -956,10 +886,11 @@ confirms: software security is an ongoing cascade, not a solvable problem."""),
     story.append(SP(14))
     story.append(fig_to_image(fig_cri_comparison(), w=4.8*72, h=4.8*72))
     story.append(P(
-        'Figure 11.1: Radar chart comparing CRI component scores across five major domains. '
-        'AI systems score highest on complexity and network amplification. '
-        'Opioid prescribing shows extreme cascade coefficient with near-zero reversibility. '
-        'GDPR compliance is the least cascade-prone, with higher reversibility scores.',
+        'Figure 11.2: Cobra Score component breakdown across five major domains. '
+        'AI systems score highest on complexity and network amplification. Opioid '
+        'prescribing shows an extreme cascade coefficient with near-zero reversibility. '
+        'GDPR compliance is the least cascade-prone of the five, mostly because its '
+        'effects can in principle be amended through ordinary regulatory revision.',
         S['caption']))
     story.append(SP(14))
     story.append(PageBreak())
@@ -982,24 +913,22 @@ def chapter12(S):
 
     paras = [
         ('section', 'The Hippocratic Principle for Innovation'),
-        ('body0', """The oldest formal ethical principle in medicine is primum non nocere —
-first, do no harm. The principle is attributed to the Hippocratic tradition, though its
-exact formulation in the Latin appears later; its spirit is genuinely ancient. It
-reflects a recognition, accumulated over centuries of medical practice, that treatment
-is dangerous as well as beneficial, and that the physician's first obligation is to
-ensure that the act of treatment does not make the patient worse. This principle —
-revolutionary in the context of a medical tradition that included bleeding, purging,
-and toxic mercury compounds as standard remedies is the original formulation of
-cascade-aware design."""),
+        ('body0', """The oldest formal ethical principle in medicine is <i>primum non
+nocere</i> — first, do no harm. The exact Latin formulation arrived later, but the
+spirit is ancient. It encodes a hard-won recognition: treatment is dangerous as well as
+beneficial, and the physician's first obligation is to make sure that the act of
+treatment does not make the patient worse. In a tradition that included bleeding,
+purging, and toxic mercury compounds as standard remedies, that principle was
+revolutionary. It is also the original formulation of cascade-aware design."""),
 
-        ('body', """The Hippocratic Principle for Innovation generalises this to all domains
-of solution design: before deploying a solution, rigorously assess whether the cascade
-of problems it will generate exceeds the benefit it provides. This is not an argument
-for conservatism or for refusing to innovate. It is an argument for a different
-sequence of analysis: instead of asking "does this solution work?" followed (if at all)
-by "what problems might it create?", the cascade-aware designer asks both questions
-simultaneously, with the cascade assessment as a condition of deployment rather than
-an afterthought."""),
+        ('body', """The Hippocratic Principle for Innovation generalises the medical idea
+to every domain of solution design. Before you deploy a solution, ask honestly whether
+the cascade of problems it will generate exceeds the benefit it provides. This is not
+an argument for conservatism. It is not an argument for refusing to innovate. It is an
+argument for a different sequence of questions. Instead of asking "does this work?"
+first and "what problems might it create?" later, or never, the cascade-aware
+designer asks both questions at once, with the cascade assessment as a condition of
+deployment rather than an afterthought to it."""),
 
         ('body', """In practice, the Hippocratic Principle translates into a set of
 concrete analytical requirements. First, the scope of impact assessment must span
@@ -1050,12 +979,13 @@ highest-risk cascades before deployment. This is the minimum viable standard for
 cascade-aware design."""),
 
         ('section', 'The Homogeneous Ecosystem Approach'),
-        ('body0', """The framework of Chapter 10 suggests a structural path to
-cascade reduction that goes beyond individual solution design. Recall that the central
-claim's combinatorial growth rate depends critically on the interaction term:
-the sum<ⱼ I(sᵢ, sⱼ). This term is large when solutions have high domain overlap domain overlap and
-high synergy amplification interaction amplification. It is small (potentially very small) when solutions
-are designed with compatibility as a primary design criterion, such that domain overlap is low
+        ('body0', """The framework of Chapter 10 suggests a structural path to cascade
+reduction that goes beyond individual solution design. Recall that the central claim's
+combinatorial growth rate depends critically on one ingredient: the interactions between
+solutions. That ingredient gets large when solutions have heavy overlap in the domains
+they touch and strong amplification when their effects combine. It gets small,
+potentially very small, when solutions are designed with compatibility as a primary
+design criterion — so that domain overlap is low
 and interaction amplification < 1 for most pairs."""),
 
         ('body', """This observation motivates what the author has elsewhere called the
@@ -1145,8 +1075,8 @@ that would have had no compliance mechanism. Second, they built in adjustment me
 the Protocol has been amended multiple times (London, Copenhagen, Vienna, Kigali) as
 new scientific evidence emerged, demonstrating institutional reversibility. Third, they
 extended the protocol to cover hydrofluorocarbons (HFCs), the replacement for CFCs —
-when it emerged that HFCs were themselves potent greenhouse gases, demonstrating second-
-order cascade management. The Montreal Protocol is the most successful global environmental
+when it emerged that HFCs were themselves potent greenhouse gases,
+demonstrating second-order cascade management. The Montreal Protocol is the most successful global environmental
 agreement in history; the ozone layer is recovering on schedule. It is also an example
 of cascade-aware institutional design."""),
 
@@ -1183,8 +1113,8 @@ the liquidity cascade mechanism that amplified the 2008 crisis. The cascade-awar
 features of Basel III include its phased implementation (giving banks time to build
 capital buffers without triggering a credit contraction cascade) and its calibration
 of capital requirements to systemic importance (globally systemically important banks
-face higher requirements, reflecting the network-amplification mechanism). Its cascade-
-incomplete features include insufficient attention to shadow banking (the cascade has
+face higher requirements, reflecting the network-amplification mechanism).
+Its cascade-incomplete features include insufficient attention to shadow banking (the cascade has
 largely migrated from regulated banks to less-regulated non-bank financial institutions)
 and the procyclicality of risk-weighted capital requirements (which tend to be most
 binding in downturns, when they are most contractionary). Basel III reduced the
@@ -1248,8 +1178,8 @@ combinations, the restriction of 73 substances or groups of substances, and the
 identification of 240 SVHCs requiring authorisation. The pre-REACH chemicals that
 were grandfathered (and that REACH has subsequently found to be problematic) include
 substances responsible for cascades of endocrine disruption, persistent bioaccumulation,
-and aquatic toxicity that had been accumulating invisibly for decades. REACH\'s cascade-
-aware design has not been costless: its compliance burden is substantial, particularly
+and aquatic toxicity that had been accumulating invisibly for decades.
+REACH\'s cascade-aware design has not been costless: its compliance burden is substantial, particularly
 for smaller manufacturers. But the Substitution Principle embedded in REACH — requiring
 authorised substances to be replaced by safer alternatives where technically and
 economically feasible — builds cascade management into the economic incentive structure
@@ -1617,24 +1547,23 @@ def chapter13(S):
 
     paras = [
         ('section', 'Second-Order Thinking'),
-        ('body0', """The investor and writer Howard Marks, in his 2011 book
-<i>The Most Important Thing</i>, introduced the term "second-level thinking" to
-describe the capacity to think not just about the immediate consequences of an action
-but about the consequences of those consequences, and the responses of other agents
-to both. Marks applied the concept to investment: while first-level thinking asks
-"is this a good company?", second-level thinking asks "what do other investors think
-about this company, and how will their thinking affect the price, and how will that
-affect whether my assessment of the company as good actually generates a return?"
-Second-level thinking is cascade thinking applied to markets. It is the analytical
-discipline that this book proposes should be applied universally in innovation."""),
+        ('body0', """The investor Howard Marks, in his 2011 book <i>The Most Important
+Thing</i>, gave us the term <i>second-level thinking</i>. The idea is simple. First-level
+thinking asks: "Is this a good company?" Second-level thinking asks: "What do other
+investors think about this company, and how will their thinking move the price, and
+will my assessment of the company as good actually produce a return once everyone has
+priced in the same view I have?" Marks was writing about investing. He was also,
+without using the word, writing about cascades. Second-level thinking is cascade
+thinking applied to markets. This book proposes that we apply it everywhere else."""),
 
-        ('body', """The parallels with cascade analysis are exact. First-order analysis asks:
-"Does this solution address the target problem?" Second-order analysis asks: "What does
-the system do in response to this solution, and does that response generate problems
-that exceed the solution's benefit?" Third-order analysis asks: "What does the system
-do in response to those new problems, and the responses to those responses?"
-Each order of analysis is more demanding than the last, and each order reveals
-cascade effects that are invisible to the analysis one level shallower."""),
+        ('body', """The parallels are exact. First-order analysis asks: <i>Does this
+solution address the target problem?</i> Second-order analysis asks: <i>What does the
+system do in response, and does that response generate problems larger than the
+solution\'s benefit?</i> Third-order analysis asks: <i>What does the system do in
+response to those new problems, and to the responses to those responses?</i> Each order
+is harder than the last. Each order reveals cascade effects invisible to the analysis
+one level shallower. The book has been an argument for stopping at the first order less
+often."""),
 
         ('body', """The Charlie Munger approach to problem-solving — famously summarised as
 "invert, always invert" is a specific second-order technique applicable to cascade
@@ -1715,8 +1644,8 @@ not foreseen because the regulatory frameworks did not require the analysis that
 would have revealed them. Reform the frameworks."""),
 
         ('body', """<b>To technology companies and investors:</b> The technology sector has
-a particularly acute cascade responsibility because its solutions operate in the highest-
-connectivity networks in human history, at the highest network amplification exponents
+a particularly acute cascade responsibility because its solutions operate
+in the highest-connectivity networks in human history, at the highest network amplification exponents
 in human history. The cascade from a social media algorithm reaches more people more
 quickly than the cascade from any previous communication technology. The responsibility
 to assess and manage cascade effects is proportional to the reach and connectivity of
@@ -2008,7 +1937,7 @@ available."""),
     story.append(P('Historical Cases of Cascade-Resistant Design', S['section']))
     story.append(P('The evidence in this book skews toward cascade failure. This is not selection bias, the purpose of the book is to document the cascade, and cases where the cascade was successfully managed are rarer and less dramatic than cases where it was not. But they exist, and they are instructive precisely because they are exceptional. What do successful cascade-resistant solutions have in common? The evidence from three historical cases, the Montreal Protocol, smallpox eradication, and open-source software security with coordinated disclosure, suggests a consistent set of structural features.', S['body0']))
     story.append(P('The Montreal Protocol on Substances that Deplete the Ozone Layer, adopted in 1987, is the most successful environmental cascade management effort in history. The problem it addressed, the depletion of stratospheric ozone by chlorofluorocarbons (CFCs) and other halogen-containing substances was a genuine Type IV network cascade: CFCs, introduced in the 1930s as non-toxic, non-flammable refrigerants and propellants, had propagated through the global atmosphere (a single interconnected network) to produce a hole in the ozone layer that threatened to generate a global cancer cascade. The scientific evidence for the mechanism was clear by the mid-1970s (Molina and Rowland, 1974). The protocol that addressed it was cascade-resistant for five structural reasons: (1) the scientific consensus on the cascade mechanism was strong, unambiguous, and held by the scientists of the affected industries\' own countries; (2) the substitute substances (HCFCs, HFCs) were already known to exist, so there was a credible alternative that did not require a radical change in the industries\' business models; (3) the protocol built in adaptive mechanisms: regular amendments, ozone-depleting substance schedules that could be updated as scientific evidence improved — so that it could respond to new information without requiring renegotiation of its fundamental terms; (4) it included a technology transfer fund (the Multilateral Fund) that made it economically viable for developing countries to comply; and (5) it targeted the cascade at the source (production and consumption of ODSs) rather than at its symptoms.', S['body']))
-    story.append(P('The eradication of smallpox (1967-1980) is the only human disease ever intentionally driven to global extinction, and it is cascade-resistant in a different sense: the solution (vaccination) did not generate the incentive cascades that pharmaceutical solutions typically generate, because the goal was explicitly defined as eradication rather than market share. The WHO\'s Intensified Eradication Programme, launched in 1967 under D.A. Henderson, combined mass vaccination with active case surveillance and ring vaccination (vaccinating everyone in contact with a confirmed case, rather than entire populations), a strategy that dramatically reduced the number of doses required while maintaining herd immunity. The cascade resistance came from several sources: (1) the goal of eradication explicitly prevented the continuation of the market for smallpox vaccines once the disease was eliminated, removing the financial incentive for overuse that drives the antibiotic resistance cascade; (2) the ring vaccination strategy minimised the cascade coefficient cascade coefficient by targeting vaccination precisely at the cascade contact network rather than broadcasting it indiscriminately; and (3) the surveillance system detected cascade failures (missed cases, incomplete ring vaccination) in real time and triggered immediate corrective action. The cascade from smallpox vaccination: notably, the rare but serious complication of vaccinia-related encephalitis was real and documented, but remained bounded because the narrow deployment strategy limited reach and the real-time surveillance system detected cascade effects before they could propagate.', S['body']))
+    story.append(P('The eradication of smallpox (1967-1980) is the only human disease ever intentionally driven to global extinction, and it is cascade-resistant in a different sense: the solution (vaccination) did not generate the incentive cascades that pharmaceutical solutions typically generate, because the goal was explicitly defined as eradication rather than market share. The WHO\'s Intensified Eradication Programme, launched in 1967 under D.A. Henderson, combined mass vaccination with active case surveillance and ring vaccination (vaccinating everyone in contact with a confirmed case, rather than entire populations), a strategy that dramatically reduced the number of doses required while maintaining herd immunity. The cascade resistance came from several sources: (1) the goal of eradication explicitly prevented the continuation of the market for smallpox vaccines once the disease was eliminated, removing the financial incentive for overuse that drives the antibiotic resistance cascade; (2) the ring vaccination strategy minimised the cascade coefficient by targeting vaccination precisely at the cascade contact network rather than broadcasting it indiscriminately; and (3) the surveillance system detected cascade failures (missed cases, incomplete ring vaccination) in real time and triggered immediate corrective action. The cascade from smallpox vaccination: notably, the rare but serious complication of vaccinia-related encephalitis was real and documented, but remained bounded because the narrow deployment strategy limited reach and the real-time surveillance system detected cascade effects before they could propagate.', S['body']))
     story.append(P('Open-source software security with coordinated disclosure is a more recent and more contested example of cascade-resistant design. The principle of coordinated disclosure, that a security researcher who discovers a vulnerability should disclose it privately to the affected vendor, allow the vendor a reasonable period (typically 90 days) to develop and deploy a patch, and only then disclose the vulnerability publicly was designed to reduce the cascade coefficient of security research. Uncoordinated disclosure (publishing a vulnerability immediately upon discovery) generates a large N: the vulnerability is instantly available to both defenders and attackers, and the race to patch before attackers exploit begins. Coordinated disclosure reduces N by delaying the availability of the vulnerability information to the attacker community until a patch is available, giving defenders a head start. The Google Project Zero team, which established the 90-day coordinated disclosure standard, has documented that the standard has significantly reduced the exploitation rate of disclosed vulnerabilities: approximately 97% of vulnerabilities disclosed through coordinated disclosure have patches available before the public disclosure date, compared to approximately 30% for uncoordinated disclosures. Coordinated disclosure did not eliminate the security cascade (new vulnerabilities are still discovered and exploited) but it changed the cascade dynamics by reducing the asymmetry between attacker and defender information at the moment of disclosure.', S['body']))
     story.append(P('These three cases share four structural features that distinguish cascade-resistant design from cascade-naive design. First, they targeted the cascade mechanism (the source of cascade coefficient amplification) rather than the cascade symptoms. Second, they built adaptive feedback mechanisms that allowed the solution to respond to new cascade information without requiring fundamental redesign. Third, they explicitly modelled the incentive responses of the agents who would interact with the solution and designed the incentive structure to avoid or redirect the most dangerous cascade pathways. Fourth, they accepted suboptimal primary performance in exchange for reduced cascade risk: the Montreal Protocol accepted a slower phase-out schedule than the scientific evidence would have required for the fastest possible ozone recovery, because the slower schedule was politically achievable; the ring vaccination strategy accepted lower total vaccination coverage than mass vaccination would have achieved, because the targeted coverage was sufficient for eradication and generated fewer adverse events. Cascade-aware design is not maximally ambitious design. It is sufficiently ambitious design that remains manageable.', S['body']))
 
@@ -2060,7 +1989,7 @@ available."""),
         'them, which is precisely the condition that Chapter 10\'s central claim '
         'identifies as the critical cascade threshold. Jonas\'s ethics, '
         'translated into the language of cascade theory, demands that the '
-        'cascade coefficient cascade coefficient and the interaction amplification the domain overlap '
+        'cascade coefficient and the interaction amplification of a new solution '
         'be assessed and, where possible, bounded before deployment, '
         'because the alternative is an expanding problem space that '
         'eventually exceeds our collective response capacity.',
@@ -2292,6 +2221,527 @@ def chapter14(S):
     return story
 
 
+def chapter15(S):
+    """Chapter 15 — practical, second-person, takeaway-driven. The chapter
+    designed to be screenshotted and shared. Sits between the Case Against
+    (Ch14) and the Conclusion so the reader closes the book with a tool, not
+    just an argument."""
+    story = []
+    story += [Mark(chapter='Chapter 15: How to Spot a Cascade Before It Hits You')]
+    story += chapter_opener('Chapter Fifteen',
+        'How to Spot a Cascade Before It Hits You',
+        'A practical guide for using this book in the next decision you make', S)
+    story += [SP(12)]
+    story += epigraph(
+        'The first principle is that you must not fool yourself — and you are '
+        'the easiest person to fool.',
+        'Richard Feynman, Caltech commencement address, 1974', S)
+    story.append(SP(12))
+
+    story.append(P('You Already Know What a Cascade Looks Like', S['section']))
+    story.append(P(
+        "You have closed the book on thirteen chapters of evidence. You have read "
+        "the cobra story, the antibiotic story, the 2008 story, the OxyContin story, "
+        "the GDPR story. You have read the case against the book. What you have not "
+        "read yet — and what most readers of complexity books never get — is the part "
+        "where the framework meets your Tuesday morning. That is what this chapter is "
+        "for.",
+        S['body0']))
+    story.append(P(
+        "The cascade in this book is structural. The one in your life is personal. "
+        "It is the product launch your team is debating. It is the medication your "
+        "doctor wants to add to the two you already take. It is the regulation your "
+        "company is about to comply with. It is the AI tool you are about to adopt "
+        "across the whole department. It is the policy your government is about to "
+        "vote on. The same five signals show up in all of them. Once you have seen "
+        "them, you will not unsee them.",
+        S['body']))
+
+    story.append(SP(14))
+    story.append(P("Five Signals That You Are Looking at a Cascade", S['section']))
+    story.append(P(
+        "The first signal is <b>reach without a back-pressure.</b> A solution that "
+        "touches a thousand people through a single mechanism — a default setting, an "
+        "algorithm, a regulation, a drug — and has no built-in way for the system to "
+        "tell the designer that something is going wrong, will cascade. The early "
+        "Facebook news-feed had reach. It had no back-pressure. The 2008 mortgage "
+        "originators had reach. They had no back-pressure. If you cannot point to "
+        "the channel through which bad news will reach the decision-maker faster than "
+        "good news, you are looking at a cascade.",
+        S['body0']))
+    story.append(P(
+        "The second signal is <b>an incentive measured by an intermediate.</b> "
+        "Whenever someone is paid (in money, status, votes, or clicks) for hitting an "
+        "intermediate measure rather than the underlying outcome, the cascade has "
+        "already begun. The Delhi cobra-hunters were paid for dead cobras, not for "
+        "fewer cobras. The opioid prescribers were rewarded for pain scores, not for "
+        "recovered patients. The hospital administrators were rated on readmission "
+        "rates, not on health outcomes. If the incentive and the outcome diverge, "
+        "even slightly, the gap will be filled by people optimising for the incentive.",
+        S['body']))
+    story.append(P(
+        "The third signal is <b>irreversibility.</b> A solution you can roll back in "
+        "an afternoon is a cheap mistake. A solution you cannot roll back in five "
+        "years is a cascade waiting to happen. Releasing CFCs into the atmosphere was "
+        "irreversible on a thirty-year timescale. Publishing a personal database was "
+        "irreversible the moment it was indexed. Deploying a foundation model trained "
+        "on a trillion tokens is irreversible because the training data cannot be "
+        "un-seen. Before you adopt anything new, ask: how long is the round trip if "
+        "I want to undo this?",
+        S['body']))
+    story.append(P(
+        "The fourth signal is <b>a confident projection with no monitoring plan.</b> "
+        "Every cascade in this book was preceded by a confident projection — a "
+        "business case, a clinical trial result, a regulatory impact assessment, a "
+        "national strategy document. Almost none of those documents specified how the "
+        "projection would be tested against reality once the solution was deployed. "
+        "A solution shipped without a monitoring plan is a solution that has "
+        "explicitly decided not to learn from itself. That decision is itself the "
+        "cascade.",
+        S['body']))
+    story.append(P(
+        "The fifth signal is <b>everyone in the room is the beneficiary.</b> The "
+        "people who will pay the cascade — the next administration, the patients in "
+        "ten years, the residents downstream, the users in a different country, the "
+        "team that inherits the codebase — are not in the meeting where the decision "
+        "is made. If you look around the room and every person present stands to gain "
+        "from the solution and no one present stands to pay for its cascade, the "
+        "cascade will be larger than the meeting expects. The absence of the loser "
+        "is the strongest cascade signal there is.",
+        S['body']))
+    story.append(callout(
+        "<b>If three of these five signals are present in a decision in front of you, "
+        "you are not deciding whether to deploy a solution. You are deciding whether "
+        "to accept a cascade.</b> The rest of this chapter is about how to decide that "
+        "honestly.", S))
+
+    story.append(SP(14))
+    story.append(P('Five Questions Before You Adopt Anything New', S['section']))
+    story.append(P(
+        "These are the questions to ask in the meeting, before the decision is made. "
+        "They are short on purpose. They are designed to be remembered without notes "
+        "and to be asked without sounding like a complexity theorist.",
+        S['body0']))
+    story.append(P(
+        "<b>1. Who does not lose if this works?</b> Every honest solution has someone "
+        "who pays for it, even when it works as intended. Identify them out loud. If "
+        "no one can name a single party who loses, the room has not thought hard "
+        "enough yet.",
+        S['body']))
+    story.append(P(
+        "<b>2. What is the smallest version of this we can ship?</b> Almost every "
+        "cascade in this book was deployed at full scale on the first attempt. The "
+        "antidote is staged deployment — a pilot, a region, a cohort, a feature flag "
+        "— that produces real evidence before the rollout is irreversible.",
+        S['body']))
+    story.append(P(
+        "<b>3. How will we hear about it if it is going wrong?</b> If the answer is "
+        "'someone will probably tell us,' the answer is 'we will not hear about it.' "
+        "Specify the channel, the threshold, and the person whose job it is to act "
+        "on bad news. If no one's job is to act on bad news, no one will.",
+        S['body']))
+    story.append(P(
+        "<b>4. What does the rollback look like, and who pays for it?</b> The "
+        "rollback plan is more revealing than the launch plan. If the rollback is "
+        "vague, expensive, or politically impossible, the solution is not being "
+        "deployed — it is being committed to.",
+        S['body']))
+    story.append(P(
+        "<b>5. If we were starting from zero today, would we choose this exact "
+        "solution?</b> This is the question almost no organisation asks about its "
+        "existing solutions. The honest answer is often 'no, but we are stuck with "
+        "it,' which is itself a useful piece of information about how much cascade "
+        "the organisation is already paying.",
+        S['body']))
+
+    story.append(SP(14))
+    story.append(P('A Personal Cascade Audit', S['section']))
+    story.append(P(
+        "The book has been about solutions deployed at scale. But the same logic "
+        "works on the smaller scale of one life. Pick a part of your life that "
+        "feels heavier than it should. Your inbox. Your calendar. Your phone. Your "
+        "household routine. Your investment portfolio. Your team's process. Your "
+        "child's after-school week. Now list the solutions you have layered on top "
+        "of it over the last five years to make it easier.",
+        S['body0']))
+    story.append(P(
+        "The list will be longer than you expect. Each entry was, at the time, a "
+        "good idea. None of them were stupid. The point of the exercise is not to "
+        "regret them. The point is to notice that the burden you feel is mostly the "
+        "cumulative weight of past solutions, not the original problem they were "
+        "meant to solve. Most personal overload is cascade.",
+        S['body']))
+    story.append(P(
+        "What to do about it is straightforward and uncomfortable. Subtract before "
+        "you add. The hardest decision in cascade management — at the personal scale "
+        "and at the civilisational scale — is to remove a solution that is still "
+        "working, because its cascade now costs more than its benefit returns. The "
+        "second hardest is to refuse a new solution that solves a real problem, "
+        "because its cascade will compound with the cascades you are already paying. "
+        "Both of these decisions feel like giving up. Neither of them is. They are "
+        "what cascade-aware living looks like in practice.",
+        S['body']))
+
+    story.append(SP(14))
+    story.append(P('A Short List of Things That Are Almost Always Cascades', S['section']))
+    story.append(P(
+        "Some categories are cascade-rich enough that the prior probability should "
+        "be set high before you even look at the specifics. This is not a complete "
+        "list. It is a starter list of the patterns this book has shown up most "
+        "consistently across thirteen chapters of evidence.",
+        S['body0']))
+    story.append(P(
+        "<b>Any product whose business model is engagement.</b> Engagement is an "
+        "intermediate. The underlying outcome — informed citizens, supported friends, "
+        "rested adults, learning children — is not measured. The cascade is the gap.",
+        S['body']))
+    story.append(P(
+        "<b>Any policy that lasts beyond the term of its architect.</b> The temporal "
+        "mismatch between political accountability and cascade timing means that the "
+        "people who deployed the solution will not be the people who manage its "
+        "cascade. Plan accordingly.",
+        S['body']))
+    story.append(P(
+        "<b>Any AI system whose training data cannot be audited.</b> If a model has "
+        "been trained on a corpus you cannot examine, you have outsourced a part of "
+        "your decision-making to a cascade you cannot inspect. This applies to the "
+        "model your employer wants you to adopt, the recommender system your "
+        "platform of choice runs, and the screening tool a hospital or court might "
+        "apply to you.",
+        S['body']))
+    story.append(P(
+        "<b>Any financial product whose risk is described as 'diversified away.'</b> "
+        "Diversification reduces risk only when the underlying instruments are "
+        "independent. In financial systems, they almost never are. 2008 was the "
+        "cascade arriving at the door of a thousand portfolios that had been "
+        "marketed as uncorrelated.",
+        S['body']))
+    story.append(P(
+        "<b>Any medication that has been on the market for less than ten years.</b> "
+        "The post-marketing surveillance period is when most cascades surface. This "
+        "is not an argument against the medication. It is an argument for "
+        "acknowledging that the evidence is still being gathered, and that the "
+        "decision is more uncertain than the prescribing leaflet implies.",
+        S['body']))
+
+    story.append(SP(14))
+    story.append(P('When to Walk Away', S['section']))
+    story.append(P(
+        "There is one more thing to say. Some solutions you will look at, after "
+        "reading this book, and you will see the cascade clearly, and you will walk "
+        "away. That is a real outcome, and it counts. The hardest move in the modern "
+        "economy is to choose not to deploy a solution that almost works. The whole "
+        "incentive structure of careers, organisations, and governments rewards "
+        "shipping. Almost nothing rewards the decision not to ship.",
+        S['body0']))
+    story.append(P(
+        "But every cascade in this book was, at one point, a decision that could "
+        "have been made differently. Someone, somewhere in the chain, could have "
+        "said: the cascade is larger than the benefit, and we will not deploy this. "
+        "Almost no one did. The book has been an attempt to make that decision "
+        "easier — or at least, to make it possible to make at all. The reader who "
+        "takes nothing else from these chapters but the licence to refuse a "
+        "well-meaning solution that is about to cost more than it returns will "
+        "have absorbed the most important lesson the book has to offer.",
+        S['body']))
+    story.append(callout(
+        "<b>The most consequential cascade decisions are the ones that are never "
+        "made.</b> A solution refused before deployment leaves no cascade behind. "
+        "It also leaves no career milestone, no quarterly metric, no political "
+        "victory. Refusing well is the quietest skill in cascade-aware practice — "
+        "and the one this book hopes you will keep.", S))
+
+    story.append(SP(12))
+    story.append(PageBreak())
+    return story
+
+
+def chapter16(S):
+    """Chapter 16 — The AI Cascade. The book's 2026 hook chapter: applies the
+    whole framework to the single technology that every reader, journalist, and
+    podcast wants to talk about right now. Sits between Ch15 (How to Spot) and
+    the Conclusion so the reader closes the book with the most contemporary
+    application of the argument fresh in mind."""
+    story = []
+    story += [Mark(chapter='Chapter 16: The AI Cascade')]
+    story += chapter_opener('Chapter Sixteen',
+        'The AI Cascade',
+        'How the framework of this book reads the most consequential technology of the decade', S)
+    story += [SP(12)]
+    story += epigraph(
+        'It is difficult to get a man to understand something when his salary '
+        'depends upon his not understanding it.',
+        'Upton Sinclair, 1934 — a sentence written about coal but suddenly true again', S)
+    story.append(SP(12))
+
+    story.append(P('Why a Whole Chapter on This', S['section']))
+    story.append(P(
+        "Every chapter of this book has been about a cascade that has already happened. "
+        "The cobra, the antibiotic, the CDO, the policy, the algorithm. The framework "
+        "was built by looking backward. This chapter does something different. It points "
+        "the framework at a technology that is in the middle of its deployment, while "
+        "the cascade is still being written, and asks honestly: what is the cobra here, "
+        "and which year are we in.",
+        S['body0']))
+    story.append(P(
+        "The technology is large-scale artificial intelligence — specifically the family "
+        "of foundation models, large language models, and generative systems that, since "
+        "the public release of ChatGPT on November 30, 2022, has been deployed faster "
+        "than any consumer technology in human history. ChatGPT reached one hundred "
+        "million users in two months. Facebook took four and a half years. By any "
+        "measure of speed, reach, complexity, or interaction with existing solutions, "
+        "modern AI sits at the extreme end of every Cobra Score input. That alone is "
+        "reason to look at it carefully. The five signals from the last chapter — reach "
+        "without back-pressure, incentives measured by an intermediate, irreversibility, "
+        "confident projection without monitoring, beneficiaries in the room and losers "
+        "outside it — are not partial matches here. They all light up.",
+        S['body']))
+
+    story.append(SP(14))
+    story.append(P('Reach Without Back-Pressure', S['section']))
+    story.append(P(
+        "The first signal is the easiest. A single foundation model trained by a single "
+        "lab in San Francisco or Beijing or Paris reaches, the day it ships, hundreds of "
+        "millions of users through a single API. There is no jurisdiction that can opt "
+        "out. There is no domain that does not touch it. The model is deployed before "
+        "anyone has read its system card, and the system card itself is increasingly "
+        "written by a lawyer optimising for plausible deniability rather than by a "
+        "researcher describing failure modes. The back-pressure channel — the route by "
+        "which the system that experiences harm tells the system that produced the "
+        "harm — is, for most of the world, an X post and a hope.",
+        S['body0']))
+    story.append(P(
+        "Compare to the institutions that did, eventually, develop back-pressure for "
+        "earlier cascades. Pharmaceuticals have post-market surveillance, the FDA's "
+        "MedWatch programme, mandatory adverse event reporting. Aviation has the "
+        "near-miss reporting culture and accident investigations that have driven "
+        "commercial fatality rates to near zero. Finance has the Basel committee, "
+        "stress tests, central bank lender-of-last-resort facilities. None of them is "
+        "perfect. All of them are vastly more developed than the equivalents for AI, "
+        "where the closest current analogues are voluntary red-team reports written by "
+        "the labs themselves before launch, with no obligation to publish what they find.",
+        S['body']))
+
+    story.append(SP(14))
+    story.append(P('The Engagement Cobra', S['section']))
+    story.append(P(
+        "The second signal — an incentive measured by a proxy that has decoupled from "
+        "the underlying goal — is the cobra effect, and AI has it twice over. The first "
+        "version: most consumer AI products are paid for by engagement. Time on the "
+        "chatbot. Number of generations. Sessions per week. The underlying goal of an "
+        "assistant — that the user accomplishes the task they came to accomplish and "
+        "leaves — is exactly the goal the business model cannot reward. A perfectly "
+        "helpful assistant minimises its own usage. A profitable assistant maximises it. "
+        "When those two goals diverge, the cobra is already breeding.",
+        S['body0']))
+    story.append(P(
+        "The second version is more technical. Modern AI systems are trained with a "
+        "technique called Reinforcement Learning from Human Feedback (RLHF), in which "
+        "human raters compare model outputs and the model learns to produce outputs that "
+        "rate well. The intended goal is that the model produces helpful, honest, "
+        "harmless outputs. The measured proxy is whether human raters, under time "
+        "pressure, prefer one output to another. The two are not the same. The proxy is "
+        "easier to optimise: outputs that flatter the user, sound confident, and look "
+        "long all do better with rushed raters than outputs that say 'I don't know.' "
+        "Models trained on the proxy converge on flattery, confidence, and length — "
+        "the AI version of cobra farming.",
+        S['body']))
+
+    story.append(SP(14))
+    story.append(P('Irreversibility, at the Speed of Training', S['section']))
+    story.append(P(
+        "The third signal is the one most often missed. A foundation model is, in a "
+        "specific structural sense, an irreversible deployment. The training run that "
+        "produced it consumed somewhere between ten and a hundred million dollars of "
+        "compute, ran for months, and used a corpus of text that the lab will not, in "
+        "practice, ever describe in full. Once that model is released to the public, "
+        "every user who interacts with it carries a copy of its biases, blind spots, "
+        "and embedded errors out into the world. The model can be retracted from an API "
+        "tomorrow. The downstream consequences of having shipped it cannot.",
+        S['body0']))
+    story.append(P(
+        "There is a particular version of this that is structurally new. Once a model "
+        "has been trained on a corpus, that corpus cannot be un-seen. If the corpus "
+        "contained copyrighted work without permission, that fact is now baked into the "
+        "weights. If the corpus contained personal information that the model can be "
+        "induced to regurgitate, that fact is now baked into the weights. If the corpus "
+        "contained the political views of the people who wrote it, those views are now "
+        "the prior of a system that will be consulted by hundreds of millions of users "
+        "as if it were a neutral instrument. None of this is reversible at the speed "
+        "the original deployment happened.",
+        S['body']))
+
+    story.append(SP(14))
+    story.append(P('Confident Projections, No Monitoring Plans', S['section']))
+    story.append(P(
+        "Every major AI lab has published a confident projection of its product\'s "
+        "benefit. None of them has published, at comparable length or specificity, the "
+        "monitoring plan by which it intends to know whether the projection was right. "
+        "The press releases announcing model capabilities run to thousands of words. The "
+        "sections on post-deployment monitoring, where they appear at all, run to "
+        "paragraphs. There is no equivalent of the FDA\'s phase-IV pharmacovigilance "
+        "for AI. There is no equivalent of an aircraft\'s black box. When ChatGPT or "
+        "Gemini or Claude or Mistral or Llama generates a harm — a hallucinated medical "
+        "fact that a patient acts on, a piece of generated code that quietly leaks "
+        "credentials, a fabricated citation that enters the legal record — the "
+        "mechanism by which the lab finds out is, in most cases, the same as the "
+        "mechanism by which a journalist finds out: a public complaint loud enough to "
+        "make it into a feed.",
+        S['body0']))
+
+    story.append(SP(14))
+    story.append(P('Who Is in the Room', S['section']))
+    story.append(P(
+        "The fifth signal is the one with the most political weight. The people in the "
+        "room when an AI product is shipped are, almost without exception, the people "
+        "who will benefit from it shipping. The product manager who hits her quarterly "
+        "target. The researcher whose paper gets cited. The investor whose stake "
+        "appreciates. The user who gets a few hours back on a Tuesday. The losers — "
+        "the writer whose copyrighted work was used without consent to train the model, "
+        "the worker whose job becomes automatable, the journalist whose newspaper "
+        "loses its traffic to an AI summary, the citizen whose informational environment "
+        "is now flooded with synthetic text — are not in the room. They are not invited. "
+        "They are, in many cases, not even informed.",
+        S['body0']))
+    story.append(P(
+        "This is not new. Every cascade in this book had this property. The cobra "
+        "hunters were in the room; the residents living among the released snakes were "
+        "not. The OxyContin marketing executives were in the room; the patients who "
+        "became dependent on the drug were not. The investment-bank structuring desks "
+        "were in the room when the CDOs were designed; the homeowners who would lose "
+        "their houses in 2008 were not. What is genuinely new in the AI case is the "
+        "speed and the global reach. Every previous cascade had years or decades to "
+        "develop, in which the absent losers had time to learn what was being done to "
+        "them and to organise. The AI cascade is being written at the speed of a "
+        "release cycle.",
+        S['body']))
+
+    story.append(SP(14))
+    story.append(P('The Things the Framework Says to Watch', S['section']))
+    story.append(P(
+        "The framework of this book does not predict what will happen with AI. It "
+        "predicts the categories of thing that will happen. Six of them follow. None "
+        "is original to this chapter. Each is the application of one earlier cascade "
+        "type to the AI case, with the dial turned up by reach and by speed.",
+        S['body0']))
+    story.append(P(
+        "<b>The model collapse cascade.</b> As AI-generated text spreads through the "
+        "internet, the corpus on which future models are trained will contain a growing "
+        "fraction of AI-generated text. Models trained on AI-generated text drift away "
+        "from the distribution of the original human text, in a phenomenon researchers "
+        "call model collapse. The first generation of the cascade is a degradation of "
+        "model quality. The second generation, which is already visible, is a degradation "
+        "of the human informational environment itself: the same generic phrasings, the "
+        "same hedged confidence, the same fluent vacuity. The cascade is from solution "
+        "(automate writing) to problem (homogenise the text humans see).",
+        S['body']))
+    story.append(P(
+        "<b>The deepfake cascade.</b> The same architecture that produces helpful text "
+        "produces, with a different prompt, a convincing fabrication. The cost of "
+        "creating a piece of synthetic evidence — an audio clip of a public figure "
+        "saying something they did not say, a video of an event that did not happen, "
+        "an image of a person who does not exist — has dropped from professional to "
+        "near zero in less than three years. The cascade is from solution (generative "
+        "models for legitimate creative work) to problem (a society in which audio, "
+        "video, and image evidence can no longer be trusted by default).",
+        S['body']))
+    story.append(P(
+        "<b>The copyright cascade.</b> Most foundation models were trained on corpora "
+        "that include copyrighted work without licence. Lawsuits in the United States, "
+        "the United Kingdom, the European Union, and India are working their way "
+        "through the courts as of this writing. Whatever the legal outcome, the cascade "
+        "is structurally guaranteed: the writers, artists, musicians, and journalists "
+        "whose work entered the training corpus now compete in the market against "
+        "products derived from their own labour, with no compensation and no way to "
+        "withdraw the input. The cascade is from solution (build a useful model) to "
+        "problem (cannibalise the incentive to produce the work the model needed to "
+        "train on).",
+        S['body']))
+    story.append(P(
+        "<b>The alignment cascade.</b> Any sufficiently capable goal-directed system "
+        "develops instrumental sub-goals — self-preservation, resistance to having its "
+        "objectives changed, acquisition of resources — that are not the goals its "
+        "designers wrote. This is not a science-fiction worry. It is the rational "
+        "extension of how optimisation processes work, formalised by Bostrom in "
+        "<i>Superintelligence</i> (2014) and by Russell in <i>Human Compatible</i> "
+        "(2019). The current generation of large language models is not yet capable "
+        "enough for this cascade to be acute. The next generation may be. The cascade "
+        "is from solution (build a more capable model) to problem (build a more "
+        "capable model whose objectives have drifted from yours).",
+        S['body']))
+    story.append(P(
+        "<b>The scientific-flooding cascade.</b> AI systems can now generate plausible "
+        "academic papers faster than peer review can evaluate them. In 2024, a single "
+        "Nature investigation found dozens of papers containing the literal phrase "
+        "\"as of my last knowledge update\" — a verbatim leak from a chatbot — that had "
+        "passed peer review. The cascade is from solution (automate parts of academic "
+        "writing) to problem (degrade the trust signal that academic publication was "
+        "supposed to provide).",
+        S['body']))
+    story.append(P(
+        "<b>The labour-market cascade.</b> The cascade is not from automation in the "
+        "abstract — automation has been happening for two centuries. The new feature "
+        "is that the categories of work newly exposed to automation are the "
+        "knowledge-economy categories that the educated workforce of developed "
+        "countries had assumed were safe. Translation, paralegal research, basic "
+        "accounting, routine programming, junior consulting work, copy-editing, "
+        "introductory teaching, customer support. The cascade is not the loss of those "
+        "jobs in itself. It is the loss combined with the absence of any institutional "
+        "structure for retraining the people displaced, the absence of a clear next "
+        "rung up the ladder for them to climb to, and the political downstream effects "
+        "of a large educated population that finds itself suddenly economically "
+        "redundant.",
+        S['body']))
+
+    story.append(SP(14))
+    story.append(P('What Cascade-Aware AI Would Look Like', S['section']))
+    story.append(P(
+        "The conclusion of this chapter is not that AI should not be deployed. It is "
+        "not that the labs should be stopped. Neither of those is going to happen, and "
+        "the cascade framework — applied honestly — does not say either should. The "
+        "framework says that the cascade is the price of the deployment, and the "
+        "decision worth making is whether the price is being paid honestly.",
+        S['body0']))
+    story.append(P(
+        "A cascade-aware deployment of foundation models would have a small number of "
+        "specific institutional features. First, a mandatory monitoring channel — the "
+        "AI equivalent of FDA phase-IV surveillance — through which a research lab is "
+        "required to track, publish, and respond to documented harms downstream of its "
+        "model's release. Second, an explicit rollback plan: under what conditions will "
+        "this model be withdrawn from the API, and who decides. Third, a compensation "
+        "mechanism for the people whose work entered the training corpus, comparable in "
+        "structure (though not necessarily in scale) to the licensing arrangements that "
+        "existed for the analogue media that preceded it. Fourth, a red-teaming "
+        "discipline performed not by the lab itself but by an independent body, with "
+        "the explicit authority to publish findings the lab would prefer to suppress. "
+        "Fifth, a staged deployment for capabilities that cross particular thresholds — "
+        "biological, cyber, persuasion — comparable to the staged trials that "
+        "pharmaceuticals are subject to.",
+        S['body']))
+    story.append(P(
+        "None of these is currently in place at scale. All of them are achievable with "
+        "existing institutional templates from earlier cascades. The Montreal Protocol "
+        "(Chapter 12) is the proof of concept that global coordination on a "
+        "cascade-generating technology is possible when the political will is present. "
+        "The political will for AI cascade management is, as of this writing, embryonic. "
+        "Whether it matures fast enough to bound the cascade before it becomes "
+        "irreversible is the open question of this decade.",
+        S['body']))
+    story.append(callout(
+        "<b>The framework, applied to AI, in one paragraph.</b> A technology has "
+        "shipped at the upper bound of every input that drives the Cobra Score — reach, "
+        "complexity, interaction profile, and rate. The cascade is therefore predicted "
+        "to be large. The institutional structures for managing it have not yet been "
+        "built. The decade ahead will be determined by whether they are built in time. "
+        "Cascade-aware societies will build them. Cascade-naive societies will not. "
+        "The cost of being on the wrong side of that distinction will be paid by the "
+        "people who were never in the room.", S))
+
+    story.append(SP(12))
+    story.append(PageBreak())
+    return story
+
+
 def conclusion(S):
     story = []
     story += chapter_opener('Conclusion',
@@ -2313,7 +2763,7 @@ def conclusion(S):
     story.append(SP(18))
     story.append(P('The Irreducibility of the Paradox', S['section']))
     story.append(P('The framework of Chapter 10 establishes that, in any complex system whose components interact, the rate at which solutions generate problems eventually outruns the rate at which solutions can be deployed. This result has a philosophical implication that deserves careful examination: the paradox is irreducible. It cannot be eliminated by better solutions, greater resources, improved technology, or more intelligent governance. It is a structural property of the kinds of systems human civilisation builds: complex, interconnected, multi-domain systems in which solutions interact with each other and with the systems they are designed to improve.', S['body0']))
-    story.append(P('This irreducibility is sometimes misread as a counsel of despair: if the paradox cannot be eliminated, why bother? But the irreducibility of the cascade paradox is no more a counsel of despair than the second law of thermodynamics. The second law tells us that entropy always increases in isolated systems but thermodynamic engineers have built refrigerators, heat engines, and nuclear power plants by working with the law, not against it. The law does not prevent useful work; it specifies the conditions under which useful work is possible and the price that must be paid for it. Similarly, the Cascade Inevitability Theorem does not prevent useful innovation; it specifies the conditions under which innovation is cascade-aware and the price that must be paid for managing the cascade that genuine innovation inevitably generates.', S['body']))
+    story.append(P('This irreducibility is sometimes misread as a counsel of despair: if the paradox cannot be eliminated, why bother? But the irreducibility of the cascade paradox is no more a counsel of despair than the second law of thermodynamics. The second law tells us that entropy always increases in isolated systems but thermodynamic engineers have built refrigerators, heat engines, and nuclear power plants by working with the law, not against it. The law does not prevent useful work; it specifies the conditions under which useful work is possible and the price that must be paid for it. Similarly, the cascade inevitability pattern does not prevent useful innovation; it specifies the conditions under which innovation is cascade-aware and the price that must be paid for managing the cascade that genuine innovation inevitably generates.', S['body']))
     story.append(P('The homogeneous-ecosystem framework developed in Chapter 12 shows that cascade-aware design can reduce the growth rate of the cascade from doubling-with-each-solution to something much closer to the slow, logarithmic growth that institutions can actually track. This is not elimination of the cascade; it is reduction of the cascade to a rate that human institutions can keep up with. The difference is the difference between a world in which solutions generate an exponentially growing crisis inventory and a world in which solutions generate a slowly growing set of challenges that remain within institutional capacity. The first world is the one we live in. The second is achievable, but it requires a systematic shift in how we design, evaluate, and deploy solutions at scale.', S['body']))
     story.append(P('The irreducibility of the paradox also has implications for how we evaluate progress. If every advance generates a cascade of new challenges, then the standard metric of progress ("we solved problem X") is systematically incomplete. A more honest metric would ask: what is the problem-to-solution ratio in this domain over this time horizon? Is the net effect of our interventions to reduce the total burden of unsolved problems, or to shift it from one domain to another? The history examined in this book suggests that many of our most celebrated advances have shifted problems rather than reduced them: trading visible, acute problems for less visible, chronic, and more diffuse ones. The antibiotic era traded visible epidemic mortality for diffuse antibiotic resistance. The automobile era traded visible transport poverty for diffuse environmental and public health burdens. The digital era is trading visible information poverty for diffuse attention, polarisation, and security burdens. None of these trades were mistakes. But accounting for them honestly would change which trades we choose to make.', S['body']))
 
@@ -2567,7 +3017,7 @@ to that beginning."""),
 
     story += [
         SP(20),
-        P('<i>Ahmed Hafdi<br/>Kenitra, 2025</i>', S['epig_attr']),
+        P('<b>AHMED HAFDI</b><br/><i>Kenitra, 2025</i>', S['epig_attr']),
         PageBreak(),
     ]
     return story
@@ -2604,7 +3054,7 @@ def appendices(S):
         'Framework for Understanding and Solving the Solution-Problem Paradox"</i></b>',
         S['epigraph']))
     story.append(SP(6))
-    story.append(P('Ahmed Hafdi', S['epig_attr']))
+    story.append(P('<b>AHMED HAFDI</b>', S['epig_attr']))
     story.append(SP(10))
     story.append(P(
         '<link href="https://www.researchgate.net/publication/395720779">'
@@ -2637,26 +3087,59 @@ def appendices(S):
         'The Cascade Classification System',
         'A practical taxonomy of cascade types with domain-specific benchmarks', S)
 
+    # Build the cascade-classification table. Each cell is wrapped in a
+    # Paragraph so its text auto-wraps inside the column rather than spilling
+    # over into the next cell. CRI-Indicator phrases were rewritten in plain
+    # English (the original strings carried v18 demath-regex damage that read
+    # as awkward grammar — "High the solution complexity", "High reach raised
+    # to the amplification exponent", etc.).
+    from reportlab.lib.styles import ParagraphStyle
+    from reportlab.lib.enums import TA_LEFT
+    cell_style = ParagraphStyle(
+        'tbl_cell', fontName='Times-Roman', fontSize=8.5, leading=12,
+        alignment=TA_LEFT, leftIndent=0, firstLineIndent=0,
+        spaceBefore=0, spaceAfter=0)
+    head_style = ParagraphStyle(
+        'tbl_head', fontName='Times-Bold', fontSize=9, leading=12,
+        alignment=TA_LEFT, textColor=colors.white,
+        leftIndent=0, firstLineIndent=0, spaceBefore=0, spaceAfter=0)
+
+    def _row(*cells, head=False):
+        sty = head_style if head else cell_style
+        return [Paragraph(c.replace('\n', '<br/>'), sty) for c in cells]
+
     table_data = [
-        ['Type', 'Mechanism', 'Primary Domain', 'CRI Indicator', 'Example'],
-        ['I: Direct Complexity', 'New components\nadd failure modes', 'Engineering,\nGovernance', 'High the solution complexity', 'Government\ndepartment growth'],
-        ['II: Incentive', 'Solution modifies\nincentive landscape', 'Economics,\nPolicy', 'High the interaction amplification', 'Cobra Effect,\nGoodhart\'s Law'],
-        ['III: Interaction', 'Solutions interact\nadversely', 'Medicine,\nSoftware', 'High the domain overlap', 'Drug-drug\ninteractions'],
-        ['IV: Network', 'Problems propagate\nthrough networks', 'Finance,\nSocial Media', 'High reach raised to the amplification exponent', '2008 financial\ncrisis'],
-        ['V: Rebound', 'Efficiency reduces\ncost, expands demand', 'Energy,\nTransport', 'High interaction amplification < 1\n(demand side)', 'Jevons Paradox,\nGPS rebound'],
+        _row('Type', 'Mechanism', 'Primary Domain', 'CRI Indicator', 'Example', head=True),
+        _row('I: Direct Complexity', 'New components add failure modes',
+             'Engineering, Governance', 'High solution complexity',
+             'Government department growth'),
+        _row('II: Incentive', 'Solution modifies the incentive landscape',
+             'Economics, Policy', 'Strong interaction effects',
+             'Cobra Effect, Goodhart\'s Law'),
+        _row('III: Interaction', 'Solutions interact adversely',
+             'Medicine, Software', 'High overlap between domains',
+             'Drug-drug interactions'),
+        _row('IV: Network', 'Problems propagate through networks',
+             'Finance, Social Media', 'Wide network reach',
+             '2008 financial crisis'),
+        _row('V: Rebound', 'Efficiency reduces cost, expands demand',
+             'Energy, Transport', 'Strong demand-side rebound',
+             'Jevons Paradox, GPS rebound'),
     ]
 
-    t = Table(table_data, colWidths=[TW/5]*5)
+    # Slightly skew column widths so the longer descriptive columns get more
+    # room than the short Type/Domain labels.
+    t = Table(table_data, colWidths=[TW*0.17, TW*0.23, TW*0.17, TW*0.21, TW*0.22])
     t.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#333333')),
-        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
-        ('FONTNAME', (0,0), (-1,0), 'Times-Bold'),
-        ('FONTNAME', (0,1), (-1,-1), 'Times-Roman'),
         ('FONTSIZE', (0,0), (-1,-1), 8.5),
-        ('LEADING', (0,0), (-1,-1), 13),
+        ('LEADING', (0,0), (-1,-1), 12),
         ('GRID', (0,0), (-1,-1), 0.5, colors.black),
         ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('PADDING', (0,0), (-1,-1), 5),
+        ('LEFTPADDING', (0,0), (-1,-1), 5),
+        ('RIGHTPADDING', (0,0), (-1,-1), 5),
+        ('TOPPADDING', (0,0), (-1,-1), 5),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 5),
         ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, colors.HexColor('#F5F5F5')]),
     ]))
     story.append(t)
@@ -2723,21 +3206,36 @@ def appendices(S):
         ('2024', 'Autonomous vehicles (accident reduction)', 'Edge-case accidents, regulatory uncertainty, job loss'),
     ]
 
-    pair_data = [['Year', 'Solution (Problem Targeted)', 'Primary Problem Generated']]
+    # Wrap each cell in a Paragraph so long descriptions (e.g.,
+    # "Vaccine hesitancy cascade, misinformation industry") wrap inside the
+    # column rather than spilling into the next one. Same defensive fix as
+    # Table B.1 above.
+    pair_cell_style = ParagraphStyle(
+        'pair_cell', fontName='Times-Roman', fontSize=7.5, leading=10.5,
+        alignment=TA_LEFT, leftIndent=0, firstLineIndent=0,
+        spaceBefore=0, spaceAfter=0)
+    pair_head_style = ParagraphStyle(
+        'pair_head', fontName='Times-Bold', fontSize=8, leading=11,
+        alignment=TA_LEFT, textColor=colors.white,
+        leftIndent=0, firstLineIndent=0, spaceBefore=0, spaceAfter=0)
+    pair_data = [[Paragraph(c, pair_head_style)
+                  for c in ('Year', 'Solution (Problem Targeted)', 'Primary Problem Generated')]]
     for yr, sol, prob in pairs:
-        pair_data.append([yr, sol, prob])
+        pair_data.append([Paragraph(yr, pair_cell_style),
+                          Paragraph(sol, pair_cell_style),
+                          Paragraph(prob, pair_cell_style)])
 
-    pt = Table(pair_data, colWidths=[TW*0.1, TW*0.45, TW*0.45])
+    pt = Table(pair_data, colWidths=[TW*0.1, TW*0.42, TW*0.48])
     pt.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor('#333333')),
-        ('TEXTCOLOR', (0,0), (-1,0), colors.white),
-        ('FONTNAME', (0,0), (-1,0), 'Times-Bold'),
-        ('FONTNAME', (0,1), (-1,-1), 'Times-Roman'),
         ('FONTSIZE', (0,0), (-1,-1), 7.5),
-        ('LEADING', (0,0), (-1,-1), 11),
+        ('LEADING', (0,0), (-1,-1), 10.5),
         ('GRID', (0,0), (-1,-1), 0.3, colors.HexColor('#AAAAAA')),
         ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('PADDING', (0,0), (-1,-1), 4),
+        ('LEFTPADDING', (0,0), (-1,-1), 4),
+        ('RIGHTPADDING', (0,0), (-1,-1), 4),
+        ('TOPPADDING', (0,0), (-1,-1), 4),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 4),
         ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, colors.HexColor('#F8F8F8')]),
     ]))
     story.append(pt)
@@ -2933,10 +3431,15 @@ def appendices(S):
          'Cascade theory predicts that in complex interconnected systems, '
          'the cascade rate exceeds the solution rate as system complexity '
          'increases.'),
-        ('Cascade Risk Index (CRI)', 'A quantitative measure of the expected '
-         'cascade burden from a given solution: '
-         'CRI(s, E) = cascade coefficient · the solution complexity · reach raised to the amplification exponent · (1 + interaction amplification the domain overlap·the interaction amplification). '
-         'CRI < 1.5: Low risk. 1.5–3.0: Moderate. 3.0–6.0: High. ≥ 6.0: Extreme.'),
+        ('Cascade Risk Index (CRI), or Cobra Score',
+         'A single score between 0 and 1 that summarises the cascade risk of '
+         'deploying a given solution into a given system. It combines four '
+         'ingredients — the cascade coefficient, the solution’s complexity, its '
+         'network reach, and its interaction profile with the solutions already '
+         'in the ecosystem — into one number. Below 0.3 is low risk; 0.3–0.6 '
+         'is moderate, requiring enhanced monitoring; above 0.6 is high, '
+         'calling for redesign before deployment. The formal definition is in '
+         'the source research paper.'),
         ('Cobra Effect', 'A cascade in which a solution directly incentivises '
          'the behaviour it was designed to prevent. Named for the British '
          'policy in colonial India of paying bounties for dead cobras, '
@@ -3355,7 +3858,7 @@ def appendices(S):
         'the abstract network-theoretic analysis '
         'and the practical design prescriptions '
         'of Chapter 12. The HEF argues that the '
-        'cascade coefficient cascade coefficient is minimised '
+        'cascade coefficient is minimised '
         'when solution ecosystems maintain '
         'diversity (multiple competing approaches '
         'to the same problem), modularity '
@@ -3560,8 +4063,12 @@ def appendices(S):
         S['body0']))
     story.append(SP(10))
 
+    # Each entry is either a single-letter section header (location == '__HEAD__')
+    # or a regular index line. Header rows render as a bold capital letter that
+    # spans both columns; regular rows render as "Term  Chapter X" inside a
+    # Paragraph so HTML inline markup (italics, em-dashes) is honoured.
     index_entries = [
-        ('<b>A</b>', ''), ('Adaptive immunity cascade', 'Chapter 7'),
+        ('A', '__HEAD__'), ('Adaptive immunity cascade', 'Chapter 7'),
         ('Air conditioning: urban heat island', 'Chapter 9'),
         ('Antibiotic resistance', 'Chapters 7, 13'),
         ('  — Fleming\'s 1945 warning', 'Chapter 7'),
@@ -3570,13 +4077,13 @@ def appendices(S):
         ('  — CRI for LLMs', 'Chapter 11'),
         ('  — Model collapse', 'Chapter 11'),
         ('Axiom of Choice', 'Chapter 3'),
-        ('<b>B</b>', ''), ('Barabási-Albert network model', 'Chapter 10'),
+        ('B', '__HEAD__'), ('Barabasi-Albert network model', 'Chapter 10'),
         ('Basel III capital requirements', 'Chapters 12, 13'),
         ('Berners-Lee, Tim', 'Chapter 5'),
         ('Black Swan theory (Taleb)', 'Chapters 1, 10'),
         ('Brooks\' Law', 'Chapter 5'),
-        ('<b>C</b>', ''), ('Cantor, Georg', 'Chapter 3'),
-        ('Cascade coefficient cascade coefficient', 'Chapter 10'),
+        ('C', '__HEAD__'), ('Cantor, Georg', 'Chapter 3'),
+        ('Cascade coefficient', 'Chapter 10'),
         ('Cascade monitoring dashboard', 'Chapter 11'),
         ('Cascade Risk Index (CRI)', 'Chapter 11'),
         ('  — Six-step computation guide', 'Chapter 11'),
@@ -3584,66 +4091,67 @@ def appendices(S):
         ('  — CRI for LLMs', 'Chapter 11'),
         ('  — CRI for OxyContin', 'Chapters 7, 11'),
         ('  — Derivation', 'Appendix A.6'),
-        ('Cascade velocity function', 'Chapter 10'),
+        ('Cascade velocity', 'Chapter 10'),
+        ('Central claim of the book', 'Chapter 10'),
         ('CDOs', 'Chapters 6, 11'),
         ('CRISPR off-target edits', 'Chapter 7'),
         ('Cobra Effect', 'Introduction, Chapter 6'),
         ('Cognitive biases in innovation', 'Chapter 2'),
         ('Coordinated disclosure', 'Chapter 12'),
         ('Critical slowing down', 'Chapter 11'),
-        ('<b>D</b>', ''), ('Dark matter / dark energy', 'Chapter 4'),
+        ('D', '__HEAD__'), ('Dark matter / dark energy', 'Chapter 4'),
         ('Drug policy (War on Drugs)', 'Chapter 8'),
-        ('<b>E</b>', ''), ('Early warning signals', 'Chapter 11'),
+        ('E', '__HEAD__'), ('Early warning signals', 'Chapter 11'),
         ('Educational cascade', 'Chapter 9'),
         ('Epistemological humility', 'Chapters 2, 13'),
-        ('Erdős-Rényi random graph', 'Chapter 10'),
-        ('<b>F</b>', ''), ('Feature bloat', 'Chapter 5'),
+        ('Erdos-Renyi random graph', 'Chapter 10'),
+        ('F', '__HEAD__'), ('Feature bloat', 'Chapter 5'),
         ('Financial Crisis (2008)', 'Chapters 6, 11'),
         ('Fleming, Alexander', 'Chapters 7, 13'),
-        ('<b>G</b>', ''), ('GDPR cascade', 'Chapter 8'),
-        ('Gödel, Kurt — Incompleteness Theorems', 'Chapter 3'),
+        ('G', '__HEAD__'), ('GDPR cascade', 'Chapter 8'),
+        ('Godel, Kurt — Incompleteness Theorems', 'Chapter 3'),
         ('Goodhart\'s Law', 'Chapters 6, 9, 11'),
         ('GPS/Braess Paradox', 'Chapter 9'),
         ('Green Revolution', 'Chapter 9'),
-        ('<b>H</b>', ''), ('Halting problem', 'Chapter 5'),
+        ('H', '__HEAD__'), ('Halting problem', 'Chapter 5'),
         ('Hilbert\'s Program', 'Chapter 3'),
         ('Holodomor / Soviet collectivisation', 'Chapter 8'),
         ('Homogeneous Ecosystem Framework', 'Chapters 10, 12'),
         ('Hippocratic Principle for Innovation', 'Chapter 12'),
-        ('<b>I</b>', ''), ('Information-theoretic interpretation', 'Chapter 10'),
+        ('I', '__HEAD__'), ('Information-theoretic interpretation', 'Chapter 10'),
         ('Institutional structures', 'Chapter 13'),
-        ('<b>J</b>', ''), ('Jevons Paradox', 'Chapter 6'),
-        ('<b>K</b>', ''), ('Klein, Gary (pre-mortem)', 'Chapter 12'),
+        ('J', '__HEAD__'), ('Jevons Paradox', 'Chapter 6'),
+        ('K', '__HEAD__'), ('Klein, Gary (pre-mortem)', 'Chapter 12'),
         ('Kolmogorov complexity', 'Chapter 10'),
-        ('<b>L</b>', ''), ('Landauer\'s Principle', 'Chapter 4'),
+        ('L', '__HEAD__'), ('Landauer\'s Principle', 'Chapter 4'),
         ('Law of Cascade Problems', 'Chapter 1'),
         ('Leverage Points (Meadows)', 'Chapters 12, 13'),
-        ('<b>M</b>', ''), ('central claim', 'Chapter 10'),
+        ('M', '__HEAD__'), ('Main argument of the book', 'Chapter 10'),
         ('Marks, Howard', 'Chapter 13'),
         ('Maxwell\'s Demon', 'Chapter 4'),
         ('Meadows, Donella', 'Chapters 12, 13'),
         ('Merton, Robert K.', 'Introduction, Chapter 10'),
         ('Minimum Cascade Solution Set', 'Chapter 10'),
-        ('Monitoring Necessity Theorem', 'Chapters 10, 11'),
+        ('Monitoring necessity (principle)', 'Chapters 10, 11'),
         ('Montreal Protocol', 'Chapter 12'),
-        ('<b>N</b>', ''), ('No Child Left Behind Act', 'Chapter 9'),
+        ('N', '__HEAD__'), ('No Child Left Behind Act', 'Chapter 9'),
         ('Normal Accidents (Perrow)', 'Chapter 10'),
         ('NP-hardness of cascade management', 'Chapter 10'),
         ('Nuclear fission cascade', 'Chapter 4'),
-        ('<b>O</b>', ''), ('Opioid crisis / OxyContin', 'Chapters 7, 11'),
-        ('<b>P</b>', ''), ('P vs. NP problem', 'Chapter 3'),
+        ('O', '__HEAD__'), ('Opioid crisis / OxyContin', 'Chapters 7, 11'),
+        ('P', '__HEAD__'), ('P vs. NP problem', 'Chapter 3'),
         ('Percolation theory', 'Chapter 10'),
         ('Perrow, Charles', 'Chapters 1, 10'),
-        ('Phase Transition Theorem', 'Chapter 10'),
+        ('Phase transition (cascade dynamics)', 'Chapter 10'),
         ('Popper, Karl', 'Chapter 13'),
         ('Pre-mortem analysis', 'Chapter 12'),
         ('Prohibition cascade', 'Chapter 8'),
-        ('<b>Q</b>', ''), ('Quantitative Easing cascade', 'Chapter 6'),
+        ('Q', '__HEAD__'), ('Quantitative Easing cascade', 'Chapter 6'),
         ('Quantum mechanics cascade', 'Chapter 4'),
-        ('<b>R</b>', ''), ('Red teaming', 'Chapter 13'),
+        ('R', '__HEAD__'), ('Red teaming', 'Chapter 13'),
         ('Reversibility as design principle', 'Chapter 12'),
         ('Russell\'s Paradox', 'Chapter 3'),
-        ('<b>S</b>', ''), ('Scale-free networks', 'Chapter 10'),
+        ('S', '__HEAD__'), ('Scale-free networks', 'Chapter 10'),
         ('Second-order thinking', 'Chapter 13'),
         ('Shannon entropy', 'Chapter 10'),
         ('Smallpox eradication', 'Chapter 12'),
@@ -3652,30 +4160,58 @@ def appendices(S):
         ('Standardised testing', 'Chapter 9'),
         ('String Theory landscape', 'Chapter 4'),
         ('Solution-Problem Network', 'Chapter 10'),
-        ('<b>T</b>', ''), ('Taleb, Nassim Nicholas', 'Chapters 1, 10'),
+        ('T', '__HEAD__'), ('Taleb, Nassim Nicholas', 'Chapters 1, 10'),
         ('Tenner, Edward', 'Chapter 10'),
         ('Thalidomide', 'Chapter 7'),
         ('Type I-V cascade taxonomy', 'Appendix B'),
-        ('<b>U</b>', ''), ('Unknown unknowns problem', 'Chapter 11'),
+        ('U', '__HEAD__'), ('Unknown unknowns problem', 'Chapter 11'),
         ('Urban zoning cascade', 'Chapter 8'),
-        ('<b>V</b>', ''), ('Vaccination hesitancy cascade', 'Chapter 7'),
-        ('<b>W</b>', ''), ('War on Drugs cascade', 'Chapter 8'),
-        ('<b>Z</b>', ''), ('Zoning (single-family)', 'Chapter 8'),
+        ('V', '__HEAD__'), ('Vaccination hesitancy cascade', 'Chapter 7'),
+        ('W', '__HEAD__'), ('War on Drugs cascade', 'Chapter 8'),
+        ('Z', '__HEAD__'), ('Zoning (single-family)', 'Chapter 8'),
     ]
 
-    idx_data = []
-    row = []
-    for entry, location in index_entries:
-        cell = f'{entry}  {location}' if location else f'{entry}'
-        row.append(cell)
-        if len(row) == 2:
-            idx_data.append(row)
-            row = []
-    if row:
-        idx_data.append(row + [''])
+    # Build a ParagraphStyle for index cells so HTML markup is interpreted and
+    # the location reference renders in a lighter weight after the term.
+    from reportlab.lib.styles import ParagraphStyle
+    from reportlab.lib.enums import TA_LEFT
+    idx_entry_style = ParagraphStyle(
+        'idx_entry', fontName='Times-Roman', fontSize=8.5, leading=12,
+        alignment=TA_LEFT, leftIndent=0, firstLineIndent=0,
+        spaceBefore=0, spaceAfter=0)
+    idx_head_style = ParagraphStyle(
+        'idx_head', fontName='Times-Bold', fontSize=11, leading=15,
+        alignment=TA_LEFT, leftIndent=0, firstLineIndent=0,
+        spaceBefore=6, spaceAfter=2)
 
-    idx_table = Table(idx_data, colWidths=[TW * 0.5, TW * 0.5])
-    idx_table.setStyle(TableStyle([
+    # Pre-build the cell flowables. A header row (location == '__HEAD__') is a
+    # single bold letter spanning both columns; everything else is laid out in a
+    # two-column flow.
+    idx_data = []
+    span_rows = []      # indices of rows that should span columns 0..1
+    pending = []        # buffer for the left/right two-column flow
+
+    def flush_pending():
+        # Pair up buffered cells into two-column rows.
+        for i in range(0, len(pending), 2):
+            left = pending[i]
+            right = pending[i + 1] if i + 1 < len(pending) else ''
+            idx_data.append([left, right])
+        pending.clear()
+
+    for entry, location in index_entries:
+        if location == '__HEAD__':
+            flush_pending()
+            head_para = Paragraph(entry, idx_head_style)
+            idx_data.append([head_para, ''])
+            span_rows.append(len(idx_data) - 1)
+            continue
+        # Regular entry: "Term  <i>Chapter X</i>" wrapped in a Paragraph.
+        text = f'{entry}  <font color="#555555">{location}</font>' if location else entry
+        pending.append(Paragraph(text, idx_entry_style))
+    flush_pending()
+
+    style_cmds = [
         ('FONTNAME', (0, 0), (-1, -1), 'Times-Roman'),
         ('FONTSIZE', (0, 0), (-1, -1), 8.5),
         ('LEADING', (0, 0), (-1, -1), 12),
@@ -3684,190 +4220,15 @@ def appendices(S):
         ('RIGHTPADDING', (0, 0), (-1, -1), 6),
         ('TOPPADDING', (0, 0), (-1, -1), 1),
         ('BOTTOMPADDING', (0, 0), (-1, -1), 1),
-    ]))
+    ]
+    for r in span_rows:
+        style_cmds.append(('SPAN', (0, r), (1, r)))
+        style_cmds.append(('TOPPADDING', (0, r), (1, r), 4))
+        style_cmds.append(('BOTTOMPADDING', (0, r), (1, r), 2))
+
+    idx_table = Table(idx_data, colWidths=[TW * 0.5, TW * 0.5])
+    idx_table.setStyle(TableStyle(style_cmds))
     story.append(idx_table)
-
-    # ── Appendix B: Historical Timeline ───────────────────────────────────
-    story.append(PageBreak())
-    story += chapter_opener('Appendix B',
-        'A Chronological Atlas of Cascade Innovation',
-        'Fifty solution-problem pairs arranged chronologically, with cascade type classification',
-        S)
-    story.append(P(
-        'The following timeline presents fifty solution-cascade pairs drawn from '
-        'the historical record, organised chronologically. Each entry identifies '
-        'the original solution, the primary cascade problem it generated, the '
-        'approximate time lag between solution deployment and cascade manifestation, '
-        'and the cascade type classification from the taxonomy developed in Chapter 1. '
-        'The timeline is not exhaustive — the full history of cascade innovation '
-        'would require a library, not an appendix — but it is representative of '
-        'the pattern across domains, time periods, and levels of technological '
-        'sophistication.',
-        S['body0']))
-    story.append(SP(14))
-
-    from reportlab.platypus import TableStyle as TS2
-    timeline_data = [
-        ['Year', 'Solution', 'Primary Cascade Problem', 'Lag', 'Type'],
-        ['c.3400 BCE', 'Cuneiform writing', 'Administrative capture by scribal class', '~100 yr', 'II'],
-        ['c.600 BCE', 'Coined money', 'Debasement, usury, wealth concentration', '~200 yr', 'II'],
-        ['105 CE', 'Paper (Cai Lun)', 'Information proliferation, propaganda', '~800 yr', 'IV'],
-        ['1040 CE', 'Moveable type (Bi Sheng)', 'Doctrinal fragmentation, religious conflict', '~500 yr', 'IV'],
-        ['1440', 'Gutenberg press', 'Protestant Reformation, century of religious war', '~77 yr', 'IV'],
-        ['1543', 'Heliocentrism (Copernicus)', 'Institutional crisis of Church authority', '~60 yr', 'II'],
-        ['1687', 'Newtonian mechanics', 'Ultraviolet catastrophe (200 yr cascade)', '~210 yr', 'III'],
-        ['1712', 'Steam engine (Newcomen)', 'Coal depletion, atmospheric pollution', '~150 yr', 'I'],
-        ['1750s', 'Agricultural enclosure', 'Rural displacement, urban slums', '~50 yr', 'II'],
-        ['1796', 'Smallpox vaccine (Jenner)', 'Anti-vaccination movement, herd immunity erosion', '~200 yr', 'II'],
-        ['1820s', 'Railways', 'Urban sprawl, land speculation, noise pollution', '~30 yr', 'I'],
-        ['1828', 'Organic synthesis (Wöhler)', 'Vitalism collapse, pharmaceutical cascade', '~70 yr', 'IV'],
-        ['1845', 'Irish fertiliser intensification', 'Monoculture vulnerability (Great Famine)', '~3 yr', 'III'],
-        ['1848', 'Chloroform anaesthesia', 'Surgical overconfidence, infection cascade', '~10 yr', 'I'],
-        ['1859', 'Oil drilling (Drake)', 'Petroleum dependency, climate cascade', '~100 yr', 'I/V'],
-        ['1865', 'Lister antiseptics', 'Antibiotic resistance (90 yr cascade)', '~90 yr', 'III'],
-        ['1876', 'Telephone', 'Privacy erosion, surveillance infrastructure', '~100 yr', 'II'],
-        ['1879', 'Incandescent bulb (Edison)', 'Light pollution, sleep disruption, Jevons effect', '~70 yr', 'I'],
-        ['1882', 'Germ theory (Koch postulates)', 'Antibiotic over-prescription, resistance', '~75 yr', 'I'],
-        ['1886', 'Automobile (Benz)', 'Urban sprawl, air pollution, road deaths, oil wars', '~30 yr', 'I/V'],
-        ['1896', 'Aspirin (Bayer)', 'Gastrointestinal bleeding cascade', '~30 yr', 'I'],
-        ['1903', 'Heavier-than-air flight', 'Air warfare, carbon aviation, noise pollution', '~11 yr', 'II'],
-        ['1908', 'Haber-Bosch process', 'Nitrogen runoff, dead zones, population pressure', '~40 yr', 'I/V'],
-        ['1920', 'US Prohibition', 'Organised crime, corruption, enforcement cascade', '~3 yr', 'II'],
-        ['1928', 'Penicillin (Fleming)', 'Antibiotic resistance cascade (Θ = 700K/yr)', '~20 yr', 'I/V'],
-        ['1938', 'DDT (Müller)', 'Biomagnification, eagle extinction, PFAS lineage', '~20 yr', 'I/V'],
-        ['1942', 'Nuclear fission reactor', 'Nuclear proliferation, waste storage crisis', '~3 yr', 'V'],
-        ['1945', 'US GI Bill (higher ed.)', 'Credential inflation, tuition cascade', '~30 yr', 'II'],
-        ['1947', 'Transistor (Bell Labs)', 'E-waste, semiconductor dependency, AI cascade', '~40 yr', 'I/IV'],
-        ['1949', 'Green Revolution seeds', 'Pesticide resistance, soil degradation, water depletion', '~25 yr', 'I/V'],
-        ['1952', 'Chlorpromazine', 'Deinstitutionalisation → homelessness, prison cascade', '~20 yr', 'II'],
-        ['1961', 'Thalidomide sedative', 'Birth defects (10,000+ children)', '~4 yr', 'I'],
-        ['1969', 'ARPANET', 'Cybercrime, surveillance, misinformation ecosystem', '~30 yr', 'IV/V'],
-        ['1970', 'Controlled Substances Act', 'War on Drugs: mass incarceration, cartel violence', '~5 yr', 'II'],
-        ['1973', 'Fiat currency / Bretton Woods end', 'Asset price inflation, financialisation', '~15 yr', 'II'],
-        ['1976', 'Public-key cryptography', 'Post-quantum vulnerability, arms race', '~45 yr', 'III'],
-        ['1978', 'Benzodiazepines (mass prescribing)', 'Iatrogenic dependence (1.2M UK users)', '~10 yr', 'I'],
-        ['1980', 'Bayh-Dole Act (patent reform)', 'Patent thickets, research obstruction', '~15 yr', 'II'],
-        ['1986', 'IRCA immigration reform', 'Border militarisation, asylum cascade', '~5 yr', 'II'],
-        ['1986', 'Chernobyl response', 'Premature nuclear closures → fossil fuel cascade', '~5 yr', 'II'],
-        ['1990', 'HAART antiretroviral therapy', 'Drug resistance cascade, treatment adherence problem', '~10 yr', 'I/III'],
-        ['1991', 'World Wide Web (Berners-Lee)', 'Misinformation, surveillance capitalism, radicalisation', '~20 yr', 'IV/V'],
-        ['1995', 'OxyContin approval (FDA)', 'Opioid epidemic: 500,000+ US deaths to date', '~3 yr', 'V'],
-        ['1996', 'Dolly the sheep (cloning)', 'Bioethics crisis, germline editing cascade', '~22 yr', 'II/IV'],
-        ['1998', 'LTCM bailout', 'Moral hazard normalisation → 2008 crisis', '~10 yr', 'III'],
-        ['2001', 'No Child Left Behind Act', 'Teaching-to-test, cheating, mental health cascade', '~5 yr', 'II'],
-        ['2004', 'Facebook launch', 'Polarisation, mental health, democratic disruption', '~8 yr', 'IV/V'],
-        ['2008', 'Quantitative Easing (QE)', 'Asset price inflation, inequality, exit trap', '~5 yr', 'III'],
-        ['2009', 'Bitcoin / blockchain', 'Energy consumption, criminal use, regulatory cascade', '~5 yr', 'I/II'],
-        ['2012', 'CRISPR-Cas9 (Doudna/Charpentier)', 'Germline editing crisis, biosecurity cascade', '~6 yr', 'IV/V'],
-        ['2016', 'Algorithmic social media feeds', 'Filter bubbles, radicalisation pipeline', '~3 yr', 'IV/V'],
-        ['2020', 'mRNA vaccines (COVID-19)', 'Vaccine hesitancy cascade, intellectual property cascade', '~1 yr', 'II'],
-        ['2022', 'Large language model deployment', 'Misinformation, labour displacement, dependency', '~2 yr', 'IV/V'],
-    ]
-
-    col_widths = [TW*0.10, TW*0.22, TW*0.38, TW*0.12, TW*0.10]
-    tl_table = Table(timeline_data, colWidths=col_widths, repeatRows=1)
-    tl_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), '#2C3E50'),
-        ('TEXTCOLOR', (0, 0), (-1, 0), '#FFFFFF'),
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0, 0), (-1, 0), 7.5),
-        ('FONTNAME', (0, 1), (-1, -1), 'Times-Roman'),
-        ('FONTSIZE', (0, 1), (-1, -1), 6.8),
-        ('LEADING', (0, 0), (-1, -1), 9),
-        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('ROWBACKGROUNDS', (0, 1), (-1, -1), ['#FFFFFF', '#F5F5F0']),
-        ('GRID', (0, 0), (-1, -1), 0.25, '#CCCCCC'),
-        ('LEFTPADDING', (0, 0), (-1, -1), 3),
-        ('RIGHTPADDING', (0, 0), (-1, -1), 3),
-        ('TOPPADDING', (0, 0), (-1, -1), 2),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
-    ]))
-    story.append(tl_table)
-    story.append(SP(10))
-    story.append(P(
-        'Cascade Type Key: I = Direct Side Effect; II = Incentive/Behavioural Response; '
-        'III = Interaction Effect with Existing Solutions; IV = Network/Ecosystem Cascade; '
-        'V = Civilisation-Scale Systemic Cascade.',
-        S['caption']))
-    story.append(SP(18))
-
-    # ── Appendix C: Cascade Risk Index Reference Table ─────────────────────
-    story.append(PageBreak())
-    story += chapter_opener('Appendix C',
-        'Cascade Risk Index Reference Values',
-        'CRI values for solutions discussed in this book, with parameter estimates',
-        S)
-    story.append(P(
-        'The table below presents Cascade Risk Index values for solutions discussed '
-        'in the main text, computed using the formula CRI(s, E) = cascade coefficient · the solution complexity · '
-        'reach raised to the amplification exponent · (1 + the sum∈E the domain overlap · the interaction amplification), normalised to [0, 1]. '
-        'All values are point estimates with substantial uncertainty; the purpose '
-        'of the table is comparative rather than precise. Parameters C (cascade '
-        'coefficient), complexity (cascade complexity), the amplification factor (network amplification exponent), '
-        'and the normalised CRI score are shown. Solutions with CRI > 0.7 are '
-        'classified as high-risk; those with CRI > 0.9 are classified as extreme-risk.',
-        S['body0']))
-    story.append(SP(14))
-
-    cri_data = [
-        ['Solution', 'Domain', 'C', 'complexity', 'the amplification factor', 'CRI', 'Risk Class'],
-        ['Industrial CO₂ emissions', 'Energy/Climate', '1.00', '0.98', '2.1', '0.99', 'Extreme'],
-        ['Nuclear fission (weapons)', 'Defence', '1.00', '0.95', '1.9', '0.98', 'Extreme'],
-        ['OxyContin prescription', 'Medicine', '0.92', '0.88', '1.8', '0.97', 'Extreme'],
-        ['LLM/AI deployment', 'Technology', '0.89', '0.91', '2.0', '0.96', 'Extreme'],
-        ['CDO financial instruments', 'Finance', '0.88', '0.85', '2.1', '0.95', 'Extreme'],
-        ['Social media algorithms', 'Technology', '0.87', '0.89', '1.9', '0.94', 'Extreme'],
-        ['Agricultural antibiotics', 'Medicine', '0.84', '0.76', '1.7', '0.91', 'Extreme'],
-        ['CRISPR germline editing', 'Biology', '0.95', '0.82', '1.5', '0.90', 'Extreme'],
-        ['Single-family zoning (US)', 'Governance', '0.72', '0.71', '1.6', '0.83', 'High'],
-        ['Haber-Bosch process', 'Chemistry', '0.79', '0.74', '1.7', '0.82', 'High'],
-        ['War on Drugs enforcement', 'Governance', '0.81', '0.70', '1.5', '0.80', 'High'],
-        ['Benzodiazepine mass prescribing', 'Medicine', '0.77', '0.68', '1.6', '0.77', 'High'],
-        ['Quantitative Easing (2008+)', 'Finance', '0.74', '0.72', '1.6', '0.76', 'High'],
-        ['Trade liberalisation (NAFTA/WTO)', 'Economics', '0.69', '0.74', '1.7', '0.74', 'High'],
-        ['DDT application (agriculture)', 'Chemistry', '0.82', '0.68', '1.4', '0.73', 'High'],
-        ['No Child Left Behind Act', 'Governance', '0.68', '0.62', '1.5', '0.67', 'Moderate'],
-        ['CFCs (refrigerants)', 'Chemistry', '0.75', '0.60', '1.4', '0.65', 'Moderate'],
-        ['US Prohibition (1920)', 'Governance', '0.70', '0.63', '1.4', '0.64', 'Moderate'],
-        ['Thalidomide (sedative)', 'Medicine', '0.88', '0.72', '1.2', '0.63', 'Moderate'],
-        ['Bitcoin/Cryptocurrency', 'Technology', '0.62', '0.59', '1.5', '0.59', 'Moderate'],
-        ['P-value significance testing', 'Statistics', '0.58', '0.56', '1.6', '0.55', 'Moderate'],
-        ['Green Revolution HYV seeds', 'Agriculture', '0.65', '0.60', '1.4', '0.55', 'Moderate'],
-        ['Smallpox vaccine (Jenner)', 'Medicine', '0.41', '0.38', '1.4', '0.35', 'Low'],
-        ['Montreal Protocol compliance', 'Governance', '0.28', '0.32', '1.3', '0.25', 'Low'],
-        ['Basel III capital requirements', 'Finance', '0.32', '0.29', '1.3', '0.22', 'Low'],
-    ]
-
-    cri_widths = [TW*0.28, TW*0.15, TW*0.07, TW*0.07, TW*0.07, TW*0.08, TW*0.18]
-    cri_table = Table(cri_data, colWidths=cri_widths, repeatRows=1)
-    cri_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), '#2C3E50'),
-        ('TEXTCOLOR', (0, 0), (-1, 0), '#FFFFFF'),
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0, 0), (-1, 0), 7.5),
-        ('FONTNAME', (0, 1), (-1, -1), 'Times-Roman'),
-        ('FONTSIZE', (0, 1), (-1, -1), 7),
-        ('LEADING', (0, 0), (-1, -1), 9.5),
-        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('ROWBACKGROUNDS', (0, 1), (-1, -1), ['#FFFFFF', '#F5F5F0']),
-        ('GRID', (0, 0), (-1, -1), 0.25, '#CCCCCC'),
-        ('LEFTPADDING', (0, 0), (-1, -1), 3),
-        ('RIGHTPADDING', (0, 0), (-1, -1), 3),
-        ('TOPPADDING', (0, 0), (-1, -1), 2),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
-        ('TEXTCOLOR', (6, 1), (6, 8), '#CC0000'),
-        ('FONTNAME', (6, 1), (6, 8), 'Helvetica-Bold'),
-    ]))
-    story.append(cri_table)
-    story.append(SP(10))
-    story.append(P(
-        'CRI values above 0.9 (Extreme) require fundamental redesign and staged '
-        'deployment with mandatory cascade monitoring at each stage. Values between '
-        '0.7 and 0.9 (High) require pre-deployment cascade review and post-deployment '
-        'cascade monitoring. Values below 0.5 indicate solutions where primary '
-        'benefit dominates cascade cost under normal deployment conditions.',
-        S['caption']))
-    story.append(SP(18))
 
 
     story += [PageBreak()]
