@@ -294,42 +294,38 @@ def chapter7(S):
     story.append(SP(14))
 
     story.append(P(
-        'On September 28, 1928, Alexander Fleming returned from a summer holiday to '
-        'find a contaminated petri dish on his laboratory bench at St Mary\'s Hospital '
-        'in London. A mould \u2014 Penicillium notatum \u2014 was growing on a Staphylococcus '
-        'culture plate he had carelessly left exposed before his departure, and around the '
-        'spreading colony of mould, the bacteria were dead. Fleming later wrote that he '
-        '"nearly threw it away," but something about the halo of bacterial death made him '
-        'pause. He subcultured the mould, named the antibacterial substance it produced '
-        '"penicillin," and published his findings in the British Journal of Experimental '
-        'Pathology in June 1929. The paper attracted almost no attention. A decade passed '
-        'before Howard Florey and Ernst Chain at Oxford purified penicillin to a usable '
-        'form in 1940, demonstrating that it could cure otherwise fatal bacterial infections '
-        'in mice \u2014 and, within a year, in humans. By 1943 penicillin was being '
-        'mass-produced by American pharmaceutical companies, shipped to Allied armies in '
-        'North Africa and Europe, and saving lives at a rate that had no precedent in the '
-        'history of medicine. Wound infections that had killed more soldiers in every '
-        'previous war than enemy action were suddenly survivable. Bacterial diseases that '
-        'had been death sentences \u2014 pneumonia, septicaemia, syphilis, scarlet fever, '
-        'bacterial endocarditis \u2014 became curable in days. Fleming, Florey, and Chain '
-        'shared the Nobel Prize in Physiology or Medicine in 1945.',
+        'September 28, 1928. Alexander Fleming comes back from a summer holiday to a '
+        'contaminated petri dish on his bench at St Mary\'s Hospital in London. A mould \u2014 '
+        '<i>Penicillium notatum</i> \u2014 is growing on a <i>Staphylococcus</i> culture plate '
+        'he had left exposed. Around the spreading colony of mould, the bacteria are dead. '
+        'Fleming later wrote that he nearly threw the dish away. Something about the '
+        'halo of dead bacteria made him pause. He subcultured the mould, called the '
+        'antibacterial substance it produced "penicillin," and in 1929 published a paper '
+        'in the <i>British Journal of Experimental Pathology</i>. The paper attracted '
+        'almost no attention. A decade later, Howard Florey and Ernst Chain at Oxford '
+        'purified penicillin to a usable form and showed it could cure otherwise fatal '
+        'bacterial infections in mice \u2014 and, within a year, in humans. By 1943 the drug '
+        'was being mass-produced in the United States and shipped to Allied armies in '
+        'North Africa and Europe. Wound infections that had killed more soldiers than '
+        'enemy action in every previous war were suddenly survivable. Pneumonia, '
+        'septicaemia, syphilis, scarlet fever, bacterial endocarditis \u2014 diseases that had '
+        'been death sentences \u2014 became curable in days. Fleming, Florey, and Chain shared '
+        'the Nobel in 1945.',
         S['body0']))
     story.append(SP(14))
 
     story.append(P(
-        'Fleming himself understood the cascade before it arrived. In his Nobel Prize '
-        'acceptance lecture in December 1945, he warned with exceptional prescience: '
-        '"The time may come when penicillin can be bought by anyone in the shops. Then '
-        'there is the danger that the ignorant man may easily under-dose himself and by '
-        'exposing his microbes to non-lethal quantities of the drug make them resistant." '
-        'He was right about the mechanism, right about the timeline, and catastrophically '
-        'right about the scale. Fleming was not predicting some distant theoretical risk; '
-        'he was describing a process that was already under way. Penicillin-resistant '
-        'Staphylococcus aureus strains had been isolated in laboratory settings as early '
-        'as 1940, before the drug was even in clinical use. By 1947 \u2014 just four years '
-        'after penicillin reached clinical use at scale \u2014 resistant strains were '
-        'appearing in hospitals across Britain and the United States. The gap between '
-        'solution and resistance cascade was measured not in decades but in years.',
+        'Fleming saw the cascade before it arrived. In his Nobel acceptance lecture in '
+        'December 1945 he said this: <i>The time may come when penicillin can be bought '
+        'by anyone in the shops. Then there is the danger that the ignorant man may easily '
+        'under-dose himself and by exposing his microbes to non-lethal quantities of the '
+        'drug make them resistant.</i> He was right about the mechanism, right about the '
+        'timeline, and catastrophically right about the scale. Penicillin-resistant '
+        '<i>Staphylococcus aureus</i> had been isolated in laboratory settings in 1940, '
+        'before the drug was even in clinical use. By 1947 \u2014 just four years after '
+        'penicillin reached patients at scale \u2014 resistant strains were appearing in '
+        'hospitals across Britain and the United States. The gap between solution and '
+        'cascade was measured not in decades but in years.',
         S['body']))
     story.append(SP(14))
 
@@ -441,42 +437,39 @@ def chapter7(S):
     story.append(SP(14))
 
     story.append(P(
-        'On December 12, 1995, the US Food and Drug Administration approved OxyContin, '
-        'a controlled-release formulation of the opioid oxycodone manufactured by Purdue '
-        'Pharma, a privately held pharmaceutical company owned by the Sackler family. '
-        'The drug was approved to solve a genuine and serious problem: chronic pain was '
-        'massively undertreated in the United States. Surveys in the mid-1990s found that '
-        'millions of Americans with chronic non-cancer pain were receiving inadequate '
-        'analgesia, in part because physicians were reluctant to prescribe opioids for '
-        'non-terminal conditions due to concerns about addiction and regulatory scrutiny. '
-        'The American Pain Society in 1996 introduced the concept of pain as "the fifth '
-        'vital sign" \u2014 arguing that pain should be assessed and documented as '
-        'routinely as blood pressure and temperature. The Joint Commission on Accreditation '
-        'of Healthcare Organizations began evaluating hospitals on their pain management '
-        'practices. A cultural and institutional shift was under way: undertreated pain was '
-        'redefined as a public health crisis requiring aggressive pharmaceutical intervention.',
+        'December 12, 1995. The US Food and Drug Administration approves OxyContin \u2014 a '
+        'controlled-release formulation of the opioid oxycodone, manufactured by Purdue '
+        'Pharma, a privately held company owned by the Sackler family. The drug was '
+        'approved to solve a genuine problem. Chronic pain was massively undertreated in '
+        'the United States. Millions of Americans with chronic non-cancer pain were '
+        'receiving inadequate analgesia, in part because physicians were reluctant to '
+        'prescribe opioids for non-terminal conditions out of concern for addiction and '
+        'regulatory scrutiny. In 1996 the American Pain Society introduced the idea of '
+        'pain as "the fifth vital sign" \u2014 to be assessed and documented as routinely as '
+        'blood pressure and temperature. The Joint Commission began rating hospitals on '
+        'pain management. A cultural shift was under way. Undertreated pain was being '
+        'redefined as a public health crisis requiring aggressive pharmaceutical '
+        'intervention. Into that opening, OxyContin was launched.',
         S['body0']))
     story.append(SP(14))
 
     story.append(P(
-        'Purdue Pharma\'s marketing campaign for OxyContin was of a scale and sophistication '
-        'previously unseen in pharmaceutical promotion. The company deployed 671 paid '
-        'speakers \u2014 physicians who gave talks to other physicians at dinners, '
-        'conferences, and "pain management education" events at resorts \u2014 to promote '
-        'the drug\'s safety and efficacy for non-cancer chronic pain. Sales representatives '
-        'were trained to minimize addiction risk and to cite a 1980 letter published in '
-        'the New England Journal of Medicine \u2014 a five-sentence communication by Porter '
-        'and Jick reporting on a hospital survey that found low addiction rates among '
-        'hospitalized patients receiving opioids for acute pain \u2014 as evidence that '
-        'addiction risk was "less than one percent." The Porter and Jick communication '
-        'had never been intended as a clinical study of addiction in chronic-pain patients; '
-        'it was a brief observation about acute hospital use. It was cited more than 600 '
-        'times in the medical literature between 1980 and 2017, almost always as support '
-        'for the claim that opioids carried minimal addiction risk in chronic-pain '
-        'populations \u2014 a population the original observation had not studied and '
-        'could not support conclusions about. A single five-sentence letter, cited out of '
-        'context and amplified through 671 paid speakers, helped reshape prescribing '
-        'practices for an entire nation.',
+        'Purdue\'s marketing campaign was on a scale and of a sophistication that '
+        'pharmaceutical promotion had never seen. The company built a network of 671 '
+        'paid speakers \u2014 physicians giving talks to other physicians at dinners, '
+        'conferences, and "pain management education" weekends at resorts \u2014 to promote '
+        'the drug\'s safety and efficacy for non-cancer chronic pain. Sales reps were '
+        'trained to minimise addiction risk by citing a single document: a 1980 letter '
+        'to the editor in the <i>New England Journal of Medicine</i>, by Porter and Jick, '
+        'reporting low addiction rates among hospitalised patients receiving opioids for '
+        '<i>acute</i> pain. The letter ran to five sentences. It had never been intended '
+        'as a clinical study of addiction in chronic-pain patients. It was a brief '
+        'observation about short-term hospital use. Between 1980 and 2017 it was cited '
+        'over 600 times in the medical literature, almost always as evidence that '
+        'opioids were minimally addictive in chronic-pain populations \u2014 populations the '
+        'original observation had not studied and could not speak to. A five-sentence '
+        'letter, cited out of context and amplified through 671 paid speakers, helped '
+        'rewrite the prescribing practices of an entire country.',
         S['body']))
     story.append(SP(14))
 
@@ -570,22 +563,22 @@ def chapter7(S):
     story.append(SP(14))
 
     story.append(P(
-        'In 1957, the West German pharmaceutical company Chemie Gr\u00fcnenthal introduced '
-        'thalidomide under the brand name Contergan, marketing it as a sedative and '
-        'antiemetic \u2014 a drug to relieve anxiety, insomnia, and nausea. The company '
-        'described it as "completely safe" and "non-toxic," even for long-term use, '
-        'and it was sold without prescription across forty-six countries in Europe, '
-        'Africa, Asia, and South America. It was marketed aggressively for morning '
-        'sickness in pregnant women \u2014 a population for whom it was especially '
-        'appealing because it produced reliable relief of a genuinely miserable symptom '
-        'affecting millions of women in their first trimester. In the United States, '
-        'FDA medical officer Frances Oldham Kelsey withheld approval on the grounds that '
-        'the data submitted by the American licensee, Richardson-Merrell, were '
-        'scientifically inadequate and that the drug\'s safety in pregnancy had not been '
-        'demonstrated. Her refusal, sustained over a year of intense commercial pressure, '
-        'would earn her the President\'s Award for Distinguished Federal Civilian Service '
-        'from John F. Kennedy in 1962, and is one of the most celebrated acts of '
-        'bureaucratic courage in the history of medicine.',
+        '1957. The West German pharmaceutical company Chemie Gr\u00fcnenthal introduces '
+        'thalidomide under the brand name Contergan. It is marketed as a sedative and '
+        'an antiemetic \u2014 a drug for anxiety, insomnia, and nausea \u2014 and described by '
+        'the company as "completely safe" and "non-toxic," even for long-term use. It '
+        'is sold without prescription across forty-six countries in Europe, Africa, '
+        'Asia, and South America. It is marketed aggressively for morning sickness in '
+        'pregnant women, a population for whom it works reliably on a genuinely '
+        'miserable symptom that affects millions of women in the first trimester. In '
+        'the United States, it does not get approved. An FDA medical officer named '
+        'Frances Oldham Kelsey withholds her signature on the grounds that the data '
+        'submitted by the American licensee, Richardson-Merrell, are inadequate and '
+        'that the drug\'s safety in pregnancy has not been shown. She holds her line '
+        'for over a year, under intense commercial pressure, and the President of the '
+        'United States hands her an award for it in 1962. Her refusal is one of the '
+        'most celebrated acts of bureaucratic courage in the history of medicine. The '
+        'rest of the world does not have a Frances Kelsey.',
         S['body0']))
     story.append(SP(14))
 
@@ -657,22 +650,21 @@ def chapter7(S):
     story.append(SP(14))
 
     story.append(P(
-        'In August 2012, Jennifer Doudna of the University of California, Berkeley, '
-        'and Emmanuelle Charpentier of the Helmholtz Centre for Infection Research '
-        'published a paper in Science describing a molecular system \u2014 CRISPR-Cas9 '
-        '\u2014 that could be programmed to cut DNA at any specific location in any '
-        'genome with unprecedented precision and simplicity. The system was adapted from '
-        'a natural bacterial immune mechanism: bacteria use CRISPR sequences as a kind '
-        'of genetic memory of past viral infections, storing fragments of viral DNA that '
-        'allow Cas9 enzymes to recognize and cut those sequences if the virus attacks '
-        'again. Doudna and Charpentier showed that the targeting could be redirected by '
-        'simply changing a short "guide RNA" sequence \u2014 a process that takes days '
-        'rather than the months required by previous gene-editing techniques. The '
-        'scientific community immediately recognized that this technology had the '
-        'potential to correct the genetic mutations responsible for thousands of '
-        'hereditary diseases, from cystic fibrosis and sickle cell disease to '
-        'Huntington\'s and Duchenne muscular dystrophy. Doudna and Charpentier were '
-        'awarded the Nobel Prize in Chemistry in 2020. The cascade had already begun.',
+        'August 2012. Jennifer Doudna of UC Berkeley and Emmanuelle Charpentier of '
+        'the Helmholtz Centre for Infection Research publish a paper in <i>Science</i> '
+        'describing a molecular system \u2014 CRISPR-Cas9 \u2014 that can be programmed to cut '
+        'DNA at any specific location in any genome with unprecedented precision and '
+        'simplicity. The system was borrowed from biology. Bacteria use CRISPR '
+        'sequences as a kind of genetic memory of past viral infections, storing '
+        'fragments of viral DNA so that Cas9 enzymes can recognise and cut those '
+        'sequences if the virus attacks again. Doudna and Charpentier showed that the '
+        'targeting could be redirected by simply changing a short "guide RNA" sequence '
+        '\u2014 a process that takes days rather than the months earlier gene-editing '
+        'techniques required. The biomedical community immediately recognised that '
+        'this technology had the potential to correct the genetic mutations responsible '
+        'for thousands of hereditary diseases: cystic fibrosis, sickle cell, '
+        'Huntington\'s, Duchenne muscular dystrophy. Doudna and Charpentier won the '
+        'Nobel in Chemistry in 2020. By that point, the cascade had already begun.',
         S['body0']))
     story.append(SP(14))
 
@@ -760,447 +752,7 @@ def chapter7(S):
         'shown has been documented in clinical or experimental settings.',
         S['caption']))
 
-    # ------------------------------------------------------------------ #
-    # Section 5: The Microbiome                                            #
-    # ------------------------------------------------------------------ #
-    story.append(SP(22))
-    story.append(P('The Microbiome \u2014 Collateral Damage of Modern Medicine', S['section']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The Human Microbiome Project, a five-year NIH initiative launched in 2007 and '
-        'extended through 2016, catalogued the microbial communities that inhabit the '
-        'human body and found something that upended a century of medical assumptions. '
-        'The human body contains approximately 37 trillion human cells \u2014 and '
-        'approximately 37 trillion microbial cells, most of them bacteria resident in '
-        'the gut. The gut microbiome alone comprises over 1,000 distinct species, '
-        'encoding some 3 million genes \u2014 more than 100 times the number of genes '
-        'in the human genome. These microorganisms are not passengers; they are '
-        'participants in fundamental physiological processes including digestion, immune '
-        'system development, neurological function, hormone regulation, and protection '
-        'against pathogenic bacteria. Germ-free mice \u2014 mice raised without any '
-        'gut microbiome \u2014 have severely stunted immune systems, abnormal gut '
-        'architecture, and dramatically altered brain development. The microbiome is not '
-        'a luxury; it is a physiological organ.',
-        S['body0']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The most immediately lethal cascade from antibiotic disruption of the microbiome '
-        'is Clostridioides difficile infection, universally known as C. diff. C. diff is '
-        'a spore-forming bacterium that is present at low levels in the gut of a '
-        'significant fraction of healthy adults, held in check by the resident microbiome. '
-        'When antibiotics disrupt the microbiome \u2014 killing the bacterial species '
-        'that normally suppress C. diff \u2014 C. diff proliferates, produces toxins '
-        'that destroy the gut epithelium, and causes severe colitis that can progress to '
-        'sepsis and death. C. diff is entirely iatrogenic: it is caused almost exclusively '
-        'by antibiotic treatment, making it the paradigmatic example of a cascade in '
-        'which the solution creates the next problem. In the United States, C. diff '
-        'causes approximately 500,000 infections and 30,000 deaths annually. It is the '
-        'most common hospital-acquired infection in the United States and the most common '
-        'cause of healthcare-associated diarrhoea in the developed world. The treatment '
-        'for C. diff is antibiotics, which disrupts the microbiome further, which '
-        'increases the risk of recurrence in a self-reinforcing cascade: recurrence '
-        'rates after a first C. diff infection are approximately 25 percent, and after '
-        'a second recurrence they approach 65 percent.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The obstetric cascade illustrates how a medical intervention designed to save '
-        'lives generates microbiome consequences that take decades to manifest. '
-        'Caesarean section deliveries now account for approximately 32 percent of births '
-        'in the United States and over 50 percent in some Latin American countries. '
-        'Caesarean delivery is life-saving when indicated: it prevents maternal and infant '
-        'mortality from obstructed labour, placental complications, and fetal distress. '
-        'But during vaginal delivery, the newborn passes through the mother\'s vaginal '
-        'microbiome, acquiring a founding inoculum of Lactobacillus and other vaginal '
-        'bacteria that colonize the infant gut and seed the developing immune system. '
-        'Caesarean-delivered infants miss this inoculum, receiving instead a microbiome '
-        'seeded primarily from the skin and the hospital environment. Multiple large '
-        'cohort studies have found that caesarean delivery is associated with a 20 to '
-        '40 percent increased risk of asthma, a similar increase in allergic rhinitis, '
-        'increased obesity risk, and increased type 1 diabetes incidence \u2014 all '
-        'conditions linked to abnormal immune development in the first months of life. '
-        'The cascade from the surgical solution to birth complications unfolds over '
-        'the entire lifetime of the child.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'Proton pump inhibitors \u2014 drugs like omeprazole (Prilosec), lansoprazole '
-        '(Prevacid), and esomeprazole (Nexium) that suppress gastric acid production '
-        '\u2014 were introduced in the late 1980s as highly effective treatments for '
-        'gastro-oesophageal reflux disease, gastric ulcers, and oesophagitis. They are '
-        'among the most widely prescribed drugs in the world; approximately 15 percent '
-        'of American adults take them regularly. The cascade from long-term proton pump '
-        'inhibitor use has accumulated in the medical literature over two decades. By '
-        'reducing gastric acid to near-zero levels, PPIs alter the chemical environment '
-        'of the upper gastrointestinal tract, enabling bacterial colonization that would '
-        'normally be suppressed by acid. This disrupts the gastric and intestinal '
-        'microbiome, increases susceptibility to C. diff infection by 1.5 to 2.8 times, '
-        'impairs absorption of magnesium, calcium, vitamin B12, and iron with '
-        'consequences for bone density and neurological function, and has been associated '
-        'in a 2023 meta-analysis of 17 studies with a 33 percent increased risk of '
-        'dementia in long-term users. Long-term PPI use is also associated with rebound '
-        'acid hypersecretion upon discontinuation \u2014 the stomach, deprived of its '
-        'normal acid feedback loop, upregulates acid-producing cells, producing acid '
-        'reflux worse than before treatment upon drug cessation. The solution to '
-        'heartburn creates a physiological dependency that makes heartburn worse if '
-        'the solution is removed.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('The Vaccination Hesitancy Cascade', S['section']))
-    story.append(P('The vaccination hesitancy cascade is perhaps the most recursive of all the medical cascades documented in this book: it is a cascade generated not by the biological mechanism of the solution but by the communication and trust dynamics that surround it. Vaccines solved the problem of infectious disease mortality with extraordinary effectiveness: smallpox was eradicated; poliomyelitis, which paralysed approximately 15,000 Americans annually at its 1952 peak, was eliminated from the Western Hemisphere by 1994; measles, which killed millions of children annually before the 1960s, was reduced to a global annual toll of approximately 100,000 by 2017. These are genuine, extraordinary achievements. The cascade they generated (vaccination hesitancy) threatens to reverse them.', S['body0']))
-    story.append(P('The proximate cause of the modern vaccination hesitancy epidemic is the 1998 Lancet paper by Andrew Wakefield claiming a causal link between the MMR vaccine and autism. The paper was fraudulent: its data were fabricated, its ethics approvals were not obtained, and Wakefield held undisclosed financial interests in alternative vaccines, and was retracted by The Lancet in 2010 after a six-year investigation. Wakefield lost his medical licence. The scientific consensus that MMR vaccine does not cause autism is overwhelming and was established before the retraction: twelve large epidemiological studies involving more than 1.2 million children conducted between 1999 and 2014 found no association between MMR vaccination and autism. The Wakefield paper has been as thoroughly refuted as any claim in modern medicine.', S['body']))
-    story.append(P('And yet the cascade it initiated has proved impossible to stop. Measles cases in the United States, which had declined to a record low of 37 in 2004, rebounded to 1,282 cases in 2019 (the highest in 27 years) driven by clusters of unvaccinated children in communities with high vaccine hesitancy. In Europe, measles outbreaks in Romania (over 10,000 cases and 59 deaths between 2016 and 2018), Italy (over 2,500 cases in 2017), and France (over 2,900 cases in 2018-2019) reversed decades of progress toward measles elimination. The World Health Organization declared vaccine hesitancy one of the ten greatest threats to global health in 2019, not because the vaccines had failed, but because the communication cascade generated by a single fraudulent paper had undermined the social trust that makes mass vaccination programs possible.', S['body']))
-    story.append(P('The vaccination hesitancy cascade is a Type IV network cascade in its modern form. Social media amplifies vaccine misinformation at a rate that overwhelms scientific correction: a study published in JAMA Internal Medicine in 2020 found that anti-vaccine content on Facebook and YouTube generated more than twice the engagement of pro-vaccine content, because emotionally negative and conspiracy-adjacent content generates more clicks, comments, and shares than accurate but mundane content. The algorithmic amplification of anti-vaccine content was not designed to generate a public health cascade; it was designed to maximise user engagement, which happened to amplify exactly the type of content most harmful to vaccination programs. This is the interaction cascade between social media algorithms (Chapter 9) and pharmaceutical-era mistrust (Chapter 7) at its most consequential: the intersection of two separately-designed systems producing an outcome that neither system\u2019s designers modelled.', S['body']))
-    story.append(P('The COVID-19 pandemic both demonstrated the cascade in acute form and added new cascades of its own. The mRNA vaccine technology developed in 2020-2021 was a genuine scientific achievement: the vaccines were developed, tested, authorised, and deployed at unprecedented speed, and their effectiveness at preventing severe disease and death was demonstrated clearly in multiple independent analyses. The cascade included: the rare but real adverse effects (myocarditis, thrombosis with thrombocytopenia syndrome) that created legitimate safety concerns for specific populations; the aggressive miscommunication of these adverse effects by vaccine-hesitant networks, which amplified rare events into the perception of routine risk; the political polarisation of vaccine uptake in the United States and elsewhere, which transformed a medical decision into a tribal identity marker; and the proliferation of the "vaccine injury" community, which provided social support for individuals who attributed diverse health problems to vaccine side effects, creating a community of vaccine-adverse individuals that will influence vaccination decisions for decades. The COVID-19 vaccination cascade will affect public health beyond COVID-19: the erosion of institutional trust generated by the pandemic response, including both the real failures of public health communication and the manufactured distrust amplified by social media, will affect the response to the next pandemic, the next outbreak, and routine childhood vaccination programs for years to come.', S['body']))
-    story.append(callout('<b>The Vaccination Hesitancy Cascade in One Number:</b> Andrew Wakefield\'s 1998 paper enrolled twelve children and cost approximately \u00a355,000 to produce. The cost of the vaccination hesitancy epidemic it helped generate, in direct healthcare costs from preventable disease, in lost vaccination coverage, in the political and institutional capital spent combating misinformation is estimated in the hundreds of billions of dollars and has claimed lives that vaccines could have saved. The return-on-investment for scientific fraud in the anti-vaccine space is, from the perspective of cascade damage, one of the highest documented in history.', S))
-
-    story.append(fig_microbiome_cascade())
-    story.append(SP(8))
-    story.append(P(
-        'Figure 7.4: The antibiotic-microbiome cascade. Antibiotic use disrupts the '
-        'gut microbiome, generating C. diff, gut dysbiosis, and immune dysregulation, '
-        'each of which generates its own downstream cascade. The cascade operates '
-        'simultaneously at the individual and population levels.',
-        S['caption']))
-
-    story.append(SP(18))
-    story.append(P('The Medical Cascade: What Medicine Has Learned — and Not Learned', S['section']))
-    story.append(P('The evidence assembled in this chapter spans eighty years of modern pharmaceutical medicine and encompasses solutions ranging from the molecular to the systemic. The pattern is consistent enough to warrant a general conclusion: modern medicine has become extraordinarily effective at solving the problems it targets, and extraordinarily effective at generating cascades from those solutions into adjacent domains that it was not targeting and was often not monitoring. The history is not a history of bad medicine. It is a history of good medicine operating in complex systems without adequate cascade analysis.', S['body0']))
-    story.append(P('The antibiotic cascade is the most instructive because it is the most mature. Penicillin was introduced in 1943. The first penicillin-resistant Staphylococcus aureus strain was documented in 1947: four years after clinical introduction, before the drug was even in widespread use. Methicillin was introduced in 1959 specifically to address penicillin-resistant staph; MRSA (methicillin-resistant Staphylococcus aureus) was documented in 1961. Vancomycin was introduced as the last-resort treatment for MRSA; vancomycin-resistant enterococcus was documented in 1988. The cascade has a characteristic timescale of 2-5 years from antibiotic introduction to resistance documentation for any given pathogen-antibiotic pair. This timescale was known from the 1960s. The cascade was not unpredictable; it was predicted, correctly, by Alexander Fleming in his 1945 Nobel Prize lecture. What is extraordinary is that the prediction did not change practice: antibiotic overuse continued, and the resistance cascade accelerated, in the face of clear scientific evidence that it would.', S['body']))
-    story.append(P('The explanation for this apparent irrationality is institutional rather than individual. Individual physicians, prescribing antibiotics for patients with uncertain diagnoses (viral infections that might be bacterial, bacterial infections whose pathogen is unknown), were making individually rational decisions: the benefit to the current patient of prescribing an antibiotic when there is uncertainty is immediate and certain; the contribution to aggregate resistance is diffuse and distant. No individual prescription tips the resistance balance. But the aggregate of individually rational prescribing decisions (across millions of physicians and billions of prescriptions) generates the resistance cascade through a classic collective action problem. This is the public goods structure of the antibiotic resistance cascade: the antibiotic is a shared resource (its effectiveness depends on bacteria not being resistant), and each user depletes that resource marginally while capturing the full benefit of the current prescription. Without external coordination mechanisms: antibiotic stewardship programs, prescribing guidelines, prescription monitoring, agricultural antibiotic use restrictions, the rational individual choice generates the catastrophic collective outcome.', S['body']))
-    story.append(P('The opioid cascade has a different institutional structure but a similar logic. The immediate benefit of an opioid prescription is borne by the patient; the addiction risk is borne partly by the patient, partly by the patient\'s family and community, and partly by the public health system. The marketing-driven over-prescription of OxyContin was individually rational for each prescribing physician (paid in relative-value units that rewarded volume, not long-term patient outcomes), individually rational for Purdue Pharma (maximising revenue during the patent window), and individually rational for insurance companies (reimbursing short-term prescriptions without funding long-term addiction treatment). The cascade was generated not by any single actor\'s irrationality but by the interaction of individually rational actors whose incentive structures were not aligned with the system-level outcome.', S['body']))
-    story.append(P('What medicine has learned (imperfectly, slowly) from these cascades is the concept of pharmacovigilance: the ongoing monitoring of a drug\'s effects across its entire population of users, throughout the full duration of its clinical use, with specific attention to rare and delayed adverse effects that controlled clinical trials cannot detect. The FDA\'s Adverse Event Reporting System, the EU\'s EudraVigilance database, and the WHO\'s VigiBase are imperfect implementations of this concept. Their imperfection is instructive: they rely on voluntary reporting by physicians and patients, creating systematic under-reporting of adverse events; they are designed to detect signals in the data that are large enough to trigger regulatory attention, not small enough to guide prescribing at the individual level; and they do not capture the systemic cascade effects (resistance, diversion, community-level impacts) that are often more important than the individual-patient adverse effects. Medicine has learned to monitor for Type I cascades (individual complexity) but not yet for Type II cascades (incentive structures) or Type IV cascades (network propagation). The most severe cascades of the next generation of pharmaceutical and genetic medicine will likely involve exactly the cascade types that current pharmacovigilance is worst at detecting.', S['body']))
-    story.append(callout('<b>The Medical Cascade in Four Numbers:</b> An estimated 200 million lives saved by antibiotics in the 20th century. 1.27 million lives lost annually to antibiotic resistance (2019, the most rigorous estimate to date). 500,000+ opioid overdose deaths in the United States since 1999. 10 million: a widely cited but contested projection of resistance deaths by 2050. The cascade has not yet exceeded the benefit but the benefit is fixed (the infections already cured) while the cascade is still growing.', S))
-    story.append(SP(14))
-
-    story.append(SP(22))
-    story.append(P('The Diagnostic Cascade: More Tests, More Problems', S['section']))
-    story.append(SP(14))
-    story.append(P(
-        'The diagnostic cascade is a clinical phenomenon that illustrates '
-        'the cascade mechanism operating within the physician-patient '
-        'relationship rather than between social systems. A diagnostic '
-        'cascade begins when an incidental finding, a result discovered '
-        'in the course of investigating something else — requires follow-up '
-        'investigation, which generates further incidental findings, '
-        'which generate further follow-up, until the patient has undergone '
-        'multiple procedures for conditions that may never have caused '
-        'clinical harm.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The standard example is the "incidentaloma", an incidentally '
-        'discovered mass in imaging performed for an unrelated indication. '
-        'A 2019 study published in JAMA Internal Medicine examined incidental '
-        'findings from 1,426 CT scans performed at a large academic medical '
-        'centre: 567 patients (40%) had at least one incidental finding '
-        'requiring follow-up; 82 patients (5.8%) underwent subsequent '
-        'procedures based on incidental findings; of these, 16 patients '
-        '(1.1% of the total) experienced significant procedure-related '
-        'complications. The original imaging was performed to evaluate '
-        'a known clinical concern; the cascade from incidental findings '
-        'generated patient harm in 1.1% of cases studied, with zero '
-        'identified clinical benefit from the procedures in the '
-        'large majority of cases.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The whole-genome sequencing cascade is the most significant '
-        'emerging version of this phenomenon. As sequencing costs have '
-        'fallen from $3 billion (the Human Genome Project, 2003) to '
-        'approximately $100 per genome (2024), clinical whole-genome '
-        'sequencing has become feasible for routine use. A clinical '
-        'genome sequence, however, does not report only the variant being '
-        'investigated; it reports every detectable genetic variant, including '
-        '"variants of uncertain significance" (VUS) that may or may not '
-        'be clinically important, and secondary findings in genes '
-        'associated with conditions unrelated to the original indication. '
-        'The American College of Medical Genetics recommends reporting '
-        'actionable secondary findings in 78 genes; pathogenic variants '
-        'in these genes are found in approximately 1-3% of all individuals '
-        'sequenced. Each such finding requires genetic counselling, '
-        'family cascade testing (the patient\'s biological relatives must '
-        'be assessed for the same variant), and potentially preventive '
-        'interventions or surveillance. A single genome sequence generates '
-        'a cascade of clinical interventions for the patient and a '
-        'cascade of testing decisions for the family, exactly proportional '
-        'to the comprehensiveness of the information the solution provides.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('The Mental Health Cascade: Solving Suffering at Scale', S['section']))
-    story.append(P(
-        'The development of psychiatric pharmacology in the mid-twentieth century '
-        'was one of the most rapid and consequential medical revolutions in history. '
-        'Before 1950, severe mental illness was treated primarily by institutionalisation, '
-        'psychosurgery (lobotomy), and electroconvulsive therapy. The introduction '
-        'of chlorpromazine in 1952 (the first effective antipsychotic medication) '
-        'began a pharmaceutical revolution that eventually produced the '
-        'benzodiazepines, the tricyclic antidepressants, the MAO inhibitors, '
-        'the SSRIs, the atypical antipsychotics, and the mood stabilisers: a '
-        'pharmacological armamentarium that allowed many severely mentally ill '
-        'patients to live outside institutions for the first time. The cascade '
-        'from this solution began immediately and is still unfolding.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The first cascade from psychiatric pharmacology was deinstitutionalisation. '
-        'As chlorpromazine and subsequent antipsychotics reduced the most florid '
-        'symptoms of schizophrenia, the rationale for lifetime institutionalisation '
-        'of psychotic patients was undermined. Between 1955 and 1980, the US '
-        'psychiatric inpatient population fell from approximately 560,000 to '
-        'approximately 130,000, a reduction of 77%. This was accompanied by a '
-        'policy programme of closing state psychiatric hospitals. The cascade was '
-        'the discovery that the community mental health infrastructure promised '
-        'to replace institutional care was never adequately funded or built. '
-        'Former psychiatric patients were discharged into communities without '
-        'housing, case management, or reliable access to the medications that '
-        'managed their symptoms. The downstream cascade of deinstitutionalisation '
-        'is visible today: approximately 20% of the US prison population has a '
-        'serious mental illness; approximately one-third of the homeless '
-        'population has a severe mental disorder. The prisons and the streets '
-        'became the new asylums.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The second cascade from psychiatric pharmacology was benzodiazepine '
-        'dependence. The benzodiazepines: diazepam (Valium), lorazepam '
-        '(Ativan), alprazolam (Xanax) are highly effective in the short-term '
-        'treatment of anxiety disorders and insomnia. They work rapidly, have '
-        'a good short-term safety profile, and provide genuine symptomatic '
-        'relief for disabling anxiety. The cascade is physical dependence: '
-        'benzodiazepines produce tolerance (increasing doses are required for '
-        'the same effect) and withdrawal syndromes (abrupt cessation causes '
-        'anxiety, insomnia, and in severe cases seizures) that can develop '
-        'within weeks of regular use. The United Kingdom conducted the most '
-        'comprehensive assessment: the Committee on Safety of Medicines '
-        'concluded in 1988 that benzodiazepines should not be prescribed for '
-        'more than two to four weeks. By that time, an estimated 1.2 million '
-        'British patients had been taking benzodiazepines for more than a year. '
-        'In the United States, more than 30 million benzodiazepine prescriptions '
-        'are written annually as of 2024, and approximately 5 million Americans '
-        'are estimated to be long-term users. The solution to anxiety and '
-        'insomnia created, at population scale, a form of iatrogenic dependence '
-        'that is in many respects clinically similar to opioid dependence.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The third cascade from psychiatric pharmacology is the diagnostic '
-        'expansion cascade. As pharmaceutical treatments for psychiatric '
-        'conditions became available, the incentive to diagnose those conditions '
-        'increased, both for patients seeking relief and for pharmaceutical '
-        'companies seeking markets. The Diagnostic and Statistical Manual of '
-        'Mental Disorders (DSM) expanded from 106 diagnoses in its first edition '
-        '(1952) to 374 diagnoses in its fourth edition (1994). This expansion '
-        'was not purely driven by pharmaceutical incentives, much of it '
-        'reflected genuine advances in psychiatric nosology. But the correlation '
-        'between pharmaceutical treatment availability and diagnostic expansion '
-        'is too systematic to be coincidental. The introduction of SSRIs in the '
-        'late 1980s was followed by a sharp expansion in depression diagnoses '
-        'and antidepressant prescribing. The approval of methylphenidate for '
-        'attention disorders was followed by a sharp expansion in ADHD diagnoses. '
-        'By 2020, approximately 13% of Americans aged 18 and over were taking '
-        'antidepressants; approximately 10% of boys aged 12-17 were taking '
-        'stimulant medications for ADHD. Whether this represents genuine '
-        'treatment of undertreated conditions, overdiagnosis of normal variation, '
-        'or some combination, is genuinely contested. What is not contested is '
-        'that the cascade from pharmacological solutions to psychiatric disorders '
-        'has transformed the epidemiological landscape of mental illness in ways '
-        'that are difficult to disentangle from the biological reality of the '
-        'disorders themselves.',
-        S['body']))
-    story.append(SP(14))
-
-
-    story.append(SP(18))
-    story.append(P('Chapter 7 Synthesis: The Healer\'s Infinite Task', S['section']))
-    story.append(P(
-        'Medicine is the domain in which cascade theory has the most '
-        'immediate and most intimate human consequences. When economic '
-        'cascades unfold, people lose money; when governance cascades '
-        'unfold, people lose liberty; when medical cascades unfold, '
-        'people lose health and life. The moral stakes of the '
-        'medical cascade are therefore the highest in the taxonomy.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The physician\'s dilemma in a cascade world is acute. '
-        'To treat is to intervene; to intervene is to '
-        'generate cascades; to generate cascades is to '
-        'create new clinical problems. The Hippocratic '
-        'injunction to "first, do no harm" was designed '
-        'for a world in which the harms of medicine '
-        'were acute and proximate, the wrong drug, '
-        'the wrong dose, the wrong surgery. '
-        'It was not designed for a world in which '
-        'the harms of medicine are statistical, '
-        'temporal, and distributed across populations '
-        '— the antibiotic resistance generated by '
-        'a prescription that was clinically '
-        'appropriate for the individual patient '
-        'but that contributes to a population-level '
-        'burden that will harm patients not yet born.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The medical cascade also illustrates with '
-        'unusual clarity the temporal asymmetry '
-        'between solution benefits and cascade costs. '
-        'The benefit of an antibiotic prescription, '
-        'relief of a painful infection is immediate, '
-        'certain, and attributable to the specific '
-        'clinician and patient involved. The cascade '
-        'cost, a small increment of resistance gene '
-        'selection pressure in the environment, '
-        'is deferred, probabilistic, and distributed '
-        'across billions of future patients and '
-        'bacterial populations. No ethical framework '
-        'developed for clinical medicine was designed '
-        'to weigh certain, immediate benefits to '
-        'an identified patient against deferred, '
-        'probabilistic costs to statistical future '
-        'patients. The cascade demands a new '
-        'medical ethics, one that takes '
-        'population-level and intergenerational '
-        'consequences seriously as components '
-        'of clinical decision-making.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The great achievement of medicine in the twenty-first century '
-        'will not be the elimination of disease, the cascade '
-        'ensures that solved diseases generate new diseases '
-        'in a progression that mirrors the growth of scientific '
-        'knowledge. The great achievement will be the '
-        'development of institutions, practices, and '
-        'norms capable of managing the medical cascade '
-        'with the same rigour and compassion that '
-        'clinical medicine brings to the care of '
-        'individual patients. Cascade-aware medicine '
-        'treats not just the patient in front of it '
-        'but the health system that patient inhabits '
-        '— and the future patients who will inherit '
-        'the cascade consequences of today\'s '
-        'clinical decisions.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('Mental Health Treatment and the Diagnostic Cascade', S['section']))
-    story.append(P(
-        'The introduction of the Diagnostic and Statistical Manual '
-        'of Mental Disorders (DSM) by the American Psychiatric '
-        'Association: first published in 1952, with major '
-        'revisions in 1980 (DSM-III), 1994 (DSM-IV), and '
-        '2013 (DSM-5), represents one of the most consequential '
-        'cascade generators in modern medicine. The DSM was '
-        'the solution to a recognised crisis of reliability '
-        'in psychiatric diagnosis: different psychiatrists '
-        'applying different theoretical frameworks '
-        'would diagnose the same patient differently, '
-        'making psychiatric research practically '
-        'impossible and clinical communication '
-        'unreliable. The DSM\'s solution was '
-        'operational diagnostic criteria, '
-        'checklists of observable symptoms '
-        'whose presence or absence could be '
-        'reliably assessed without reference '
-        'to contested theoretical frameworks. '
-        'The solution worked: psychiatric '
-        'diagnostic reliability improved '
-        'dramatically across DSM revisions.',
-        S['body0']))
-    story.append(P(
-        'The cascade from the DSM\'s operational criteria has '
-        'been operating since DSM-III and has become '
-        'progressively more prominent with each revision. '
-        'The diagnostic expansion cascade: each DSM '
-        'revision has expanded the total number of '
-        'recognised disorders (DSM-I: 106; DSM-III: 265; '
-        'DSM-IV: 297; DSM-5: approximately 300, with '
-        'significant expansion of spectra and dimensions). '
-        'This expansion is not simply the discovery of '
-        'previously unrecognised conditions; it is the '
-        'cascade from operational criteria: criteria '
-        'that can be reliably applied are also criteria '
-        'that can be reliably lowered, and the commercial '
-        'and professional incentives for diagnostic '
-        'expansion (more patients in treatment, '
-        'more research funding, more specialisation) '
-        'systematically push criteria toward '
-        'lower thresholds. The DSM\'s critics, '
-        'most prominently Allen Frances, the '
-        'chair of the DSM-IV task force, in '
-        '<i>Saving Normal</i> (2013) have '
-        'documented how criteria revisions '
-        'in DSM-5 that seemed minor in '
-        'committee became significant '
-        'expansions of diagnostic prevalence '
-        'when applied across the population.',
-        S['body']))
-    story.append(P(
-        'The pharmacological cascade from diagnostic expansion '
-        'is the most consequential downstream effect. '
-        'Psychiatric diagnoses create markets for '
-        'psychiatric medications: a new diagnostic '
-        'category, or a lowered threshold for an '
-        'existing one, expands the population '
-        'for whom medication is an indicated '
-        'treatment option. The introduction '
-        'of ADHD as a widespread adult diagnosis '
-        '(its DSM-III recognition was primarily '
-        'for children) expanded the market for '
-        'stimulant medications into a population '
-        'of many millions of adults. The '
-        'broadening of bipolar disorder criteria '
-        'expanded the market for mood stabilisers '
-        'and atypical antipsychotics into '
-        'populations previously diagnosed with '
-        'depression or personality disorders. '
-        'Each pharmacological cascade has its '
-        'own medical cascade: the chronic use '
-        'of stimulants generates cardiovascular '
-        'effects and dependence risk; the use '
-        'of atypical antipsychotics generates '
-        'metabolic syndrome, weight gain, and '
-        'tardive dyskinesia. The diagnostic '
-        'cascade flows directly into the '
-        'pharmacological cascade, which flows '
-        'into the medical complication cascade.',
-        S['body']))
-    story.append(callout(
-        '<b>The DSM Cascade Mechanism:</b> Operational diagnostic '
-        'criteria solve the reliability problem but create incentive '
-        'structures for threshold lowering. Lower thresholds expand '
-        'diagnosed populations. Expanded populations create markets '
-        'for treatments. Treatment markets create commercial '
-        'incentives for further threshold lowering. The cascade '
-        'is self-reinforcing: reliability, the original goal, '
-        'remains high throughout but the validity '
-        '(whether the criteria identify genuine illness) '
-        'erodes with each threshold revision.',
-        S))
-    story.append(SP(14))
-
-    story.append(SP(18))
-
-    story.append(SP(14))
-    story.append(fig_to_image(fig_healthcare_spiral(), w=5.5*72, h=3.6*72))
-    story.append(P(
-        'Figure 7.1: Health expenditure per capita vs. life expectancy across OECD nations (2022). '
-        'The US is a striking outlier: spending nearly twice as much as any peer nation '
-        'while achieving the lowest life expectancy in the group. The cascade from '
-        'administrative complexity, liability medicine, and pharmaceutical pricing '
-        'absorbs resources without proportional health gain.',
-        S['caption']))
-    story.append(SP(14))
+    # extension sections cut in v63 trim
     story.append(PageBreak())
     return story
 
@@ -1225,21 +777,21 @@ def chapter8(S):
     story.append(SP(14))
 
     story.append(P(
-        'The temperance movement that culminated in American Prohibition was not a fringe '
-        'crusade: it was a serious, sustained, and evidence-based campaign against a '
-        'genuine social problem. The Woman\'s Christian Temperance Union, founded in '
-        'Cleveland in 1874, documented in exhaustive detail the role of alcohol in '
-        'domestic violence, poverty, and industrial accidents in a society where adult '
-        'male drinking was heavy, public, and culturally normalized. The Anti-Saloon '
-        'League, founded in 1893, became one of the most effective political lobbying '
-        'organisations in American history, systematically electing dry legislators at '
-        'the state and federal level across three decades. By 1916, twenty-three states '
-        'had already enacted some form of prohibition. The Eighteenth Amendment to the '
-        'United States Constitution, prohibiting "the manufacture, sale, or transportation '
-        'of intoxicating liquors," was ratified on January 16, 1919, and the Volstead '
-        'Act implementing it took effect on January 17, 1920. It was not the act of '
-        'fanatics; it was the considered judgment of a democratic supermajority that '
-        'alcohol was causing more harm than its benefits justified.',
+        'American Prohibition was not the work of cranks. The temperance movement was '
+        'serious, sustained, and evidence-based \u2014 a campaign against a real social '
+        'problem. The Woman\'s Christian Temperance Union, founded in Cleveland in 1874, '
+        'documented in exhaustive detail the role of alcohol in domestic violence, '
+        'poverty, and industrial accidents in a society where adult male drinking was '
+        'heavy, public, and culturally normalised. The Anti-Saloon League, founded in '
+        '1893, became one of the most effective political lobbying organisations in '
+        'American history, systematically electing dry legislators at the state and '
+        'federal level for three decades. By 1916, twenty-three states had already '
+        'enacted some form of prohibition. On January 16, 1919, the Eighteenth Amendment '
+        'banning <i>the manufacture, sale, or transportation of intoxicating liquors</i> '
+        'was ratified. The Volstead Act implementing it took effect a year later. This '
+        'was not the act of fanatics. It was the considered judgment of a democratic '
+        'supermajority that alcohol was doing more harm than its benefits justified. '
+        'Most of what they said was true. What they did about it was a catastrophe.',
         S['body0']))
     story.append(SP(14))
 
@@ -1247,18 +799,18 @@ def chapter8(S):
         'The first-order cascade was the instantaneous creation of organised crime on '
         'an industrial scale. Before Prohibition, American criminal enterprises were '
         'local, small, and structurally disorganised. The moment Prohibition created a '
-        'nationwide market for an illegal commodity \u2014 alcohol \u2014 with massive '
-        'consumer demand, enormous profit margins, and no legal competition, it created '
-        'the economic preconditions for criminal organisations of unprecedented scale '
-        'and sophistication. Al Capone\'s Chicago Outfit, at its peak in 1927, operated '
-        'with an estimated 600 employees including politicians, police officers, and '
-        'judges on the payroll, and generated revenues estimated at $60 million annually '
-        '\u2014 approximately $1 billion in 2024 dollars \u2014 of which beer and '
-        'spirits accounted for the majority. The organisational structures that Prohibition '
-        'forced criminal enterprises to develop \u2014 interstate distribution networks, '
-        'wholesale corruption of law enforcement, money laundering operations, '
-        'vertically integrated supply chains from distillation through retail \u2014 '
-        'were not dissolved when Prohibition ended. They were redirected.',
+        'nationwide market for an illegal commodity \u2014 alcohol \u2014 with mass consumer '
+        'demand, enormous profit margins, and no legal competition, the economic '
+        'preconditions for criminal organisations of unprecedented scale were in place. '
+        'Al Capone\'s Chicago Outfit, at its peak in 1927, ran on roughly six hundred '
+        'employees \u2014 including politicians, police officers, and judges on the payroll \u2014 '
+        'and grossed an estimated $60 million a year, roughly $1 billion in today\'s '
+        'money, with beer and spirits the bulk of it. The structures Prohibition forced '
+        'these organisations to build \u2014 interstate distribution networks, wholesale '
+        'corruption of law enforcement, money-laundering operations, vertically '
+        'integrated supply chains from still to retail \u2014 were not dissolved when '
+        'Prohibition ended in 1933. They were redirected. The architecture is what '
+        'mattered, and the architecture survived.',
         S['body']))
     story.append(SP(14))
 
@@ -1369,20 +921,20 @@ def chapter8(S):
     story.append(SP(14))
 
     story.append(P(
-        'On June 17, 1971, President Richard Nixon stood before reporters at the White '
-        'House and declared drug abuse "public enemy number one in the United States," '
-        'announcing a "total offensive" to combat it that included a dramatic increase '
-        'in federal drug control agencies, mandatory sentencing proposals, and expanded '
-        'no-knock warrant authorities. The immediate context was real: heroin addiction '
-        'among returning Vietnam veterans was a visible public health crisis; LSD and '
-        'marijuana use had become symbols of the counterculture that the Nixon '
-        'administration found politically threatening; and urban crime rates, associated '
-        'in the public mind with drug use, were rising. The theory underlying the War '
-        'on Drugs was coherent: if supply was sufficiently suppressed through enforcement, '
-        'prices would rise, access would become difficult, and demand would fall. It was '
-        'a supply-chain disruption theory applied to an inelastic good, designed by '
-        'people who had not yet understood why supply-chain disruption does not work '
-        'as drug policy.',
+        'June 17, 1971. President Richard Nixon stands before reporters at the White '
+        'House and declares drug abuse "public enemy number one in the United States." '
+        'He announces a total offensive against it: more federal drug-control agencies, '
+        'mandatory-sentencing proposals, expanded no-knock warrant authority. The '
+        'context was real. Heroin addiction among returning Vietnam veterans was a '
+        'visible public-health crisis. LSD and marijuana had become symbols of a '
+        'counterculture the administration found politically threatening. Urban crime, '
+        'associated in the public mind with drug use, was rising. The theory underlying '
+        'the policy was coherent on paper. Suppress supply through enforcement; prices '
+        'rise; access becomes difficult; demand falls. It was a supply-chain disruption '
+        'theory applied to an inelastic good, designed by people who had not yet '
+        'understood why supply-chain disruption does not work on drugs. It was, in the '
+        'language of this book, a Type-II cascade in the making \u2014 the moment a policy '
+        'announcement creates the architecture of the catastrophe that will follow.',
         S['body0']))
     story.append(SP(14))
 
@@ -1508,217 +1060,6 @@ def chapter8(S):
         S['caption']))
 
     # ------------------------------------------------------------------ #
-    # Section 3: Soviet Collectivisation                                   #
-    # ------------------------------------------------------------------ #
-    story.append(SP(22))
-    story.append(P('Soviet Collectivisation \u2014 How Solving Food Distribution Killed Millions',
-                   S['section']))
-    story.append(SP(14))
-
-    story.append(P(
-        'In 1929, the Soviet Union confronted what its leadership diagnosed as a '
-        'fundamental structural problem: the food supply of a rapidly industrialising '
-        'state was in the hands of approximately 25 million individual peasant '
-        'households, each farming small plots with traditional methods, selling '
-        'into markets whose prices fluctuated unpredictably, and resisting state '
-        'procurement quotas with the passive power of people who controlled their '
-        'own means of subsistence. Joseph Stalin\'s solution was total in its ambition: '
-        'the collectivisation of Soviet agriculture. Peasant farms would be merged '
-        'into large collective enterprises \u2014 kolkhozy \u2014 managed by state '
-        'appointees, producing for state quotas, and amenable to the rationalisation '
-        'that industrial-scale production was supposed to deliver. The "grain problem" '
-        'would be solved once and for all.',
-        S['body0']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The first cascade to emerge from collectivisation was the destruction of '
-        'the kulaks \u2014 the relatively prosperous peasant farmers whom Stalin '
-        'designated as class enemies standing in the way of agricultural progress. '
-        'The definition of "kulak" expanded as the campaign intensified, eventually '
-        'encompassing any peasant who owned two cows, hired seasonal labour, '
-        'possessed a windmill, or simply refused to join a collective with sufficient '
-        'enthusiasm. Between 1930 and 1933, approximately 1.8 million kulaks and '
-        'their families were deported to special settlements in Siberia, Kazakhstan, '
-        'and other remote regions. Hundreds of thousands died during transport in '
-        'unheated rail cars during winter, or in the first months of resettlement '
-        'before any shelter or food supply had been established. The kulaks were, '
-        'by definition, the most competent agricultural producers in the Soviet '
-        'countryside \u2014 farmers who had accumulated modest prosperity through '
-        'skill, diligence, or good fortune. Eliminating them eliminated the accumulated '
-        'agricultural knowledge that their competence represented.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The second cascade was the destruction of the peasants\' own food supply. '
-        'As collectivisation proceeded under armed force, peasants slaughtered and '
-        'consumed their own livestock rather than surrender it to the collectives. '
-        'Between 1929 and 1933, the Soviet livestock population collapsed: cattle '
-        'fell from 67 million to 38 million, horses from 33 million to 16 million, '
-        'pigs from 20 million to 12 million, and sheep and goats from 147 million '
-        'to 50 million. The draught animals that had powered Soviet agriculture for '
-        'generations were destroyed in four years. The tractors promised by Soviet '
-        'industrial policy arrived too slowly and in insufficient numbers to replace '
-        'them. In 1932\u20131933, the Soviet state extracted grain from a countryside '
-        'that did not have enough grain to feed the people who grew it.',
-        S['body']))
-    story.append(SP(14))
-
-    story += epigraph(
-        'They had taken everything \u2014 the wheat, the rye, the corn, the potatoes, '
-        'the beans. Then they took the cattle. What were we to eat? We ate the bark '
-        'off the trees.',
-        'Survivor testimony, Kharkiv region, 1933 (Applebaum, Red Famine, 2017)', S)
-    story.append(SP(14))
-
-    story.append(P(
-        'The famine that followed \u2014 the Holodomor in Ukraine, where the '
-        'Ukrainian Soviet Republic was simultaneously subjected to the highest '
-        'procurement quotas, the most severe enforcement, and restrictions on '
-        'movement that prevented starving peasants from travelling to cities where '
-        'food might be available \u2014 killed between five and seven million people '
-        'between 1932 and 1933, according to the scholarly consensus in the '
-        'post-Soviet historiography. Ukraine had been one of the most fertile '
-        'agricultural regions in the world \u2014 the breadbasket of the Russian '
-        'Empire, a major exporter of wheat that had fed Western Europe through the '
-        'late nineteenth and early twentieth centuries. The collectivisation of its '
-        'agriculture transformed it, within four years, into a region of mass '
-        'starvation while Soviet grain exports continued in order to finance '
-        'industrial imports. The Ukrainian parliament, the European Parliament, '
-        'and approximately twenty national governments have recognised the '
-        'Holodomor as a genocide.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The long-term cascade extended across the entirety of Soviet agricultural '
-        'history. Collective farms \u2014 precisely because their workers were paid '
-        'state wages regardless of output and had no personal stake in maximising '
-        'yields \u2014 systematically underperformed private agriculture. Soviet '
-        'agricultural productivity stagnated relative to Western agriculture across '
-        'the following six decades. The USSR, which had been a grain exporter before '
-        'collectivisation, became the world\'s largest grain importer by the 1970s, '
-        'purchasing American wheat under the Nixon administration\'s détente '
-        'framework in a transaction that represented the definitive verdict on the '
-        'agricultural system that collectivisation had created. When the Soviet '
-        'Union collapsed in 1991, it left behind agricultural institutions so '
-        'distorted by sixty years of collective farming that Russia\'s agricultural '
-        'transition to market systems took more than a decade and produced '
-        'substantial dislocations of its own.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The cascade structure of Soviet collectivisation follows the model with '
-        'unusual clarity. The original problem was real: grain procurement was '
-        'genuinely difficult and genuinely threatened industrialisation targets. '
-        'The solution \u2014 collective ownership \u2014 was logically coherent '
-        'within the ideological framework that produced it. But the solution '
-        'destroyed the knowledge, the incentives, and the biological capital '
-        '(livestock) on which agricultural production depended, and the enforcement '
-        'mechanisms required to implement it created a humanitarian catastrophe '
-        'several orders of magnitude larger than the problem it purported to solve. '
-        'The state had solved the "grain problem" by eliminating most of the grain.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(callout(
-        '<b>The Governance Cascade in Miniature:</b> Soviet collectivisation '
-        'illustrates every element of the cascade mechanism simultaneously: '
-        'the destruction of existing competencies (the kulaks), the creation '
-        'of perverse incentives (collective workers with no stake in output), '
-        'the irreversibility of implementation (livestock slaughter, deportations), '
-        'and the amplification of the original problem (grain scarcity became '
-        'mass starvation) through the very mechanism deployed to solve it.',
-        S))
-    story.append(SP(14))
-
-    # ------------------------------------------------------------------ #
-    # Section 4: Urban Zoning                                              #
-    # ------------------------------------------------------------------ #
-    story.append(SP(22))
-    story.append(P('Urban Zoning \u2014 How Solving "City Chaos" Created Housing Inequality',
-                   S['section']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The city of Berkeley, California, enacted the first residential zoning ordinance '
-        'based on use classification in 1916, the same year New York City adopted the '
-        'first comprehensive zoning code in the United States. Berkeley\'s ordinance '
-        'was not framed, at the time, in the language of racial exclusion \u2014 but '
-        'its primary purpose, as documented in the contemporaneous records of the '
-        'Berkeley City Council, was to prevent a Chinese-owned laundry from relocating '
-        'to a residential neighbourhood and to create legal mechanisms for excluding '
-        'commercial establishments operated by non-white proprietors from white '
-        'residential areas. The racial motivation was not incidental to the origin of '
-        'single-family zoning in the United States; it was foundational. In 1926, the '
-        'United States Supreme Court upheld the constitutionality of Euclidean zoning '
-        'in Village of Euclid v. Ambler Realty, with Justice George Sutherland writing '
-        'in the majority opinion that an apartment building in a residential district '
-        'was "a mere parasite" that "comes very near to being a nuisance" \u2014 '
-        'comparing high-density housing to "a pig in the parlor instead of the barnyard." '
-        'The judicial imprimatur secured the legal framework for the cascade.',
-        S['body0']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The Federal Housing Administration, created in 1934 as a New Deal response to '
-        'the collapse of the mortgage market, institutionalised racial segregation at '
-        'the scale of the entire national housing market through its "redlining" '
-        'practices. The FHA refused to insure mortgages in neighbourhoods it classified '
-        'as high-risk \u2014 a classification that applied systematically to any '
-        'neighbourhood with Black residents or mixed-race demographics. Between 1934 '
-        'and 1968, when the Fair Housing Act banned the practice, the FHA underwrote '
-        'the financing of a suburban housing boom that was explicitly designed to '
-        'produce racially homogeneous white communities. Of the 67,000 mortgages insured '
-        'by the FHA in the New York area between 1934 and 1960, fewer than 100 went to '
-        'non-white borrowers. The wealth gap between Black and white American families '
-        '\u2014 which remains one of the most persistent and consequential inequalities '
-        'in American society today \u2014 was structured and amplified by federal '
-        'housing policy across four decades of the most rapid asset appreciation in '
-        'American economic history.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The housing affordability cascade that single-family zoning has generated '
-        'is now the dominant economic fact in the lives of younger Americans. San '
-        'Francisco, where approximately 70 percent of residential land is zoned '
-        'exclusively for single-family housing, had a median home price of approximately '
-        '$1.4 million in 2023. The annual income required to qualify for a mortgage '
-        'on a median San Francisco home is approximately $280,000 \u2014 a threshold '
-        'met by a small fraction of the city\'s workforce. Teachers employed by San '
-        'Francisco Unified School District earned a median salary of $73,000 in 2023. '
-        'Nurses at San Francisco General Hospital earned $95,000. Firefighters earned '
-        '$85,000. The people on whom the city\'s social infrastructure depends '
-        'cannot afford to live within the city. The solution to the problem of urban '
-        'disorder \u2014 the separation of land uses and the protection of residential '
-        'character \u2014 has generated a housing market so dysfunctional that the '
-        'city cannot retain the workers necessary to provide its basic services.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The infrastructure cascade from suburban zoning is less visible but equally '
-        'severe. The suburban development pattern enabled by single-family zoning '
-        '\u2014 low-density residential development at the urban fringe, connected by '
-        'automobile infrastructure \u2014 generates infrastructure costs of approximately '
-        '$40,000 per household in roads, water, sewer, and utilities, compared to '
-        'approximately $10,000 per household in dense urban development. Many suburban '
-        'municipalities built during the postwar expansion are now facing the maintenance '
-        'cost of infrastructure that was funded by the growth phase and cannot be '
-        'sustainably maintained at current density and tax rates. The Strong Towns '
-        'research organisation has documented dozens of American municipalities facing '
-        'fiscal insolvency driven by unsustainable infrastructure-to-tax-base ratios '
-        '\u2014 the direct consequence of the low-density development pattern that '
-        'zoning mandates. The cascade from the solution to urban chaos has created an '
-        'infrastructure liability that compounds annually and that no subsequent zoning '
-        'reform can easily reverse, because the physical infrastructure it generated '
-        'will last for decades regardless of what the zoning code says.',
-        S['body']))
-
-    # ------------------------------------------------------------------ #
     # Section 4: GDPR                                                      #
     # ------------------------------------------------------------------ #
     story.append(SP(22))
@@ -1784,161 +1125,8 @@ def chapter8(S):
         'has reinforced the market dominance of the largest surveillance capitalists.',
         S['body']))
 
-    # ------------------------------------------------------------------ #
-    # Section 5: NATO Expansion                                            #
-    # ------------------------------------------------------------------ #
-    story.append(SP(22))
-    story.append(P('NATO Expansion \u2014 Solving Security, Creating Instability', S['section']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The North Atlantic Treaty Organisation was founded in April 1949 with twelve '
-        'member states sharing a single strategic purpose: to deter Soviet military '
-        'expansion into Western Europe during the Cold War, operationalised through '
-        'Article 5\'s collective defence guarantee. The organisation achieved its '
-        'purpose: the Soviet Union did not invade Western Europe, and the Cold War ended '
-        'in 1991 with the dissolution of the Soviet Union and the Warsaw Pact. At that '
-        'moment, the strategic rationale for NATO had been accomplished. A serious '
-        'discussion emerged about whether the alliance should be wound down, '
-        'transformed, or expanded. The decision to expand was taken incrementally: '
-        'the Czech Republic, Hungary, and Poland joined in 1999; seven more states '
-        'in 2004; additional Balkan states subsequently; Finland in 2023 and Sweden '
-        'in 2024, bringing total membership to 32. The expansion was driven by '
-        'genuine concerns about security among the former Warsaw Pact states, which '
-        'had experienced Soviet occupation and had rational reasons to want the '
-        'collective defence guarantee. The cascade from the decision was not generated '
-        'by bad intentions but by the failure to model second-order effects.',
-        S['body0']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The warning came from the most distinguished American strategic theorist of '
-        'the Cold War. George Kennan, the architect of the containment doctrine, '
-        'wrote in the New York Times on February 5, 1997: "Expanding NATO would be '
-        'the most fateful error of American policy in the entire post-cold-war era. '
-        'Such a decision may be expected to inflame the nationalistic, anti-Western '
-        'and militaristic tendencies in Russian opinion; to have an adverse effect '
-        'on the development of Russian democracy; to restore the atmosphere of the '
-        'cold war to East-West relations, and to impel Russian foreign policy in '
-        'directions decidedly not to our liking." Kennan was writing in 1997, before '
-        'a single former Warsaw Pact state had joined NATO. His prediction was precise, '
-        'specific, and comprehensive. The 2014 Russian annexation of Crimea, the '
-        'Donbas conflict from 2014, and the full-scale Russian invasion of Ukraine '
-        'in February 2022 \u2014 the first major land war in Europe since 1945, which '
-        'had killed over 500,000 people by 2024 \u2014 unfolded exactly along the '
-        'lines Kennan had projected.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The nuclear deterrence paradox that underlies the NATO cascade is the '
-        'deepest and most consequential cascade in this book. Mutually Assured '
-        'Destruction \u2014 the doctrine that nuclear powers will not use nuclear '
-        'weapons because doing so would result in their own annihilation \u2014 has '
-        'successfully prevented nuclear war since 1945. The cascade from MAD is that '
-        'the world is permanently maintained at a level of risk \u2014 miscalculation, '
-        'technical failure, unauthorised launch, escalation from conventional conflict '
-        '\u2014 that has no historical precedent and no resolution mechanism. The '
-        'solution to the security problem (nuclear deterrence) creates a permanent, '
-        'civilisation-ending risk that is the price of the stability it provides. '
-        'The Doomsday Clock, maintained by the Bulletin of the Atomic Scientists, '
-        'stood at 90 seconds to midnight in 2024 \u2014 the closest it had been '
-        'set since its introduction in 1947. The cascade has no off-switch.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('The European Union: Integration as Managed Cascade', S['section']))
-    story.append(P(
-        'The European Union solved the problem of European political '
-        'instability through a cascade of institutional innovations: '
-        'the Coal and Steel Community (1951), the Common Market (1957), '
-        'the Single Market (1992), the Euro (1999), Schengen free '
-        'movement, and the Lisbon Treaty. The EU is the most '
-        'ambitious political integration project in history, '
-        'and a living demonstration of cascade management: '
-        'each integration step was designed to address the '
-        'weaknesses of the previous one.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The Euro solved the problem of currency risk in cross-border '
-        'trade. Its cascade was the sovereign debt crisis of 2010-2015: '
-        'the single currency eliminated the exchange rate adjustment '
-        'mechanism that had previously allowed member states to absorb '
-        'economic shocks. When Greece, Portugal, Spain, and Ireland '
-        'experienced severe downturns after 2008, they could not '
-        'devalue their currencies to restore competitiveness. '
-        'The cascade from monetary union was fiscal austerity '
-        'programmes imposing unprecedented hardship on populations '
-        'that had not caused the global financial crisis.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The free movement of labour within the EU, a cascade from '
-        'the single market solution, generated the political cascade '
-        'of Brexit. The movement of approximately 3.7 million EU '
-        'citizens to the UK between 2004 and 2016, concentrated '
-        'in specific regions and industries, generated political '
-        'pressures that existing institutional structures, '
-        'designed for economic integration, not for managing '
-        'the distributional consequences of labour mobility, '
-        'were unable to address. Brexit was a political response '
-        'to the cascade of EU integration on national sovereignty, '
-        'even when the specific policy being cascaded had overall '
-        'economic benefits for the UK as a whole. The cascade '
-        'from the solution to European peace was a democratic '
-        'revolt against the institutional apparatus of that peace.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('Chapter 8 Synthesis: The State as Cascade Architecture', S['section']))
-    story.append(P(
-        'The cases in this chapter share a structural feature that '
-        'distinguishes governmental cascade from other types: '
-        'the state has a monopoly on legitimate coercion, '
-        'which means state solutions cannot easily be refused '
-        'by the populations they affect. Market cascades can '
-        'be avoided by not participating in the market; '
-        'technological cascades can be partially mitigated '
-        'by not adopting the technology. State cascades are '
-        'compulsory: Prohibition applied to every American '
-        'regardless of preference; collectivisation applied '
-        'to every Soviet peasant regardless of consequence. '
-        'The coercive nature of state solutions amplifies '
-        'their cascade potential.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The second distinctive feature is temporal fragmentation: '
-        'democratic governments operate on electoral cycles of '
-        'four to six years, while many state cascades develop '
-        'over decades. The politicians who design solutions '
-        'are rarely in office when the cascades materialise, '
-        'removing the direct accountability connection that '
-        'might otherwise incentivise cascade anticipation. '
-        'The architects of the 2003 Iraq War, which generated '
-        'cascades including the empowerment of Iran, the '
-        'emergence of ISIS, and regional instability still '
-        'ongoing two decades later — left office long before '
-        'most of those cascades were fully visible.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The appropriate response is not to reduce the state '
-        'to irrelevance; it is to build into state '
-        'decision-making the institutional structures for '
-        'cascade anticipation: mandatory impact assessment, '
-        'sunset clauses, independent review bodies, and '
-        'accountability mechanisms that outlast the electoral '
-        'cycle. The EU\'s own institutional design, '
-        'with its separation of legislative, executive, '
-        'and judicial powers across Commission, Parliament, '
-        'Council, and Court is an imperfect but genuine '
-        'attempt to build cascade management into the '
-        'architecture of governance itself.',
-        S['body']))
+    # extension sections cut in v63 trim — keep the page break so Ch9 starts fresh
+    story.append(PageBreak())
     return story
 
 
@@ -1961,42 +1149,40 @@ def chapter9(S):
     story.append(SP(14))
 
     story.append(P(
-        'On February 4, 2004, Mark Zuckerberg, a nineteen-year-old sophomore at Harvard '
-        'University, launched thefacebook.com from his dormitory room in Kirkland House. '
-        'The site\'s original purpose was to allow Harvard students to see who was in '
-        'their classes and dormitories \u2014 a digital version of the paper "face books" '
-        'that Harvard distributed to incoming students. Within twenty-four hours, 1,200 '
-        'Harvard students had registered. Within a month, the site had spread to Yale, '
-        'Columbia, and Stanford. Facebook opened to anyone over thirteen with an email '
-        'address in September 2006. By 2012, it had one billion users. By 2024, it had '
-        '3.1 billion monthly active users \u2014 more than a third of the human species '
-        '\u2014 making it the largest social network in the history of human civilisation '
-        'by an enormous margin. The genuine benefit was real and substantial: families '
-        'separated by migration maintained daily contact; political movements organised '
-        'in hours rather than years; news and information of local and global significance '
-        'reached ordinary people with unprecedented speed. The connection was authentic. '
+        'February 4, 2004. Mark Zuckerberg, a nineteen-year-old Harvard sophomore, '
+        'launches thefacebook.com from his dormitory in Kirkland House. The original '
+        'purpose was modest: let Harvard students see who was in their classes and '
+        'their dormitories. A digital version of the paper "face books" the university '
+        'used to hand to incoming students. Within twenty-four hours, twelve hundred '
+        'Harvard students had signed up. Within a month, the site had spread to Yale, '
+        'Columbia, and Stanford. In September 2006 it opened to anyone over thirteen '
+        'with an email address. By 2012, it had a billion users. By 2024, 3.1 billion '
+        'monthly active users \u2014 more than a third of the human species \u2014 making it '
+        'the largest social network in the history of civilisation, by an enormous '
+        'margin. The benefit was real. Families separated by migration stayed in '
+        'daily contact. Political movements organised in hours rather than years. News '
+        'reached ordinary people at unprecedented speed. The connection was authentic. '
         'The cascade it generated was equally authentic.',
         S['body0']))
     story.append(SP(14))
 
     story.append(P(
-        'The Like button, introduced on February 9, 2009, is the single design decision '
+        'The Like button arrived on February 9, 2009. It is the single design decision '
         'most consequential for the cascade. Before the Like button, Facebook was a '
-        'primarily connective platform: users posted content, and other users responded '
-        'with comments. The Like button created a quantified approval metric \u2014 '
-        'a number attached to every piece of content that signalled its social reception '
-        'in real time. For users, especially adolescent users whose brains are '
-        'developmentally attuned to social approval signals, the Like count became a '
-        'proxy for social acceptance. For the platform, the Like button and its '
-        'aggregated engagement data became the raw material for the engagement '
-        'optimisation algorithms that would define social media\'s second decade. '
-        'The algorithm\'s goal \u2014 maximise time-on-platform \u2014 was operationalised '
-        'as maximising engagement signals. The content that most reliably maximises '
-        'engagement, as Facebook\'s own internal research documented, is content '
-        'that provokes strong emotional reactions: outrage, fear, disgust, tribal '
-        'solidarity. The algorithm did not create human tribalism; it discovered '
-        'that human tribalism was the most reliable engagement driver and optimised '
-        'for it at the scale of billions of users.',
+        'primarily connective platform \u2014 users posted, others responded with comments. '
+        'The Like button added a number to every piece of content. A real-time, '
+        'quantified, public score of social reception. For adolescent users, whose '
+        'brains are developmentally tuned to social approval, the Like count became a '
+        'proxy for social standing. For the platform, the Like button and the '
+        'aggregated engagement data it generated became the raw material for the '
+        'engagement-optimisation algorithms that defined the next decade. The algorithm '
+        'had a single instruction: maximise time-on-platform. Operationalised, that '
+        'meant maximise engagement signals. Facebook\'s own internal research found '
+        'what any reader could guess from the outside \u2014 the content that most reliably '
+        'maximises engagement is the content that provokes strong emotion: outrage, '
+        'fear, disgust, tribal solidarity. The algorithm did not invent human '
+        'tribalism. It discovered that human tribalism was the most reliable engagement '
+        'driver, and optimised for it at the scale of billions of users.',
         S['body']))
     story.append(SP(14))
 
@@ -2162,23 +1348,23 @@ def chapter9(S):
     story.append(SP(14))
 
     story.append(P(
-        'The traffic cascade from GPS illustrates the Braess Paradox operating at '
-        'urban scale. Dietrich Braess, a German mathematician, published a paper in '
-        '1968 demonstrating that adding a road to a traffic network can, under '
-        'certain conditions, make travel times worse for all users \u2014 because '
-        'each driver, choosing individually optimal routes, produces a collective '
-        'Nash equilibrium that is suboptimal for everyone. GPS navigation systems '
-        'create the conditions for Braess-type effects by simultaneously directing '
-        'large numbers of drivers to the same "currently optimal" route, which '
-        'becomes congested and suboptimal as those drivers arrive. The cascade '
-        'from GPS routing extends to residential streets not designed for through '
-        'traffic: Waze has been documented directing thousands of drivers per hour '
-        'through residential streets in Los Angeles, Montclair, New Jersey, and '
-        'numerous other municipalities, generating community safety hazards and '
-        'noise pollution in areas whose residents chose them specifically for '
-        'their quiet character. The solution to navigation uncertainty has created '
-        'a traffic redistribution cascade that affects millions of households who '
-        'never use GPS.',
+        'GPS navigation is the cobra effect for traffic. In 1968, the German '
+        'mathematician Dietrich Braess proved a result that defies common sense: '
+        'adding a road to a traffic network can, under quite ordinary conditions, '
+        'make travel times <i>worse</i> for every driver on it. Each driver, choosing '
+        'the route that is individually best, lands the whole system in a Nash '
+        'equilibrium that is collectively worse than the equilibrium without the new '
+        'road. This is Braess\'s Paradox. GPS navigation systems reproduce it at '
+        'urban scale every day, by routing tens of thousands of drivers to the same '
+        '"currently optimal" road at the same moment \u2014 at which point it is no '
+        'longer optimal. The cascade leaks out of the main road and into the side '
+        'streets. Waze has been documented sending thousands of drivers per hour '
+        'through residential streets in Los Angeles, Montclair, and dozens of other '
+        'municipalities, generating safety hazards and noise pollution in '
+        'neighbourhoods whose residents had chosen them specifically for being quiet. '
+        'The solution to navigation uncertainty turns out to be a traffic '
+        'redistribution cascade that affects millions of households who do not even '
+        'own a smartphone.',
         S['body']))
     story.append(SP(14))
 
@@ -2207,107 +1393,6 @@ def chapter9(S):
         'guidance system has eroded the capacity for independent judgment that would '
         'be needed to catch the guidance system\'s errors.',
         S['body']))
-
-    # ------------------------------------------------------------------ #
-    # Section 3: Air Conditioning                                          #
-    # ------------------------------------------------------------------ #
-    story.append(SP(22))
-    story.append(P('Air Conditioning \u2014 Solving Heat, Making It Worse', S['section']))
-    story.append(SP(14))
-
-    story.append(P(
-        'On July 17, 1902, Willis Carrier, a twenty-five-year-old engineer at the '
-        'Buffalo Forge Company, completed the installation of the first modern '
-        'air conditioning system at the Sackett-Wilhelms Lithographing and '
-        'Publishing Company in Brooklyn, New York. The problem Carrier was solving '
-        'was not human comfort but print quality: the company\'s paper stock absorbed '
-        'moisture from humid summer air, causing ink misregistration and ruining '
-        'runs. Carrier\'s system cooled and dehumidified the air precisely enough '
-        'to maintain consistent paper dimensions year-round. He had solved a '
-        'manufacturing problem. The cascade that followed transformed the entire '
-        'geography, demography, and energy economy of the modern world. Within '
-        'twenty years, Carrier\'s technology was being installed in department '
-        'stores, movie theatres, and office buildings, enabling the first wave of '
-        'public comfort cooling. The 1928 installation of air conditioning in the '
-        'US House of Representatives and Senate extended working sessions through '
-        'the previously insufferable Washington summer, directly enabling the '
-        'legislative productivity of the New Deal and subsequent administrations. '
-        'The political cascade from air conditioning in Congress is impossible '
-        'to calculate but almost certainly substantial.',
-        S['body0']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The demographic cascade from air conditioning is among the most dramatic '
-        'in modern American history. Phoenix, Arizona, had a population of 65,000 '
-        'in 1940, constrained by a climate in which summer temperatures routinely '
-        'exceed 43\u00b0C (110\u00b0F) and where life without mechanical cooling '
-        'was genuinely miserable for most of the year. By 2020, Phoenix had a '
-        'population of 1.6 million \u2014 a 25-fold increase in eighty years, '
-        'driven overwhelmingly by the availability of residential air conditioning. '
-        'Las Vegas grew from 8,000 in 1940 to 641,000 in 2020; Houston from '
-        '385,000 to 2.3 million; Miami from 172,000 to 442,000 in the city proper '
-        'and 6.2 million in the metropolitan area. The entire political geography '
-        'of the United States \u2014 the shift of population and electoral votes '
-        'from the Rust Belt to the Sun Belt that has defined American politics '
-        'since the 1970s \u2014 was made possible by air conditioning. The cascade '
-        'from Carrier\'s solution to a print-quality problem reshaped who governs '
-        'the United States.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The urban heat island cascade is the mechanism by which air conditioning '
-        'makes the problem it solves progressively worse. Air conditioners do not '
-        'destroy heat; they transfer it from inside buildings to outside. In '
-        'Phoenix, where 91 percent of households have air conditioning and '
-        'where residential and commercial cooling runs continuously for six months '
-        'of the year, the waste heat expelled by millions of air conditioning '
-        'units raises outdoor temperatures measurably above what they would '
-        'otherwise be. The average minimum overnight temperature in Phoenix '
-        'has increased by approximately 8\u00b0F since 1948 \u2014 an increase '
-        'attributable partly to climate change and partly to the urban heat '
-        'island effect generated by waste heat from air conditioning, vehicle '
-        'exhaust, impervious surfaces, and the reduced vegetation cover that '
-        'urban development produces. Higher outdoor temperatures increase the '
-        'demand for air conditioning, which expels more waste heat, which raises '
-        'outdoor temperatures further. The feedback loop has no natural equilibrium '
-        'within the range of current urban conditions.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The global energy cascade from air conditioning is the component most '
-        'consequential for climate change. Air conditioning currently accounts for '
-        'approximately 6 percent of US electricity consumption, and the '
-        'International Energy Agency projects that global demand for space cooling '
-        'will triple by 2050 as rising incomes in hot countries drive adoption in '
-        'South Asia, Southeast Asia, and Africa. India had air conditioning '
-        'penetration of approximately 8 percent in 2020; if India reaches US '
-        'penetration levels \u2014 a trajectory that rising incomes and rising '
-        'temperatures make likely \u2014 the energy demand for Indian air '
-        'conditioning alone would equal current total US electricity consumption. '
-        'The positive feedback loop at planetary scale: rising greenhouse gas '
-        'emissions raise global temperatures, rising temperatures increase demand '
-        'for air conditioning, air conditioning in grid systems powered by fossil '
-        'fuels increases greenhouse gas emissions, which raises temperatures further. '
-        'The solution to heat stress is a thermodynamic contributor to the climate '
-        'change that is making heat stress worse, running as a positive feedback '
-        'loop that cannot be interrupted without either eliminating air conditioning '
-        '(which would be a human rights catastrophe in heat-vulnerable regions) '
-        'or decarbonising the electricity grid that powers it.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(fig_ac_heat_island())
-    story.append(SP(8))
-    story.append(P(
-        'Figure 9.2: Air conditioning adoption and the Phoenix urban heat island, '
-        '1950\u20132020. As US air conditioning penetration rose from near zero to '
-        '91 percent (bars), Phoenix average minimum temperatures increased by 8\u00b0F '
-        '(line) \u2014 partly from climate change and partly from the waste heat '
-        'expelled by the air conditioners installed to cope with the heat.',
-        S['caption']))
 
     # ------------------------------------------------------------------ #
     # Section 4: Green Revolution                                          #
@@ -2452,856 +1537,6 @@ def chapter9(S):
         'have grown in near-parallel, representing the cascade embedded in the solution.',
         S['caption']))
 
-    # ------------------------------------------------------------------ #
-    # Section 5: Standardised Testing                                     #
-    # ------------------------------------------------------------------ #
-    story.append(SP(22))
-    story.append(P('Standardised Testing \u2014 How Solving Educational Inequality Created '
-                   'New Inequalities',
-                   S['section']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The movement toward standardised testing in American public education arose '
-        'from a genuine and well-documented problem: educational quality varied '
-        'enormously across schools, districts, and states, and poor and minority '
-        'children disproportionately attended the worst-performing schools. Without '
-        'any common metric, there was no way to identify which schools were failing '
-        'their students, no accountability mechanism that could compel improvement, '
-        'and no basis for comparing outcomes across the political jurisdictions of '
-        'a decentralised education system. The solution \u2014 standardised testing '
-        'at scale, tied to consequences for schools and teachers \u2014 seemed '
-        'straightforwardly rational: measure what matters, hold institutions '
-        'accountable for the measurements, and improvement will follow.',
-        S['body0']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The No Child Left Behind Act, signed by President George W. Bush in 2002 '
-        'with broad bipartisan support, institutionalised this logic at the national '
-        'level. States were required to test all students in grades three through '
-        'eight annually in reading and mathematics, to publish disaggregated results '
-        'by race, income, disability status, and English-language proficiency, and '
-        'to impose escalating consequences on schools that failed to demonstrate '
-        '"adequate yearly progress" toward the goal of 100 percent proficiency '
-        'by 2014. Schools that failed to meet AYP targets faced restructuring, '
-        'staff replacement, or conversion to charter schools. The mechanism was '
-        'accountability through measurement \u2014 Goodhart\'s Law waiting to '
-        'be demonstrated.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The first and most extensively documented cascade was teaching to the test. '
-        'When schools\' survival depends on their students\' performance on specific '
-        'standardised assessments, rational administrators and teachers allocate '
-        'instructional time toward the tested subjects and away from everything else. '
-        'A 2007 study by the Center on Education Policy found that 62 percent of '
-        'school districts had reduced instructional time for subjects other than '
-        'reading and mathematics since the passage of NCLB \u2014 with average '
-        'reductions of 141 minutes per week for non-tested subjects. History, '
-        'civics, science, art, music, and physical education were compressed or '
-        'eliminated in high-stakes schools. A 2012 study found that elementary '
-        'schools serving high proportions of low-income students had reduced science '
-        'instruction by up to 75 percent compared to pre-NCLB levels. The test '
-        'was supposed to identify and remedy educational deficits; instead, it '
-        'created them by concentrating the entire curriculum on the skills '
-        'being measured.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The second cascade was the restructuring of pedagogy itself. Test-aligned '
-        'instruction tends toward memorisation, procedural practice, and the '
-        'recognition of answer patterns rather than the development of conceptual '
-        'understanding, analytical reasoning, or creative problem-solving. '
-        'Researchers at Harvard\'s Graduate School of Education documented the '
-        'divergence between what standardised tests measure and what employers, '
-        'universities, and democratic citizenship actually require: the ability '
-        'to synthesise information from multiple sources, to construct sustained '
-        'arguments, to approach novel problems without predetermined solution '
-        'paths, and to collaborate effectively. The assessment system designed to '
-        'ensure that all students acquired fundamental competencies was, in '
-        'high-stakes environments, systematically suppressing the development of '
-        'higher-order competencies.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The third cascade was the proliferation of cheating \u2014 not by students '
-        'but by the adults responsible for their education. When institutional '
-        'survival, teacher employment, and administrator bonuses depend on test '
-        'scores, the incentives to manipulate those scores become intense. The '
-        'Atlanta Public Schools cheating scandal (2009\u20132015) revealed that '
-        '178 teachers and principals, led by the superintendent, had systematically '
-        'altered students\' answer sheets on state standardised tests across '
-        '44 schools over a period of years. The scandal was notable not because '
-        'Atlanta was uniquely corrupt but because Georgia\'s investigation was '
-        'unusually thorough. Similar patterns of erasure anomalies suggesting '
-        'systematic answer-changing were documented by investigative journalists '
-        'in Washington DC, Philadelphia, Houston, El Paso, and nearly a dozen '
-        'other major urban school districts. The accountability mechanism had '
-        'been corrupted by the very accountability pressures it created.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The fourth cascade was the impact on student motivation and mental health. '
-        'Research by psychologists Carol Dweck and Angela Duckworth had documented '
-        'the importance of intrinsic motivation, growth mindset, and resilience in '
-        'academic development \u2014 all of which are undermined by high-stakes '
-        'testing environments that communicate to students that their value is '
-        'determined by a single numerical score on a specific day. A 2019 American '
-        'Psychological Association survey found that school-related stress was the '
-        'primary source of stress for 61 percent of teenagers in the United States, '
-        'a figure that has increased substantially over the two decades of high-stakes '
-        'testing. The students most subjected to test-focused instruction \u2014 those '
-        'in low-income schools where test scores determined school survival \u2014 '
-        'were also the students for whom the motivational and psychological costs '
-        'were highest, inverting the equity goals that had originally motivated '
-        'the testing regime.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The fifth cascade was the creation of a vast private test-preparation '
-        'industry that systematically disadvantaged the students the system was '
-        'designed to help. SAT and ACT preparation courses, college counsellors, '
-        'and test-prep materials transfer educational advantage back to families '
-        'who can afford them. Students from households earning over \\$200,000 '
-        'score, on average, 388 points higher on the SAT than students from '
-        'households earning under \\$20,000 \u2014 a gap that has not meaningfully '
-        'closed since the introduction of high-stakes testing despite decades of '
-        'reform efforts. The standardised test that was supposed to create a meritocratic '
-        'measure of academic potential independent of school quality has become '
-        'an instrument that encodes and legitimises socioeconomic advantage '
-        'with the authority of a number.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(callout(
-        '<b>Goodhart\'s Law in Education:</b> "When a measure becomes a target, '
-        'it ceases to be a good measure." The standardised test was designed to '
-        'measure learning. When schools\' and teachers\' survival depended on '
-        'the measure, the rational response was to optimise for the measure '
-        'rather than for learning \u2014 and in doing so, to decouple the '
-        'measure from the thing it was intended to capture.',
-        S))
-    story.append(SP(14))
-
-    # ------------------------------------------------------------------ #
-    # Section 6: The Attention Economy                                     #
-    # ------------------------------------------------------------------ #
-    story.append(SP(22))
-    story.append(P('The Attention Economy: Solving Information Access, Destroying '
-                   'Information Quality', S['section']))
-    story.append(SP(14))
-    story.append(P(
-        'Herbert Simon, in a 1971 essay, made an observation that has become one '
-        'of the most quoted sentences in the theory of information: "a wealth of '
-        'information creates a poverty of attention and a need to allocate that '
-        'attention efficiently among the overabundance of information sources that '
-        'might consume it." Simon was writing before the internet, before social '
-        'media, before streaming video, in a world where information abundance '
-        'was already creating an attention scarcity problem. The cascade from '
-        'the information abundance that digital technology has produced is '
-        'precisely the problem Simon described, magnified by orders of magnitude.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The attention economy is not an accident or an externality of the '
-        'information technology industry; it is the industry\'s core business '
-        'model, deliberately engineered. Google\'s core product is the '
-        'monetisation of search attention: advertisers pay for clicks, which '
-        'requires users to search, which requires their attention. Facebook\'s '
-        'core product is the monetisation of social attention: advertisers pay '
-        'for impressions, which requires users to scroll, which requires '
-        'their attention. YouTube\'s core product is the monetisation of video '
-        'attention: advertisers pay for pre-roll views, which requires users '
-        'to watch, which requires their attention. In each case, the '
-        'platform\'s revenue is directly proportional to the number of seconds '
-        'of human attention it captures per day. The business incentive is '
-        'therefore to maximise the number of seconds of human attention '
-        'captured, regardless of what the person is doing with those seconds '
-        'or whether the activity is good for them.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The engineering of the attention economy is documented in extraordinary '
-        'detail in the testimonies of its architects. Tristan Harris, a former '
-        'design ethicist at Google who co-founded the Center for Humane Technology, '
-        'has documented the specific design features engineered to maximise '
-        'attention capture: infinite scroll (removing the natural stopping point '
-        'of page navigation, which previously provided a moment of conscious '
-        'decision to continue or stop); variable reward schedules (the '
-        'intermittent unpredictability of feed content, which the behavioural '
-        'psychology literature identifies as the most powerful mechanism for '
-        'producing compulsive behaviour, the same mechanism that drives slot '
-        'machine addiction); social validation feedback loops (the notification '
-        'of likes, comments, and shares, which triggers dopaminergic responses '
-        'tied to social reward systems that evolved for face-to-face social '
-        'interaction); and autoplay (the elimination of the decision to start '
-        'the next video, replacing deliberate choice with passive continuation). '
-        'These features are not incidental to platform design; they are the '
-        'core engineering of platforms whose business model is measured in '
-        'engagement minutes.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The information quality cascade is the most consequential consequence '
-        'of attention economy optimisation. Algorithms trained to maximise '
-        'engagement learn, from the data of billions of user interactions, '
-        'which content generates the most engagement. The empirical finding, '
-        'documented in peer-reviewed research using platform data released '
-        'under regulatory pressure is that emotionally provocative content '
-        '(anger, fear, disgust, moral outrage) generates more engagement than '
-        'emotionally neutral content; that content confirming the viewer\'s '
-        'prior beliefs generates more engagement than disconfirming content; '
-        'and that false, surprising, or extreme content generates more engagement '
-        'than accurate, expected, or moderate content. An algorithm optimised '
-        'for engagement will therefore systematically amplify emotionally '
-        'provocative, belief-confirming, false, and extreme content. This is '
-        'not a failure of the algorithm; it is a direct consequence of its '
-        'objective function. The engagement metric is accurate; it is measuring '
-        'what it is designed to measure. The cascade is that maximising '
-        'engagement maximises polarisation, misinformation, and extremism '
-        'as a side effect.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The attention fragmentation cascade has consequences for the broader '
-        'culture of reading, sustained argument, and democratic deliberation. '
-        'Nicholas Carr\'s "The Shallows: What the Internet Is Doing to Our '
-        'Brains" (2010) assembled the early evidence that the internet\'s '
-        'information environment: characterised by hyperlinks, constant '
-        'notifications, and the incentive structure of attention economy '
-        'platforms was changing the pattern of reading from linear, sustained, '
-        'deep-focus reading to a pattern of scanning, skimming, and multi-tasking '
-        'that Carr argued was incompatible with the type of concentrated reading '
-        'that produces complex understanding. Subsequent neuroimaging research '
-        'has documented measurable differences in the reading patterns of '
-        'heavy internet users compared to matched controls, with heavy internet '
-        'users showing more activity in areas associated with decision-making '
-        'and less activity in areas associated with language processing and '
-        'comprehension during reading tasks. The solution that made all '
-        'information available to everyone at all times may be making sustained '
-        'engagement with complex information less accessible to the people '
-        'who have access to it.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The democratic deliberation cascade extends this to political institutions. '
-        'Representative democracy, as developed in the eighteenth and nineteenth '
-        'centuries, assumed a public sphere characterised by sustained public '
-        'argument: newspapers, pamphlets, speeches, debates, and town halls in '
-        'which citizens engaged with complex policy arguments over time. The '
-        'Habermasian public sphere (whatever its historical limitations) was '
-        'structured for deliberation: argument, counter-argument, evidence, '
-        'response. The attention economy\'s replacement of this architecture '
-        'with one optimised for engagement: short, emotionally provocative, '
-        'belief-confirming, instantly consumable is incompatible with the '
-        'type of sustained complex argument that democratic deliberation '
-        'requires. The 280-character tweet (now 25,000 characters for premium '
-        'users, but the modal political communication is still short), the '
-        'Facebook meme, the TikTok political clip — these are communication '
-        'forms whose affordances are determined by attention economy optimisation, '
-        'not by the requirements of democratic deliberation. The solution to '
-        'the problem of information access has generated a public sphere '
-        'architecturally unsuited to the demands of democratic governance.',
-        S['body']))
-    story.append(SP(14))
-
-    # ------------------------------------------------------------------ #
-    # Section 7: Plastics and Persistent Pollutants                       #
-    # ------------------------------------------------------------------ #
-    story.append(SP(22))
-    story.append(P('Synthetic Chemistry: From Solutions to Persistent Problems', S['section']))
-    story.append(SP(14))
-    story.append(P(
-        'The twentieth century\'s synthetic chemistry revolution produced '
-        'solutions of extraordinary economic and humanitarian value. Synthetic '
-        'fertilisers (from the Haber-Bosch nitrogen fixation process, 1909) '
-        'now sustain approximately half of humanity\'s food production. '
-        'Synthetic pesticides revolutionised agricultural productivity. '
-        'Synthetic pharmaceuticals have cured diseases that were previously '
-        'invariably fatal. Synthetic polymers (plastics) created an '
-        'entire class of cheap, versatile, lightweight materials that '
-        'transformed manufacturing, packaging, construction, and medicine. '
-        'The cascade from synthetic chemistry is the persistence problem: '
-        'chemicals engineered to be stable and durable are stable and durable '
-        'even after their useful purpose has been served, accumulating in '
-        'the environment at concentrations determined by production rates '
-        'rather than degradation rates.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'DDT is the archetypal synthetic chemistry cascade. Dichlorodiphenyltrichloroethane, '
-        'synthesised in 1874 and tested as a pesticide by Paul Müller in 1939 (for '
-        'which he received the Nobel Prize in Medicine in 1948), was the most '
-        'effective pesticide of its era and one of the most consequential '
-        'humanitarian technologies of the twentieth century. DDT sprayed in '
-        'Italy and the Pacific theatre in World War II virtually eliminated '
-        'typhus. WHO campaigns using DDT reduced malaria cases in India from '
-        'approximately 75 million annually in 1951 to approximately 100,000 '
-        'in 1964, a reduction of 99.9% in thirteen years, saving an estimated '
-        'tens of millions of lives. The cascade arrived through the same property '
-        'that made DDT effective: it was lipophilic (fat-soluble) and persistent. '
-        'In biological systems, lipophilic compounds accumulate in fatty tissue; '
-        'as organisms at lower trophic levels are eaten by organisms at higher '
-        'trophic levels, the compound concentrates — biomagnification. Rachel '
-        'Carson\'s "Silent Spring" (1962) documented the cascade: DDT concentrations '
-        'in fish-eating birds (osprey, bald eagles, peregrine falcons, brown pelicans) '
-        'had reached levels that interfered with calcium metabolism, producing '
-        'thin-shelled eggs that broke under the weight of brooding parents. '
-        'The raptor populations that had been stable for millennia collapsed '
-        'within a decade of DDT\'s widespread application.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'Polychlorinated biphenyls (PCBs), chlorofluorocarbons (CFCs), '
-        'per- and polyfluoroalkyl substances (PFAS), and microplastics '
-        'represent successive generations of synthetic chemistry cascades, '
-        'each generated by the solution to the previous generation\'s problems. '
-        'PCBs were introduced as replacement for flammable oil-based electrical '
-        'insulators; they accumulated in marine food chains for decades after '
-        'their ban and are still present in beluga whale populations in the '
-        'St. Lawrence River at concentrations that qualify the whales as '
-        'toxic waste under Canadian environmental law. CFCs replaced ammonia '
-        'and sulfur dioxide as refrigerants (genuinely dangerous chemicals), '
-        'were safe in use, and depleted the stratospheric ozone layer. PFAS '
-        '— "forever chemicals" were synthesised to solve the problem of '
-        'materials that are both heat-resistant and water-repellent; they are '
-        'now detected in the blood of virtually every human on earth, in '
-        'polar ice cores, in deep ocean fish, and in rainwater globally, '
-        'at concentrations that are the subject of ongoing epidemiological '
-        'investigation for links to cancer, thyroid disease, and immune '
-        'dysfunction.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'Microplastics represent the cascade from the cascade: the solution to '
-        'plastic waste (recycling, fragmentation, dispersal) generates the '
-        'problem of ubiquitous microplastic particles. Plastic does not '
-        'biodegrade; it photodegrades into progressively smaller particles. '
-        'The 9.2 billion tonnes of plastic waste generated since 1950 '
-        '(approximately 80% of which has not been recycled) is now distributed '
-        'throughout every marine ecosystem, every terrestrial soil system, '
-        'and the atmosphere. Microplastic particles have been found in human '
-        'blood, breast milk, placental tissue, and lung tissue. The health '
-        'implications are not yet fully characterised, the science is too '
-        'recent but the distribution is complete. Every human being alive '
-        'today contains microplastic particles from the plastics revolution '
-        'that began in the 1950s. The cascade from the solution to material '
-        'scarcity has produced a global contamination of the human body '
-        'at concentrations that will not decline for centuries even if '
-        'all plastic production were to stop today.',
-        S['body']))
-    story.append(SP(14))
-
-    # ------------------------------------------------------------------ #
-    # Synthesis: The Pattern Across Chapters 7-9                          #
-    # ------------------------------------------------------------------ #
-    story.append(SP(22))
-    story.append(P('The Architecture of the Cascade \u2014 What Medicine, Politics, and '
-                   'Environment Share', S['section']))
-    story.append(SP(14))
-
-    story.append(P(
-        'Reviewing the cascades documented across Chapters 7, 8, and 9 \u2014 antibiotics '
-        'and MRSA, opioids and fentanyl, thalidomide and the regulatory apparatus it '
-        'created, CRISPR and germline editing, the microbiome and C. diff, Prohibition '
-        'and organised crime, the War on Drugs and mass incarceration, zoning and the '
-        'housing crisis, GDPR and the compliance industry, NATO expansion and the '
-        'Ukraine war, social media and adolescent mental health, GPS and spatial '
-        'cognition, air conditioning and the urban heat island, the Green Revolution '
-        'and soil degradation \u2014 a structural pattern emerges that is consistent '
-        'enough to be called a law. In each case, a solution was developed to address '
-        'a genuine and serious problem. The solution worked: it achieved its primary '
-        'objective, often dramatically and unmistakably. The cascade did not arrive '
-        'because the solution failed; it arrived because the solution succeeded, and '
-        'success at scale in a complex system always generates second-order effects '
-        'that the designers of the solution did not model, could not have modelled '
-        'with the tools available to them, and in some cases could not have modelled '
-        'even in principle because the cascade required conditions that the solution '
-        'itself created.',
-        S['body0']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The first structural feature common to all these cascades is the timescale '
-        'asymmetry between the problem and the cascade. The problem solved by a '
-        'solution is typically acute, visible, and politically salient: a bacterial '
-        'infection that kills within days; a famine that threatens millions within '
-        'a season; a drunk violence in a working-class family; a social media post '
-        'that stays live for weeks before being reported. The cascade generated by '
-        'the solution is typically chronic, diffuse, and politically obscure: '
-        'antibiotic resistance building over decades in bacterial populations across '
-        'every continent; soil erosion accumulating at one inch per twenty years '
-        'across agricultural landscapes that stretch beyond the horizon; hippocampal '
-        'atrophy proceeding across the lifetime of a generation raised on GPS. The '
-        'political and institutional incentive to solve the acute, visible problem '
-        'is overwhelming. The political and institutional incentive to prevent the '
-        'diffuse, slow cascade is minimal, because the cascade will not be fully '
-        'visible until long after the political career of the person who could have '
-        'prevented it has ended. Cascade prevention requires political will to '
-        'act on behalf of people who do not yet exist, against harms that have '
-        'not yet fully materialised, against the interests of powerful parties '
-        'who benefit from the current state. This is the most difficult political '
-        'problem that exists.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The second structural feature is what might be called the complexity mismatch: '
-        'the systems into which solutions are introduced are orders of magnitude more '
-        'complex than the models used to design the solutions. Penicillin was designed '
-        'to kill bacteria; the biological system it was introduced into was an '
-        'ecosystem of trillions of organisms with genetic variation, horizontal gene '
-        'transfer, and evolutionary timescales of hours. OxyContin was designed to '
-        'provide analgesia; the social system it was introduced into included '
-        'pharmaceutical company incentive structures, physician prescribing cultures, '
-        'DEA quota-setting processes, insurance reimbursement policies, poverty and '
-        'despair in deindustrialised communities, and black market drug distribution '
-        'networks \u2014 none of which were fully modelled in the clinical trials that '
-        'demonstrated the drug\'s analgesic efficacy. Prohibition was designed to '
-        'reduce alcohol consumption; the social system it was introduced into included '
-        'the economics of black markets, the organisational capacity of criminal '
-        'enterprises, the corruption susceptibility of law enforcement, and the '
-        'cultural dynamics of counter-cultural rebellion. In each case, the solution '
-        'was designed for a component of the system; the cascade arrived from the '
-        'rest of the system.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(callout(
-        '<b>The Cascade Pattern:</b> Every solution introduced into a complex system is itself a perturbation '
-        'of that system. The perturbation propagates through the system according '
-        'to dynamics that the designers of the solution did not model, generating '
-        'second-order effects that become the problems requiring the next solution. '
-        'The cascade is not a failure of the solution; it is the response of the '
-        'system to success.',
-        S))
-    story.append(SP(14))
-
-    story.append(P(
-        'The third structural feature is the institutional momentum problem. Once a '
-        'solution has been deployed at scale \u2014 once hospitals have been built '
-        'around antibiotic treatment, once suburbs have been built around the '
-        'single-family zoning code, once prison systems have been built around '
-        'mandatory minimum sentencing, once social media platforms have been built '
-        'around engagement optimisation \u2014 reversing or modifying the solution '
-        'requires overcoming the institutional, economic, and political interests '
-        'that have accumulated around it. The pharmaceutical companies that profited '
-        'from OxyContin funded lobbying against tighter opioid regulation for '
-        'decades. The suburban homeowners who benefited from single-family zoning\'s '
-        'artificial scarcity are the most politically active constituency in local '
-        'government and reliably oppose any upzoning that might reduce their '
-        'property values. The prison-industrial complex that grew around mass '
-        'incarceration \u2014 private prison companies, public employee unions '
-        'representing corrections officers, rural communities economically dependent '
-        'on prison employment \u2014 constitutes a powerful political coalition '
-        'against decarceration. The cascade from the solution creates its own '
-        'defenders.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The fourth structural feature is the Goodhart cascade: when a proxy '
-        'metric is used to measure the success of a solution, optimisation of '
-        'the metric produces behaviour that satisfies the metric while undermining '
-        'the objective. Hospital pain scores, introduced as a mechanism to ensure '
-        'adequate pain management, were optimised by prescribing more opioids \u2014 '
-        'satisfying the metric while destroying the objective of patient welfare. '
-        'GDPR consent banners, introduced to ensure meaningful user control over '
-        'personal data, were optimised by presenting "Accept All" as the path '
-        'of least resistance \u2014 satisfying the metric while destroying the '
-        'objective of informed consent. Drug arrest rates, used as a metric of '
-        'enforcement effectiveness in the War on Drugs, were optimised by '
-        'concentrating enforcement in communities with high police presence and '
-        'low political power \u2014 satisfying the metric while failing to reduce '
-        'drug use. In each case, the cascade from the solution included a '
-        'measurement system that was corrupted by the incentive to appear to '
-        'be solving the problem rather than actually solving it.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The fifth structural feature, and perhaps the most hopeful, is that the '
-        'cascade eventually generates its own corrective pressure. MRSA drove the '
-        'development of antibiotic stewardship programmes; the opioid crisis drove '
-        'regulatory reform of prescribing practices and the development of '
-        'medication-assisted treatment; thalidomide\'s cascade drove the creation '
-        'of the modern clinical trial infrastructure; Prohibition\'s cascade drove '
-        'its own repeal; the War on Drugs cascade is driving state-level '
-        'decriminalisation; the housing crisis cascade is driving zoning reform '
-        'in cities from Minneapolis to Auckland; the social media cascade is '
-        'driving platform liability legislation. The question is whether the '
-        'corrective pressure arrives before the cascade has caused irreversible '
-        'harm. In the case of antibiotic resistance, the corrective pressure \u2014 '
-        'stewardship programmes, agricultural reform, pipeline incentive reform '
-        '\u2014 has arrived, but it is not yet clear that it will arrive fast '
-        'enough. In the case of soil degradation and aquifer depletion, the '
-        'corrective pressure is building but the physical capital being consumed '
-        'is non-renewable on human timescales. In the case of climate change, '
-        'the feedback loops are operating at planetary scale, and the corrective '
-        'pressure is competing against the economic and political interests of '
-        'the entire fossil fuel industry.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'The cascades in this book are not arguments against problem-solving. They '
-        'are arguments for a specific kind of problem-solving: one that models '
-        'the system into which the solution will be introduced, not just the '
-        'component of the system where the problem is most visible; one that '
-        'monitors for second-order effects with the same rigour applied to the '
-        'primary objective; one that builds in reversibility and adaptation '
-        'mechanisms from the outset; one that explicitly asks, before the solution '
-        'is deployed at scale, who benefits from the solution and who bears the '
-        'costs of its cascade, and whether those populations are the same people. '
-        'Fleming\'s penicillin saved hundreds of millions of lives. Borlaug is credited with helping save a billion. '
-        'The engineers at Carrier created the conditions for the Sun Belt economies '
-        'that generate trillions of dollars of GDP. The cascades they generated '
-        'are real and serious and in some cases existential. They are also the '
-        'natural consequence of intervening in systems whose complexity exceeds '
-        'our models. The appropriate response is not paralysis; it is humility '
-        'about what we know, honesty about what we do not, and commitment to '
-        'watching what happens after we act with the same intensity we brought '
-        'to deciding to act in the first place.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'There is a final irony worth noting. The institutions we have built to '
-        'prevent cascades \u2014 the FDA, created in part by thalidomide; the '
-        'DEA, created by the War on Drugs; the GDPR enforcement apparatus; the '
-        'WHO antimicrobial resistance programmes \u2014 are themselves embedded '
-        'in the complex systems they regulate and generate their own cascades. '
-        'The FDA\'s rigorous approval process, created to prevent the next '
-        'thalidomide, delays by years the arrival of treatments for diseases '
-        'that kill people every day that approval is pending. The DEA\'s quota '
-        'system, designed to prevent diversion of controlled substances, '
-        'enabled the OxyContin epidemic by consistently raising production '
-        'quotas as Purdue Pharma\'s revenues grew. GDPR\'s enforcement actions, '
-        'designed to constrain surveillance capitalism, have fallen most heavily '
-        'on small European technology companies with insufficient compliance '
-        'budgets, while Google and Meta pay fines that represent fractions of '
-        'single quarters\' profits. The institutions designed to manage cascades '
-        'are not outside the system; they are inside it, subject to the same '
-        'dynamics, generating their own second-order effects. This is not a '
-        'counsel of despair. It is the beginning of wisdom about what managing '
-        'complex systems actually requires: not the creation of infallible '
-        'institutions, but the creation of institutions capable of learning '
-        'from their own cascades.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P(
-        'Chapter 10 will examine the meta-level cascade: the institutions and '
-        'frameworks humanity has built specifically to manage cascade risk, '
-        'and the cascades those institutions have themselves generated. It will '
-        'ask whether the pattern of cascades documented in this book is unique '
-        'to modernity \u2014 a consequence of the scale and speed of technological '
-        'change \u2014 or whether it is a permanent feature of human civilisation '
-        'operating in complex systems. And it will attempt to identify, from the '
-        'evidence of the cascades already examined, what a genuinely cascade-aware '
-        'approach to problem-solving might look like in practice: not a formula '
-        'or a checklist, but a habit of mind \u2014 a way of thinking about '
-        'solutions that keeps the system, and not just the problem, in view.',
-        S['body']))
-    story.append(SP(14))
-
-    # ── Chapter 9 Synthesis ────────────────────────────────────────────────
-    story.append(SP(18))
-    story.append(P('Chapter 9 Synthesis: Technology and the Acceleration of Cascade', S['section']))
-    story.append(P(
-        'The technology cascades documented in this chapter share a feature '
-        'that distinguishes them from all the other cascades in this book: '
-        'they operate in networks of fundamentally different scale and connectivity '
-        'than any previous communication or information technology. The printing '
-        'press reached perhaps 1% of the European population within a decade of '
-        'its invention; the internet has reached over 65% of the global population '
-        'within three decades of its commercial deployment. The social network '
-        'amplification exponent the amplification factor, the parameter that determines how quickly '
-        'cascade effects multiply with network size: is, for digital platforms, '
-        'empirically estimated at between 1.8 and 2.4. At these values, the '
-        'difference between a network of one million users and a network of '
-        'one billion users is not a factor of 1,000 in cascade magnitude; '
-        'it is a factor of approximately 10^{18} to 10^{24}. The technology '
-        'cascades of the twenty-first century operate in a qualitatively different '
-        'regime from any cascade that came before them.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The GPS cascade illustrates the dependency structure of modern technology '
-        'cascades. GPS satellite navigation has become so deeply embedded in the '
-        'infrastructure of modern societies that its failure would cascade through '
-        'every system that depends on it simultaneously: financial trading systems '
-        'that use GPS timestamps for transaction sequencing; mobile networks that '
-        'use GPS for cell tower synchronisation; shipping and logistics systems '
-        'that use GPS for fleet tracking; aviation systems that use GPS for '
-        'approach navigation; emergency services that dispatch responders using '
-        'GPS routing; and agricultural systems that use GPS-guided precision '
-        'equipment. A study by the UK Resilience Advisory Board estimated that a '
-        'GPS outage of 30 days would cost the UK economy approximately £1 billion '
-        'per day. The cascade from a GPS solution to a problem of precise navigation '
-        'has made GPS a critical infrastructure node whose failure would generate '
-        'a cascade across every sector that relies on accurate time and position '
-        'data: which, in the twenty-first century, is virtually every sector.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The social media cascade also illustrates the governance gap that '
-        'characterises technology cascades. Traditional cascade management relies '
-        'on regulatory institutions that have jurisdiction over the solution-deployer '
-        'and the authority to require cascade assessment before deployment. '
-        'But the dominant social media platforms were designed in the United States, '
-        'operate on servers in multiple jurisdictions, and reach users in every '
-        'country on earth. No single regulatory authority has jurisdiction over '
-        'the full network. The EU\'s General Data Protection Regulation (GDPR), '
-        'the Digital Services Act (DSA), and the UK\'s Online Safety Act represent '
-        'partial attempts to impose cascade management requirements on platforms '
-        'operating in specific jurisdictions but they are partial, because the '
-        'platforms can route traffic through jurisdictions with weaker regulation '
-        'and because the cascade effects of social media (polarisation, mental '
-        'health damage, democratic disruption) cross all jurisdictional boundaries. '
-        'The technology cascades of the twenty-first century require international '
-        'governance mechanisms that do not yet exist in effective form.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The synthetic chemistry cascade, documented through DDT, PCBs, and '
-        'PFAS, reveals a third structural feature of technology cascades: '
-        'the persistence problem. The most severe second-order effects of '
-        'synthetic chemistry are not acute toxicological effects but long-term '
-        'ecological and biological persistence. DDT was banned in the United '
-        'States in 1972, fifty years ago as of this writing; DDT residues remain '
-        'detectable in the tissues of marine mammals, seabirds, and humans in '
-        'the Arctic and Antarctic, regions where DDT was never directly applied. '
-        'PFAS compounds, banned or being phased out in most jurisdictions, '
-        'will remain detectable in human blood and environmental samples for '
-        'centuries, because no natural biological degradation pathway for '
-        'these compounds exists at ecologically relevant rates. The cascade '
-        'from the synthetic chemistry revolution has bequeathed to every future '
-        'generation of humans and non-human life a permanent body burden of '
-        'synthetic compounds whose long-term health effects at chronic exposure '
-        'levels are incompletely understood. This is the ultimate expression '
-        'of the irreversibility problem in cascade management: the cascade '
-        'from solutions designed without knowledge of their environmental '
-        'persistence is now physically impossible to fully reverse, regardless '
-        'of how much money or scientific effort is applied.',
-        S['body']))
-    story.append(SP(14))
-    story.append(callout(
-        '<b>The Technology Cascade Trilogy:</b> Three structural features '
-        'distinguish twenty-first-century technology cascades from all previous '
-        'cascades. (1) <i>Scale:</i> digital networks connect billions of people '
-        'with network amplification exponents that dwarf any previous communication '
-        'technology. (2) <i>Governance gaps:</i> no single regulatory authority '
-        'has jurisdiction over platforms that operate across all national boundaries '
-        'simultaneously. (3) <i>Persistence:</i> synthetic compounds, genetic '
-        'modifications, and digital infrastructure changes may be physically '
-        'irreversible at civilisational timescales. These three features make '
-        'cascade prevention categorically more important than cascade response '
-        'for technology cascades.',
-        S))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('Environmental Policy: The Cascade of Conservation', S['section']))
-    story.append(P(
-        'Environmental policy provides some of the clearest evidence '
-        'for cascade theory, because environmental systems have '
-        'long feedback loops, high interconnectedness, and '
-        'non-linear dynamics that make cascades particularly '
-        'difficult to anticipate. The history of environmental '
-        'policy is, in significant part, a history of well-intentioned '
-        'solutions generating unexpected ecological cascades.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The reintroduction of wolves to Yellowstone National Park '
-        'in 1995 is celebrated as an ecological success story, '
-        'and it is, but it also illustrates how cascade dynamics '
-        'operate in ecological management. The wolf reintroduction '
-        'solved the problem of elk overpopulation, which had '
-        'degraded riparian vegetation through overgrazing. The '
-        'ecological cascade, the "trophic cascade" documented '
-        'by William Ripple and Robert Beschta was positive: '
-        'wolves changed elk behaviour (elk avoided valleys '
-        'where they could be ambushed), allowing vegetation to '
-        'recover, stabilising riverbanks, increasing beaver '
-        'populations, changing river course and temperature. '
-        'The political cascade was less positive: ranchers '
-        'outside Yellowstone experienced livestock losses '
-        'to wolves, generating intense political opposition '
-        'that led to wolf culls in Montana and Idaho. '
-        'The ecological solution cascaded into a political '
-        'conflict that has consumed significant political '
-        'capital for three decades.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'Carbon markets, the mechanism designed to solve climate '
-        'change by putting a price on carbon emissions have '
-        'generated cascades in three directions. First, '
-        'the carbon offset cascade: companies purchasing '
-        'offsets to claim carbon neutrality while continuing '
-        'to emit, with offset quality systematically '
-        'overstated in multiple independent analyses. '
-        'A 2023 investigation by The Guardian found that '
-        'over 90% of rainforest offset credits certified '
-        'by the largest carbon standard (Verra) were '
-        '"phantom credits" that did not represent real '
-        'carbon reductions. Second, the green-washing '
-        'cascade: the availability of carbon credits '
-        'reduces corporate pressure to reduce emissions '
-        'at source. Third, the land-use cascade: '
-        'carbon offset markets create financial incentives '
-        'for forestry projects that may displace '
-        'indigenous communities, convert agricultural '
-        'land to monoculture tree plantations, or '
-        'prevent the transition to more efficient '
-        'land uses. The carbon market cascade is '
-        'not an argument against carbon pricing, '
-        'it is evidence that every solution generates '
-        'new problems requiring new solutions.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'Renewable energy, the solution to fossil fuel dependence '
-        '— generates material cascades. Solar panels require '
-        'silver, indium, tellurium, and cadmium; wind turbines '
-        'require rare earth elements including neodymium and '
-        'dysprosium; electric vehicle batteries require lithium, '
-        'cobalt, and manganese. The cascade from the solution '
-        'to the fossil fuel cascade is a new resource dependency '
-        'on materials whose extraction creates its own '
-        'environmental and human rights cascades. '
-        'Cobalt mining in the Democratic Republic of Congo, '
-        'which supplies approximately 70% of global cobalt '
-        'production has been documented as involving child '
-        'labour and unsafe working conditions. Lithium '
-        'extraction in the Atacama Desert uses freshwater '
-        'in one of the driest regions on Earth, threatening '
-        'indigenous communities and unique ecosystems. '
-        'The green energy transition is genuinely necessary; '
-        'it is also genuinely a cascade generator. '
-        'Recognising this does not counsel against transition '
-        '— it counsels for transition with eyes open '
-        'to its cascades.',
-        S['body']))
-    story.append(SP(14))
-    story += epigraph(
-        'The struggle to save the global environment is in one way much more difficult '
-        'than the struggle to vanquish Hitler, for this time the war is with ourselves.',
-        'Al Gore, <i>Earth in the Balance</i>, 1992',
-        S)
-
-    story.append(SP(18))
-    story.append(P('The Energy Transition and the Resource Cascade', S['section']))
-    story.append(P(
-        'The energy transition, the shift from fossil fuels to '
-        'renewable energy sources as the primary solution to '
-        'climate change is the largest deliberate cascade '
-        'intervention in human history. The climate change '
-        'cascade (discussed in earlier chapters) is already '
-        'the most consequential unmanaged cascade of the '
-        'industrial era: the solution (fossil fuels) solved '
-        'energy scarcity and generated a cascade that now '
-        'threatens to destabilise the planetary systems '
-        'on which all other human activities depend. '
-        'The energy transition is the corrective cascade, '
-        'a solution to the problem generated by the previous '
-        'solution. Understanding its own cascade dynamics '
-        'is essential to managing it successfully.',
-        S['body0']))
-    story.append(P(
-        'The material cascade from the energy transition is the '
-        'most immediately visible. Solar panels require silicon, '
-        'silver, tellurium, and indium. Wind turbines require '
-        'neodymium and dysprosium for permanent magnets. '
-        'Lithium-ion batteries require lithium, cobalt, nickel, '
-        'manganese, and graphite. The International Energy Agency '
-        'estimates that a clean energy system in 2040 will require '
-        'four to six times more mineral inputs than a fossil '
-        'fuel system of equivalent capacity. This creates a '
-        'significant mining cascade: the extraction and processing '
-        'of transition minerals generates environmental disruption '
-        '(cobalt mining in the Democratic Republic of Congo, where '
-        '70% of global supply originates, has been associated with '
-        'deforestation, water contamination, and documented child '
-        'labour), supply chain concentration (China controls '
-        'approximately 60% of rare earth processing and significant '
-        'shares of lithium and cobalt processing), and geopolitical '
-        'dependencies that mirror the fossil fuel dependencies the '
-        'energy transition was designed to eliminate.',
-        S['body']))
-    story.append(P(
-        'The land use cascade from renewable energy is a second '
-        'dimension of cascade risk. Solar and wind energy have '
-        'fundamentally different land footprints from fossil fuel '
-        'energy: a coal plant occupies a small site but draws '
-        'energy from a geological store; a solar farm of equivalent '
-        'capacity requires approximately 40-50 times more land area. '
-        'The deployment of renewable energy at the scale required '
-        'for full decarbonisation, estimates range from 0.5% to '
-        '1.5% of global land area will compete with agricultural '
-        'land, natural ecosystems, and existing land uses in ways '
-        'that generate their own cascade effects. The agrivoltaic '
-        'approach (combining solar panels with agricultural production '
-        'on the same land) partially addresses this cascade, '
-        'but also creates new interactions: changes to microclimate, '
-        'shading effects on crops, altered soil moisture dynamics '
-        '— whose cascade profiles are still being characterised.',
-        S['body']))
-    story.append(P(
-        'The grid stability cascade is a third dimension. Fossil '
-        'fuel power plants provide dispatchable generation; they '
-        'can be ramped up or down on demand, providing the '
-        'grid-balancing function that keeps electricity supply '
-        'matched to variable demand. Solar and wind power are '
-        'intermittent; they generate electricity when sun shines '
-        'and wind blows, independent of demand. The transition '
-        'from a dispatchable to an intermittent generation system '
-        'requires either massive battery storage (which has its '
-        'own material and cost cascades), long-distance transmission '
-        'infrastructure (which has its own planning, cost, and '
-        'environmental cascades), or demand management systems '
-        '(which have their own privacy, equity, and security '
-        'cascades). Each solution to the intermittency problem '
-        'generated by the primary renewable energy solution '
-        'generates its own cascade, and the combined cascade '
-        'risk of the full energy transition solution set is '
-        'substantially larger than the cascade risk of any '
-        'individual component.',
-        S['body']))
-    story.append(P(
-        'None of this constitutes an argument against the energy '
-        'transition. The cascade from continued fossil fuel use '
-        '— the climate change cascade is substantially more '
-        'dangerous than the cascades from the transition. But '
-        'it constitutes an argument for cascade-aware transition '
-        'management: for systematically assessing the cascade '
-        'profiles of transition technologies before scaling them '
-        'to civilisational levels, for building adaptive mechanisms '
-        'that can respond as cascade effects emerge, and for '
-        'avoiding the historical pattern, documented in this '
-        'book\'s case studies — of deploying at scale and then '
-        'discovering the cascade. The energy transition is too '
-        'important to be managed naively. Its stakes are high '
-        'enough to justify the full rigour of cascade-aware design.',
-        S['body']))
-
-    story.append(SP(14))
-    story.append(fig_to_image(fig_attention_economy(), w=4.5*72, h=4.5*72))
-    story.append(P(
-        'Figure 9.1: The Attention Economy Loop. Social platforms optimise for engagement, '
-        'triggering dopamine responses that build tolerance, requiring ever-more-extreme '
-        'content to maintain the same response. Mental health declines as engagement '
-        'metrics rise, a self-reinforcing cascade that benefits platform revenue '
-        'while systematically degrading user wellbeing.',
-        S['caption']))
-    story.append(SP(14))
+    # extension sections cut in v63 trim
     story.append(PageBreak())
     return story

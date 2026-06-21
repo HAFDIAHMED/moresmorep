@@ -24,9 +24,10 @@ from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums  import TA_CENTER, TA_LEFT, TA_JUSTIFY
 
 # ── Dimensions ──────────────────────────────────────────────────────────────
-OUT = '/Users/vpro/Desktop/book_solutions_problems/book_cover.pdf'
-W   = 6   * inch   # standard trade paperback
-H   = 9   * inch
+import os as _os
+OUT = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'book_cover.pdf')
+W   = 8.27 * inch  # A4 width — match the interior PDF dimensions exactly
+H   = 11.69 * inch # A4 height — required for KDP/IngramSpark pre-flight
 
 # ── Black & White Palette ───────────────────────────────────────────────────
 BG        = HexColor('#FFFFFF')          # pure white background
@@ -264,7 +265,7 @@ def front_cover(c):
     sub_st = ps('sub', font='Times-Italic', size=10, color=INK_LIGHT,
                 align=TA_CENTER, leading_mul=1.55)
     flow(c,
-         'A Theory of Cascade Innovation<br/>and the Hidden Cost of Progress',
+         'Why Every Solution<br/>Creates the Next Problem',
          sub_st, W * 0.12, H * 0.342, W * 0.76)
 
     # ── author — pinned to bottom ─────────────────────────────────────────
@@ -273,11 +274,7 @@ def front_cover(c):
 
     c.setFont('Helvetica-Bold', 14)
     c.setFillColor(INK)
-    c.drawCentredString(W / 2, 0.22 * inch, 'AHMED HAFDI')
-
-    c.setFont('Helvetica', 7.5)
-    c.setFillColor(INK_LIGHT)
-    c.drawCentredString(W / 2, 0.09 * inch, 'Software Engineer  ·  Thinker')
+    c.drawCentredString(W / 2, 0.155 * inch, 'AHMED HAFDI')
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -318,7 +315,7 @@ def back_cover(c):
                  color=INK_BODY, align=TA_CENTER, leading_mul=1.65)
     body_y  = rule_y - 0.22*inch - key_h - 0.20*inch
     body_h  = flow(c,
-        'Ahmed Hafdi proves that solutions breed new problems '
+        '<b>AHMED HAFDI</b> proves that solutions breed new problems '
         '<i>exponentially</i> — and constructs <b>Cascade Theory</b>: '
         'the framework explaining why celebrated innovations '
         'generate the defining crises of the next era.',
@@ -336,24 +333,38 @@ def back_cover(c):
     c.setStrokeColor(INK_XLIT); c.setLineWidth(0.5)
     c.line(M, mid_rule_y, W - M, mid_rule_y)
 
-    # ── praise quotes ─────────────────────────────────────────────────────
-    pr_st   = ps('pr', font='Times-Italic', size=8.8,
-                 color=INK_BODY, align=TA_CENTER, leading_mul=1.50)
-    attr_st = ps('attr', font='Helvetica', size=7.8,
-                 color=INK_LIGHT, align=TA_CENTER, leading_mul=1.3)
+    # ── pull-quote from the book + author bio ────────────────────────────
+    # First-book authors do not fake endorsements. The back cover instead
+    # sells itself with a single pull-quote from the Introduction and a
+    # short author bio. Both are honest and stand on their own. Once real
+    # outside blurbs come in from outreach, they replace the author-bio
+    # block at the bottom (see OUTREACH_BLURBERS.md).
+    pull_st = ps('pull', font='Times-Italic', size=9.5,
+                 color=INK, align=TA_CENTER, leading_mul=1.55)
+    pull_attr_st = ps('pull_attr', font='Helvetica', size=7.5,
+                      color=INK_LIGHT, align=TA_CENTER, leading_mul=1.3)
+    bio_st = ps('bio', font='Helvetica', size=8.5,
+                color=INK_BODY, align=TA_CENTER, leading_mul=1.55)
 
-    praises = [
-        ('\u2018Made mathematics feel urgent, even terrifying.\u2019',
-         '— Professor of Systems Science, MIT'),
-        ('\u2018A fundamental constraint every practitioner must understand.\u2019',
-         '— Former Director-General, World Economic Forum'),
-    ]
     py = mid_rule_y - 0.22*inch
-    for qt, at in praises:
-        qh = flow(c, qt, pr_st, M, py, TW)
-        py -= qh + 0.04*inch
-        ah = flow(c, at, attr_st, M, py, TW)
-        py -= ah + 0.14*inch
+
+    # The pull-quote — the Argument-in-One-Sentence from the Introduction.
+    pull = ('\u2018Every solution, once released into a connected system, '
+            'creates problems faster than the system can absorb them \u2014 and the '
+            'more connected the system, the wider the gap.\u2019')
+    qh = flow(c, pull, pull_st, M, py, TW)
+    py -= qh + 0.05*inch
+    ah = flow(c, '\u2014 from the Introduction', pull_attr_st, M, py, TW)
+    py -= ah + 0.20*inch
+
+    # The author bio.
+    bio = ('<b>AHMED HAFDI</b> is a software engineer and researcher based in '
+           'Kenitra, Morocco. <i>More Solutions = More Problems</i> is the trade '
+           'edition of his Cascade Innovation framework; the full mathematical '
+           'treatment appears in the underlying research paper at '
+           'researchgate.net/publication/395720779.')
+    bh = flow(c, bio, bio_st, M, py, TW)
+    py -= bh + 0.18*inch
 
     # thin rule
     c.setStrokeColor(INK_XLIT); c.setLineWidth(0.5)

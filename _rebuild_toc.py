@@ -44,7 +44,8 @@ INTRO_CHAP = find_strict('The Great Paradox', TOC_END + 1)
 CHAPTER_OPENER = {}
 prev = TOC_END
 for n, word in enumerate(['ONE','TWO','THREE','FOUR','FIVE','SIX','SEVEN',
-                          'EIGHT','NINE','TEN','ELEVEN','TWELVE','THIRTEEN'], 1):
+                          'EIGHT','NINE','TEN','ELEVEN','TWELVE','THIRTEEN',
+                          'FOURTEEN','FIFTEEN'], 1):
     p = find_strict(f'CHAPTER {word}', prev + 1)
     CHAPTER_OPENER[n] = p
     if p:
@@ -60,7 +61,8 @@ PART = {
                        (CHAPTER_OPENER.get(11) or TOC_END) + 1),
 }
 
-prev = CHAPTER_OPENER.get(13) or TOC_END
+prev = (CHAPTER_OPENER.get(15) or CHAPTER_OPENER.get(14)
+        or CHAPTER_OPENER.get(13) or TOC_END)
 CONCLUSION = find_strict('Living with the Paradox', prev + 1)
 prev = CONCLUSION or prev
 APPENDIX = {}
@@ -94,8 +96,9 @@ toc.append(('sub', 'The Day Britain Created More Snakes',
                             INTRO_CHAP or 1, intro_end))))
 toc.append(('sub', 'What This Book Argues',
             pp(find_strict('What This Book Argues', INTRO_CHAP or 1, intro_end))))
-toc.append(('sub', 'The Central Claim, Stated Four Ways',
-            pp(find_strict('The Central Claim', INTRO_CHAP or 1, intro_end))))
+toc.append(('sub', 'The Argument, in One Sentence',
+            pp(find_strict('The Argument, in One Sentence',
+                            INTRO_CHAP or 1, intro_end))))
 
 toc.append(('part', 'PART I — THE THEORY', pp(PART['I'])))
 toc.append(('chap', 'Chapter 1: The Law of Cascade Problems', pp(CHAPTER_OPENER[1])))
@@ -188,6 +191,10 @@ toc.append(('sub', 'Second-Order Thinking',
             pp(sub_in_chapter('Second-Order Thinking', 13))))
 toc.append(('sub', 'The Call to Action',
             pp(sub_in_chapter('The Call to Action', 13))))
+toc.append(('chap', 'Chapter 14: The Case Against This Book',
+            pp(CHAPTER_OPENER.get(14))))
+toc.append(('chap', 'Chapter 15: How to Spot a Cascade Before It Hits You',
+            pp(CHAPTER_OPENER.get(15))))
 
 toc.append(('part', 'CONCLUSION & APPENDICES', ''))
 toc.append(('chap', 'Conclusion: Living with the Paradox', pp(CONCLUSION)))

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 MORE SOLUTIONS = MORE PROBLEMS
-A Theory of Cascade Innovation and the Hidden Cost of Progress
+Why Every Solution Creates the Next Problem
 By Ahmed Hafdi
 
 Run: python3 generate_book.py
@@ -43,6 +43,10 @@ G = {'chapter': '', 'part': ''}
 # page callback can leave them as clean title pages (no running head, no folio).
 # Populated during a discovery build pass; see book_main_reader.py.
 DIVIDER_PAGES = set()
+# Pages where a chapter opens. on_page suppresses both running head and folio
+# on these pages so the chapter title page reads clean — the same convention
+# professional trade nonfiction follows.
+CHAPTER_OPENER_PAGES = set()
 
 # ─── CUSTOM FLOWABLES ─────────────────────────────────────────────────────────
 class Mark(Flowable):
@@ -65,22 +69,20 @@ class _MarkDivider(Flowable):
         DIVIDER_PAGES.add(self.canv.getPageNumber())
 
 
-class _RedrawChapterHeader(Flowable):
-    """Repaints the running head on a chapter-opening page.
+class _MarkChapterOpener(Flowable):
+    """Zero-size marker that records its own page number into
+    CHAPTER_OPENER_PAGES during the two-pass build's discovery pass.
 
-    on_page() fires at the *start* of every page and reads G['chapter'] for the
-    odd-page running head — but on a chapter-opening page, G has not yet been
-    updated by the chapter's Mark flowable, so on_page paints the previous
-    chapter's title. This flowable runs as the first visible element of a
-    chapter's chapter_opener: it covers the wrong header with a white box,
-    redraws the top rule, and prints the correct chapter title. Coordinates
-    are in flowable-local space — this flowable sits at the top of the frame
-    (after the zero-height Mark), so y ≈ 16 in local coords lines up with the
-    absolute running-head row that on_page used.
+    The previous design (``_RedrawChapterHeader``) tried to repaint the running
+    head in flowable-local coordinates while ``on_page()`` had already drawn it
+    in absolute coordinates — producing a slightly-offset double of the
+    book-title line at the top of every chapter opener. The clean fix, and the
+    convention every trade-nonfiction book follows, is to suppress the running
+    head and folio on chapter-opener pages entirely. ``on_page()`` consults
+    CHAPTER_OPENER_PAGES and skips drawing on any page it contains.
     """
-    def __init__(self, chapter):
+    def __init__(self):
         super().__init__()
-        self.chapter = chapter
         self.width = 0
         self.height = 0
 
@@ -88,27 +90,7 @@ class _RedrawChapterHeader(Flowable):
         return (0, 0)
 
     def draw(self):
-        c = self.canv
-        pg = c.getPageNumber()
-        if pg <= 2:
-            return  # cover + blank verso, no running head exists
-        c.saveState()
-        # Cover the previous chapter's header (text + rule) with a white strip.
-        c.setFillColor(colors.white)
-        c.rect(-4, 8, TW + 8, 16, fill=1, stroke=0)
-        # Repaint the top rule in case it was hidden by the white box.
-        c.setStrokeColor(colors.black)
-        c.setLineWidth(0.3)
-        c.line(0, 10, TW, 10)
-        # Repaint the correct running head: odd pages show the chapter, even
-        # pages show the book title — match on_page()'s parity rule.
-        c.setFont('Times-Italic', 8.5)
-        c.setFillColor(colors.black)
-        if pg % 2 == 0:
-            c.drawString(0, 16, 'More Solutions = More Problems')
-        else:
-            c.drawRightString(TW, 16, self.chapter)
-        c.restoreState()
+        CHAPTER_OPENER_PAGES.add(self.canv.getPageNumber())
 
 
 class VSpace(Spacer):
@@ -216,6 +198,7 @@ def on_page(c, doc):
     pg = doc.page
     if pg <= 2: return  # cover + blank
     if pg in DIVIDER_PAGES: return  # Part dividers are clean title pages
+    if pg in CHAPTER_OPENER_PAGES: return  # Chapter openers are clean title pages
     c.saveState()
     c.setFont('Times-Italic',8.5)
     c.setStrokeColor(colors.black); c.setLineWidth(0.3)
@@ -252,21 +235,22 @@ def _draw_cascade_symbol(c, cx, cy, sym_w, sym_h):
     def ny(lv):
         return cy + sym_h / 2 - lv * sym_h / LEVELS
 
-    # edges
+    # edges — bolder than before, fully opaque so the structure reads at a glance
     for lv in range(LEVELS):
-        n   = 2 ** lv
-        lw  = max(0.4, 1.3 - lv * 0.35)
-        alp = 1.0 - lv * 0.18
-        c.setStrokeColorRGB(0, 0, 0, alpha=alp)
+        n  = 2 ** lv
+        # Bolder line weights at every level (was 1.30 / 0.95 / 0.60; now 2.4 / 1.6 / 1.0).
+        lw = max(0.9, 2.4 - lv * 0.7)
+        c.setStrokeColorRGB(0, 0, 0, alpha=1.0)
         c.setLineWidth(lw)
+        c.setLineCap(1)  # rounded line ends — cleaner joins at nodes
         for i in range(n):
             px, py = nx(lv, i), ny(lv)
             for ci in [2 * i, 2 * i + 1]:
                 cx2, cy2 = nx(lv + 1, ci), ny(lv + 1)
                 c.line(px, py, cx2, cy2)
 
-    # nodes — root biggest, leaves smallest
-    node_sizes = [4.5, 3.0, 2.0, 1.3]
+    # nodes — root biggest, leaves smallest. Every size bumped ~50–70% for boldness.
+    node_sizes = [7.5, 5.0, 3.4, 2.2]
     for lv in range(LEVELS + 1):
         n = 2 ** lv
         r = node_sizes[min(lv, len(node_sizes) - 1)]
@@ -338,21 +322,19 @@ def _draw_designed_cover(c, W, H):
 
     c.setFont('Times-Italic', 10 * scale)
     c.setFillColor(_COVER_INK_LIGHT)
-    c.drawCentredString(W / 2, H * 0.335, 'A Theory of Cascade Innovation')
-    c.drawCentredString(W / 2, H * 0.315, 'and the Hidden Cost of Progress')
+    c.drawCentredString(W / 2, H * 0.335, 'Why Every Solution')
+    c.drawCentredString(W / 2, H * 0.315, 'Creates the Next Problem')
 
     # bottom black bar
     c.setFillColor(_COVER_INK)
     c.rect(0, 0, W, bar_h, fill=1, stroke=0)
 
-    # AHMED HAFDI + role line, pinned to bottom
+    # AHMED HAFDI — just the name, centred vertically inside the bar.
+    # No credential label: contemporary trade-non-fiction convention
+    # (Clear, Harari, Taleb, Pinker, Holiday all use the name alone).
     c.setFont('Helvetica-Bold', 14 * scale)
     c.setFillColor(_COVER_INK)
-    c.drawCentredString(W / 2, 0.22 * inch + bar_h, 'AHMED HAFDI')
-
-    c.setFont('Helvetica', 7.5 * scale)
-    c.setFillColor(_COVER_INK_LIGHT)
-    c.drawCentredString(W / 2, 0.09 * inch + bar_h, 'Software Engineer  ·  Thinker')
+    c.drawCentredString(W / 2, 0.155 * inch + bar_h, 'AHMED HAFDI')
 
 
 def on_first(c, doc):
@@ -601,7 +583,7 @@ def fig_cascade_risk_index():
     with plt.xkcd():
         fig,ax=plt.subplots(figsize=(6.5,3.8))
         ax.set_xlim(0,10); ax.set_ylim(0,10); ax.axis('off')
-        ax.text(5,9.3,'Cascade Risk Index (CRI)', ha='center', fontsize=13, fontweight='bold')
+        ax.text(5,9.3,'The Cobra Score (CRI)', ha='center', fontsize=13, fontweight='bold')
         formula=r'CRI(s, E) = C(s) × Φ(s) × N(s)^α'
         ax.text(5,7.8,formula,ha='center',fontsize=14,family='monospace',zorder=5,
                 bbox=dict(boxstyle='round',fc='lightyellow',ec='black',lw=2))
@@ -1074,7 +1056,7 @@ def chapter_opener(num_str, title, subtitle, S):
     title_str = f'{num_str}: {title}'
     return [
         Mark(chapter=title_str),
-        _RedrawChapterHeader(title_str),   # repaints the running head on this page
+        _MarkChapterOpener(),   # records this page in CHAPTER_OPENER_PAGES so on_page suppresses chrome
         P(num_str.upper(), S['chap_num']),
         P(title, S['chap_title']),
         P(subtitle, S['chap_sub']),
@@ -1109,94 +1091,98 @@ def build_toc(S, accessible=False):
     toc = [
         ('part', 'FRONT MATTER',                                                  ''),
         ('chap', 'Preface — A Note on Origins',                                   '7'),
+        ('chap', 'Read This First — The Whole Book on One Page',                  '9'),
 
         ('part', 'INTRODUCTION',                                                  ''),
-        ('chap', 'The Great Paradox',                                             '10'),
-        ('sub',  'The Day Britain Created More Snakes',                           '10'),
-        ('sub',  'What This Book Argues',                                         '11'),
-        ('sub',  'The Central Claim, Stated Four Ways',                           '15'),
+        ('chap', 'The Great Paradox',                                             '11'),
+        ('sub',  'The Day Britain Created More Snakes',                           '11'),
+        ('sub',  'It Happens Everywhere',                                         '12'),
+        ('sub',  'What This Book Argues',                                         '12'),
+        ('sub',  'The Argument, in One Sentence',                                 '14'),
 
-        ('part', 'PART I — THE THEORY',                                           '23'),
-        ('chap', 'Chapter 1: The Law of Cascade Problems',                        '24'),
-        ('sub',  'Three Mechanisms of the Cascade',                               '24'),
-        ('sub',  'Murphy’s Law Is Not a Joke',                               '25'),
-        ('sub',  'The Exponential Trap',                                          '26'),
-        ('chap', 'Chapter 2: Why We Always Repeat the Mistake',                   '46'),
-        ('sub',  'The Bias of Now',                                               '46'),
-        ('sub',  'What Systems Thinking Offers',                                  '48'),
-        ('sub',  'The Social Construction of Successful Solutions',               '61'),
+        ('part', 'PART I — THE THEORY',                                           '20'),
+        ('chap', 'Chapter 1: The Logic of Cascade Problems',                      '21'),
+        ('sub',  'Three Mechanisms',                                              '21'),
+        ('sub',  'Murphy’s Law Is Not a Joke',                                    '22'),
+        ('sub',  'The Exponential Trap',                                          '23'),
+        ('chap', 'Chapter 2: Why We Always Repeat the Mistake',                   '29'),
+        ('sub',  'The Bias of Now',                                               '29'),
+        ('sub',  'What Systems Thinking Offers',                                  '32'),
 
-        ('part', 'PART II — THE EVIDENCE',                                        '64'),
-        ('chap', 'Chapter 3: Mathematics — The Original Cascade',                 '65'),
-        ('sub',  'Hilbert’s Dream, Gödel’s Nightmare',              '65'),
-        ('sub',  'Russell’s Paradox and Its Descendants',                    '66'),
-        ('sub',  'The Halting Problem',                                           '67'),
-        ('chap', 'Chapter 4: Physics — Nature’s Revenge',                    '83'),
-        ('sub',  'Maxwell’s Demon',                                          '83'),
-        ('sub',  'Quantum Mechanics and the Measurement Crisis',                  '85'),
-        ('chap', 'Chapter 5: Computer Science — The Digital Cascade',             '109'),
-        ('sub',  'Every Patch Opens a New Wound',                                 '109'),
-        ('sub',  'Brooks’ Law and the Mythical Man-Month',                   '111'),
-        ('sub',  'Feature Bloat and the Legacy Trap',                             '113'),
-        ('sub',  'The Internet’s Unintended Children',                       '115'),
-        ('chap', 'Chapter 6: Economics — The Market’s Irony',                '138'),
-        ('sub',  'The Cobra Effect',                                              '138'),
-        ('sub',  'Jevons Paradox: Efficiency Creates Demand',                     '140'),
-        ('sub',  'Goodhart’s Law',                                           '142'),
-        ('sub',  'The 2008 Financial Crisis',                                     '144'),
-        ('chap', 'Chapter 7: Medicine — The Healing Paradox',                     '171'),
-        ('sub',  'The Opioid Crisis',                                             '174'),
-        ('sub',  'Thalidomide’s Double Life',                                '177'),
-        ('sub',  'CRISPR and the Editing Problem',                                '178'),
-        ('chap', 'Chapter 8: Politics — The Policy Boomerang',                    '199'),
-        ('sub',  'Prohibition and the Birth of the Mob',                          '199'),
-        ('sub',  'The War on Drugs',                                              '201'),
-        ('sub',  'GDPR and the Compliance Industrial Complex',                    '209'),
-        ('chap', 'Chapter 9: Society & Environment',                              '222'),
-        ('sub',  'Social Media’s Loneliness Paradox',                        '222'),
-        ('sub',  'Braess’s Paradox: When New Roads Make Traffic Worse',      '226'),
-        ('sub',  'The Green Revolution’s Hidden Cost',                       '229'),
+        ('part', 'PART II — THE EVIDENCE',                                        '39'),
+        ('chap', 'Chapter 3: Mathematics — The Original Cascade',                 '40'),
+        ('sub',  'Hilbert’s Dream, Gödel’s Nightmare',                            '40'),
+        ('sub',  'Russell’s Paradox and Its Descendants',                         '41'),
+        ('sub',  'The Halting Problem',                                           '42'),
+        ('chap', 'Chapter 4: Physics — Nature’s Revenge',                         '53'),
+        ('sub',  'Maxwell’s Demon',                                               '53'),
+        ('sub',  'Quantum Mechanics and the Measurement Crisis',                  '55'),
+        ('chap', 'Chapter 5: Computer Science — The Digital Cascade',             '69'),
+        ('sub',  'Every Patch Opens a New Wound',                                 '69'),
+        ('sub',  'Brooks’ Law and the Mythical Man-Month',                        '71'),
+        ('sub',  'Feature Bloat and the Legacy Trap',                             '73'),
+        ('sub',  'The Internet’s Unintended Children',                            '73'),
+        ('chap', 'Chapter 6: Economics — The Market’s Irony',                     '90'),
+        ('sub',  'The Cobra Effect',                                              '90'),
+        ('sub',  'Jevons Paradox: Efficiency Creates Demand',                     '92'),
+        ('sub',  'Goodhart’s Law',                                                '95'),
+        ('sub',  'The 2008 Financial Crisis',                                     '97'),
+        ('chap', 'Chapter 7: Medicine — The Healing Paradox',                     '110'),
+        ('sub',  'The Opioid Crisis',                                             '113'),
+        ('sub',  'Thalidomide’s Double Life',                                     '116'),
+        ('sub',  'CRISPR and the Editing Problem',                                '117'),
+        ('chap', 'Chapter 8: Politics — The Policy Boomerang',                    '120'),
+        ('sub',  'Prohibition and the Birth of the Mob',                          '120'),
+        ('sub',  'The War on Drugs',                                              '123'),
+        ('sub',  'GDPR and the Compliance Industrial Complex',                    '127'),
+        ('chap', 'Chapter 9: Society & Environment',                              '129'),
+        ('sub',  'Social Media’s Loneliness Paradox',                             '129'),
+        ('sub',  'Braess’s Paradox: When New Roads Make Traffic Worse',           '133'),
+        ('sub',  'The Green Revolution’s Hidden Cost',                            '134'),
 
-        ('part', 'PART III — THE CASCADE FRAMEWORK',                              '261'),
+        ('part', 'PART III — THE CASCADE FRAMEWORK',                              '139'),
         ('chap',
          'Chapter 10: How the Cascade Works' if accessible
          else 'Chapter 10: A Formal Theory of Cascade Problems',
-         '262'),
-        ('sub',  'The Solution-Problem Network',                                  '262'),
-        ('sub',  'How Problems Multiply',                                         '263'),
-        ('sub',  'The Central Claim',                                             '263'),
-        ('sub',  'The Tipping Point',                                             '267'),
-        ('sub',  'The Shape of the Network Matters',                              '277'),
-        ('chap', 'Chapter 11: Measuring and Predicting Cascades',                 '281'),
-        ('sub',  'The Cascade Risk Index',                                        '281'),
-        ('sub',  'Early Warning Signals',                                         '282'),
-        ('sub',  'Limitations of the Cascade Risk Index',                         '290'),
+         '140'),
+        ('sub',  'The Solution-Problem Network',                                  '140'),
+        ('sub',  'How Problems Multiply',                                         '141'),
+        ('sub',  'The Central Claim',                                             '141'),
+        ('sub',  'The Tipping Point',                                             '146'),
+        ('sub',  'The Shape of the Network Matters',                              '151'),
+        ('chap', 'Chapter 11: Measuring and Predicting Cascades',                 '152'),
+        ('sub',  'The Cobra Score',                                               '152'),
+        ('sub',  'Early Warning Signals',                                         '153'),
+        ('sub',  'Computing the Cobra Score in Practice',                         '155'),
+        ('sub',  'Limitations of the Cobra Score',                                '158'),
 
-        ('part', 'PART IV — THE WAY FORWARD',                                     '308'),
-        ('chap', 'Chapter 12: Cascade-Aware Design',                              '309'),
-        ('sub',  'The Hippocratic Principle for Innovation',                      '309'),
-        ('sub',  'Pre-Mortem Analysis',                                           '310'),
-        ('sub',  'The Role of Modularity and Reversibility',                      '311'),
-        ('sub',  'Sunset Clauses and Reversibility Requirements',                 '316'),
-        ('chap', 'Chapter 13: A New Philosophy of Innovation',                    '321'),
-        ('sub',  'Second-Order Thinking',                                         '321'),
-        ('sub',  'The Call to Action',                                            '322'),
+        ('part', 'PART IV — THE WAY FORWARD',                                     '163'),
+        ('chap', 'Chapter 12: Cascade-Aware Design',                              '164'),
+        ('sub',  'The Hippocratic Principle for Innovation',                      '164'),
+        ('sub',  'Pre-Mortem Analysis',                                           '165'),
+        ('sub',  'The Role of Modularity and Reversibility',                      '166'),
+        ('sub',  'Sunset Clauses and Reversibility Requirements',                 '171'),
+        ('chap', 'Chapter 13: A New Philosophy of Innovation',                    '176'),
+        ('sub',  'Second-Order Thinking',                                         '176'),
+        ('sub',  'The Call to Action',                                            '178'),
+        ('chap', 'Chapter 14: The Case Against This Book',                        '192'),
+        ('chap', 'Chapter 15: How to Spot a Cascade Before It Hits You',          '196'),
+        ('chap', 'Chapter 16: The AI Cascade',                                    '201'),
 
         ('part', 'CONCLUSION & APPENDICES',                                       ''),
-        ('chap', 'Conclusion: Living with the Paradox',                           '337'),
+        ('chap', 'Conclusion: Living with the Paradox',                           '207'),
         ('chap',
          'Appendix A: Source Research' if accessible
          else 'Appendix A: Mathematical Proofs',
-         '347'),
-        ('chap', 'Appendix B: The Cascade Classification System',                 '349'),
-        ('chap', 'Appendix C: Fifty Solution-Problem Pairs',                      '350'),
-        ('chap', 'Appendix D: The Cascade Management Checklist',                  '352'),
-        ('chap', 'Appendix E: Extended Case Studies in Cascade Management',       '355'),
-        ('chap', 'Appendix F: A Glossary of Cascade Theory',                      '360'),
-        ('chap', 'Appendix G: A Practical Cascade Assessment Checklist',          '366'),
-        ('chap', 'Appendix H: The Intellectual Genealogy of Cascade Theory',      '370'),
-        ('chap', 'Bibliography',                                                  '373'),
-        ('chap', 'Index',                                                         '380'),
+         '217'),
+        ('chap', 'Appendix B: The Cascade Classification System',                 '219'),
+        ('chap', 'Appendix C: Fifty Solution-Problem Pairs',                      '220'),
+        ('chap', 'Appendix D: The Cascade Management Checklist',                  '222'),
+        ('chap', 'Appendix E: Extended Case Studies in Cascade Management',       '225'),
+        ('chap', 'Appendix F: A Glossary of Cascade Theory',                      '227'),
+        ('chap', 'Appendix G: The Intellectual Genealogy of Cascade Theory',      '233'),
+        ('chap', 'Bibliography',                                                  '237'),
+        ('chap', 'Index',                                                         '244'),
     ]
 
     # Render — three visual tiers with a clean right-flush dot leader.
@@ -1253,7 +1239,7 @@ def build_book(accessible=False):
     story += [
         Mark(chapter='Copyright'),
         SP(300),
-        P('Copyright © 2025 Ahmed Hafdi', S['note']),
+        P('Copyright © 2025 <b>AHMED HAFDI</b>', S['note']),
         P('All rights reserved. No part of this publication may be reproduced without '
           'written permission of the author.', S['note']),
         P('<i>First Edition, 2025</i>', S['note']),
