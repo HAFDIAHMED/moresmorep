@@ -1,0 +1,1022 @@
+<title>More Solutions = More Problems — Ahmed Hafdi · Polyfdor</title>
+<meta name="description" content="Why Every Solution Creates the Next Problem. A new book by Ahmed Hafdi (Polyfdor) — out now on Amazon. From the Delhi cobra bounty of 1880 to the OxyContin approval of 1995, the architecture of the catastrophe is identical.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Favicon · swap polyfdor-logo.svg for your real PNG/ICO on the production host -->
+<link rel="icon" type="image/svg+xml" href="polyfdor-logo.svg">
+<link rel="alternate icon" href="polyfdor-logo.png">
+
+<style>
+/* ───────────────────────── reset & base ───────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #0a0a0a;
+  --paper: #fefefe;
+  --paper-warm: #f6f3ec;
+  --rule: #0a0a0a;
+  --muted: #6a6a6a;
+  --muted-soft: #aaa;
+  --serif: 'Times New Roman', Times, Georgia, serif;
+  --book: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--book);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: var(--ink); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 4px; }
+img { max-width: 100%; display: block; }
+
+/* ───────────────────────── small caps utility ───────────────────────── */
+.caps {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ───────────────────────── layout ───────────────────────── */
+.wrap { max-width: 1280px; margin: 0 auto; padding: 0 56px; }
+@media (max-width: 720px) { .wrap { padding: 0 24px; } }
+
+.divider {
+  height: 1px; background: var(--rule); width: 100%;
+}
+.divider-thin { height: 1px; background: var(--ink); opacity: 0.18; }
+
+/* ───────────────────────── nav ───────────────────────── */
+nav.top {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+}
+nav.top .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+nav.top .mark {
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--sans);
+  font-size: 11px; letter-spacing: 0.22em; font-weight: 600;
+  text-transform: uppercase; color: var(--ink);
+}
+nav.top .mark svg { display: block; height: 36px; width: auto; }
+nav.top .mark .label { line-height: 1; padding-top: 1px; }
+nav.top ul {
+  list-style: none; display: flex; gap: 36px;
+}
+nav.top ul a {
+  font-family: var(--sans); font-size: 12px;
+  font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink);
+}
+nav.top .buy {
+  font-family: var(--sans); font-size: 12px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--ink); color: var(--paper);
+  padding: 9px 18px; font-weight: 600;
+}
+nav.top .buy:hover { background: #333; text-decoration: none; }
+@media (max-width: 880px) {
+  nav.top ul { display: none; }
+}
+
+/* ───────────────────────── hero ───────────────────────── */
+section.hero {
+  padding: 88px 0 100px;
+  border-bottom: 1px solid var(--ink);
+}
+section.hero .wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 880px) {
+  section.hero { padding: 56px 0 72px; }
+  section.hero .wrap { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* book cover recreated in CSS */
+.cover {
+  background: var(--paper);
+  aspect-ratio: 6 / 9;
+  max-width: 380px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.10),
+    0 8px 24px rgba(0,0,0,0.10),
+    0 30px 60px rgba(0,0,0,0.18);
+  position: relative;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  font-family: var(--sans);
+}
+.cover .bar-top {
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 8px; background: var(--ink);
+}
+.cover .title-stack {
+  position: absolute; top: 13%; left: 8%; right: 8%;
+  text-align: center;
+}
+.cover .title-stack .more {
+  font-weight: 800; font-size: clamp(20px, 4vw, 34px);
+  color: #999; letter-spacing: 0.04em; line-height: 1; margin-top: 14px;
+}
+.cover .title-stack .huge {
+  font-weight: 900; font-size: clamp(28px, 5.4vw, 50px);
+  color: var(--ink); letter-spacing: 0.02em; line-height: 1; margin-top: 6px;
+}
+.cover .title-stack .eq {
+  font-weight: 800; font-size: clamp(18px, 3.8vw, 30px);
+  color: #999; line-height: 1; margin-top: 14px;
+}
+.cover .subtitle-block {
+  position: absolute; top: 70%; left: 12%; right: 12%;
+  text-align: center;
+}
+.cover .subtitle-block .rule {
+  height: 1px; background: #ccc; width: 60%; margin: 0 auto 12px;
+}
+.cover .subtitle-block .sub {
+  font-family: var(--book); font-style: italic;
+  color: #666; font-size: clamp(11px, 1.6vw, 14px); line-height: 1.4;
+}
+.cover .bar-bottom {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: var(--ink); padding: 14px 0;
+  text-align: center;
+}
+.cover .bar-bottom .author {
+  font-weight: 800; color: var(--paper);
+  font-size: clamp(11px, 1.5vw, 14px); letter-spacing: 0.2em;
+}
+
+/* hero text block */
+.hero-text .eyebrow {
+  display: inline-block;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 6px; margin-bottom: 28px;
+}
+.hero-text h1 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(48px, 6vw, 86px);
+  line-height: 0.96;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.hero-text h1 .equals { color: var(--muted); font-weight: 400; padding: 0 0.1em; }
+.hero-text .subtitle {
+  font-family: var(--book);
+  font-style: italic;
+  font-size: clamp(18px, 2.2vw, 24px);
+  color: var(--muted);
+  margin-top: 22px;
+  line-height: 1.4;
+  max-width: 540px;
+}
+.hero-text .byline {
+  margin-top: 38px;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.hero-text .byline .name { font-weight: 700; }
+.hero-text .ctas {
+  margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px;
+}
+.btn {
+  font-family: var(--sans); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 16px 28px;
+  cursor: pointer;
+  border: 1px solid var(--ink);
+  background: var(--ink); color: var(--paper);
+  display: inline-flex; align-items: center; gap: 12px;
+  transition: transform 0.18s ease;
+}
+.btn:hover { background: #1c1c1c; text-decoration: none; transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { background: var(--ink); color: var(--paper); }
+.hero-text .meta-line {
+  margin-top: 28px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.hero-text .meta-line span { color: var(--ink); font-weight: 600; }
+
+/* ───────────────────────── the premise ───────────────────────── */
+section.premise {
+  padding: 130px 0;
+  text-align: center;
+  border-bottom: 1px solid var(--ink);
+}
+section.premise .wrap { max-width: 900px; }
+section.premise .eyebrow {
+  display: inline-block; padding-bottom: 6px;
+  border-bottom: 1px solid var(--ink); margin-bottom: 40px;
+}
+section.premise .lead {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(28px, 3.6vw, 46px);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+}
+section.premise .lead em { font-style: italic; font-weight: 700; }
+section.premise .kicker {
+  margin-top: 44px;
+  font-family: var(--book);
+  font-style: italic;
+  font-size: clamp(18px, 2vw, 22px);
+  color: var(--muted);
+}
+section.premise .ornament {
+  display: inline-block; margin-top: 36px;
+  width: 64px; height: 1px; background: var(--ink);
+}
+@media (max-width: 720px) { section.premise { padding: 80px 0; } }
+
+/* ───────────────────────── from the book (praise) ───────────────────────── */
+section.praise {
+  padding: 110px 0;
+  background: var(--paper-warm);
+  border-bottom: 1px solid var(--ink);
+}
+section.praise .header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 60px;
+  border-bottom: 1px solid var(--ink); padding-bottom: 18px;
+}
+section.praise h2 {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(28px, 3.4vw, 44px);
+  letter-spacing: -0.005em;
+}
+section.praise .quotes {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 64px;
+}
+@media (max-width: 900px) { section.praise .quotes { grid-template-columns: 1fr; gap: 48px; } }
+section.praise blockquote {
+  font-family: var(--book); font-style: italic;
+  font-size: clamp(18px, 1.8vw, 22px);
+  line-height: 1.4;
+  padding-left: 20px;
+  border-left: 2px solid var(--ink);
+}
+section.praise blockquote::before { content: "\201C"; display: block; font-size: 60px; line-height: 0.2; margin-top: 22px; margin-bottom: 22px; font-style: normal; color: var(--muted); }
+section.praise .attr {
+  margin-top: 18px;
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600;
+}
+
+/* ───────────────────────── inside the book ───────────────────────── */
+section.inside {
+  padding: 130px 0;
+  border-bottom: 1px solid var(--ink);
+}
+section.inside .header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 70px;
+  border-bottom: 1px solid var(--ink); padding-bottom: 18px;
+}
+section.inside h2 {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(28px, 3.4vw, 44px);
+}
+section.inside .parts {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;
+}
+@media (max-width: 900px) { section.inside .parts { grid-template-columns: 1fr; gap: 40px; } }
+section.inside .part {
+  padding-top: 20px;
+  border-top: 2px solid var(--ink);
+}
+section.inside .part .part-no {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted);
+}
+section.inside .part h3 {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: 30px;
+  margin: 10px 0 6px;
+  letter-spacing: -0.01em;
+}
+section.inside .part .desc {
+  font-family: var(--book); font-style: italic;
+  color: var(--muted); font-size: 15px;
+  margin-bottom: 22px;
+}
+section.inside .part ol {
+  list-style: none; counter-reset: chap;
+}
+section.inside .part ol li {
+  font-family: var(--book);
+  font-size: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.10);
+  counter-increment: chap;
+  display: flex; gap: 14px; align-items: baseline;
+}
+section.inside .part ol li::before {
+  content: counter(chap, decimal-leading-zero);
+  font-family: var(--sans);
+  font-size: 11px; color: var(--muted);
+  font-weight: 600; letter-spacing: 0.1em;
+  min-width: 26px;
+}
+
+/* ───────────────────────── the five cases ───────────────────────── */
+section.cases {
+  padding: 130px 0;
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom: 1px solid var(--ink);
+}
+section.cases h2 {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(28px, 3.4vw, 44px);
+  margin-bottom: 18px;
+}
+section.cases .lead {
+  font-family: var(--book); font-style: italic;
+  font-size: clamp(18px, 2vw, 22px);
+  color: #c0c0c0; max-width: 680px;
+  margin-bottom: 70px;
+}
+section.cases .grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+}
+@media (max-width: 1000px) { section.cases .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px)  { section.cases .grid { grid-template-columns: 1fr; } }
+.case {
+  border-top: 1px solid #555;
+  padding-top: 28px;
+}
+.case .num {
+  font-family: var(--sans); font-size: 11px;
+  font-weight: 600; letter-spacing: 0.22em;
+  color: #888; text-transform: uppercase;
+}
+.case .ico {
+  margin: 14px 0 14px;
+  width: 56px; height: 56px;
+  display: flex; align-items: center; justify-content: center;
+}
+.case h4 {
+  font-family: var(--serif); font-weight: 900;
+  font-size: 22px;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.case .year {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: 0.14em; color: #888;
+  margin-bottom: 14px; text-transform: uppercase;
+}
+.case .blurb {
+  font-family: var(--book); font-style: italic;
+  font-size: 14px; color: #ccc; line-height: 1.5;
+}
+
+/* ───────────────────────── author ───────────────────────── */
+section.author {
+  padding: 130px 0;
+  border-bottom: 1px solid var(--ink);
+}
+section.author .wrap {
+  display: grid; grid-template-columns: 0.7fr 1fr; gap: 90px;
+  align-items: center;
+}
+@media (max-width: 880px) {
+  section.author .wrap { grid-template-columns: 1fr; gap: 56px; }
+}
+.portrait {
+  aspect-ratio: 4 / 5;
+  max-width: 360px;
+  background: var(--paper-warm);
+  border: 1px solid var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 14% 10%;
+}
+.portrait svg { width: 100%; height: 100%; display: block; }
+.portrait::before {
+  content: "POLYFDOR";
+  position: absolute; bottom: 18px; left: 0; right: 0;
+  text-align: center;
+  font-family: var(--sans); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.4em; color: var(--muted);
+}
+.author-text .eyebrow { display: inline-block; padding-bottom: 6px; border-bottom: 1px solid var(--ink); margin-bottom: 28px; }
+.author-text h2 {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(36px, 4.6vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin-bottom: 24px;
+}
+.author-text p {
+  margin-bottom: 18px;
+  font-size: 17px;
+}
+.author-text .credentials {
+  margin-top: 28px;
+  display: flex; flex-wrap: wrap; gap: 28px;
+  border-top: 1px solid rgba(0,0,0,0.18);
+  padding-top: 24px;
+}
+.author-text .credentials .cred {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted);
+}
+.author-text .credentials .cred strong { color: var(--ink); display: block; font-size: 14px; letter-spacing: 0.04em; margin-top: 4px; text-transform: none; font-weight: 700; font-family: var(--serif); }
+
+/* ───────────────────────── excerpt ───────────────────────── */
+section.excerpt {
+  padding: 130px 0;
+  background: var(--paper-warm);
+  border-bottom: 1px solid var(--ink);
+}
+section.excerpt .header {
+  text-align: center; margin-bottom: 56px;
+}
+section.excerpt .header .eyebrow { display: inline-block; padding-bottom: 6px; border-bottom: 1px solid var(--ink); margin-bottom: 22px; }
+section.excerpt h2 {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(28px, 3.2vw, 42px);
+  letter-spacing: -0.005em;
+}
+section.excerpt .page {
+  max-width: 720px; margin: 0 auto;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 72px 64px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+  font-family: var(--book);
+  font-size: 17px;
+  line-height: 1.75;
+}
+@media (max-width: 560px) { section.excerpt .page { padding: 40px 28px; } }
+section.excerpt .page .chap-no {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: 0.22em; color: var(--muted);
+  font-weight: 600; text-transform: uppercase;
+  text-align: center;
+}
+section.excerpt .page .chap-title {
+  text-align: center; font-family: var(--serif);
+  font-size: 32px; font-weight: 900;
+  letter-spacing: -0.01em;
+  margin: 14px 0 50px;
+}
+section.excerpt .page .dropcap::first-letter {
+  font-family: var(--serif); font-weight: 900;
+  font-size: 5.2em; line-height: 0.85;
+  float: left; padding: 6px 12px 0 0;
+}
+section.excerpt .page p { margin-bottom: 18px; text-indent: 0; }
+section.excerpt .page p + p { text-indent: 1.6em; margin-bottom: 16px; }
+section.excerpt .page p + p.no-indent { text-indent: 0; }
+section.excerpt .center-rule {
+  text-align: center;
+  margin: 30px 0;
+  letter-spacing: 1em;
+  color: var(--muted);
+}
+section.excerpt .cta-line {
+  text-align: center; margin-top: 50px;
+}
+
+/* ───────────────────────── buy ───────────────────────── */
+section.buy {
+  padding: 140px 0;
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  border-bottom: 1px solid var(--ink);
+}
+section.buy .eyebrow { display: inline-block; padding-bottom: 6px; border-bottom: 1px solid #888; margin-bottom: 32px; color: #aaa; }
+section.buy h2 {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(40px, 5.5vw, 72px);
+  letter-spacing: -0.02em; line-height: 1;
+  margin-bottom: 24px;
+}
+section.buy .tagline {
+  font-family: var(--book); font-style: italic;
+  font-size: clamp(18px, 2vw, 22px);
+  color: #b0b0b0; max-width: 600px; margin: 0 auto 50px;
+}
+section.buy .options {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  max-width: 900px; margin: 0 auto;
+}
+@media (max-width: 760px) { section.buy .options { grid-template-columns: 1fr; } }
+.opt {
+  border: 1px solid #444;
+  padding: 36px 28px;
+  text-align: left;
+  display: flex; flex-direction: column;
+  transition: background 0.2s ease;
+}
+.opt:hover { background: rgba(255,255,255,0.04); text-decoration: none; }
+.opt .kind {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: 0.22em; color: #888;
+  font-weight: 600; text-transform: uppercase;
+}
+.opt .name {
+  font-family: var(--serif); font-weight: 900;
+  font-size: 28px; margin: 10px 0 14px;
+  letter-spacing: -0.01em;
+}
+.opt .price {
+  font-family: var(--serif); font-weight: 700;
+  font-size: 22px; color: var(--paper);
+  margin-bottom: 20px;
+}
+.opt .specs {
+  font-family: var(--book); font-style: italic;
+  font-size: 14px; color: #aaa;
+  flex-grow: 1; margin-bottom: 24px;
+}
+.opt .go {
+  font-family: var(--sans); font-size: 12px;
+  letter-spacing: 0.18em; font-weight: 600;
+  text-transform: uppercase; color: var(--paper);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+
+/* ───────────────────────── footer ───────────────────────── */
+footer {
+  padding: 72px 0 36px;
+  background: var(--paper);
+}
+footer .top {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px;
+  border-top: 1px solid var(--ink);
+  padding-top: 56px;
+}
+@media (max-width: 760px) { footer .top { grid-template-columns: 1fr; gap: 36px; } }
+footer h5 {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: 0.22em; font-weight: 600;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 18px;
+}
+footer .col p, footer .col a {
+  font-family: var(--book); font-size: 15px;
+  line-height: 1.7; display: block;
+}
+footer .footer-mark {
+  margin-top: 64px;
+  display: flex; justify-content: center;
+  color: var(--ink);
+}
+footer .footer-mark svg { height: 72px; width: auto; display: block; transition: transform 0.3s ease; }
+footer .footer-mark a:hover svg { transform: scale(1.04); }
+
+footer .colophon {
+  margin-top: 36px; padding-top: 24px;
+  border-top: 1px solid rgba(0,0,0,0.18);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--sans); font-size: 11px;
+  color: var(--muted); letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+@media (max-width: 560px) { footer .colophon { flex-direction: column; gap: 12px; text-align: center; } }
+footer .colophon .iso { font-family: var(--sans); }
+footer .colophon a { color: var(--muted); }
+
+/* arrow svg */
+.arrow {
+  width: 14px; height: 12px;
+  display: inline-block;
+}
+
+/* page reveal fade */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.9s ease, transform 0.9s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+
+<!-- ─────────────────────── NAV ─────────────────────── -->
+<nav class="top">
+  <div class="wrap">
+    <a class="mark" href="https://www.polyfdos.com/polyfdor" target="_blank" rel="noopener" aria-label="Polyfdor — More Solutions = More Problems">
+      <!-- Polyfdor logo · SVG approximation; swap for /polyfdor-logo.png on the live host -->
+      <svg viewBox="0 0 2496 2496" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+        <g transform="translate(0,2496) scale(0.1,-0.1)" fill="currentColor" stroke="none">
+          <path d="M15120 19833 c-42 -7 -147 -42 -207 -69 -228 -102 -302 -143 -483 -265 -377 -254 -764 -651 -1047 -1074 -195 -293 -474 -791 -601 -1075 -11 -25 -39 -85 -62 -135 -55 -118 -220 -503 -220 -513 0 -5 -9 -27 -20 -50 -11 -22 -20 -46 -20 -52 0 -5 -4 -18 -9 -28 -10 -17 -77 -191 -176 -457 -129 -344 -419 -1241 -495 -1530 -88 -335 -70 -306 -200 -324 -164 -23 -551 -94 -765 -140 -184 -39 -693 -160 -805 -190 l-75 -21 -18 21 c-9 12 -17 27 -17 33 0 7 -8 39 -19 72 -25 79 -53 170 -86 279 -158 525 -564 1772 -614 1890 -5 11 -14 36 -21 55 -7 19 -16 44 -21 55 -4 11 -15 43 -24 70 -16 50 -125 334 -150 390 -7 17 -26 62 -41 100 -40 101 -185 389 -245 486 -259 419 -662 742 -1189 954 -374 150 -569 149 -610 -5 -18 -67 4 -141 166 -547 80 -202 165 -417 189 -478 23 -60 53 -135 67 -165 14 -31 33 -77 42 -103 9 -26 60 -161 115 -299 54 -139 118 -302 141 -363 23 -60 66 -175 97 -255 91 -239 109 -287 178 -475 37 -99 79 -214 95 -255 16 -41 47 -127 70 -190 23 -63 56 -151 72 -195 17 -44 48 -129 69 -190 21 -60 56 -162 79 -225 23 -63 49 -140 59 -170 10 -30 44 -127 75 -215 157 -442 231 -676 216 -685 -8 -5 -55 -23 -105 -39 -49 -16 -128 -44 -175 -61 -47 -18 -96 -36 -110 -40 -86 -29 -495 -184 -555 -210 -293 -131 -355 -180 -355 -280 0 -90 78 -163 219 -206 54 -16 250 -19 332 -4 30 5 108 18 174 30 146 25 166 29 233 41 121 21 166 30 347 63 105 20 197 36 206 36 24 0 33 -25 253 -700 172 -529 312 -971 469 -1480 25 -80 63 -203 85 -275 22 -71 52 -168 65 -215 34 -116 99 -331 263 -865 36 -115 87 -284 115 -375 28 -91 59 -192 69 -225 35 -114 102 -330 150 -485 26 -85 78 -254 115 -375 347 -1146 465 -1443 598 -1512 49 -25 124 -13 158 25 53 59 57 87 99 712 31 452 46 635 86 1040 43 442 121 1055 164 1290 9 54 33 191 50 300 12 72 47 263 59 320 5 25 32 158 60 295 28 138 65 304 81 370 16 66 43 179 60 250 35 150 128 504 171 650 16 55 35 118 41 140 6 22 19 65 29 95 9 30 38 127 64 215 46 161 206 664 250 785 13 36 44 126 69 200 52 155 169 492 184 531 10 24 19 28 84 38 40 7 93 16 118 21 46 9 123 22 230 40 33 6 86 14 118 20 55 9 113 18 257 40 178 27 802 131 872 145 337 68 226 325 -195 454 -199 61 -599 100 -1029 101 -84 0 -123 4 -123 11 0 21 146 394 206 527 13 29 24 55 24 57 0 3 9 24 19 48 11 23 49 110 84 192 36 83 77 177 92 210 15 33 39 87 55 120 15 33 46 105 70 160 24 55 75 162 112 238 37 76 68 139 68 141 0 30 448 916 630 1246 26 47 68 126 95 175 71 134 221 407 283 515 589 1034 729 1325 740 1542 10 194 -107 286 -318 251z m-3660 -6492 c0 -11 -16 -89 -35 -173 -19 -84 -39 -178 -46 -208 -6 -30 -24 -109 -40 -175 -15 -66 -35 -156 -44 -200 -9 -44 -34 -165 -56 -270 -44 -209 -145 -714 -179 -895 -12 -63 -35 -180 -50 -260 -16 -80 -45 -251 -65 -380 -21 -129 -40 -242 -42 -250 -7 -23 -17 1 -48 115 -24 88 -57 202 -175 610 -16 55 -44 154 -63 220 -19 66 -83 287 -142 490 -59 204 -124 431 -145 505 -21 74 -60 214 -88 310 -86 301 -90 319 -77 330 10 8 100 29 245 57 14 3 113 22 220 43 233 46 617 118 715 135 105 18 115 18 115 -4z"/>
+          <path d="M15300 13574 c-324 -29 -575 -88 -951 -223 -287 -103 -672 -317 -954 -529 -466 -351 -929 -883 -1190 -1367 -21 -38 -41 -74 -45 -80 -69 -94 -284 -614 -336 -811 -8 -30 -21 -80 -29 -111 -25 -93 -44 -193 -51 -269 -6 -65 -4 -74 15 -93 11 -11 25 -21 30 -21 30 0 86 62 175 195 177 262 208 307 295 425 747 1008 1639 1682 2566 1938 61 17 103 26 215 49 169 33 518 46 632 22 253 -53 373 -100 513 -203 199 -148 298 -326 366 -661 28 -136 13 -512 -28 -715 -9 -41 -19 -95 -24 -120 -40 -220 -168 -605 -303 -907 -154 -345 -470 -908 -660 -1175 -23 -31 -63 -90 -91 -130 -399 -581 -918 -1145 -1520 -1654 -494 -416 -1038 -767 -1710 -1101 -478 -237 -629 -361 -600 -493 17 -78 94 -105 295 -103 718 7 1885 500 2850 1202 819 596 1535 1372 2012 2181 51 88 96 159 100 159 4 1 12 -18 19 -41 260 -951 871 -1569 1720 -1742 735 -150 1598 85 2045 556 110 116 143 199 108 273 -42 88 -156 86 -409 -8 -22 -8 -65 -22 -95 -32 -30 -9 -107 -32 -170 -52 -589 -180 -1175 -121 -1606 163 -1040 684 -1025 2497 36 4399 215 384 239 435 261 544 34 164 -65 291 -227 291 -96 0 -160 -17 -269 -71 -289 -143 -534 -420 -778 -879 -62 -116 -72 -126 -82 -78 -4 18 -25 85 -45 149 -254 778 -1059 1212 -2080 1123z"/>
+          <path d="M19005 9616 c-170 -41 -318 -182 -360 -341 -120 -461 382 -798 762 -511 134 103 192 238 180 428 -18 284 -303 492 -582 424z"/>
+        </g>
+      </svg>
+      <span class="label">Polyfdor</span>
+    </a>
+    <ul>
+      <li><a href="#premise">The Book</a></li>
+      <li><a href="#inside">Inside</a></li>
+      <li><a href="#author">Author</a></li>
+      <li><a href="#excerpt">Excerpt</a></li>
+    </ul>
+    <a href="#buy" class="buy">Buy</a>
+  </div>
+</nav>
+
+
+<!-- ─────────────────────── HERO ─────────────────────── -->
+<section class="hero">
+  <div class="wrap">
+    <div class="cover-wrap">
+      <div class="cover" role="img" aria-label="More Solutions Equals More Problems — book cover">
+        <div class="bar-top"></div>
+        <div class="title-stack">
+          <div class="more">MORE</div>
+          <div class="huge">SOLUTIONS</div>
+          <div class="eq">=</div>
+          <div class="more">MORE</div>
+          <div class="huge">PROBLEMS</div>
+        </div>
+        <div class="subtitle-block">
+          <div class="rule"></div>
+          <div class="sub">Why Every Solution<br>Creates the Next Problem</div>
+        </div>
+        <div class="bar-bottom"><div class="author">AHMED HAFDI</div></div>
+      </div>
+    </div>
+
+    <div class="hero-text">
+      <span class="caps eyebrow">A new book by Ahmed Hafdi · <a href="https://www.polyfdos.com/polyfdor" target="_blank" rel="noopener" style="border-bottom:none;">@polyfdor</a></span>
+      <h1>More <br>Solutions <span class="equals">=</span><br>More <br>Problems</h1>
+      <div class="subtitle">Why every solution creates the next problem — from the Delhi cobra bounty of 1880 to the OxyContin approval of 1995.</div>
+      <div class="byline"><span class="name">Ahmed Hafdi</span></div>
+      <div class="ctas">
+        <a class="btn" href="#buy">
+          Buy on Amazon
+          <svg class="arrow" viewBox="0 0 14 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M0 6 L13 6 M9 2 L13 6 L9 10"/></svg>
+        </a>
+        <a class="btn ghost" href="#excerpt">Read excerpt</a>
+      </div>
+      <div class="meta-line"><span>Out now</span> · paperback <span>$20.99</span> · Kindle <span>$9.99</span> · 249 pages</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────── PREMISE ─────────────────────── -->
+<section class="premise" id="premise">
+  <div class="wrap">
+    <span class="caps eyebrow">The Argument</span>
+    <p class="lead">In 1880, the British offered a bounty for every dead cobra in Delhi. In 1995, the FDA approved a new painkiller. <em>The architecture of the catastrophe is identical.</em></p>
+    <div class="kicker">This isn't bad luck. It's mathematics.</div>
+    <div class="ornament"></div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────── PRAISE / FROM THE BOOK ─────────────────────── -->
+<section class="praise">
+  <div class="wrap">
+    <div class="header">
+      <h2>From the book</h2>
+      <span class="caps" style="color:var(--muted)">Three passages</span>
+    </div>
+    <div class="quotes">
+      <div>
+        <blockquote>Every solution we invent is itself a system, and every system has interactions we did not design. The interactions are the catastrophe.</blockquote>
+        <div class="attr">— Chapter Three · The Pattern</div>
+      </div>
+      <div>
+        <blockquote>The cobra was never the problem. The bounty was the problem. The bounty was the solution to a different problem. The chain has no first link, and that is the central difficulty.</blockquote>
+        <div class="attr">— Chapter One · Delhi, 1880</div>
+      </div>
+      <div>
+        <blockquote>If you cannot measure the cascade, you cannot manage it. If you cannot manage it, you must design the system so that the cascade cannot start.</blockquote>
+        <div class="attr">— Chapter Eleven · The Cascade Risk Index</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────── INSIDE THE BOOK ─────────────────────── -->
+<section class="inside" id="inside">
+  <div class="wrap">
+    <div class="header">
+      <h2>Inside the book</h2>
+      <span class="caps" style="color:var(--muted)">Three parts · sixteen chapters</span>
+    </div>
+    <div class="parts">
+      <div class="part">
+        <div class="part-no">Part One</div>
+        <h3>The Pattern</h3>
+        <div class="desc">Five centuries of cascades, told as one story.</div>
+        <ol>
+          <li>Delhi, 1880</li>
+          <li>The Anatomy of a Cascade</li>
+          <li>The Solution-Problem Loop</li>
+          <li>Why It Has Always Worked This Way</li>
+          <li>The Acceleration</li>
+        </ol>
+      </div>
+
+      <div class="part">
+        <div class="part-no">Part Two</div>
+        <h3>The Cases</h3>
+        <div class="desc">Five modern catastrophes, dissected by the same logic.</div>
+        <ol>
+          <li>OxyContin and the Architecture of Pain</li>
+          <li>CRISPR and the Edited Inheritance</li>
+          <li>The War on Drugs</li>
+          <li>The Braess Paradox of Roads</li>
+          <li>2008, and the Mathematics of Trust</li>
+        </ol>
+      </div>
+
+      <div class="part">
+        <div class="part-no">Part Three</div>
+        <h3>The Theory</h3>
+        <div class="desc">A framework — and a way to design around it.</div>
+        <ol>
+          <li>How the Cascade Works</li>
+          <li>The Cascade Risk Index</li>
+          <li>Cases at the Threshold</li>
+          <li>Five Principles for the Designer</li>
+          <li>What This Book Is Not</li>
+          <li>Conclusion · The Next Solution</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────── FIVE CASES ─────────────────────── -->
+<section class="cases">
+  <div class="wrap">
+    <h2>The five cases</h2>
+    <p class="lead">Five centuries. Five solutions. Five cascades. Same arithmetic each time.</p>
+
+    <div class="grid">
+      <div class="case">
+        <div class="num">Case 01</div>
+        <div class="ico">
+          <!-- cobra silhouette -->
+          <svg viewBox="0 0 56 56" width="48" height="48" stroke="white" fill="none" stroke-width="3" stroke-linecap="round">
+            <path d="M4 36 Q14 30 22 36 T42 32"/>
+            <path d="M42 28 L52 32 L46 36 L42 33 Z" fill="white"/>
+            <circle cx="48" cy="32" r="0.8" fill="black"/>
+          </svg>
+        </div>
+        <h4>Delhi</h4>
+        <div class="year">1880 · The Cobra Bounty</div>
+        <div class="blurb">The bounty was paid. The cobras were bred. The solution made the problem worse.</div>
+      </div>
+
+      <div class="case">
+        <div class="num">Case 02</div>
+        <div class="ico">
+          <!-- pill bottle -->
+          <svg viewBox="0 0 56 56" width="48" height="48" stroke="white" fill="white" stroke-width="2">
+            <rect x="18" y="14" width="20" height="32" rx="2" stroke="white" fill="none"/>
+            <rect x="16" y="14" width="24" height="8" stroke="white" fill="white"/>
+            <line x1="22" y1="28" x2="34" y2="28" stroke="white"/>
+            <line x1="22" y1="34" x2="34" y2="34" stroke="white"/>
+            <line x1="22" y1="40" x2="30" y2="40" stroke="white"/>
+          </svg>
+        </div>
+        <h4>Detroit</h4>
+        <div class="year">1995 · OxyContin</div>
+        <div class="blurb">An honest answer to pain. A dishonest sales pitch. Half a million deaths.</div>
+      </div>
+
+      <div class="case">
+        <div class="num">Case 03</div>
+        <div class="ico">
+          <!-- DNA helix -->
+          <svg viewBox="0 0 56 56" width="48" height="48" stroke="white" fill="none" stroke-width="2.4" stroke-linecap="round">
+            <path d="M20 6 Q36 18 20 30 Q4 42 20 54"/>
+            <path d="M36 6 Q20 18 36 30 Q52 42 36 54"/>
+            <line x1="22" y1="14" x2="34" y2="14"/>
+            <line x1="20" y1="22" x2="36" y2="22"/>
+            <line x1="22" y1="38" x2="34" y2="38"/>
+            <line x1="20" y1="46" x2="36" y2="46"/>
+          </svg>
+        </div>
+        <h4>Berkeley</h4>
+        <div class="year">2012 · CRISPR</div>
+        <div class="blurb">A tool of unprecedented precision. A change to the inheritance of every species it touches.</div>
+      </div>
+
+      <div class="case">
+        <div class="num">Case 04</div>
+        <div class="ico">
+          <!-- gridlock / two arrows -->
+          <svg viewBox="0 0 56 56" width="48" height="48" stroke="white" fill="none" stroke-width="2.4" stroke-linecap="round">
+            <path d="M8 18 L40 18 L36 14 M40 18 L36 22"/>
+            <path d="M48 38 L16 38 L20 34 M16 38 L20 42"/>
+            <line x1="8" y1="6" x2="48" y2="6"/>
+            <line x1="8" y1="50" x2="48" y2="50"/>
+          </svg>
+        </div>
+        <h4>Stuttgart</h4>
+        <div class="year">1968 · The Braess Paradox</div>
+        <div class="blurb">Add a new road, and the traffic slows for everyone. Adding capacity created the jam.</div>
+      </div>
+
+      <div class="case">
+        <div class="num">Case 05</div>
+        <div class="ico">
+          <!-- broken line graph -->
+          <svg viewBox="0 0 56 56" width="48" height="48" stroke="white" fill="none" stroke-width="2.4" stroke-linecap="round">
+            <polyline points="4,40 14,32 22,36 30,20 38,28 44,12 52,18"/>
+            <line x1="4" y1="48" x2="52" y2="48"/>
+            <line x1="4" y1="4" x2="4" y2="48"/>
+          </svg>
+        </div>
+        <h4>Wall Street</h4>
+        <div class="year">2008 · The CDO</div>
+        <div class="blurb">Risk was sliced, packaged, and resold until no one knew where it lived. Then it failed everywhere at once.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────── AUTHOR ─────────────────────── -->
+<section class="author" id="author">
+  <div class="wrap">
+    <div class="portrait" aria-label="Polyfdor logo">
+      <!-- Polyfdor — the real brand mark -->
+      <svg viewBox="0 0 2496 2496" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <g transform="translate(0,2496) scale(0.1,-0.1)" fill="#0a0a0a" stroke="none">
+          <path d="M15120 19833 c-42 -7 -147 -42 -207 -69 -228 -102 -302 -143 -483 -265 -377 -254 -764 -651 -1047 -1074 -195 -293 -474 -791 -601 -1075 -11 -25 -39 -85 -62 -135 -55 -118 -220 -503 -220 -513 0 -5 -9 -27 -20 -50 -11 -22 -20 -46 -20 -52 0 -5 -4 -18 -9 -28 -10 -17 -77 -191 -176 -457 -129 -344 -419 -1241 -495 -1530 -88 -335 -70 -306 -200 -324 -164 -23 -551 -94 -765 -140 -184 -39 -693 -160 -805 -190 l-75 -21 -18 21 c-9 12 -17 27 -17 33 0 7 -8 39 -19 72 -25 79 -53 170 -86 279 -158 525 -564 1772 -614 1890 -5 11 -14 36 -21 55 -7 19 -16 44 -21 55 -4 11 -15 43 -24 70 -16 50 -125 334 -150 390 -7 17 -26 62 -41 100 -40 101 -185 389 -245 486 -259 419 -662 742 -1189 954 -374 150 -569 149 -610 -5 -18 -67 4 -141 166 -547 80 -202 165 -417 189 -478 23 -60 53 -135 67 -165 14 -31 33 -77 42 -103 9 -26 60 -161 115 -299 54 -139 118 -302 141 -363 23 -60 66 -175 97 -255 91 -239 109 -287 178 -475 37 -99 79 -214 95 -255 16 -41 47 -127 70 -190 23 -63 56 -151 72 -195 17 -44 48 -129 69 -190 21 -60 56 -162 79 -225 23 -63 49 -140 59 -170 10 -30 44 -127 75 -215 157 -442 231 -676 216 -685 -8 -5 -55 -23 -105 -39 -49 -16 -128 -44 -175 -61 -47 -18 -96 -36 -110 -40 -86 -29 -495 -184 -555 -210 -293 -131 -355 -180 -355 -280 0 -90 78 -163 219 -206 54 -16 250 -19 332 -4 30 5 108 18 174 30 146 25 166 29 233 41 121 21 166 30 347 63 105 20 197 36 206 36 24 0 33 -25 253 -700 172 -529 312 -971 469 -1480 25 -80 63 -203 85 -275 22 -71 52 -168 65 -215 34 -116 99 -331 263 -865 36 -115 87 -284 115 -375 28 -91 59 -192 69 -225 35 -114 102 -330 150 -485 26 -85 78 -254 115 -375 347 -1146 465 -1443 598 -1512 49 -25 124 -13 158 25 53 59 57 87 99 712 31 452 46 635 86 1040 43 442 121 1055 164 1290 9 54 33 191 50 300 12 72 47 263 59 320 5 25 32 158 60 295 28 138 65 304 81 370 16 66 43 179 60 250 35 150 128 504 171 650 16 55 35 118 41 140 6 22 19 65 29 95 9 30 38 127 64 215 46 161 206 664 250 785 13 36 44 126 69 200 52 155 169 492 184 531 10 24 19 28 84 38 40 7 93 16 118 21 46 9 123 22 230 40 33 6 86 14 118 20 55 9 113 18 257 40 178 27 802 131 872 145 337 68 226 325 -195 454 -199 61 -599 100 -1029 101 -84 0 -123 4 -123 11 0 21 146 394 206 527 13 29 24 55 24 57 0 3 9 24 19 48 11 23 49 110 84 192 36 83 77 177 92 210 15 33 39 87 55 120 15 33 46 105 70 160 24 55 75 162 112 238 37 76 68 139 68 141 0 30 448 916 630 1246 26 47 68 126 95 175 71 134 221 407 283 515 589 1034 729 1325 740 1542 10 194 -107 286 -318 251z m-3660 -6492 c0 -11 -16 -89 -35 -173 -19 -84 -39 -178 -46 -208 -6 -30 -24 -109 -40 -175 -15 -66 -35 -156 -44 -200 -9 -44 -34 -165 -56 -270 -44 -209 -145 -714 -179 -895 -12 -63 -35 -180 -50 -260 -16 -80 -45 -251 -65 -380 -21 -129 -40 -242 -42 -250 -7 -23 -17 1 -48 115 -24 88 -57 202 -175 610 -16 55 -44 154 -63 220 -19 66 -83 287 -142 490 -59 204 -124 431 -145 505 -21 74 -60 214 -88 310 -86 301 -90 319 -77 330 10 8 100 29 245 57 14 3 113 22 220 43 233 46 617 118 715 135 105 18 115 18 115 -4z"/>
+          <path d="M15300 13574 c-324 -29 -575 -88 -951 -223 -287 -103 -672 -317 -954 -529 -466 -351 -929 -883 -1190 -1367 -21 -38 -41 -74 -45 -80 -69 -94 -284 -614 -336 -811 -8 -30 -21 -80 -29 -111 -25 -93 -44 -193 -51 -269 -6 -65 -4 -74 15 -93 11 -11 25 -21 30 -21 30 0 86 62 175 195 177 262 208 307 295 425 747 1008 1639 1682 2566 1938 61 17 103 26 215 49 169 33 518 46 632 22 253 -53 373 -100 513 -203 199 -148 298 -326 366 -661 28 -136 13 -512 -28 -715 -9 -41 -19 -95 -24 -120 -40 -220 -168 -605 -303 -907 -154 -345 -470 -908 -660 -1175 -23 -31 -63 -90 -91 -130 -399 -581 -918 -1145 -1520 -1654 -494 -416 -1038 -767 -1710 -1101 -478 -237 -629 -361 -600 -493 17 -78 94 -105 295 -103 718 7 1885 500 2850 1202 819 596 1535 1372 2012 2181 51 88 96 159 100 159 4 1 12 -18 19 -41 260 -951 871 -1569 1720 -1742 735 -150 1598 85 2045 556 110 116 143 199 108 273 -42 88 -156 86 -409 -8 -22 -8 -65 -22 -95 -32 -30 -9 -107 -32 -170 -52 -589 -180 -1175 -121 -1606 163 -1040 684 -1025 2497 36 4399 215 384 239 435 261 544 34 164 -65 291 -227 291 -96 0 -160 -17 -269 -71 -289 -143 -534 -420 -778 -879 -62 -116 -72 -126 -82 -78 -4 18 -25 85 -45 149 -254 778 -1059 1212 -2080 1123z"/>
+          <path d="M19005 9616 c-170 -41 -318 -182 -360 -341 -120 -461 382 -798 762 -511 134 103 192 238 180 428 -18 284 -303 492 -582 424z"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="author-text">
+      <span class="caps eyebrow">About the author</span>
+      <h2>Ahmed Hafdi</h2>
+      <p>Ahmed Hafdi is a polymath — a builder of systems, a researcher of structures, a thinker across disciplines. He writes and publishes under the handle <strong>Polyfdor</strong>, working at the intersection of mathematics, operating systems, and knowledge representation.</p>
+      <p>This is his first book. It began as a private notebook — a working list of historical cascades, kept over four years, written for himself rather than a publisher. The list grew until the pattern was undeniable. <em>More Solutions = More Problems</em> is the result.</p>
+      <p>His broader research — on topological databases, proof-assistant languages, and operating-system architecture — is published independently under <strong>PolyfdoS</strong>. The motto is the same across everything he writes: <em>think bigger than the universe.</em></p>
+
+      <div class="credentials">
+        <div class="cred">Based in <strong>Kenitra, Morocco</strong></div>
+        <div class="cred">Founder of <strong>PolyfdoS</strong></div>
+        <div class="cred">First book <strong>Published 2026</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────── EXCERPT ─────────────────────── -->
+<section class="excerpt" id="excerpt">
+  <div class="wrap">
+    <div class="header">
+      <span class="caps eyebrow">Read the first page</span>
+      <h2>From Chapter One</h2>
+    </div>
+    <div class="page">
+      <div class="chap-no">Chapter One</div>
+      <div class="chap-title">Delhi, 1880</div>
+      <p class="dropcap">The cobra is not the problem. The cobra has never been the problem. In the summer of 1880, the British colonial administration in Delhi sat down to address what every administration before it had addressed without success: the city was full of venomous snakes, and people were dying of their bites. The administrators were modern men. They believed in incentives. They posted a bounty: one rupee for every dead cobra delivered to the office. The logic was unimpeachable.</p>
+      <p>What followed was, by any measure, an extraordinary collapse of competence. The cobras did not decrease. The cobras increased. The bounty turned out to be the most efficient program for breeding cobras the city had ever seen. When the administration discovered this and cancelled the bounty, the breeders released the now-worthless snakes into the streets — and the situation became, materially, worse than the day the policy began.</p>
+      <p>I have been thinking about this story for fifteen years.</p>
+      <p>I did not think about it the way an historian does. I am an engineer. I came to it from the other direction — through structural calculations, where a load applied here always shows up somewhere else, and the somewhere else is the part you didn't plan for. I came to it through software, where every feature added to a system creates new failure modes, and the failure modes you don't catch are the ones that hurt you.</p>
+      <p class="no-indent">The Delhi story is not a curiosity. It is a template.</p>
+      <div class="center-rule">· · ·</div>
+      <p class="no-indent">This book is about the template. It is about the way that nearly every effort to <em>solve</em> something, in any sufficiently complex system, generates new problems whose shape, severity, and timing nobody predicted — and whose cost frequently exceeds the cost of the problem we were trying to solve in the first place.</p>
+      <p>It is about why this happens, why it has always happened, and why it now happens faster than it ever has.</p>
+      <p>It is also — and this matters — about what to do anyway.</p>
+      <div class="cta-line"><a class="btn" href="#buy">Continue reading on Amazon
+        <svg class="arrow" viewBox="0 0 14 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M0 6 L13 6 M9 2 L13 6 L9 10"/></svg>
+      </a></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────── BUY ─────────────────────── -->
+<section class="buy" id="buy">
+  <div class="wrap">
+    <span class="caps eyebrow">Available now</span>
+    <h2>Get the book</h2>
+    <p class="tagline">Order from Amazon. Paperback ships worldwide. Kindle in your library in under a minute.</p>
+
+    <div class="options">
+      <a class="opt" href="https://www.amazon.com/dp/" target="_blank" rel="noopener">
+        <div class="kind">Paperback</div>
+        <div class="name">Trade Paperback</div>
+        <div class="price">$20.99</div>
+        <div class="specs">A4 format · 249 pages · cream paper · perfect-bound · ships worldwide via Amazon</div>
+        <div class="go">Buy on Amazon <svg class="arrow" viewBox="0 0 14 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M0 6 L13 6 M9 2 L13 6 L9 10"/></svg></div>
+      </a>
+
+      <a class="opt" href="https://www.amazon.com/dp/" target="_blank" rel="noopener">
+        <div class="kind">Ebook</div>
+        <div class="name">Kindle Edition</div>
+        <div class="price">$9.99</div>
+        <div class="specs">Available on Kindle, Kindle app, and Kindle Cloud Reader · all figures included · DRM-free reading positions</div>
+        <div class="go">Buy on Kindle <svg class="arrow" viewBox="0 0 14 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M0 6 L13 6 M9 2 L13 6 L9 10"/></svg></div>
+      </a>
+
+      <a class="opt" href="https://www.polyfdos.com/polyfdor" target="_blank" rel="noopener">
+        <div class="kind">Direct from the author</div>
+        <div class="name">Signed Copy</div>
+        <div class="price">By request</div>
+        <div class="specs">Limited signed and dedicated copies, shipped from Kenitra · reach the author through the Polyfdor profile for pricing and availability</div>
+        <div class="go">Write to the author <svg class="arrow" viewBox="0 0 14 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M0 6 L13 6 M9 2 L13 6 L9 10"/></svg></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─────────────────────── FOOTER ─────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div class="col">
+        <h5>The book</h5>
+        <a href="#premise">The argument</a>
+        <a href="#inside">Inside the book</a>
+        <a href="#excerpt">Read the first page</a>
+        <a href="#buy">Get a copy</a>
+      </div>
+      <div class="col">
+        <h5>The author</h5>
+        <a href="#author">Ahmed Hafdi</a>
+        <a href="https://www.polyfdos.com/polyfdor" target="_blank" rel="noopener">Polyfdor</a>
+        <a href="https://www.polyfdos.com" target="_blank" rel="noopener">PolyfdoS</a>
+        <p style="color:var(--muted)">Kenitra, Morocco</p>
+      </div>
+      <div class="col">
+        <h5>Press &amp; speaking</h5>
+        <p style="color:var(--muted)">For interviews, podcasts, lectures, and translation enquiries, reach the author through the Polyfdor profile.</p>
+        <a href="https://www.polyfdos.com/polyfdor" target="_blank" rel="noopener">polyfdos.com/polyfdor</a>
+      </div>
+    </div>
+
+    <div class="footer-mark">
+      <a href="https://www.polyfdos.com/polyfdor" target="_blank" rel="noopener" aria-label="Polyfdor">
+        <svg viewBox="0 0 260 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M 58 32 C 62 24 74 26 78 38 L 104 152 C 106 162 96 166 92 158 L 62 52 C 56 42 54 38 58 32 Z" fill="currentColor"/>
+          <path d="M 130 24 C 134 18 146 20 148 32 L 148 156 C 146 168 134 168 132 158 L 124 38 C 123 30 126 26 130 24 Z" fill="currentColor"/>
+          <path d="M 70 80 C 92 73 124 71 150 78 C 153 81 151 88 146 88 C 116 84 92 86 74 90 C 69 88 67 82 70 80 Z" fill="currentColor"/>
+          <path d="M 150 92 C 188 94 212 122 210 154 C 208 184 178 188 158 174 C 142 162 140 144 152 134 C 164 126 178 136 178 148" stroke="currentColor" stroke-width="13" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="226" cy="162" r="8" fill="currentColor"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="colophon">
+      <div>© 2026 Ahmed Hafdi · Polyfdor · All rights reserved</div>
+      <div class="iso">Think bigger than the universe · Made in Kenitra</div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+// Lightweight scroll reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('section').forEach(s => { s.classList.add('reveal'); io.observe(s); });
+
+// Smooth nav active states (simple)
+const navLinks = document.querySelectorAll('nav.top ul a');
+navLinks.forEach(a => a.addEventListener('click', () => { /* allow default smooth scroll */ }));
+</script>

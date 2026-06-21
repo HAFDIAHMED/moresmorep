@@ -180,11 +180,14 @@ which means doubling every time a new solution is added. For systems of any
 meaningful size, this last term dominates everything else."""),
 
         ('body', """In plain language: in any system where solutions interact and
-reinforce each other, the number of problems doesn't just <i>add up</i> — it
-<i>multiplies</i>. The cascade is the natural consequence, not an aberration."""),
+reinforce each other, the number of <i>ways</i> a problem can arise doesn't just
+<i>add up</i> — it <i>multiplies</i>. Most of those possible interactions are
+harmless; but the share that are not is never zero, so the count of real problems
+still tends to climb far faster than the count of solutions. The cascade is the
+natural consequence of this arithmetic, not an aberration."""),
 
-        ('body', """A second result follows immediately. If problems multiply this fast,
-can we ever add solutions quickly enough to catch up? The answer is no. The rate at
+        ('body', """A second consequence follows. If real problems can multiply even a fraction this fast,
+can we ever add solutions quickly enough to catch up? In the long run, no. The rate at
 which we add solutions is, at best, linear in time — even the fastest organisations
 can only deploy so many things at once. An exponentially growing quantity will always,
 eventually, outrun any linearly growing quantity, no matter how generously the linear
@@ -209,10 +212,12 @@ designed to handle."""),
 
     story.append(SP(10))
     story.append(callout(
-        '<b>The central claim, in one line.</b> When solutions interact, the total '
-        'number of problems they generate grows roughly by <i>doubling</i> each time '
-        'a new solution is added. The formal proof of this result, and the precise '
-        'statement in symbolic form, are in the source research paper.', S))
+        '<b>The central claim, in one line.</b> When solutions interact, the number '
+        'of <i>ways</i> new problems can arise grows roughly by <i>doubling</i> each time '
+        'a new solution is added — and because the share of those interactions that turn '
+        'harmful is never zero, real problems tend to outpace the solutions that spawn them. '
+        'A fuller treatment of this reasoning, and its statement in symbolic form, is in '
+        'the author\'s source research paper.', S))
     story.append(SP(10))
     story.append(fig_to_image(fig_exponential_cascade(), w=5.5*72, h=3.6*72))
     story.append(P('Figure 10.1: Visualisation of the central claim. The three curves show '
@@ -234,12 +239,12 @@ Demon. The cascade generates entropy at the same exponential rate at which it
 generates problems."""),
 
         ('body', """The consequence is operational, not abstract. As the cascade unfolds,
-the number of distinct patterns that need to be tracked grows exponentially. The
+the number of distinct patterns that need to be tracked can grow combinatorially. The
 size of any monitoring team, regulatory body, or engineering org, by contrast,
-grows at best linearly. Institutional capacity is bounded; cascade complexity is
-not. There is a moment in every complex system at which the cascade's complexity
-exceeds the governance system's capacity to follow it. That moment is when crises
-become inevitable, regardless of how competent the people in the governance system
+grows at best linearly. Institutional capacity is bounded; cascade complexity often is
+not. There is a moment in many complex systems at which the cascade's complexity
+exceeds the governance system's capacity to follow it. That is the moment when crises
+become very likely, regardless of how competent the people in the governance system
 are."""),
     ]
     for kind, text in more:
@@ -247,7 +252,7 @@ are."""),
 
     story.append(SP(14))
     story.append(P('Connection to Complexity Theory', S['section']))
-    story.append(P('The cascade theorem does not exist in isolation. It connects to three of the deepest results in theoretical computer science, and these connections explain why the cascade is not merely hard to manage but, in a precise formal sense, computationally intractable. The detailed proofs are given in the source research paper; the implications are summarised here so that readers without a background in computer science can grasp the practical consequences.', S['body0']))
+    story.append(P('The cascade framework does not exist in isolation. It connects to three of the deepest results in theoretical computer science, and these connections explain why the cascade is not merely hard to manage but, in a precise formal sense, computationally intractable. The detailed proofs are given in the source research paper; the implications are summarised here so that readers without a background in computer science can grasp the practical consequences.', S['body0']))
     story.append(P('The first connection concerns the question every innovation manager, regulator, and system architect ultimately faces: given a list of candidate solutions, which subset can we deploy simultaneously without triggering an unacceptable cascade? This decision problem can be shown to be NP-complete, in the same complexity class as the famous travelling-salesman problem. NP-completeness is the technical name for a class of problems for which no algorithm is known that finds the optimal answer quickly: as the number of solutions grows, the work required to compute the best deployment plan grows faster than any polynomial. The practical implication is stark. There is no efficient algorithm, and almost certainly never will be, for finding the optimal cascade-minimising deployment plan in a complex system. Decision-makers must accept that they will be choosing under irreducible computational uncertainty, not for lack of effort, but as a mathematical fact about the structure of the problem.', S['body']))
     story.append(P('The second connection is to the halting problem, the famous undecidability result proved by Alan Turing in 1936 (and discussed at length in Chapter 3). The cascade propagation function describes the evolution of a dynamical system, and a natural question is whether this system will ever reach a stable state where problem generation equals problem resolution. That question turns out to be formally equivalent to asking whether a Turing machine halts on a given input, which is provably undecidable. One cannot, in general, determine from the structure of the cascade network alone whether a cascade will eventually stabilise or grow without bound. This is not merely a practical limitation due to missing data; it is a fundamental mathematical impossibility. Any governance framework that promises to achieve cascade stability in all cases is making a promise that no algorithm can keep.', S['body']))
     story.append(P('The third connection is to Kolmogorov complexity, the theoretical measure of how much information is required to fully describe a system. As more solutions are deployed, the amount of information needed to describe the resulting cascade network grows at least quadratically and potentially exponentially. The system becomes incompressible: it cannot be summarised without loss of essential information. The consequence is that no finite description, no regulatory document, no engineering specification, no policy framework can remain a complete, accurate description of a complex system as solutions multiply. This is the formal basis for the observation, made empirically in every case study in Part II, that governance documentation always lags the cascade.', S['body']))
@@ -266,61 +271,6 @@ are."""),
     story.append(P('Where the tipping point lies depends on three things: how heavily the average solution generates problems, how complex the typical solution is, and how strongly the network amplifies each interaction. For a low-connectivity, low-complexity pre-industrial system (say, a regional agricultural economy), the tipping point sits around <b>fifty</b>: a solution would need to affect more than about fifty other components before the cascade became explosive. In pre-industrial systems, very few solutions ever reached that level of connection, so the cascade was real but manageable on decadal timescales.', S['body']))
     story.append(P('In a modern digital system the picture is utterly different. With the connectivity and complexity numbers of contemporary software or finance, the tipping point sits at around <b>eight</b>. A solution connected to more than eight other components is already in the explosive regime. The average package on npm has over a thousand downstream dependents. The average enterprise software component is wired into hundreds of others. The average financial instrument is directly linked to dozens of others. Modern solutions sit two or three orders of magnitude above the tipping point. This is not the result of any single technology decision; it is the structural consequence of building globally interconnected systems without thinking about cascade dynamics first. Crossing the tipping point at the system scale is the defining feature of the post-1990 cascade environment.', S['body']))
     story.append(P('The asymmetry of this picture is the key practical insight. Below the tipping point, reducing connectivity (removing arrows from the network) actually reduces cascade growth. Above it, reducing connectivity helps a little but the cascade remains explosive. Only crossing back below the tipping point produces a qualitative change. For systems already deep in the explosive regime — most of the modern digital infrastructure, most of the modern financial system — incremental fixes (better APIs, tighter integration, more careful change management) yield only incremental improvement. The only thing that produces a real change of regime is architectural redesign that substantially reduces the reach of individual solutions.', S['body']))
-    story.append(SP(14))
-
-    story.append(P('What Would It Take to Slow the Cascade?', S['section']))
-    story.append(P('The central claim says the cascade grows by doubling every time a new solution is added — but only in the worst case, when every solution interacts with every other. A natural question is whether that worst case can be avoided. Suppose every new solution were deliberately designed to share as little overlap as possible with the solutions already deployed. Could the cascade be tamed down to something manageable?', S['body0']))
-    story.append(P('The answer, proved in the source paper, is twofold. Without coordinated design — that is, in any system where solutions are produced independently by competing firms, separate research groups, or sovereign regulators — the cascade still grows at least <i>quadratically</i> in the number of solutions. That is much better than doubling, but it is still much worse than linear, and over a few decades it is more than enough to overwhelm any institution. With coordinated design, however, where each solution is deliberately built to interact minimally with the others, the cascade can in principle be brought down to nearly linear growth. The choice between the two regimes is the central architectural question of cascade-aware design, and it is the subject of Chapter 12.', S['body']))
-    story.append(P('The Heterogeneous System Bound has a direct and uncomfortable implication for how innovation is currently organised. In most economic, technological, and policy systems, solutions are developed by independent actors: competing firms, independent research groups, separate government agencies, each optimising their own objective without coordinating on cascade reduction. The theorem proves that this mode of organisation guarantees at least quadratic problem growth. The only escape from quadratic growth is coordinated design, and the only escape from exponential growth is coordinated design combined with explicit cascade-minimising architecture. The social and economic mechanisms that drive independent optimisation: market competition, academic independence, national regulatory sovereignty are simultaneously the mechanisms that guarantee cascade growth. This is the deepest structural tension in the theory.', S['body']))
-    story.append(P('The fully explosive worst case \u2014 where every solution interacts with every other at maximum strength \u2014 is rare. In practice, real-world networks have sparser connections, so the cascade typically grows somewhere between quadratically and cubically with the number of solutions, moving toward the explosive regime only as the network approaches full connectivity \u2014 which is precisely what digital interconnection is producing. This gives us a useful diagnostic: if the problem-growth rate in a domain has already moved past the cubic regime, the system has crossed from the sparse-interaction world into the dense-interaction world, and architectural intervention is urgently needed.', S['body']))
-    story.append(SP(14))
-
-    story.append(P('Three Historical Cascades, Side by Side', S['section']))
-    story.append(P('The framework becomes most vivid when applied to specific historical cascades. Three of the cases from Part II — antibiotic resistance, the software security vulnerability cycle, and the 2008 financial crisis — illustrate how the same underlying pattern plays out at three very different speeds and in three very different domains. The cascade story does not have to be made precise to be illuminating; the same three drivers (cascade coefficient, complexity, reach) appear in each.', S['body0']))
-    story.append(P('Antibiotic resistance unfolded slowly. Roughly eighty-seven antibiotics were approved for human use between 1943 and 2023. Each new drug converted a sizeable fraction of its impact into new resistance pressure on bacterial populations. The complexity of any single antibiotic was modest — it touched infectious-disease medicine, hospital practice, and microbiology — but its reach grew dramatically over the same period, from a few million patients treated with early penicillin to billions of people and animals exposed to broad-spectrum antibiotics through global supply chains. By 2000, antimicrobial resistance was killing hundreds of thousands of people every year. The decisive parameter was not the toxicity of any individual drug but the expansion of the population exposed to it.', S['body']))
-    story.append(P('The software security cascade unfolded faster. Roughly ten thousand major software products underpin the global digital infrastructure. Each product is itself enormously complex: it touches security, performance, data integrity, compliance, interoperability, user experience, and business continuity all at once. Each product also has very large reach: a typical enterprise application has thousands of users and downstream dependencies; core infrastructure libraries (OpenSSL, the Linux kernel, the Python standard library) have hundreds of millions. The interaction cascade is the dominant term here: most of the trouble comes not from any single library breaking, but from the way patches to one library induce regressions in dozens of dependent libraries downstream. Every well-known cascade in this domain — Heartbleed, Log4Shell, the npm left-pad incident — is an interaction cascade made visible.', S['body']))
-    story.append(P('The 2008 financial cascade unfolded fastest of all. The solution in focus was the collateralised debt obligation: an instrument designed to solve the problem of credit-risk concentration by distributing risk across investors. Roughly seventy per cent of a CDO\'s complexity converted directly into systemic risk, because the model used to price CDOs systematically mis-estimated the correlation between mortgage defaults. The instrument\'s reach was enormous — every major bank, every major insurer, every pension fund holding AAA-rated paper. And the interaction with credit default swaps was self-reinforcing: cheaper CDS protection encouraged more CDO issuance, which required more CDS protection, in a feedback loop that compressed risk premia to nothing before snapping. The cascade resolved itself in eighteen months and destroyed twenty-two trillion dollars of global wealth.', S['body']))
-    story.append(callout('<b>Comparative summary.</b> In all three cascades the decisive driver is <i>reach</i>. Antibiotics became catastrophic when their use expanded from clinical to global-agricultural scale. Software security became unmanageable when components moved from single-system to internet-scale. The financial crisis became systemic when financial instruments spread from specialised investors to every leveraged institution in the world. In each case, the expansion of reach was itself driven by a separate, earlier solution — globalised supply chains, the internet, financial deregulation — that itself had a high cascade coefficient. Cascades compound.', S))
-    story.append(SP(14))
-
-    story.append(P('Why Better Regulation Alone Is Not Enough', S['section']))
-    story.append(P('There is a striking result from network science that explains why most of the policy interventions we already try cannot, by themselves, contain cascades in modern systems. Imagine a network in which each possible link exists with some probability. If the probability is low, the network breaks into many small clusters and any disturbance dies out inside one of them. If the probability rises above a critical threshold, the network suddenly becomes globally connected — there is a single giant component that reaches almost everywhere, and a disturbance starting anywhere can in principle reach anywhere else. The transition between these two regimes is sharp; it has no middle.', S['body0']))
-    story.append(P('The internet, the global banking system, and the global software supply chain are all far above this threshold. The internet, by design, connects every device to every other device. After decades of consolidation, every major bank is connected to every other bank through chains of obligations averaging fewer than three steps. These systems are globally percolating networks. Any cascade that starts anywhere in them can, in principle, reach anywhere else.', S['body']))
-    story.append(P('The reason this matters for policy is uncomfortable. The interventions most commonly proposed — better regulation of individual firms, higher quality standards for individual products, tighter security requirements for individual components — reduce the strength of each individual link. They do not, however, change the network\'s topology: the giant component is still there, and a disturbance can still propagate through it. Quality improvements yield linear gains; only structural redesign that removes large numbers of links (or surgically removes the highest-connectivity hubs) produces a regime change. This is the network-theoretic translation of the architectural prescriptions in Chapter 12: managing cascades in modern systems requires changing what is connected to what, not just making each connection a little stronger.', S['body']))
-
-    story.append(SP(22))
-    story.append(P('Where the Amplification Numbers Come From', S['section']))
-    story.append(P(
-        'Readers may reasonably ask where the specific numbers in this chapter '
-        '— the modest amplification of pre-industrial networks, the much higher '
-        'amplification of digital ones — actually come from. The answer is that '
-        'they are derived, domain by domain, from independent published studies '
-        'of how cascades have propagated in real networks. They are not '
-        'theoretical guesses.',
-        S['body0']))
-    story.append(P(
-        'For software dependency networks, the relevant numbers come from '
-        'studies of the internet router graph and large software call graphs by '
-        'Leskovec, Kleinberg, and Faloutsos (2007). For financial contagion '
-        'networks, they come from Gai and Kapadia\'s Bank of England working '
-        'paper on interbank lending in the pre-2008 banking system (2010). For '
-        'social-media information cascades, the reference is Vosoughi, Roy, and '
-        'Aral\'s 2018 <i>Science</i> paper analysing 126,000 Twitter rumour '
-        'cascades — which found, famously, that false information travels six '
-        'times faster than true information. For biological diffusion such as '
-        'antibiotic resistance spreading through spatial networks, the '
-        'reference is Colizza and colleagues in <i>Nature Physics</i> (2006). '
-        'For pharmaceutical adverse events, the calibration comes from the '
-        'FDA\'s FAERS database from 2000 onwards.',
-        S['body']))
-    story.append(callout(
-        '<b>The pattern.</b> Across all domains studied, digital networks amplify '
-        'cascades roughly five times more than biological or industrial-era '
-        'networks of the same nominal size. The differences are well-documented '
-        'in the published literature; they are not assumptions. The framework '
-        'inherits its empirical grounding from these primary studies, and the '
-        'qualitative conclusions of the chapter are robust across the range of '
-        'numbers reported.', S))
 
     story.append(SP(22))
     story.append(P('How Fast Cascades Move', S['section']))
@@ -441,7 +391,7 @@ are."""),
         'The practical consequence of this incompressibility is the epistemological '
         'humility imperative developed in Chapter 2 and reinforced throughout Part II: '
         'we cannot, even in principle, predict all cascade effects of complex solutions '
-        'in complex systems. The appropriate response to this mathematical fact is not '
+        'in complex systems. The appropriate response to this limit is not '
         'resignation; it is the design of monitoring systems that detect cascade '
         'effects as they emerge, and the cultivation of the institutional reversibility '
         'discussed in Chapter 12 that allows corrections to be made as the cascade '
@@ -449,98 +399,15 @@ are."""),
         S['body']))
     story.append(SP(14))
 
-    story.append(SP(22))
-    story.append(P('The Cascade Theory in Context: Related Frameworks', S['section']))
-    story.append(SP(14))
-    story.append(P(
-        'The theory developed in this chapter does not emerge from a vacuum. It '
-        'builds on and integrates several pre-existing theoretical frameworks, each '
-        'of which captures a part of the cascade phenomenon. Situating the cascade '
-        'theory within this intellectual landscape serves two purposes: it clarifies '
-        'what is genuinely new in the theory, and it acknowledges the shoulders '
-        'on which it stands.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'Charles Perrow\'s Normal Accidents theory (1984) is the closest precursor. '
-        'Perrow argued, from the empirical study of industrial accidents at nuclear '
-        'plants, chemical facilities, and aviation systems, that in systems with '
-        'high interactive complexity and tight coupling, accidents are "normal", '
-        'not aberrations but expected outcomes of the system\'s architecture. '
-        'Perrow\'s interactive complexity corresponds approximately to the '
-        'interaction term the sum<ⱼ I(sᵢ, sⱼ) in the cascade function; his tight '
-        'coupling corresponds to high cascade velocity. The cascade theory '
-        'generalises Normal Accident Theory in three respects: it applies to '
-        'problems generated by solutions rather than accidents generated by system '
-        'architecture; it provides a quantitative framework for measuring cascade '
-        'magnitude; and it applies across all domains of human endeavour rather '
-        'than the industrial systems Perrow studied.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'Edward Tenner\'s "Why Things Bite Back" (1996) is the most accessible '
-        'predecessor. Tenner assembled a rich collection of examples under the '
-        'rubric of "revenge effects", cases where technology bites back by '
-        'producing the very problems it was designed to prevent, or by creating '
-        'new problems worse than the ones it solved. Tenner\'s framework is '
-        'essentially descriptive and taxonomic rather than mathematical. The '
-        'cascade theory provides the mathematical structure that Tenner\'s '
-        'observations implied: the revenge effect is the individual-cascade '
-        'component P_individual(s) = cascade coefficient · the solution complexity · reach, and the broader '
-        'cascade is the interaction and network amplification on top of it.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'Robert Merton\'s "unanticipated consequences of purposive social action" '
-        '(1936), arguably the first formal statement of the cascade principle in '
-        'the social sciences, identified five sources of unintended consequences: '
-        'ignorance, error, imperious immediacy of interest, basic values, and the '
-        'self-defeating prophecy. Merton\'s framework is causal and sociological '
-        'rather than mathematical. The cascade theory provides the quantitative '
-        'structure that allows Merton\'s sources to be mapped onto the terms of '
-        'the cascade function: ignorance increases cascade coefficient (the cascade coefficient, '
-        'because unknown mechanisms cannot be anticipated); error generates '
-        'misestimation of the solution complexity; imperious immediacy of interest generates '
-        'systematic underestimation of long-range reach.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'Nassim Taleb\'s Black Swan theory (2007) and Antifragile (2012) address '
-        'the cognitive and structural aspects of unexpected system behaviour. '
-        'Taleb\'s Black Swan is a highly improbable event with massive impact, '
-        'an outlier beyond normal expectation. The cascade is related but distinct: '
-        'the cascade is not improbable in the sense Taleb defines; it is, as this '
-        'book has argued, mathematically inevitable in systems above the percolation '
-        'threshold. The cascade\'s appearance of surprise is a consequence of the '
-        'observer\'s failure to model the interaction structure of the system, not '
-        'of the event\'s genuine rarity. Taleb\'s Antifragile contributes the concept '
-        'of systems that gain from disorder, a property that corresponds, in the '
-        'cascade framework, to solutions with negative cascade coefficients cascade coefficient < 0: '
-        'solutions that actually reduce system fragility when perturbed. These are '
-        'the rare, cascade-resistant solutions examined in Chapter 12.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'Donella Meadows\' systems thinking framework (2008) provides the broadest '
-        'intellectual context. Meadows\' stocks, flows, feedback loops, and time '
-        'delays map directly onto the cascade theory\'s solution nodes, cascade '
-        'propagation edges, reinforcing and balancing feedback in the solution-problem '
-        'network, and cascade velocity function. The primary contribution of the '
-        'cascade theory relative to systems thinking is mathematical precision: where '
-        'Meadows describes feedback loops qualitatively, the cascade theory provides '
-        'quantitative estimates of their magnitudes, rates, and critical thresholds.',
-        S['body']))
-    story.append(SP(14))
-
     # ── Chapter 10 extended: empirical evidence ────────────────────────────
     story.append(SP(18))
-    story.append(P('Empirical Validation of the Main Theorem', S['section']))
+    story.append(P('Empirical Support for the Central Claim', S['section']))
     story.append(P(
-        'The Main Theorem is a mathematical result about the asymptotic behaviour '
+        'The central claim is a structural argument about the long-run behaviour '
         'of cascade systems. Its practical relevance depends on whether real '
-        'solution ecosystems exhibit the exponential problem-generation dynamics '
-        'the theorem predicts. This section examines three domains in which '
-        'sufficient quantitative data exists to test the theorem\'s predictions '
+        'solution ecosystems exhibit the super-linear problem-generation dynamics '
+        'the argument predicts. This section examines three domains in which '
+        'sufficient quantitative data exists to compare the argument\'s expectations '
         'against empirical evidence: software vulnerability accumulation, '
         'pharmaceutical adverse event reporting, and scientific literature growth.',
         S['body0']))
@@ -556,7 +423,7 @@ are."""),
         'the number of deployed software solutions (applications, libraries, '
         'operating systems, firmware) grew by a factor of approximately 100-1,000 '
         '— a much faster growth rate than the vulnerability discovery rate, '
-        'which appears to contradict the Main Theorem. However, the relevant '
+        'which appears to contradict the central claim. However, the relevant '
         'quantity is not the absolute number of vulnerabilities but the '
         'interaction cascade, the number of vulnerabilities generated by the '
         'interaction of two or more software components. The Log4Shell cascade '
@@ -566,7 +433,7 @@ are."""),
         'or by any of its dependent applications alone, but by the interaction '
         'between Log4j and the full ecosystem of software that depended on it. '
         'The interaction cascade grew combinatorially with the number of '
-        'dependencies, exactly as the Main Theorem predicts.',
+        'dependencies, broadly as the central claim anticipates.',
         S['body']))
     story.append(SP(14))
     story.append(P(
@@ -578,19 +445,19 @@ are."""),
         'drugs grew from approximately 10,000 to approximately 20,000 over the '
         'same period, a two-fold increase. The adverse event rate grew three '
         'times faster than the drug approval rate, which is consistent with '
-        'the Main Theorem\'s prediction of super-linear cascade growth. More '
+        'the central claim\'s prediction of super-linear cascade growth. More '
         'specifically, the growth in drug-drug interaction adverse events, '
         'events generated by the interaction between two or more approved drugs '
         '— grew faster than the growth in single-drug adverse events, which '
         'is precisely the interaction cascade signature predicted by the '
         'pairwise interaction term of the cascade function. The pharmaceutical '
-        'data supports the Main Theorem\'s quantitative structure at the '
+        'data is consistent with the central claim\'s quantitative structure at the '
         'interaction level.',
         S['body']))
     story.append(SP(14))
     story.append(P(
         '<b>Scientific literature growth.</b> The growth of the scientific '
-        'literature provides a different kind of evidence for the Main Theorem. '
+        'literature provides a different kind of evidence for the central claim. '
         'Scientific papers are, in a meaningful sense, solutions: each paper '
         'proposes a result, a method, or a theory that addresses a scientific '
         'question. The cascade from scientific solutions is the generation of '
@@ -608,14 +475,14 @@ are."""),
         'That it has grown exponentially for four centuries is strong evidence '
         'that solution deployment in science generates problems at a rate '
         'exceeding the solution rate, the qualitative prediction of the '
-        'Main Theorem.',
+        'central claim.',
         S['body']))
     story.append(SP(14))
     story.append(callout(
-        '<b>Empirical Consistency of the Main Theorem:</b> Three independent '
+        '<b>Empirical Consistency of the Central Claim:</b> Three independent '
         'data sets: software vulnerability accumulation, pharmaceutical adverse '
         'event reporting, and scientific literature growth, all exhibit the '
-        'super-linear problem generation dynamics predicted by the Main Theorem. '
+        'super-linear problem generation dynamics predicted by the central claim. '
         'In each case, the interaction cascade (problems generated by the '
         'combination of multiple solutions) grows faster than the individual '
         'cascade (problems generated by each solution independently), consistent '
@@ -677,185 +544,6 @@ are."""),
         'cascade-aware monitoring systems will need it to be.',
         S['body']))
     story.append(SP(14))
-
-    # ------------------------------------------------------------------ #
-    # EXTENDED: Information Theory and Cascade Entropy                     #
-    # ------------------------------------------------------------------ #
-    story.append(SP(18))
-    story.append(P('Why Cascades Cannot Be Predicted in Full', S['section']))
-    story.append(P(
-        'There is a result from information theory, due originally to Claude '
-        'Shannon in 1948, that helps explain why cascades cannot be predicted '
-        'completely no matter how much computing power is thrown at them. The '
-        'result is this: the amount of information needed to describe a system '
-        'with many interacting parts grows extremely fast with the number of '
-        'parts. Each new solution added to a system multiplies the number of '
-        'possible cascade outcomes; the total information needed to keep track '
-        'of all of them eventually exceeds the capacity of any monitoring '
-        'system, no matter how well-funded.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(callout(
-        '<b>The cascade-information bound.</b> A monitoring system can reliably '
-        'predict cascade outcomes only when the system it is monitoring is '
-        'simple enough for its information output to fit through the monitor\'s '
-        'bandwidth. For highly interconnected systems — the internet, global '
-        'finance, the antibiotic ecosystem — the cascade generates more '
-        'information per unit time than any feasible monitoring system can '
-        'process. This is a fundamental limit on prediction, not an '
-        'engineering problem to be solved by better software.', S))
-    story.append(SP(14))
-    story.append(P(
-        'The practical consequence is that cascade management cannot rely on '
-        'prediction alone. Even with perfect data and unlimited computing '
-        'power, some cascade events will simply not be foreseeable. The right '
-        'response is not to try harder to predict them, but to design systems '
-        'that can absorb cascade effects without catastrophic failure: '
-        'redundancy in critical infrastructure, diversification in investment '
-        'portfolios, combination therapy in antibiotics. The aim is not to '
-        'predict the unpredictable but to remain functional when it happens.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('What the Framework Tells Us', S['section']))
-    story.append(P(
-        'The framework developed in this chapter establishes three results that '
-        'matter for the rest of the book. The first is that, in any complex system '
-        'where solutions interact and reinforce each other, the number of problems '
-        'grows much faster than the number of solutions — fast enough that no '
-        'amount of effort applied to the solutions can keep up. The second is that '
-        'this gap widens over time: the rate at which solutions generate problems '
-        'eventually exceeds the rate at which solutions can be added. The cascade '
-        'is not a management failure waiting to be fixed; it is a structural '
-        'feature of interconnected systems.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The third result is the most consequential. There is a fundamental limit '
-        'on how completely cascades can be predicted, and that limit is not a '
-        'technical obstacle waiting to be solved by more data or more computing '
-        'power — it is an information-theoretic constraint, in the same family as '
-        'Heisenberg\'s uncertainty principle in physics or Gödel\'s incompleteness '
-        'theorems in mathematics. The cascade cannot be fully predicted. It can be '
-        'partially anticipated, actively monitored, and adaptively managed — but '
-        'it cannot be eliminated or fully foreseen.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'These three mathematical results, taken together, '
-        'provide the formal basis for the institutional '
-        'prescriptions of Part IV. If cascades are '
-        'inevitable and accelerating (Theorem 1 and 2), '
-        'then the appropriate institutional response '
-        'is not to try to prevent cascades but to '
-        'build systems that detect them early, '
-        'contain their spread, and manage their '
-        'consequences. If cascades are not fully '
-        'predictable (the entropy bound), then '
-        'institutional design must prioritise '
-        'resilience and adaptability over prediction '
-        'and prevention. These prescriptions are '
-        'not merely pragmatic accommodations to '
-        'mathematical constraints; they are, '
-        'when implemented, demonstrably more '
-        'effective than cascade-naive approaches '
-        'that assume prediction and prevention '
-        'are achievable if only the analysis '
-        'is rigorous enough.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('The Cascade as a Signature of Complex Systems', S['section']))
-    story.append(P(
-        'The mathematical framework developed in this chapter '
-        'connects cascade theory to a broader set of insights '
-        'from complexity science that have accumulated since '
-        'the founding of the Santa Fe Institute in 1984. '
-        'Complex systems, systems characterised by many '
-        'interacting components whose collective behaviour '
-        'cannot be derived from the properties of individual '
-        'components alone — exhibit a cluster of emergent '
-        'properties that are now well-documented: power-law '
-        'distributions of event sizes, self-organised '
-        'criticality, sensitive dependence on initial conditions, '
-        'and phase transitions between qualitatively different '
-        'system states. All of these properties appear in '
-        'the cascade dynamics documented in this book, '
-        'and their appearance is not coincidental.',
-        S['body0']))
-    story.append(P(
-        'Power-law distributions of cascade size mean that '
-        'the distribution of cascade magnitudes follows '
-        'P(cascade > x) ~ x^(-the amplification factor) for some exponent the amplification factor. '
-        'This distribution has no characteristic scale: '
-        'there is no "typical" cascade size around which '
-        'most cascades cluster. Instead, there is a '
-        'continuous spectrum from very small cascades '
-        '(which are extremely common) to catastrophic '
-        'cascades (which are rare but not infinitely so). '
-        'The implication for risk management is that '
-        'the catastrophic tail of the distribution cannot '
-        'be dismissed as negligibly improbable: the '
-        'probability of a cascade ten times larger '
-        'than the median is much higher in a power-law '
-        'distribution than in a normal distribution. '
-        'Nassim Taleb\'s concept of "black swans", '
-        'rare but high-impact events that are '
-        'systematically underestimated by Gaussian '
-        'risk models is the intuitive capture of '
-        'the same mathematical property. Cascade '
-        'theory provides the mechanism: power-law '
-        'cascade size distributions emerge from '
-        'the network amplification effects documented '
-        'in the formal framework, not from external '
-        'shocks or random bad luck.',
-        S['body']))
-    story.append(P(
-        'Self-organised criticality (SOC), introduced by '
-        'Per Bak, Chao Tang, and Kurt Wiesenfeld in '
-        '1987, describes the tendency of dissipative '
-        'systems with slow driving and threshold-based '
-        'activation to evolve spontaneously toward a '
-        'critical state characterised by scale-invariant '
-        'avalanches. The canonical model is the sandpile: '
-        'a pile of sand, to which grains are added one '
-        'at a time, spontaneously organises toward '
-        'a critical slope at which avalanches of all '
-        'sizes occur. The system does not need to be '
-        '"tuned" to criticality; it self-organises there. '
-        'The SOC framework has been applied to earthquake '
-        'frequency distributions, forest fire sizes, '
-        'financial market crash magnitudes, and, '
-        'most relevant for cascade theory, '
-        'the size distribution of information cascades '
-        'in social networks. If solution-problem networks '
-        'exhibit SOC properties (and the evidence from '
-        'financial systems, software vulnerability '
-        'cascades, and antibiotic resistance evolution '
-        'is suggestive), then the cascade is not '
-        'a transient deviation from a stable equilibrium '
-        'waiting to be restored; it is the system\'s '
-        'natural operating mode. The critical state '
-        'is where solution ecosystems naturally reside.',
-        S['body']))
-    story.append(callout(
-        '<b>The SOC Interpretation of Cascade Dynamics:</b> If '
-        'solution-problem networks exhibit self-organised criticality, '
-        'then cascade management is not about returning the system '
-        'to a stable equilibrium; there is no such equilibrium. '
-        'It is about managing the inevitable cascade avalanches '
-        'with partitioned architecture (preventing small avalanches '
-        'from propagating to large ones), real-time monitoring '
-        '(detecting avalanche onset while they are still small), '
-        'and rapid response capacity (extinguishing cascades '
-        'before they propagate to system-wide scale).',
-        S))
-
-    story.append(SP(18))
-
-    story.append(SP(14))
     story.append(PageBreak())
     return story
 
@@ -875,10 +563,15 @@ def chapter11(S):
         ('body0', """Theory is valuable precisely to the extent that it generates practical
 tools. The mathematical framework of Chapter 10 translates directly into a practical
 metric for evaluating the cascade risk of a proposed solution before it is deployed:
-the Cascade Risk Index (CRI). The CRI is not a perfect predictor, no metric can
-perfectly predict cascade behaviour in truly complex systems. But it is a systematic,
-reproducible way of surfacing the cascade risks that are most commonly missed in
-conventional impact assessments."""),
+the Cascade Risk Index (CRI). One caution belongs before any number appears: the CRI is
+not a validated instrument that measures a real quantity, and it has not yet been tested
+prospectively. It is a structured checklist — a disciplined way of surfacing the cascade
+risks most commonly missed in conventional impact assessments. Its value lies in the
+questions it forces a team to ask, not in the digits it returns. Every worked score in
+this chapter is a retrospective illustration of the procedure, computed with the outcome
+already known; none of it is evidence that the procedure can predict. A genuine test would
+be prospective — scoring solutions before their fates are known and checking the
+calibration years later — and that test has not been run."""),
 
         ('body', """The Cascade Risk Index is the framework\'s headline output: a single
 number between 0 and 1 that summarises the cascade risk of deploying a given solution
@@ -1029,103 +722,11 @@ confirms: software security is an ongoing cascade, not a solvable problem."""),
     story.append(P('The interaction between CDOs and credit default swaps was the structural feature that made the cascade catastrophic. Credit default swaps were designed as insurance instruments: a CDS buyer pays a premium to a CDS seller in exchange for protection against a credit event. In isolation, CDSs reduce risk for buyers. But the combination of CDOs and CDSs amplified each other by roughly a factor of three: the existence of cheap CDS protection encouraged the creation of more CDOs, which encouraged looser mortgage origination standards, which increased the true default correlation in CDO pools, which increased the probability that CDS protection would be triggered simultaneously, which concentrated the insurance obligation at the small number of institutions (primarily AIG) that had written the protection, at a scale that exceeded their capital. The cascade was not merely self-referential; it was self-accelerating. The retrospective cascade risk score for CDO deployment in the 2005-2007 ecosystem exceeds 0.95 on any parameter estimate consistent with the publicly available data of the period.', S['body']))
 
     story.append(SP(18))
-    story.append(P('Statistical Methods for Early Warning Detection', S['section']))
-    story.append(P('The early warning signals described earlier in this chapter: critical slowing down, increasing variance, and rising problem-to-solution ratio are in principle detectable before cascade crises reach their acute phase. In practice, detecting them requires specific statistical methods that filter signal from noise in often messy real-world data. Three methods have been validated across multiple domains: the AR(1) autocorrelation test, the moving-window variance estimator, and the problem-to-solution ratio trend test.', S['body0']))
-    story.append(P('The first method is the <i>autocorrelation test</i> for what ecologists call <i>critical slowing down</i>. The idea is simple: as a system approaches a tipping point, it takes longer and longer to recover from small disturbances — each year\'s state is more strongly correlated with the previous year\'s than it used to be. By tracking this correlation over a rolling window, an early-warning system can detect that the system is becoming sluggish. This method was validated in ecology by Dakos and colleagues in 2008, who showed that the correlation rose significantly before eight out of eight historical ecosystem collapses. The same signal has since been detected in financial volatility data ahead of the 2008 crisis, in mobility data ahead of the early COVID-19 acceleration in 2020, and in social-media polarisation patterns.', S['body']))
-    story.append(P('The moving-window variance estimator tracks the standard deviation of the system\'s state variable in a rolling window. The window length should be calibrated to the expected timescale of cascade propagation in the domain: months for financial systems, quarters for pharmaceutical safety, years for antibiotic resistance dynamics. A statistically significant increasing trend in rolling standard deviation is the increasing variance signal. The test is more sensitive to fast-moving cascades than the AR(1) test, because variance increases typically precede slowing down at early stages of cascade approach. The two signals are complementary: an early warning system that tracks both simultaneously provides more reliable detection than either alone.', S['body']))
-    story.append(P('The problem-to-solution ratio trend test is the most domain-general of the three methods. Define the problem count P(t) as the number of documented, unresolved cascade problems in the domain at time t, and the solution count S(t) as the number of active solutions attempting to resolve them. The ratio R(t) = P(t)/S(t) should be stable or declining in a healthy system. Fit a linear trend to R(t) over a rolling window. A statistically significant positive trend in R(t) is the cascade saturation signal. In software engineering, P(t) can be proxied by the count of open critical and high-severity vulnerabilities in the NVD; S(t) is the count of patches applied in the same period. In antibiotic resistance medicine, P(t) is the count of drug-resistant organism types with documented clinical treatment failure; S(t) is the count of new antibiotics approved or new combination therapies validated. In both domains, R(t) has been increasing monotonically for decades, a clear cascade saturation signal that has been visible in the data for 20 years without triggering the institutional response the signal warranted.', S['body']))
-    story.append(callout('<b>Implementation Note:</b> All three early warning methods require high-quality longitudinal data, which is not always available. In domains where data quality is poor, probabilistic forecasting using the CRI framework is preferable to statistical detection of weak signals in noisy data. The two approaches are complementary: CRI provides an a priori risk estimate at deployment time; early warning detection provides ongoing monitoring after deployment. A complete cascade management system uses both.', S))
-
-    story.append(SP(18))
     story.append(P('Limitations of the Cascade Risk Index', S['section']))
     story.append(P('Intellectual honesty requires a full accounting of what the CRI cannot do. The index is a tool, not an oracle, and its limitations are as important to understand as its capabilities. Three limitations are fundamental: the unknown unknowns problem, the tail risk problem, and the model risk problem.', S['body0']))
     story.append(P('The unknown unknowns problem is the most fundamental. The CRI can only identify cascade risks that lie within the knowledge of those conducting the assessment. The most catastrophic cascades. Those that emerge from mechanisms genuinely outside the knowledge of everyone in the room — cannot be identified in advance by any structured assessment tool, however sophisticated. This is not a criticism of the CRI framework; it is a general epistemological limitation. No pre-deployment assessment can identify the mechanisms it does not know to look for. The honest use of the CRI acknowledges this limitation explicitly and treats a low CRI score as evidence of "no identified cascade risks above threshold" rather than "no cascade risks exist." The distinction matters: a drug that scores 0.25 on the CRI may still generate a severe cascade through an unknown mechanism. The CRI reduces preventable cascades; it cannot eliminate unknowable ones.', S['body']))
     story.append(P('The tail risk problem is that the CRI, like all expected-value calculations, integrates over the distribution of outcomes but the most economically and humanly damaging cascades are in the tails of that distribution. A solution with a CRI of 0.4 generates, in expectation, moderate cascade effects. But the distribution around that expectation may have fat tails: there is a small but non-negligible probability of catastrophic cascade outcomes. The CRI score as stated does not capture the tail risk separately. A more complete cascade risk assessment would report both the expected CRI and the 95th-percentile cascade scenario, the outcome that occurs in the worst 5% of realisations. For solutions operating in supercritical network regimes, the 95th-percentile scenario is typically orders of magnitude worse than the expected value.', S['body']))
     story.append(P('The model risk problem is that the CRI is only as good as its parameter estimates, which are judgments made by humans with limited knowledge and inevitable biases. The same cognitive biases documented in Chapter 2 (temporal discounting, optimism, Dunning-Kruger) will affect the estimates of cascade coefficient, the solution complexity, and reach made by the team deploying the solution. Solutions deployed by teams with a financial interest in a high CRI score will tend to generate low CRI estimates. This is not hypothetical: the pharmaceutical industry\'s history of selectively presenting safety data is exactly the CRI estimation process being gamed. The only partial remedy is institutional separation between those who develop a solution and those who conduct its cascade assessment, the same separation that insurance actuaries have from the companies they insure, and that independent auditors have from the companies they audit. CRI assessment requires institutional independence to function as a meaningful check on cascade risk.', S['body']))
-
-    story.append(SP(22))
-    story.append(P('The Cascade Monitoring Dashboard', S['section']))
-    story.append(SP(14))
-    story.append(P(
-        'The CRI provides a pre-deployment risk estimate. Once a solution is deployed, '
-        'the cascade management challenge shifts from prediction to detection and '
-        'response. This requires a cascade monitoring dashboard: a structured system '
-        'for tracking, in real time, the cascade signals that indicate whether a '
-        'deployed solution is generating problems at a rate that justifies intervention. '
-        'The dashboard is not a theoretical construct; it is an operational tool that '
-        'translates the early warning signals of the previous section into actionable '
-        'management information.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The dashboard has five core components, each tracking a different dimension '
-        'of cascade dynamics. The first is the primary problem indicator: a direct '
-        'measure of the problem the solution was designed to solve. If the solution '
-        'is working as intended, this indicator should improve over time. If it plateaus '
-        'or reverses, the solution may be losing effectiveness, often a sign that '
-        'cascade-induced adaptations (antibiotic resistance, regulatory gaming, '
-        'technical workarounds) are eroding the solution\'s efficacy.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The second component is the cascade problem indicator: a measure of the '
-        'most anticipated cascade effects, based on the CRI assessment conducted '
-        'before deployment. For a pharmaceutical drug, this would include addiction '
-        'rates, adverse event frequencies, and off-label prescribing patterns. For '
-        'a software security patch, it would include regression bug counts, new '
-        'vulnerability reports in patched components, and system stability metrics. '
-        'The cascade problem indicator should be monitored at the same frequency '
-        'as the primary indicator, with pre-specified thresholds that trigger '
-        'response protocols.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The third component is the cascade velocity tracker: a rolling estimate '
-        'of the rate at which new cascade-related problems are being added to the '
-        'monitored domains. If cascade velocity is decreasing, the cascade is '
-        'maturing and may be approaching a natural equilibrium. If cascade velocity '
-        'is increasing, the cascade is still accelerating and the risk of crossing '
-        'a tipping point is high. Increasing cascade velocity is the most urgent '
-        'signal in the dashboard: it indicates that the window for effective '
-        'intervention is closing.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The fourth component is the interaction monitor: tracking whether the '
-        'deployed solution has generated significant adverse interactions with '
-        'other solutions in the ecosystem that were not predicted by the pre-deployment '
-        'CRI assessment. This requires monitoring across all domains in the '
-        'solution\'s impact set (not just the primary domain) and flagging '
-        'any statistically significant increase in problem rates in adjacent domains '
-        'that correlates with the solution\'s deployment. The interaction monitor '
-        'is the component most likely to detect the "unknown unknown" cascade '
-        'effects that the CRI could not predict in advance.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The fifth component is the stakeholder response tracker: monitoring how '
-        'affected agents are adapting their behaviour in response to the solution\'s '
-        'incentive structure. This is the component that detects Goodhart\'s Law '
-        'dynamics: when the measure becomes the target and the incentive structure '
-        'the solution creates begins generating the pathological adaptations '
-        'documented in Chapter 6. Stakeholder response data comes from qualitative '
-        'sources: regulatory reports, industry surveys, investigative journalism, '
-        'whistleblower reports, that complement the quantitative signals of the '
-        'other four dashboard components.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The dashboard design principle is redundancy: no single indicator should '
-        'be the sole trigger for intervention. The experience of financial crises '
-        'demonstrates that any single indicator can be temporarily gamed, suppressed, '
-        'or distorted, as credit ratings were gamed in the CDO crisis, and as '
-        'official unemployment statistics were managed during the Great Depression. '
-        'A dashboard with five independent indicators of cascade dynamics, each '
-        'requiring different data sources and using different statistical methods, '
-        'is significantly more robust to manipulation or distortion than any '
-        'single indicator. The consensus of multiple independent signals provides '
-        'the most reliable basis for intervention decisions.',
-        S['body']))
     story.append(SP(14))
 
     story.append(SP(22))
@@ -1235,584 +836,6 @@ confirms: software security is an ongoing cascade, not a solvable problem."""),
         'This is the cascade paradox in its most acute contemporary form: we have '
         'the mathematical framework to predict the problem, and the institutional '
         'will to act is not commensurate with the cascade risk.',
-        S['body']))
-    story.append(SP(14))
-
-    # ── Chapter 11 extended: climate cascade ──────────────────────────────
-    story.append(SP(18))
-    # ── Chapter 11 extended: sectoral applications ─────────────────────────
-    story.append(SP(18))
-    story.append(P('Sectoral Applications of the CRI Framework', S['section']))
-    story.append(P(
-        'The Cascade Risk Index is most useful when applied consistently across '
-        'comparable solutions within a single domain, allowing relative risk '
-        'ranking before deployment. This section applies the CRI methodology '
-        'to four sectoral domains not yet examined in this chapter: '
-        'infrastructure investment, agricultural technology, educational policy, '
-        'and international development aid. The parameter estimates are '
-        'necessarily approximate, but the comparative rankings are robust '
-        'to reasonable variations in the parameter values.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>Infrastructure investment.</b> Large infrastructure projects, '
-        'dams, highways, airports, railway networks, urban redevelopment '
-        'schemes are among the most studied subjects in the literature '
-        'on cost overruns and unintended consequences. Bent Flyvbjerg\'s '
-        'comprehensive analysis of major infrastructure projects (Megaprojects '
-        'and Risk, 2003) found that 90% of large infrastructure projects '
-        'experience cost overruns, that the average overrun is 28% for roads, '
-        '45% for railways, and 96% for dams and bridges. The cascade behind '
-        'these overruns is not primarily technical; it is political and '
-        'institutional. Large infrastructure projects are approved on the '
-        'basis of optimistic cost and demand forecasts, the optimism of which '
-        'is not random but is systematically driven by the political incentive '
-        'to secure project approval. Once approved, the sunk cost of a '
-        'partially built project creates enormous pressure to complete it '
-        'regardless of cost escalation. The cascade from optimistic forecasting '
-        'is cost overrun, which cascades into budget reallocation away from '
-        'other public services, which cascades into political controversy '
-        'about infrastructure procurement, which cascades into more elaborate '
-        '(and expensive) procurement procedures that generate their own cost '
-        'overruns. The CRI for major infrastructure projects with large '
-        'political salience is approximately 0.65-0.75 (High), driven primarily '
-        'by high complexity (impacts on public finance, land use, environment, transport '
-        'patterns, regional development) and high N (projects affect entire '
-        'metropolitan populations).',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>Agricultural technology.</b> The Green Revolution, the package '
-        'of high-yielding variety seeds, synthetic fertilisers, and irrigation '
-        'infrastructure developed by Norman Borlaug and colleagues from the '
-        '1940s onward is one of the most consequential technological '
-        'interventions in history. It is estimated to have prevented '
-        'approximately one billion deaths from famine, primarily in South '
-        'and Southeast Asia. Its cascade profile is correspondingly severe. '
-        'The individual-component CRI values are: synthetic fertilisers '
-        '(CRI ≈ 0.55, Moderate: nitrogen runoff, energy use, soil compaction); '
-        'pesticides (CRI ≈ 0.73, High: biodiversity loss, resistance cascade, '
-        'human health effects); irrigation (CRI ≈ 0.62, Moderate — aquifer '
-        'depletion, soil salinisation, waterlogging); and high-yielding variety '
-        'seeds (CRI ≈ 0.48, Moderate: genetic diversity reduction, farmer '
-        'dependency on commercial seed suppliers). The interaction cascade '
-        'between these components is significantly larger than the individual '
-        'components: when all four are deployed together (as the Green Revolution '
-        'package), the system CRI is approximately 0.82 (High), because '
-        'the components are designed to function together and their interactions '
-        'are synergistic, not just additively, but multiplicatively. The '
-        'irrigation cascade amplifies the fertiliser cascade (irrigated fields '
-        'receive more fertiliser and generate more runoff); the pesticide '
-        'cascade amplifies the biodiversity cascade from high-yielding varieties '
-        '(resistant pests spread more rapidly across genetically uniform crops). '
-        'The interaction cascade coefficient interaction amplification for the Green Revolution package '
-        'is approximately 1.9, nearly doubling the individual component CRI values.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>Educational policy.</b> Educational policy interventions are among '
-        'the hardest to evaluate for cascade effects, because the primary '
-        'outcomes (learning, human capital formation) are measured over '
-        'decades, and cascade effects typically appear even later. The No '
-        'Child Left Behind Act (2001) provides the best-documented cascade '
-        'case in educational policy. NCLB required annual standardised testing '
-        'in reading and mathematics for all students in grades 3-8 and once '
-        'in high school, with sanctions for schools failing to meet Adequate '
-        'Yearly Progress targets. Its CRI is approximately 0.67 (Moderate-High): '
-        'the cascade coefficient C ≈ 0.68 (high, driven by strong incentive '
-        'distortions from high-stakes testing); the complexity measure complexity ≈ 4.1 '
-        '(affecting curriculum, teacher evaluation, school funding, student '
-        'mental health, teacher retention, and district administration); '
-        'N ≈ 50 million students with around 1.3 (moderate amplification through '
-        'school and community networks). The cascade effects documented by '
-        'the research literature include narrowing of curriculum to tested '
-        'subjects (>75% of districts reported reduced instruction time in '
-        'social studies, arts, and science); teaching to the test rather '
-        'than deeper learning (reduced problem-solving performance on non-tested '
-        'assessments); score inflation through exclusion of low-performing '
-        'students from tested populations; cheating by school administrators '
-        '(the Atlanta school cheating scandal, 2009-2013, involved '
-        'approximately 180 educators and administrators in 44 schools); '
-        'and increased teacher burnout and attrition.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>International development aid.</b> Development aid, the transfer '
-        'of financial resources and technical assistance from wealthy to '
-        'poorer countries is one of the most extensively studied and most '
-        'contested policy interventions in the social sciences. The cascade '
-        'literature on development aid is extensive and the evidence is mixed. '
-        'Aid that solves specific, bounded problems with clear metrics, '
-        'oral rehydration therapy for childhood diarrhoeal disease, insecticide- '
-        'treated bed nets for malaria prevention, antiretroviral therapy for '
-        'HIV — tends to have low CRI values (0.3-0.5) because the interventions '
-        'are technically specific, their cascade effects are well-studied, '
-        'and the primary benefits are large relative to the cascade costs. '
-        'Large-scale general budget support and structural adjustment aid, '
-        'transferring funds to governments conditional on macroeconomic policy '
-        'changes — tends to have much higher CRI values (0.7-0.85) because '
-        'the cascade coefficient C is high (macroeconomic policy changes '
-        'affect every sector simultaneously), the complexity measure complexity is high '
-        '(impacts on governance, political economy, inequality, public services, '
-        'and social cohesion), and the interaction cascade with existing '
-        'institutional structures is poorly understood and historically '
-        'severe. The IMF structural adjustment programmes of the 1980s and '
-        '1990s generated health system collapses, social unrest, and '
-        'democratic legitimacy crises in multiple recipient countries, '
-        'cascade effects that were not included in the programme designs '
-        'and that are now recognised as having offset a significant fraction '
-        'of the macroeconomic gains the programmes generated.',
-        S['body']))
-    story.append(SP(14))
-    story.append(callout(
-        '<b>The Sectoral CRI Pattern:</b> Across all four sectors, interventions '
-        'with specific, bounded objectives and clear feedback mechanisms have '
-        'CRI values in the Moderate range (0.4-0.65). Interventions that are '
-        'broad in scope, affect political economy directly, or create strong '
-        'incentive distortions for multiple classes of agents have CRI values '
-        'in the High range (0.7-0.85). The single most predictive parameter '
-        'across all sectors is complexity, the complexity of the cascade channel '
-        'structure, which reflects how many distinct domains the intervention '
-        'touches. Broad interventions with high complexity require cascade review '
-        'proportional to their scope, regardless of their apparent simplicity.',
-        S))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('Cascade Measurement in Practice: The Five-Step Protocol', S['section']))
-    story.append(P(
-        'The theoretical framework of this chapter is most useful when it '
-        'can be applied quickly and systematically by practitioners who are '
-        'not specialists in cascade theory. The following five-step protocol '
-        'operationalises the CRI framework for practical use, drawing on the '
-        'historical calibrations in Appendix C and the early warning signal '
-        'framework developed in the previous section.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>Step 1: Domain Mapping.</b> Identify all domains in which the '
-        'proposed solution will have primary, secondary, or tertiary effects. '
-        'A domain is a distinct field of human activity (medicine, economics, '
-        'ecology, governance, psychology) or a physical system (atmosphere, '
-        'soil, water). For each identified domain, estimate the magnitude of '
-        'the solution\'s effect using a simple scale (1 = minor, 2 = moderate, '
-        '3 = significant). The sum of these domain impact scores is a rough '
-        'proxy for the solution complexity. For a targeted drug treating a single disease with '
-        'a well-understood mechanism, complexity ≈ 2-3. For a technology platform '
-        'affecting communication, commerce, labour, politics, and psychology '
-        'simultaneously, complexity ≈ 8-12.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>Step 2: Reach Estimation.</b> Estimate the maximum number of '
-        'people, organisations, or systems that will directly interact with '
-        'the solution within ten years of deployment. This is reach. For '
-        'a pharmaceutical drug with a narrow indication, N might be '
-        '100,000 patients. For a social media platform targeting global '
-        'users, N might be 3 × 10⁹. The network amplification exponent the amplification factor '
-        'should be estimated based on the network structure: for solutions '
-        'operating in sparse, non-networked environments (around 1.0-1.2); '
-        'in structured professional networks (around 1.3-1.5); in internet-scale '
-        'digital platforms (around 1.7-2.0). The N^the amplification factor term dominates the '
-        'CRI for large-N solutions, a fact that is often not appreciated '
-        'by designers focused on the technical properties of the solution '
-        'rather than its deployment scale.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>Step 3: Historical Analogue Search.</b> Identify the closest '
-        'historical solution to the one being assessed, using the taxonomy '
-        'in Appendix B. For each historical analogue, examine the cascade '
-        'that occurred and estimate whether the proposed solution has '
-        'higher, lower, or comparable values of C, complexity, and N. If the '
-        'historical analogue generated a cascade that was considered '
-        'acceptable, and the proposed solution has lower estimated '
-        'parameter values, the cascade risk may be manageable under '
-        'similar governance conditions. If the proposed solution has '
-        'significantly higher N (from broader deployment or greater '
-        'network connectivity) than the historical analogue, the cascade '
-        'risk is likely to exceed the historical level even if the '
-        'solution itself is technically superior.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>Step 4: Interaction Cascade Assessment.</b> Identify the three '
-        'to five existing solutions most likely to interact with the '
-        'proposed solution. For each interaction pair, estimate the '
-        'domain overlap domain overlap (fraction of the affected domains that are shared) '
-        'and the synergy amplification interaction amplification (whether the interactions between '
-        'the solutions amplify or suppress each other\'s cascade effects). '
-        'The interaction cascade term 1 + the sum the domain overlap · the interaction amplification can '
-        'range from 1.0 (no interactions) to 3.0 or higher for solutions '
-        'with many strong positive interactions. For solutions entering '
-        'domains that are already heavily populated with interacting '
-        'solutions, the pharmaceutical domain, the financial regulatory '
-        'domain, the digital platform ecosystem. This term is typically '
-        'between 1.5 and 2.5.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        '<b>Step 5: CRI Computation and Interpretation.</b> Combine the '
-        'estimates from steps 1-4 into the CRI formula: '
-        'CRI = C · complexity · N^the amplification factor · (1 + the sum domain overlap · the sum). Normalise using the '
-        'domain-specific maximum from Appendix C. If the resulting CRI '
-        'exceeds 0.9 (Extreme), the solution requires fundamental '
-        'redesign: specifically, a reduction in N through staged deployment, '
-        'a reduction in complexity through scope limitation, or a reduction in C '
-        'through mechanism modification, before deployment at intended '
-        'scale. If the CRI is between 0.7 and 0.9 (High), the solution '
-        'can be deployed with pre-specified cascade monitoring at '
-        'the monitoring frequency required by Theorem 5. If the CRI '
-        'is below 0.5 (Low to Moderate), standard risk assessment is '
-        'sufficient and cascade-specific monitoring is optional but '
-        'recommended for novel solution types.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('The Climate System as Cascade Architecture', S['section']))
-    story.append(P(
-        'Climate change is, from the perspective of cascade theory, the most '
-        'complex cascade in human history, not because it is the largest in '
-        'terms of human suffering (the two world wars, the Black Death, and the '
-        'Columbian Exchange each caused greater immediate mortality), but because '
-        'it involves the largest number of interacting cascade chains, operating '
-        'across the longest time horizons, in the most complex physical system '
-        'ever subjected to human intervention. The atmosphere, the oceans, the '
-        'cryosphere, the terrestrial biosphere, and the human civilisation embedded '
-        'within them are all components of a coupled system whose dynamics are '
-        'understood in broad outline but not in full detail. The cascade from '
-        'industrial CO₂ emissions, the solution to the energy scarcity problem '
-        'that has driven economic development since 1750 is the archetypal '
-        'Type V cascade: an existential-scale cascade generated by the '
-        'cumulative effect of billions of individually rational, locally beneficial '
-        'decisions made in ignorance of their aggregate consequence.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The physical cascade architecture of climate change begins with the '
-        'primary forcing: increased atmospheric CO₂ concentration, from '
-        'approximately 280 ppm pre-industrial to over 420 ppm as of 2024, '
-        'increasing at approximately 2.5 ppm per year. This primary forcing '
-        'drives a set of first-order physical cascades: mean surface temperature '
-        'increase (approximately 1.2°C above pre-industrial as of 2024); '
-        'Arctic sea ice reduction (approximately 40% decline in late-summer '
-        'extent since 1979); glacier and ice sheet mass loss (the Greenland '
-        'ice sheet losing approximately 280 billion tonnes per year, Antarctica '
-        'approximately 150 billion tonnes per year); sea level rise (approximately '
-        '3.7 mm per year currently, accelerating); ocean warming and acidification '
-        '(mean ocean pH declining from 8.2 to 8.1 since industrialisation, a '
-        '26% increase in hydrogen ion concentration). Each of these first-order '
-        'physical effects is itself a cascade generator.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The Arctic amplification cascade is the most consequential first-order '
-        'physical cascade. Arctic temperatures are rising approximately four times '
-        'faster than the global average, a consequence of the ice-albedo feedback: '
-        'as sea ice melts, it exposes dark ocean water that absorbs more solar '
-        'radiation than ice, accelerating warming. The cascade from Arctic '
-        'amplification includes: permafrost thaw, releasing stored carbon (an '
-        'estimated 1.5 trillion tonnes of carbon is stored in Arctic permafrost, '
-        'compared to approximately 900 billion tonnes currently in the atmosphere); '
-        'jet stream disruption, which is associated with increasing frequency of '
-        'extreme weather events including prolonged heat waves, cold snaps, and '
-        'flooding in mid-latitudes; and Arctic shipping route opening, which '
-        'reduces transit distances between Europe and Asia but creates new '
-        'maritime jurisdiction disputes and ecosystem disruption cascades from '
-        'ship traffic through previously ice-covered waters. The Arctic is the '
-        'most extreme case of a self-amplifying cascade in the physical climate '
-        'system: warming causes ice loss, which causes more warming, which '
-        'causes more ice loss.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The economic and social cascade architecture from physical climate '
-        'change is at least as complex as the physical architecture, and '
-        'considerably less well-understood. The direct economic cascade includes '
-        'agricultural productivity losses from heat stress and changed precipitation '
-        'patterns (the World Bank estimates 2-6% reduction in global agricultural '
-        'yields per decade under high-emissions scenarios); coastal infrastructure '
-        'damage from sea level rise and storm surge (the US alone has an estimated '
-        '$1 trillion in coastal real estate at risk under 2°C scenarios); '
-        'labour productivity losses from heat exposure; and increased energy '
-        'demand for cooling in regions that will experience the largest temperature '
-        'increases. The indirect economic cascade includes migration flows from '
-        'areas made uninhabitable by heat, drought, or flooding, estimated at '
-        '200 million climate migrants by 2050 under high-emissions scenarios, '
-        'which generate receiving-country political cascades analogous to those '
-        'documented in Chapter 8 on immigration. The civilisation-scale cascade '
-        'from climate change is, in the language of Chapter 10, a supercritical '
-        'network cascade in the most complex system humanity has ever perturbed: '
-        'the global climate.',
-        S['body']))
-    story.append(SP(14))
-    story.append(callout(
-        '<b>The Climate Cascade CRI:</b> Applying the Cascade Risk Index to '
-        'industrial CO₂ emissions yields the highest CRI of any solution in '
-        'this book: C ≈ 1.0 (maximum complexity), complexity ≈ 0.98 (nearly unbounded '
-        'cascade channels), N ≈ 8 billion (all of humanity), around 2.1 '
-        '(highly super-linear network amplification in the Earth system). '
-        'The CRI of industrial civilisation\'s energy system is, by this '
-        'measure, indistinguishable from 1.0. The cascade was both '
-        'mathematically inevitable and practically unmanageable within the '
-        'institutional frameworks that governed energy deployment.',
-        S))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('Nuclear Technology: The Ultimate Dual-Use Cascade', S['section']))
-    story.append(P(
-        'No solution in modern history illustrates the cascade structure more '
-        'starkly than nuclear technology. The fundamental physics, the discovery '
-        'that enormous energy is stored in atomic nuclei, and that this energy '
-        'can be released through fission of heavy atoms was made by a generation '
-        'of physicists between 1932 and 1939 who were, for the most part, motivated '
-        'by pure curiosity about the structure of matter. The cascade from this '
-        'discovery was immediate, total, and irreversible: within six years of '
-        'the first controlled fission chain reaction (December 1942), nuclear '
-        'weapons had destroyed two cities and killed between 130,000 and 226,000 '
-        'people. Within fifteen years, the United States and Soviet Union had '
-        'accumulated enough nuclear weapons to destroy human civilisation several '
-        'times over. The cascade from the discovery of fission did not require '
-        'carelessness, optimism bias, or commercial incentives to manifest: it '
-        'required only the existence of nation-states in a state of total war, '
-        'which was the world that existed when the physics was discovered.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'Nuclear power (the civil application of the same physics) illustrates '
-        'a cascade of different character. Nuclear power plants solve the problem '
-        'of large-scale low-carbon electricity generation with high energy density: '
-        'a nuclear plant generates approximately 8,000 megawatt-hours of electricity '
-        'per tonne of fuel, compared to approximately 3 megawatt-hours per tonne '
-        'for coal. The cascade from nuclear power includes: radioactive waste '
-        'management (high-level nuclear waste remains dangerous for tens of '
-        'thousands of years; no country has yet opened a permanent geological '
-        'disposal facility); proliferation risk (civilian nuclear infrastructure '
-        'provides cover for weapons programmes; the NPT has not prevented India, '
-        'Pakistan, North Korea, or (covertly) Israel from acquiring nuclear '
-        'weapons); reactor safety (Chernobyl 1986 and Fukushima 2011 demonstrated '
-        'that even well-engineered reactors can fail with consequences that '
-        'make large areas uninhabitable for decades); and public perception '
-        'cascades (the response to Chernobyl and Fukushima was the premature '
-        'closure of nuclear plants in Germany and Japan, replaced by fossil '
-        'fuel generation, generating a carbon emissions cascade larger in '
-        'magnitude than the original safety cascade from the accidents).',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The German nuclear phaseout is worth examining as a cascade-of-cascades. '
-        'Following the Fukushima accident in March 2011, the German government '
-        'announced the accelerated closure of all nuclear power plants by 2022. '
-        'This decision was driven by a political cascade from the public safety '
-        'concern about nuclear power: itself a cascade from the Fukushima accident, '
-        'which was a cascade from the earthquake and tsunami that struck Japan, '
-        'which was a natural event unconnected to German nuclear safety standards. '
-        'The consequence of the nuclear phaseout was an increase in German '
-        'electricity generation from coal and natural gas to compensate for the '
-        'lost nuclear capacity, generating an estimated additional 36 million '
-        'tonnes of CO₂ per year between 2011 and 2022, a carbon cascade from '
-        'the solution to the safety cascade. Germany\'s energy security cascade '
-        'followed: the increased dependence on Russian natural gas that partly '
-        'replaced nuclear power contributed to Germany\'s vulnerability to '
-        'the energy market shock following Russia\'s invasion of Ukraine in 2022. '
-        'The decision to close nuclear plants in response to a Japanese tsunami '
-        'generated, through a chain of three cascade steps, a contribution to '
-        'European energy dependence on a revanchist petro-state.',
-        S['body']))
-    story.append(SP(14))
-
-    # ------------------------------------------------------------------ #
-    # EXTENDED: CRI Deep Dives and the Cascade Forecasting Problem         #
-    # ------------------------------------------------------------------ #
-    story.append(SP(18))
-    story.append(P('The Cascade Forecasting Problem', S['section']))
-    story.append(P(
-        'The Cascade Risk Index provides a quantitative framework '
-        'for assessing the expected cascade burden of a solution '
-        'at the time of deployment. But the CRI is a prospective '
-        'tool; it requires estimates of cascade coefficient, the solution complexity, reach, and the amplification factor '
-        'that may be highly uncertain before deployment. This '
-        'raises the cascade forecasting problem: how can we '
-        'estimate cascade risk for genuinely novel solutions '
-        'whose interaction structure is not yet known?',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'The history of cascade prediction offers a sobering '
-        'baseline. Expert predictions of cascade effects have '
-        'been systematically wrong in characteristic ways: '
-        'they underestimate cascade magnitude (the opioid crisis '
-        'was not predicted at anything approaching its actual '
-        'scale by anyone in the policy or medical community at '
-        'the time of OxyContin\'s approval), they underestimate '
-        'cascade speed (the spread of antibiotic resistance '
-        'in hospital settings was faster than initially '
-        'projected), and they underestimate cascade reach '
-        '(the geographic and demographic spread of '
-        'financial crisis contagion from US subprime '
-        'mortgages exceeded all but the most extreme '
-        'pre-crisis projections). The pattern, systematic '
-        'underestimation of cascade magnitude, speed, '
-        'and reach — reflects the cognitive biases '
-        'documented in Chapter 2 (temporal discounting, '
-        'scope insensitivity, optimism bias) '
-        'operating on genuine uncertainty about '
-        'complex system dynamics.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'Three methodological approaches improve cascade '
-        'forecasting accuracy. First, historical analogy: '
-        'identifying structurally similar solutions from '
-        'the past and using their observed cascade trajectories '
-        'as priors. OxyContin is structurally analogous '
-        'to previous prescription opioid expansions '
-        '(Percodan in the 1960s, Talwin in the 1970s), '
-        'whose addiction cascades were observable in the '
-        'medical literature. The analogy was not used. '
-        'Second, base rate thinking: the empirical '
-        'regularity that patching generates new '
-        'vulnerabilities at a rate of 1.5-2.7 per '
-        'series should be a prior for any security '
-        'patch programme, regardless of the specific '
-        'patch being deployed. Third, pre-mortem analysis: '
-        'explicitly imagining that the solution has '
-        'failed catastrophically and working backwards '
-        'to identify the cascade pathways that could '
-        'have produced that failure. Pre-mortem analysis '
-        'has been shown in experimental settings to '
-        'reduce overconfidence and improve problem '
-        'identification by 30% compared to conventional '
-        'risk assessment.',
-        S['body']))
-    story.append(SP(14))
-    story.append(callout(
-        '<b>The Three Cascade Forecasting Methods:</b> (1) Historical analogy '
-        '— find the most structurally similar past solution and use its '
-        'cascade trajectory as a prior; (2) Base rate thinking — apply '
-        'empirical regularities from the domain regardless of the specific '
-        'solution; (3) Pre-mortem analysis — assume catastrophic cascade '
-        'failure and work backwards. All three should be applied before '
-        'large-scale deployment of high-CRI solutions.',
-        S))
-    story.append(SP(14))
-    story.append(P(
-        'The cascade forecasting problem is exacerbated for '
-        'genuinely novel solutions. Those without historical '
-        'analogies and without domain-specific empirical '
-        'regularities. Large-scale AI deployment, novel '
-        'biotechnology platforms, and synthetic biology '
-        'applications all fall into this category. '
-        'For solutions without analogies, the appropriate '
-        'approach is not to refuse deployment; it is '
-        'to adopt staged deployment strategies with '
-        'real-time cascade monitoring, explicit trigger '
-        'points for deployment pause or reversal, '
-        'and pre-committed governance mechanisms '
-        'for managing cascade evidence as it '
-        'accumulates. The alternative — deploying '
-        'at full scale into an unknown cascade '
-        'landscape is the approach taken for '
-        'every solution in the crisis catalogue '
-        'of this book.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(SP(18))
-    story.append(P('Comparative Cascade Analysis: Lessons Across Domains', S['section']))
-    story.append(P(
-        'The cascade theory gains its deepest insight not from '
-        'analysis within domains but from comparison across them. '
-        'When the antibiotic resistance cascade, the financial '
-        'risk model cascade, and the recommendation algorithm '
-        'cascade are examined together, a structural pattern '
-        'emerges that is invisible from within any single domain.',
-        S['body0']))
-    story.append(SP(14))
-    story.append(P(
-        'All three exhibit the same five-stage cascade trajectory: '
-        'Stage 1 — solution deployment and initial success '
-        '(penicillin saves lives; CDOs expand credit access; '
-        'recommendation algorithms improve content discovery). '
-        'Stage 2: cascade incubation, in which the '
-        'adaptive responses of system agents create the '
-        'conditions for the cascade but the cascade is '
-        'not yet detectable (resistance genes accumulate '
-        'in bacterial populations; correlation assumptions '
-        'in risk models diverge from market reality; '
-        'feedback loops between engagement and '
-        'recommendation bias amplify in user populations). '
-        'Stage 3: cascade onset, in which the accumulated '
-        'pressure exceeds a threshold and the cascade becomes '
-        'visible (MRSA emerges in clinical settings; CDO '
-        'correlations spike in the 2007 credit crunch; '
-        'political polarisation metrics cross thresholds '
-        'that predict electoral instability). Stage 4, '
-        'institutional response, typically characterised '
-        'by initial denial, followed by acknowledgement, '
-        'followed by regulatory or governance interventions '
-        'that target Stage 3 symptoms rather than Stage 2 '
-        'mechanisms. Stage 5: second-order cascade, '
-        'in which the Stage 4 interventions generate '
-        'their own cascades.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The five-stage cascade trajectory is not deterministic '
-        '— the timing, severity, and specific character of '
-        'each stage vary enormously across domains. But the '
-        'structural sequence: success, incubation, onset, '
-        'delayed institutional response, second-order cascade '
-        '— appears with sufficient regularity across the '
-        'evidence base of this book to constitute a '
-        'predictive model. A solution that has reached '
-        'Stage 1 success and is showing Stage 2 incubation '
-        'signals (measurable adaptive responses by system '
-        'agents that are consistent with cascade buildup) '
-        'is in a high-risk transition zone. The '
-        'institutional challenge is to respond to '
-        'Stage 2 signals before Stage 3 onset, '
-        'which requires acting on evidence that '
-        'the cascade is building before the cascade '
-        'is undeniably visible. This is precisely '
-        'the kind of precautionary action that '
-        'institutional incentive structures and '
-        'cognitive biases systematically '
-        'discourage.',
-        S['body']))
-    story.append(SP(14))
-    story += epigraph(
-        'When the facts change, I change my mind. What do you do, sir?',
-        'Attributed to John Maynard Keynes',
-        S)
-    story.append(SP(14))
-    story.append(P(
-        'The Keynes attribution, possibly apocryphal but '
-        'operationally true regardless of source — encodes '
-        'the ideal cognitive disposition for cascade management: '
-        'the willingness to update beliefs and actions in '
-        'response to new evidence before the evidence '
-        'becomes overwhelming. Cascade management '
-        'requires acting on Stage 2 signals, which '
-        'are ambiguous and often contested. The '
-        'Fleming warning about antibiotic resistance '
-        '(1945) was a Stage 2 signal that was ignored '
-        'for three decades. The Molina-Rowland ozone '
-        'depletion paper (1974) was a Stage 2 signal '
-        'that was acted upon within thirteen years, '
-        'fast by historical standards, slow by the '
-        'timescale of the ozone depletion cascade. '
-        'The earliest warnings about algorithmic '
-        'polarisation (circa 2011-2013) were '
-        'Stage 2 signals that were ignored by '
-        'platform operators and regulators for '
-        'nearly a decade. The pattern is consistent: '
-        'Stage 2 signals are available, are identified '
-        'by researchers, and are systematically '
-        'underweighted until Stage 3 onset '
-        'makes denial impossible.',
         S['body']))
     story.append(SP(14))
 
@@ -2027,9 +1050,9 @@ highest-risk cascades before deployment. This is the minimum viable standard for
 cascade-aware design."""),
 
         ('section', 'The Homogeneous Ecosystem Approach'),
-        ('body0', """The formal theory of Chapter 10 suggests a structural path to
-cascade reduction that goes beyond individual solution design. Recall that the Main
-Theorem's exponential growth rate depends critically on the interaction term:
+        ('body0', """The framework of Chapter 10 suggests a structural path to
+cascade reduction that goes beyond individual solution design. Recall that the central
+claim's combinatorial growth rate depends critically on the interaction term:
 the sum<ⱼ I(sᵢ, sⱼ). This term is large when solutions have high domain overlap domain overlap and
 high synergy amplification interaction amplification. It is small (potentially very small) when solutions
 are designed with compatibility as a primary design criterion, such that domain overlap is low
@@ -2160,7 +1183,7 @@ the liquidity cascade mechanism that amplified the 2008 crisis. The cascade-awar
 features of Basel III include its phased implementation (giving banks time to build
 capital buffers without triggering a credit contraction cascade) and its calibration
 of capital requirements to systemic importance (globally systemically important banks
-face higher requirements, reflecting the network amplification theorem). Its cascade-
+face higher requirements, reflecting the network-amplification mechanism). Its cascade-
 incomplete features include insufficient attention to shadow banking (the cascade has
 largely migrated from regulated banks to less-regulated non-bank financial institutions)
 and the procyclicality of risk-weighted capital requirements (which tend to be most
@@ -2587,8 +1610,9 @@ def chapter13(S):
         'A New Philosophy of Innovation',
         'From cascade generation to cascade awareness — the evolution of how we solve problems', S)
     story += epigraph(
-        'The measure of intelligence is the ability to change.',
-        'Albert Einstein', S)
+        'You never change things by fighting the existing reality. To change something, '
+        'build a new model that makes the existing model obsolete.',
+        'R. Buckminster Fuller', S)
     story += [SP(12)]
 
     paras = [
@@ -3033,7 +2057,7 @@ available."""),
         'cascade-aware imperative avant la lettre. The "permanence of genuine '
         'human life" requires that solution ecosystems do not expand their '
         'problem generation rate faster than humanity\'s capacity to address '
-        'them, which is precisely the condition that Chapter 10\'s Theorem 2 '
+        'them, which is precisely the condition that Chapter 10\'s central claim '
         'identifies as the critical cascade threshold. Jonas\'s ethics, '
         'translated into the language of cascade theory, demands that the '
         'cascade coefficient cascade coefficient and the interaction amplification the domain overlap '
@@ -3195,8 +2219,8 @@ available."""),
         'innovation; it is intelligent innovation.',
         S['body']))
     story.append(P(
-        '<b>Third proposition: Cascade wisdom is the next stage of civilisational '
-        'maturity.</b> Human civilisation has passed through several stages '
+        '<b>Third proposition: cascade awareness is a necessary next step in how we '
+        'mature as problem-solvers.</b> Human civilisation has passed through several stages '
         'of cumulative knowledge that transformed the relationship between '
         'human agency and natural consequence. The scientific revolution '
         'taught us to understand natural phenomena rather than attribute '
@@ -3206,7 +2230,7 @@ available."""),
         'planetary scale. Each of these revolutions expanded human capability '
         'dramatically, and each generated cascades that the civilisation '
         'was not initially equipped to manage. We are now in the early stages '
-        'of a cascade wisdom revolution: the development of intellectual tools, '
+        'of a shift toward cascade awareness: the development of intellectual tools, '
         'professional norms, and institutional structures adequate to the '
         'cascade dynamics of the solution ecosystems we have built. This '
         'revolution does not require abandoning what previous revolutions '
@@ -3218,6 +2242,52 @@ available."""),
         S['body']))
 
     story.append(SP(14))
+    story.append(PageBreak())
+    return story
+
+
+def chapter14(S):
+    story = []
+    story += chapter_opener('Chapter Fourteen',
+        'The Case Against This Book',
+        'The strongest objections to the cascade argument — and what survives them', S)
+    story += epigraph(
+        'He who knows only his own side of the case knows little of that.',
+        'John Stuart Mill, On Liberty (1859)', S)
+    story += [SP(12)]
+
+    story.append(P('Why This Chapter Exists', S['section']))
+    story.append(P("A theory that cannot be argued against is not a theory; it is a faith. The preceding chapters built the case for cascade thinking as strongly as the evidence allows. This chapter does the opposite. It assembles the strongest objections a sceptical, well-informed reader could raise, states each in its most forceful form, and then says honestly how much of the book survives it. Some of these objections are fatal to the book's grander phrasings, and have already reshaped them. Others mark real limits the reader should carry forward. A few, I will argue, do not land. The aim is not to win the exchange; it is to show exactly where the argument is load-bearing and where it is decoration.", S['body0']))
+
+    story.append(P('Objection 1: You Went Looking for Cascades', S['section']))
+    story.append(P("The most serious objection is methodological. This book surveys celebrated solutions — antibiotics, the automobile, the internet, collateralised debt obligations — and in every case finds a cascade. But that is exactly what a search designed to find cascades would produce. If you go looking for the dark side of famous innovations you will always find one, because every large intervention in a complex world has some downside. The procedure has no control group. It never tallies the solutions that generated trivial cascades, nor the problems that were simply solved and stayed solved. A pattern found in a sample selected for the pattern is not evidence; it is a mirror.", S['body0']))
+    story.append(P("This objection is largely correct, and it is the reason the book's claims are now stated as a tendency rather than a law. The honest position is narrower than 'every solution cascades.' It is this: in sufficiently interconnected systems, solutions interact, and the number of possible interactions grows far faster than the number of solutions — so the opportunity for new problems compounds, and a non-zero fraction of those opportunities are realised. That claim is about structure, not about a hand-picked roll of famous disasters. The case studies illustrate it; they do not prove it. A reader who treats Part II as decoration around the structural argument of Chapter 10, rather than as the argument itself, has read the book the way it should be read.", S['body']))
+
+    story.append(P('Objection 2: The Ledger Is Overwhelmingly Positive', S['section']))
+    story.append(P("Even granting that solutions generate problems, the second objection insists the accounting still comes out hugely in favour of progress. Smallpox is gone. Childhood mortality has collapsed. A person born today lives decades longer than one born in 1900. Vaccination, sanitation, anaesthesia, and the Haber-Bosch process that feeds roughly half the planet did not merely cascade; they delivered benefits so large that no honest tally of their side effects comes close to cancelling them. To dwell on the cascade, the objection runs, is to slander the greatest achievements of the species.", S['body0']))
+    story.append(P("This is right, and the book should say so without flinching: the net ledger of human problem-solving is positive, often spectacularly so. Cascade thinking is not an argument against solving problems, any more than double-entry bookkeeping is an argument against revenue. It is an argument against single-entry bookkeeping — against recording only the benefit and leaving the cascade off the page until it arrives as a surprise. The claim is not that antibiotics were a mistake. It is that the resistance cascade was foreseeable, was in fact foreseen (Fleming said so in 1945), and was still left out of the decisions that mattered. A positive ledger and an incomplete ledger are not in tension. The book's quarrel is only with the second.", S['body']))
+
+    story.append(P('Objection 3: The Theory Is Unfalsifiable', S['section']))
+    story.append(P("The third objection is the sharpest, because the book itself invokes Popper. If every solution generates a cascade, and any apparent exception is explained away as 'too recent to have cascaded yet' or 'contained by cascade-aware design', then no observation could ever count against the theory. A claim that survives every possible piece of evidence explains nothing.", S['body0']))
+    story.append(P("The objection has force, and it deserves an answer rather than a dodge. Here is what would refute the central claim. It predicts that, holding a domain's connectivity roughly fixed, the count of distinct interaction problems should grow faster than the count of deployed solutions — and faster in more connected domains than in sparse ones. A domain that deployed solutions for decades, grew steadily more interconnected, and still showed a flat or falling rate of new interaction problems would falsify it. So would a finding that the problem-to-solution ratio is essentially unrelated to connectivity. So would a large class of solutions whose realised harmful-interaction fraction is, on measurement, indistinguishable from zero. None of these is a rhetorical impossibility; each is a measurement someone could make, and the book could lose. The 'too recent' and 'contained' replies are legitimate only when paired with that commitment — and the argument is weaker every time it reaches for them instead of for data.", S['body']))
+    story.append(callout("<b>What would prove this book wrong.</b> Find a class of solutions, deployed at scale into an increasingly connected system over decades, whose rate of new interaction-problems stays flat or falls — or show that a domain's problem-to-solution ratio is unrelated to how connected it is. Either result would refute the central claim. The claim earns the name only because it could lose it.", S))
+
+    story.append(P('Objection 4: Cascade Thinking Can Do Real Harm', S['section']))
+    story.append(P("The fourth objection is practical, and to my mind the most important. A book that teaches readers to see the hidden costs of every solution hands a loaded weapon to the status quo. Every delay, every refusal, every call to 'study this further' can now be dressed in the respectable language of cascade prudence. The same lens that flags a reckless deployment also flags the nuclear plant that would have displaced coal, the engineered crop that would have fed people, the vaccine shipped fast in a pandemic. Over-weighting hypothetical future cascades against certain present suffering is itself a cascade — of preventable harm from inaction.", S['body0']))
+    story.append(P("This is the objection the book must hold closest, because it is the one most likely to come true in practice. Cascade awareness can genuinely be weaponised by incumbents, by regulators protecting their turf, and by anyone whose interest lies in nothing changing. The defence is not to soften the analysis but to insist on its symmetry: the cascade of acting must always be weighed against the cascade of not acting, because inaction is a choice that cascades too. Used honestly, the framework scores the status quo as a deployed solution with cascades of its own — and coal's are catastrophic. A framework that only ever counsels delay is being misused. If this book is ever cited to justify blanket inaction, it is being read against its own argument.", S['body']))
+
+    story.append(P('Objection 5: The Numbers Are Theatre', S['section']))
+    story.append(P("The fifth objection targets the Cascade Risk Index directly. Assigning OxyContin a CRI of 0.85, or the 2008 derivatives complex a 0.95, lends the appearance of measurement to what is in fact a structured guess — and worse, a guess made after the outcomes were already known. Retro-scoring famous disasters to two decimal places is not validation; it is numerology with a citation.", S['body0']))
+    story.append(P("Granted, and the book is corrected accordingly. The CRI is not an instrument that measures a real quantity. It is a checklist that forces a structured conversation about cascade coefficient, reach, complexity, and interaction before deployment. Its value is in the questions it makes you ask, not in the number it emits, and the retrospective scores in Chapter 11 should be read as worked illustrations of the procedure, not as evidence that the procedure predicts. A real test of the CRI would be prospective: score solutions before their outcomes are known, then check the calibration years later. Until someone does that, the two-decimal scores carry no more authority than the judgement that went into them — exactly as much as any careful pre-mortem, and no more.", S['body']))
+
+    story.append(P('Objection 6: None of This Is New', S['section']))
+    story.append(P("The final objection is the historian's. Robert Merton described unanticipated consequences in 1936. Edward Tenner catalogued 'revenge effects' in 1996. Charles Perrow's normal accidents, Donella Meadows' systems thinking, and Nassim Taleb's work on fragility all stake out this ground. What, exactly, does this book add that they did not already say, and in several cases say better?", S['body0']))
+    story.append(P("Less than its most excited passages imply, and more than nothing. The contribution is not the observation that solutions bite back — Tenner owns that — but the attempt to give it a single structural spine in the combinatorial growth of interactions, a shared vocabulary across domains that normally never speak to each other, and a deployable checklist. Whether that synthesis is worth a book or merely a long essay is a fair question, and a reader is entitled to conclude the latter. What the book should not do is claim priority over its predecessors. It stands on them, and it has been revised to say so plainly.", S['body']))
+
+    story.append(P('What Survives', S['section']))
+    story.append(P("Strip away what these objections fairly take, and a narrower book remains — a better one. It does not claim a proven law of progress. It claims a structural tendency, falsifiable in principle, that the costs of interacting solutions compound faster than the solutions themselves; that this is systematically under-counted; and that a small set of practices — pre-mortems, reach limits, reversibility, monitoring — measurably reduce the damage. It concedes that the ledger of progress is positive, that cascade thinking can be abused to justify inaction, that its index is a discipline rather than a measurement, and that its central insight has honourable ancestors. None of those concessions touches the one recommendation that finally matters: when you deploy a solution into a complex system, count the cascade before it counts you.", S['body0']))
+    story.append(callout("<b>The argument, after its critics have had their say:</b> not 'every solution is a mistake', but 'every solution is an incomplete ledger.' The cascade is usually worth paying — once you have actually added it up.", S))
+    story.append(SP(12))
     story.append(PageBreak())
     return story
 
@@ -3235,7 +2305,7 @@ def conclusion(S):
     story.append(P('In physics, the cascade manifests as the proliferation of theoretical frameworks required to resolve the paradoxes generated by each previous framework. Classical mechanics solved the problem of planetary motion but generated the ultraviolet catastrophe (the prediction that a black body should emit infinite energy at short wavelengths). Quantum mechanics resolved the ultraviolet catastrophe but generated the measurement problem, the interpretational crisis (Copenhagen, many-worlds, pilot-wave, relational, each a separate attempt to resolve the same paradox by different means), and the incompatibility with general relativity. String theory attempted to resolve the incompatibility but generated the landscape problem (10\u2075\u2070\u2070 possible universes, each consistent with the theory) and the absence of any experimentally testable predictions. Dark matter and dark energy were introduced to resolve the discrepancy between observed galaxy rotation curves and the predictions of general relativity but now constitute 95% of the universe\'s energy content by current estimates, meaning that 95% of the universe is, in a direct sense, an unsolved problem generated by the attempt to solve the galaxy rotation discrepancy.', S['body']))
     story.append(P('In computer science, the cascade is visible in two parallel streams: the security cascade and the complexity cascade. The security cascade (documented in Chapter 5) shows that patching software vulnerabilities generates new vulnerabilities at an average rate of 1.5-2.7 per patch series, producing a system in which the total vulnerability count grows despite perpetual remediation. The complexity cascade shows that adding features to software generates interaction surface that grows combinatorially, producing systems in which the marginal cost of maintaining an additional feature exceeds the marginal benefit at some point that is always reached sooner than designers expect. Windows 1.0 required 1 megabyte of storage in 1985; Windows 11 requires 64 gigabytes in 2021, a 64,000-fold increase for a system whose core function (running programs, managing files, connecting to networks) is structurally similar. The 64,000-fold increase is almost entirely the accumulated complexity cascade of feature-on-feature interaction.', S['body']))
     story.append(P('In economics, the cascade operates through incentive structures and market dynamics. The Cobra Effect, Jevons Paradox, and Goodhart\'s Law are each special cases of the incentive cascade: solutions that modify the incentive landscape in ways that produce behaviours the solution designers did not model. The 2008 financial crisis was an interaction cascade between financial instruments (CDOs, CDSs, asset-backed commercial paper) whose individual risk properties were modelled in isolation but whose joint risk properties (the correlation structure of their defaults under stress) were not modelled at all. The cascade cost of the financial crisis is estimated at $22 trillion in lost wealth, not counting the decade-long output gap from slower economic recovery, the sovereign debt crises in Europe, and the political consequences of mass unemployment that continue to shape democratic politics in the 2020s.', S['body']))
-    story.append(P('In medicine, the cascade takes its most intimate and most tragic form: the solutions designed to relieve human suffering generate new forms of suffering. Antibiotics, the most successful therapeutic intervention in human history, saving an estimated 200 million lives in the first fifty years of clinical use have generated antibiotic resistance that now kills 700,000 people annually and is projected to kill 10 million per year by 2050, in the absence of transformative intervention. OxyContin (a genuinely effective analgesic for chronic pain) generated an addiction and overdose epidemic that has killed over 500,000 Americans and fundamentally restructured street drug markets worldwide. CRISPR-Cas9 (a revolutionary precision gene-editing tool) has generated the off-target editing problem, the germline editing ethics crisis, and, through He Jiankui\'s 2018 experiment, an international governance crisis in human gene modification. In each case, the solution was genuine. The cascade was also genuine.', S['body']))
+    story.append(P('In medicine, the cascade takes its most intimate and most tragic form: the solutions designed to relieve human suffering generate new forms of suffering. Antibiotics, the most successful therapeutic intervention in human history, saving an estimated 200 million lives in the first fifty years of clinical use have generated antibiotic resistance that now directly kills an estimated 1.27 million people a year (2019) and is the subject of a widely cited, much-debated projection of 10 million a year by 2050. OxyContin (a genuinely effective analgesic for chronic pain) generated an addiction and overdose epidemic that has killed over 500,000 Americans and fundamentally restructured street drug markets worldwide. CRISPR-Cas9 (a revolutionary precision gene-editing tool) has generated the off-target editing problem, the germline editing ethics crisis, and, through He Jiankui\'s 2018 experiment, an international governance crisis in human gene modification. In each case, the solution was genuine. The cascade was also genuine.', S['body']))
     story.append(P('In governance, the cascade manifests as the unintended consequences of policy. Prohibition generated organised crime. The War on Drugs generated mass incarceration. NATO expansion generated the geopolitical tensions it was designed to prevent. GDPR generated the cookie consent fatigue that has made privacy less meaningful, not more. Urban zoning regulations generated housing affordability crises in every major city that adopted them comprehensively. The pattern is consistent: policies designed to solve social problems by modifying the incentive structures of complex human societies routinely generate cascades that are more severe and more durable than the problems they were designed to solve, because they operate in a system of human agents whose rational responses to any incentive structure will include responses the policy designers did not model.', S['body']))
     story.append(P('What is common to all seven domains? First, every cascade was generated by a solution that was genuinely solving a real problem. None of the solutions examined in this book were mistakes in the simple sense of not working. They worked. The cascade was the system\'s response to their working. Second, every cascade was foreseeable in principle but was not foreseen in practice, because the institutional and cognitive structures of the domains did not require (and in many cases actively discouraged) the cross-domain cascade analysis that would have revealed it. Third, every cascade grew faster than the capacity of the institutions responsible for managing it, because the cascade\'s exponential structure eventually outpaces any linear institutional response. And fourth, every cascade generated further solutions, which generated further cascades, in a recursive process that continues to the present.', S['body']))
     story.append(callout('<b>The Seven Common Patterns:</b> (1) Genuine solutions generate genuine cascades. (2) Cascades are foreseeable but are not foreseen. (3) Cascades grow faster than institutional response capacity. (4) Cascade management generates new cascades. (5) The cascade is structurally guaranteed by the mathematics of interaction in complex systems. (6) The cascade accelerates as network connectivity increases. (7) The cascade can be reduced but not eliminated by cascade-aware design.', S))
@@ -3258,9 +2328,9 @@ def conclusion(S):
     story.append(SP(18))
     paras = [
         ('body0', """This book began with a story about snakes. It ends with a claim about
-the future of human civilisation. The two are connected by a single mathematical fact:
-that the introduction of solutions into complex systems generates problems at a rate that
-grows exponentially with the number of solutions. This fact is uncomfortable. It implies
+the future of human civilisation. The two are connected by a single structural tendency:
+that introducing solutions into complex systems tends to generate problems far faster
+than the solutions themselves. This is uncomfortable. It implies
 that progress (genuine, valuable, life-improving progress) carries within it the seeds
 of future crises. It implies that the more we solve, the more we create to be solved.
 It implies that the arc of human knowledge does not bend inexorably toward resolution
@@ -3292,9 +2362,9 @@ deployment, the question that this book has asked of every innovation in its pag
 what problems will this solution create?"""),
 
         ('body', """The answer, invariably, is: more than we think. But knowing that — really
-knowing it, as a mathematical certainty and a historical pattern rather than a vague
+knowing it, as a structural tendency and a historical pattern rather than a vague
 concern is itself the beginning of wisdom. And wisdom, in the age of global
-connectivity and exponential cascade amplification, is the most urgent technology
+connectivity and rapid cascade amplification, is among the most urgent capacities
 humanity has ever needed to develop."""),
 
         ('body', """The age of solution chaos is not ending. It is accelerating. But the
@@ -3455,7 +2525,7 @@ to that beginning."""),
     story.append(SP(14))
     story.append(P(
         'You have the accounting now. The mathematics of '
-        'Chapter 10 shows you why cascades are inevitable '
+        'Chapter 10 shows you why cascades are so hard to avoid '
         'and how to estimate their magnitude. The case studies '
         'of Chapters 3 through 9 show you what cascades '
         'look like in seven domains, and how similar they '
@@ -3554,7 +2624,7 @@ def appendices(S):
     story.append(SP(14))
     story.append(P(
         'Readers who do not require the formal machinery will find that the '
-        'theorem statements in Chapters 10 and 11, together with the plain-language '
+        'statements of the central claims in Chapters 10 and 11, together with the plain-language '
         'explanations of their meaning given in those chapters, are sufficient to '
         'understand the cascade theory and to apply the Cascade Risk Index in '
         'practice.',
@@ -3610,7 +2680,7 @@ def appendices(S):
         ('1900s', 'Automobile (mobility)', 'Pollution, sprawl, 1.35M deaths/yr globally'),
         ('1914', 'Industrial warfare (decisive conflict)', 'WW1: 20M dead, influenza pandemic via troop movement'),
         ('1920', 'Prohibition (temperance)', 'Organised crime, corruption, dangerous spirits'),
-        ('1928', 'Penicillin (infection)', 'Antibiotic resistance — 700,000 deaths/yr and rising'),
+        ('1928', 'Penicillin (infection)', 'Antibiotic resistance — 1.27M deaths/yr (2019) and rising'),
         ('1930s', 'Leaded petrol (engine knock)', 'Global lead poisoning, estimated 824M IQ points lost'),
         ('1938', 'Nuclear fission (energy)', 'Hiroshima, Chernobyl, 90,000-yr waste problem'),
         ('1945', 'DDT (malaria/pests)', 'Ecosystem collapse, Silent Spring'),
@@ -3723,7 +2793,7 @@ def appendices(S):
             '4.5 Can the solution ecosystem be made more compatible (reducing interaction cascade coefficients domain overlap and interaction amplification for the most dangerous interaction pairs)?',
         ]),
         ('Section 5: Monitoring and Response', [
-            '5.1 Is there a monitoring system capable of detecting cascade effects at the required velocity (Theorem 5 compliance)?',
+            '5.1 Is there a monitoring system capable of detecting cascade effects at the required velocity (adequate monitoring frequency)?',
             '5.2 Are the cascade indicators clearly defined, with threshold values that trigger response?',
             '5.3 Is there an institutional owner for the cascade monitoring function with authority to act on cascade signals?',
             '5.4 Is there a pre-specified response protocol for the most likely cascade scenarios?',
@@ -3826,219 +2896,6 @@ def appendices(S):
         S['body']))
     story.append(SP(14))
 
-    story.append(P('Case Study E.2: Leaded Petrol (1921–1996): A Delayed Management Cascade', S['subsection']))
-    story.append(P(
-        'Tetraethyl lead (TEL) was introduced as an antiknock additive '
-        'for petrol in 1921, solving the problem of engine knock in '
-        'high-compression internal combustion engines. The cascade, '
-        'lead poisoning at population scale was not unknown at '
-        'the time: lead toxicity had been documented since antiquity, '
-        'and workers in TEL manufacturing facilities were experiencing '
-        'acute lead poisoning within months of production beginning '
-        '(in 1924, five workers died at the Standard Oil TEL plant '
-        'in New Jersey; the plant was nicknamed "the loony gas '
-        'building" by employees). The decision to proceed with '
-        'commercial TEL production was a case study in motivated '
-        'reasoning: industry-funded scientists minimised toxicity '
-        'concerns; the economic benefits (improved engine performance) '
-        'were immediate and visible; the costs (population-level '
-        'cognitive effects from chronic low-level lead exposure) '
-        'were distributed, delayed, and initially unmeasurable.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The cascade management failure with leaded petrol lasted '
-        'seven decades. Herbert Needleman\'s 1979 study demonstrating '
-        'cognitive effects in children from low-level lead exposure '
-        '— and the sustained campaign by the Ethyl Corporation and '
-        'General Motors to discredit his research is one of the '
-        'most documented cases of solution-cascade denial in the '
-        'scientific literature. The phaseout of leaded petrol in '
-        'the United States, completed by 1996, has been associated '
-        'in subsequent econometric research with measurable reductions '
-        'in violent crime rates (the Nevin hypothesis, supported '
-        'by Rick Nevin 2000, 2007 and subsequently by multiple '
-        'independent researchers). If the Nevin hypothesis is '
-        'correct, the seventy-year delay in managing the leaded '
-        'petrol cascade cost the United States decades of '
-        'elevated violent crime, reduced educational attainment, '
-        'and population-level cognitive impairment. The CRI '
-        'of leaded petrol, computed retrospectively, is extreme: '
-        'cascade coefficient = 0.95, the solution complexity = 1.0, around 2.1, producing CRI ≈ 8.7.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P('Case Study E.3: The Green Revolution: Managed Success with Residual Cascades', S['subsection']))
-    story.append(P(
-        'The Green Revolution, the programme of high-yielding crop '
-        'variety development, irrigation expansion, and agricultural '
-        'chemical use that transformed food production in South Asia '
-        'and Latin America from the 1960s through the 1980s is '
-        'among the most consequential humanitarian achievements '
-        'of the twentieth century. Norman Borlaug\'s wheat varieties, '
-        'introduced to Mexico in the 1940s and to India and Pakistan '
-        'in the 1960s, doubled and tripled yields. The Green Revolution '
-        'prevented the famines that demographers and ecologists had '
-        'predicted would kill hundreds of millions in South Asia '
-        'by the 1970s. Borlaug was awarded the Nobel Peace Prize '
-        'in 1970.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The cascades from the Green Revolution were anticipated by '
-        'Borlaug himself. In his Nobel acceptance speech, he warned '
-        'that the population growth enabled by food abundance would '
-        'itself generate resource scarcity within decades if family '
-        'planning did not accompany agricultural development. '
-        'The other cascades: chemical dependency, soil degradation, '
-        'groundwater depletion, and monoculture vulnerability, '
-        'were less fully anticipated. Punjab, India, the agricultural '
-        'heartland of the Green Revolution, now faces critical '
-        'groundwater depletion (the water table dropping at '
-        'approximately 1 metre per year), soil organic matter '
-        'degradation from continuous monoculture, and declining '
-        'yields from soil exhaustion. The same agricultural '
-        'package that saved hundreds of millions of lives '
-        'has created structural fragility in the food systems '
-        'of regions that adopted it most thoroughly.',
-        S['body']))
-    story.append(SP(14))
-    story.append(callout(
-        '<b>The Green Revolution CRI:</b> Cascade Complexity cascade coefficient = 0.7; '
-        'Reach the solution complexity = 0.95 (billion-scale adoption); Network exponent around 1.8; '
-        'CRI ≈ 4.2 (High-Severe). The cascade was manageable and partially managed; '
-        'the residual cascades (soil, water, monoculture) remain active as of 2024.',
-        S))
-    story.append(SP(14))
-
-    story.append(P('Case Study E.4: The Internet: An Ongoing Cascade of Extraordinary Complexity', S['subsection']))
-    story.append(P(
-        'The internet solved a genuinely important problem: the '
-        'expensive and slow transmission of information across '
-        'distances. The ARPANET, funded by DARPA from 1969, '
-        'was designed to solve the specific problem of robust '
-        'military communication in the event of nuclear attack '
-        '— a network that would route around damage. The '
-        'cascade from this solution is the entire digital '
-        'economy, with all its benefits and all its problems. '
-        'The internet is the most consequential cascade '
-        'generator in human history since the printing press '
-        '— and possibly since written language itself.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The internet cascade tree has at least five major '
-        'branches of depth 3 or greater. The e-commerce branch: '
-        'online retail solved the problem of geographic access '
-        'to goods → Amazon destroyed local retail ecosystems → '
-        'hollowed-out town centres became political deserts → '
-        'rise of economic populism in deindustrialised communities. '
-        'The social media branch: platforms solved the problem '
-        'of maintaining dispersed social connections → '
-        'algorithmic amplification optimised for engagement '
-        '→ epistemic fragmentation and political polarisation '
-        '→ democratic dysfunction and institutional distrust. '
-        'The cybersecurity branch: digital communication solved '
-        'information transmission → attack surface for criminals '
-        'and state actors expanded → security industry grew to '
-        '$188 billion (2023) → security solutions generated '
-        'new vulnerability surfaces. The surveillance branch: '
-        'data generation solved the problem of unknown consumer '
-        'preferences → surveillance capitalism → data broker '
-        'industry → privacy erosion → regulatory cascade '
-        '(GDPR, CCPA, ongoing). The AI branch: data abundance '
-        'and computational power solved prediction problems '
-        '→ AI capability acceleration → alignment problem '
-        '→ existential risk discourse → AI governance crisis.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The internet demonstrates a key feature of extreme cascades: '
-        'the cascade rate exceeds the institutional adaptation rate. '
-        'Governments and regulatory bodies typically operate on '
-        'timescales of years to decades; the internet cascade '
-        'has been generating new problems at timescales of months '
-        'to years. The result is a permanent governance lag '
-        'in which every regulatory response addresses the '
-        'internet of five years ago while the internet of '
-        'today generates new cascades at speeds that '
-        'institutional processes cannot match.',
-        S['body']))
-    story.append(SP(14))
-
-    story.append(P('Case Study E.5: Antibiotics. The Archetypal Medical Cascade', S['subsection']))
-    story.append(P(
-        'Fleming\'s discovery of penicillin in 1928 and its '
-        'clinical development through the 1940s is justifiably '
-        'one of the most celebrated achievements in the history '
-        'of medicine. Before antibiotics, bacterial infections '
-        'killed indiscriminately: pneumonia, tuberculosis, '
-        'syphilis, scarlet fever, wound infections. The introduction '
-        'of antibiotics reduced mortality from infectious disease '
-        'by an estimated 80-90% in the decades following the '
-        '1940s. The average life expectancy gain attributable '
-        'to antibiotics has been estimated at 10-20 years, '
-        'the largest single advance in human longevity in '
-        'recorded history.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'Fleming himself, in his 1945 Nobel Prize lecture, '
-        'warned that antibiotic resistance was already '
-        'observable in laboratory settings and would become '
-        'clinically significant if antibiotics were used '
-        'carelessly. The warning was prescient and unheeded. '
-        'Antibiotics were overprescribed for viral infections '
-        '(against which they are ineffective), used '
-        'prophylactically in industrial livestock production '
-        '(which accelerates resistance by exposing large '
-        'bacterial populations to sub-therapeutic doses), '
-        'and taken at sub-therapeutic doses by patients '
-        'who discontinued courses early. By 2024, '
-        'antimicrobial resistance (AMR) causes an '
-        'estimated 1.27 million deaths annually as a '
-        'primary cause and contributes to 4.95 million '
-        'deaths (Lancet, 2022). The O\'Neill Commission\'s '
-        '2016 projection — 10 million deaths annually '
-        'by 2050 if trends continue would make AMR '
-        'the leading cause of death globally, surpassing '
-        'cancer and cardiovascular disease.',
-        S['body']))
-    story.append(SP(14))
-    story.append(P(
-        'The antibiotic cascade perfectly illustrates the '
-        'temporal asymmetry of cascade costs and benefits. '
-        'The benefits of antibiotic use: infection cure, '
-        'reduced mortality — occur immediately and are '
-        'visible to the individual patient and physician. '
-        'The cascade costs: resistance gene selection, '
-        'spread through bacterial populations are '
-        'distributed across populations and time. '
-        'No individual physician prescribing an antibiotic '
-        'for a mild infection causes antibiotic resistance; '
-        'the aggregate of billions of such decisions causes '
-        'the resistance cascade. This is the tragedy of '
-        'the commons applied to the bacterial commons: '
-        'individually rational decisions collectively '
-        'destroy a shared resource. The solution, '
-        'antibiotic stewardship, restricted prescribing, '
-        'investment in new antibiotic development, '
-        'requires coordination across millions of '
-        'independent decision-makers globally, including '
-        'in countries where antibiotics are available '
-        'without prescription and where prescribing '
-        'physicians face immediate economic pressure '
-        'to satisfy patient expectations.',
-        S['body']))
-    story.append(SP(14))
-    story += epigraph(
-        'I would like to sound one note of warning. It is not difficult to make microbes resistant '
-        'to penicillin in the laboratory by exposing them to concentrations not sufficient to kill them.',
-        'Alexander Fleming, Nobel Lecture, 1945',
-        S)
-    story.append(SP(14))
-
-    # ------------------------------------------------------------------ #
     # APPENDIX F: A Glossary of Cascade Theory                            #
     # ------------------------------------------------------------------ #
     story.append(SP(18))
@@ -4297,166 +3154,12 @@ def appendices(S):
     story.append(SP(18))
 
     # ------------------------------------------------------------------ #
-    # APPENDIX G: A Cascade Assessment Checklist                          #
-    # ------------------------------------------------------------------ #
-    # ── Appendix G (promoted to proper page-opener in v10) ──
-    story.append(PageBreak())
-    story += chapter_opener('Appendix G',
-        'A Practical Cascade Assessment Checklist',
-        'A structured five-phase review for use before deployment', S)
-    story.append(P(
-        'The following checklist is designed for use by solution designers, '
-        'policymakers, and reviewers conducting cascade assessments before '
-        'deployment. It operationalises the Cascade Risk Index (CRI) framework '
-        'and the design principles of Chapter 12 into a structured review '
-        'process. The checklist is organised into five phases, reflecting '
-        'the pre-deployment, deployment-design, monitoring-plan, '
-        'governance, and post-deployment-review stages of '
-        'a complete cascade-aware solution lifecycle.',
-        S['body0']))
-    story.append(SP(8))
-
-    story.append(P('<b>Phase 1: Cascade Characterisation (before design begins)</b>', S['subsection']))
-    phase1 = [
-        ('1.1 Problem System Analysis: Map the problem system that the solution will enter. '
-         'Identify the key agents (who will interact with the solution), '
-         'the key feedback loops (how will agents\' behaviour change the system state), '
-         'and the key cascade transmission pathways (how could a cascade propagate '
-         'through agent networks).'),
-        ('1.2 Historical Analogue Identification: Identify at least three historical solutions '
-         'that entered similar problem systems. Document their cascade profiles: '
-         'cascade onset timescale, cascade magnitude relative to primary benefit, '
-         'cascade type (Type I-IV from Appendix B), and whether the cascade '
-         'was anticipated.'),
-        ('1.3 Cascade Coefficient Estimation: Estimate cascade coefficient by assessing: '
-         '(a) structural complexity (number of agent types the solution will interact with); '
-         '(b) adaptive complexity (probability that agents will change behaviour in response); '
-         '(c) temporal complexity (how quickly interactions will propagate). '
-         'Assign a preliminary cascade coefficient score on a 0-1 scale.'),
-        ('1.4 Interaction Cascade Assessment: Identify all existing solutions in the same '
-         'problem domain. For each, assess the domain overlap (the interaction probability) '
-         'and the interaction amplification, the interaction severity. Document at least the three highest '
-         'domain overlap × interaction amplification product pairs as priority interaction cascade risks.'),
-    ]
-    for item in phase1:
-        story.append(P(f'□  {item}', S['list']))
-        story.append(SP(6))
-
-    story.append(SP(10))
-    story.append(P('<b>Phase 2: Design Review (during solution design)</b>', S['subsection']))
-    phase2 = [
-        ('2.1 Modularity Assessment: Can the solution be decomposed into independent '
-         'modules with well-defined interfaces? Document the minimum modular decomposition '
-         'and identify any architectural features that create cross-module cascade pathways.'),
-        ('2.2 Reversibility Assessment: What would it cost (financially, institutionally, '
-         'ecologically) to withdraw the solution if cascade management required it? '
-         'Assign a reversibility cost score (low/medium/high/irreversible). '
-         'High-reversibility-cost solutions require lower CRI thresholds for deployment.'),
-        ('2.3 Scale Minimisation: What is the minimum deployment scale required to test '
-         'the solution\'s primary function? Document the staged rollout plan '
-         '(Stage 1 size, Stage 2 size, full deployment threshold) and the cascade '
-         'monitoring checkpoints between stages.'),
-        ('2.4 Agent Incentive Analysis: For each major agent category that will interact '
-         'with the solution, document: (a) how the solution changes their incentive landscape; '
-         '(b) what behavioural adaptations are plausible given the incentive change; '
-         '(c) how those adaptations could generate cascade effects.'),
-    ]
-    for item in phase2:
-        story.append(P(f'□  {item}', S['list']))
-        story.append(SP(6))
-
-    story.append(SP(10))
-    story.append(P('<b>Phase 3: Monitoring Plan (before first deployment)</b>', S['subsection']))
-    phase3 = [
-        ('3.1 Early Warning Indicators: Define at least five measurable indicators '
-         'that would signal Stage 2 cascade incubation (adaptive responses by system '
-         'agents consistent with cascade buildup). Specify measurement frequency '
-         'and the threshold values that would trigger enhanced monitoring.'),
-        ('3.2 Cascade Onset Indicators: Define at least five measurable indicators '
-         'that would signal Stage 3 cascade onset. Specify the institutional response '
-         'that each indicator threshold triggers (enhanced monitoring, deployment pause, '
-         'deployment scale reduction, or withdrawal initiation).'),
-        ('3.3 Data Collection Infrastructure: Identify what data would be needed to '
-         'measure the defined indicators. Document data collection methods, '
-         'data governance (who owns it, who can access it), and analysis responsibilities. '
-         'Ensure data collection begins at Stage 1 deployment, not at full deployment.'),
-        ('3.4 Responsible Cascade Monitor: Designate an individual or institution '
-         'responsible for conducting ongoing cascade monitoring and for escalating '
-         'cascade signals to decision-makers. This entity should be independent '
-         'of the solution\'s commercial stakeholders.'),
-    ]
-    for item in phase3:
-        story.append(P(f'□  {item}', S['list']))
-        story.append(SP(6))
-
-    story.append(SP(10))
-    story.append(P('<b>Phase 4: Governance and Accountability</b>', S['subsection']))
-    phase4 = [
-        ('4.1 Sunset Clause: Is a sunset clause appropriate for this solution? '
-         'If yes, specify the sunset date and the renewal criteria. '
-         'If no, document the reasoning. For irreversible or broad-scale solutions, '
-         'the absence of a sunset clause requires additional justification.'),
-        ('4.2 Cascade Liability Disclosure: Document the cascade risks that have been '
-         'identified in this assessment and disclose them to all parties who will '
-         'be affected by the solution\'s deployment. Disclosure does not imply '
-         'acceptance of all identified cascades; it enables informed consent.'),
-        ('4.3 Cascade Governance Body: For solutions with CRI above the high-risk threshold, '
-         'establish a cascade governance body with authority to require deployment '
-         'pause or scale reduction if cascade monitoring triggers defined thresholds. '
-         'The governance body should include representation from affected parties, '
-         'independent cascade experts, and solution stakeholders.'),
-    ]
-    for item in phase4:
-        story.append(P(f'□  {item}', S['list']))
-        story.append(SP(6))
-
-    story.append(SP(10))
-    story.append(P('<b>Phase 5: Post-Deployment Review</b>', S['subsection']))
-    phase5 = [
-        ('5.1 Cascade Audit (12 months post-deployment): Conduct a systematic audit '
-         'of actual cascade effects against the predicted cascade profile. '
-         'Document which predicted cascades have manifested, which have not, '
-         'and which unanticipated cascades have appeared. Update the cascade '
-         'monitoring plan accordingly.'),
-        ('5.2 Model Update: Revise the initial cascade characterisation (Phase 1) '
-         'in light of the 12-month audit. Update the CRI, the early warning indicators, '
-         'and the cascade onset thresholds. Share the updated model with the '
-         'cascade data commons for the benefit of future assessments.'),
-        ('5.3 Cascade Knowledge Contribution: Document this solution\'s cascade profile '
-         'in sufficient detail for use as a historical analogue in future assessments '
-         '(Phase 1.2 of this checklist). Cascade knowledge compounds over time: '
-         'each documented cascade makes future assessments more accurate. '
-         'Contributing to the commons is a professional obligation.'),
-    ]
-    for item in phase5:
-        story.append(P(f'□  {item}', S['list']))
-        story.append(SP(6))
-
-    story.append(SP(14))
-    story.append(P(
-        'This checklist is not exhaustive. Every solution, every domain, '
-        'and every deployment context will present unique cascade risk factors '
-        'that a generic checklist cannot anticipate. The purpose of the '
-        'checklist is not to replace expert cascade judgment but to ensure '
-        'that the basic dimensions of cascade risk are systematically '
-        'considered before deployment, not discovered after the cascade '
-        'has passed the onset threshold at which management becomes reactive '
-        'rather than proactive. The professional who completes this checklist '
-        'thoughtfully, updates it as cascade evidence accumulates, and shares '
-        'their findings with the cascade knowledge commons is making a '
-        'contribution to cascade-aware civilisation that is as valuable, '
-        'in its way, as the solution itself.',
-        S['body']))
-
-    story.append(SP(18))
-
-    # ------------------------------------------------------------------ #
     # APPENDIX H: Intellectual Genealogy of Cascade Theory                 #
     # ------------------------------------------------------------------ #
     story.append(SP(18))
     # ── Appendix H (promoted to proper page-opener in v10) ──
     story.append(PageBreak())
-    story += chapter_opener('Appendix H',
+    story += chapter_opener('Appendix G',
         'The Intellectual Genealogy of Cascade Theory',
         'A short history of the thinkers whose work informs this book', S)
     story.append(P(
@@ -4915,7 +3618,7 @@ def appendices(S):
         ('<b>L</b>', ''), ('Landauer\'s Principle', 'Chapter 4'),
         ('Law of Cascade Problems', 'Chapter 1'),
         ('Leverage Points (Meadows)', 'Chapters 12, 13'),
-        ('<b>M</b>', ''), ('Main Theorem', 'Chapter 10'),
+        ('<b>M</b>', ''), ('central claim', 'Chapter 10'),
         ('Marks, Howard', 'Chapter 13'),
         ('Maxwell\'s Demon', 'Chapter 4'),
         ('Meadows, Donella', 'Chapters 12, 13'),

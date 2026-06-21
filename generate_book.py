@@ -39,6 +39,10 @@ TW      = PW - ML - MR   # text width
 
 # ─── GLOBAL STATE for running headers ─────────────────────────────────────────
 G = {'chapter': '', 'part': ''}
+# Page numbers (1-based, as the canvas sees them) of Part-divider pages, so the
+# page callback can leave them as clean title pages (no running head, no folio).
+# Populated during a discovery build pass; see book_main_reader.py.
+DIVIDER_PAGES = set()
 
 # ─── CUSTOM FLOWABLES ─────────────────────────────────────────────────────────
 class Mark(Flowable):
@@ -49,6 +53,16 @@ class Mark(Flowable):
     def draw(self):
         if self.chapter: G['chapter']=self.chapter
         if self.part:    G['part']=self.part
+
+
+class _MarkDivider(Flowable):
+    """Zero-height marker recording its own page number as a Part-divider page."""
+    def __init__(self):
+        super().__init__(); self.width=self.height=0
+    def wrap(self, *a):
+        return (0, 0)
+    def draw(self):
+        DIVIDER_PAGES.add(self.canv.getPageNumber())
 
 
 class _RedrawChapterHeader(Flowable):
@@ -101,12 +115,15 @@ class VSpace(Spacer):
     def __init__(self, h): super().__init__(1, h)
 
 class Rule(Flowable):
-    def __init__(self, w=None, thick=0.4, spaceAfter=4):
+    def __init__(self, w=None, thick=0.4, spaceAfter=4, center=False):
         super().__init__()
-        self.w=w or TW; self.thick=thick; self.height=thick+spaceAfter; self.width=self.w
+        self.w=w or TW; self.thick=thick; self.height=thick+spaceAfter
+        self.center=center
+        self.width=TW if center else self.w
     def draw(self):
         self.canv.setLineWidth(self.thick); self.canv.setStrokeColor(colors.black)
-        self.canv.line(0,self.thick,self.w,self.thick)
+        x0=(TW-self.w)/2 if self.center else 0
+        self.canv.line(x0,self.thick,x0+self.w,self.thick)
 
 # ─── STYLES ───────────────────────────────────────────────────────────────────
 def make_styles():
@@ -153,12 +170,14 @@ def make_styles():
     S['theorem_b']   = s('theorem_b',   fontName='Times-Italic',fontSize=11,leading=16,
                          leftIndent=12,firstLineIndent=0,spaceAfter=8)
     S['list']        = s('list',        leftIndent=24,firstLineIndent=-12,spaceAfter=3)
-    S['part_label']  = s('part_label',  fontName='Times-Roman',fontSize=12,
-                         alignment=TA_CENTER,spaceBefore=100,spaceAfter=10,tracking=4)
-    S['part_title']  = s('part_title',  fontName='Times-Bold',fontSize=36,leading=44,
-                         alignment=TA_CENTER,spaceAfter=16)
-    S['part_desc']   = s('part_desc',   fontName='Times-Italic',fontSize=13,leading=19,
-                         alignment=TA_CENTER,leftIndent=48,rightIndent=48)
+    S['part_label']  = s('part_label',  fontName='Times-Roman',fontSize=15,
+                         alignment=TA_CENTER,spaceBefore=0,spaceAfter=16,tracking=6,
+                         textColor=colors.HexColor('#666666'))
+    S['part_title']  = s('part_title',  fontName='Times-Bold',fontSize=58,leading=64,
+                         alignment=TA_CENTER,spaceAfter=18)
+    S['part_desc']   = s('part_desc',   fontName='Times-Italic',fontSize=13.5,leading=20,
+                         alignment=TA_CENTER,leftIndent=54,rightIndent=54,
+                         textColor=colors.HexColor('#444444'))
     S['cover_title'] = s('cover_title', fontName='Times-Bold',fontSize=46,leading=56,
                          alignment=TA_CENTER,spaceAfter=18,spaceBefore=108)
     S['cover_sub']   = s('cover_sub',   fontName='Times-Italic',fontSize=18,leading=26,
@@ -196,6 +215,7 @@ def make_styles():
 def on_page(c, doc):
     pg = doc.page
     if pg <= 2: return  # cover + blank
+    if pg in DIVIDER_PAGES: return  # Part dividers are clean title pages
     c.saveState()
     c.setFont('Times-Italic',8.5)
     c.setStrokeColor(colors.black); c.setLineWidth(0.3)
@@ -339,14 +359,38 @@ def on_first(c, doc):
     # Page 1 is the designed cover, drawn directly on the canvas.
     _draw_designed_cover(c, PW, PH)
 
-# ─── FIGURE FACTORY (xkcd sketch style) ───────────────────────────────────────
+# ─── FIGURE FACTORY ───────────────────────────────────────────────────────────
+# Two styles are used deliberately:
+#   • clean_style()  — for charts that plot numbers (data or mathematical curves).
+#                      A sober, professional look so quantitative figures are not
+#                      undermined by a hand-drawn aesthetic.
+#   • plt.xkcd()     — kept ONLY for conceptual diagrams (trees, timelines, concept
+#                      maps) where the sketch look correctly signals "schematic idea,
+#                      not measurement."
+from contextlib import contextmanager
+
+@contextmanager
+def clean_style():
+    """Professional chart style for quantitative figures (replaces the xkcd sketch)."""
+    rc = {
+        'font.family': 'serif',
+        'font.size': 10,
+        'axes.titlesize': 12, 'axes.titleweight': 'bold',
+        'axes.grid': True, 'grid.alpha': 0.30, 'grid.linewidth': 0.6,
+        'axes.spines.top': False, 'axes.spines.right': False,
+        'axes.edgecolor': '#333333', 'axes.linewidth': 0.8,
+        'lines.linewidth': 2.0,
+    }
+    with plt.rc_context(rc):
+        yield
+
 def fig_to_image(fig, w=5.0*inch, h=3.2*inch):
     buf=BytesIO(); fig.savefig(buf,format='png',dpi=160,bbox_inches='tight',
                                facecolor='white',edgecolor='none')
     buf.seek(0); plt.close(fig); return Image(buf,width=w,height=h)
 
 def fig_exponential_cascade():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.8))
         n=np.arange(0,11)
         ax.plot(n, 2**n, 'k-', lw=2.5, label='Problems (traditional): $O(2^n)$')
@@ -368,25 +412,25 @@ def fig_cascade_tree():
         fig,ax=plt.subplots(figsize=(6.5,4.2))
         ax.set_xlim(0,10); ax.set_ylim(0,10); ax.axis('off')
         # Root
-        ax.annotate('', xy=(5,8), xytext=(5,9.2),
+        ax.annotate('', xy=(5,8), xytext=(5,9.2), zorder=1,
                     arrowprops=dict(arrowstyle='->', lw=2))
-        ax.text(5,9.5,'ORIGINAL\nPROBLEM',ha='center',va='center',fontsize=9,
+        ax.text(5,9.5,'ORIGINAL\nPROBLEM',ha='center',va='center',fontsize=9,zorder=5,
                 bbox=dict(boxstyle='round',fc='white',ec='black',lw=1.5))
-        ax.text(5,7.5,'SOLUTION',ha='center',va='center',fontsize=9,
+        ax.text(5,7.5,'SOLUTION',ha='center',va='center',fontsize=9,zorder=5,
                 bbox=dict(boxstyle='round',fc='lightgray',ec='black',lw=1.5))
         # Level 2
         for x,label in [(2.5,'New Problem A'),(7.5,'New Problem B')]:
-            ax.annotate('',xy=(x,5.8),xytext=(5,7.2),
+            ax.annotate('',xy=(x,5.8),xytext=(5,7.2),zorder=1,
                         arrowprops=dict(arrowstyle='->',lw=1.5,color='black'))
-            ax.text(x,5.4,label,ha='center',va='center',fontsize=8,
+            ax.text(x,5.4,label,ha='center',va='center',fontsize=8,zorder=5,
                     bbox=dict(boxstyle='round',fc='white',ec='black'))
         # Level 3
         positions=[(1,3.2,'Fix A.1'),(3,3.2,'Fix A.2'),(6.2,3.2,'Fix B.1'),(8.5,3.2,'Fix B.2')]
         parents=[(2.5,5.1),(2.5,5.1),(7.5,5.1),(7.5,5.1)]
         for (px,py),(x,y,l) in zip(parents,positions):
-            ax.annotate('',xy=(x,y+0.5),xytext=(px,py),
+            ax.annotate('',xy=(x,y+0.5),xytext=(px,py),zorder=1,
                         arrowprops=dict(arrowstyle='->',lw=1.2,color='gray'))
-            ax.text(x,y,l,ha='center',va='center',fontsize=7,
+            ax.text(x,y,l,ha='center',va='center',fontsize=7,zorder=5,
                     bbox=dict(boxstyle='round',fc='lightyellow',ec='gray'))
         # Level 4 sprouts (RNG seeded so the figure is reproducible across builds)
         rng = np.random.RandomState(42)
@@ -400,7 +444,7 @@ def fig_cascade_tree():
     return fig
 
 def fig_antibiotic_resistance():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         years=np.array([1945,1955,1965,1975,1985,1995,2005,2015,2025])
         drugs=np.array([2,5,12,18,22,28,35,40,43])
@@ -419,7 +463,7 @@ def fig_antibiotic_resistance():
     return fig
 
 def fig_jevons_paradox():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         years=np.arange(1850,1920)
         efficiency=50+np.cumsum(np.random.RandomState(42).uniform(0.3,0.8,len(years)))
@@ -439,7 +483,7 @@ def fig_jevons_paradox():
     return fig
 
 def fig_brooks_law():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         n=np.arange(1,21)
         links=n*(n-1)/2
@@ -455,7 +499,7 @@ def fig_brooks_law():
     return fig
 
 def fig_opioid_crisis():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         years=np.array([1999,2002,2005,2008,2011,2014,2017,2020,2023])
         deaths=np.array([6,9,15,20,26,35,47,70,81])
@@ -470,7 +514,7 @@ def fig_opioid_crisis():
     return fig
 
 def fig_prohibition():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         cats=['Alcohol-related\nhomicides (index)','Organized crime\ngroups','Police\ncorruption cases',
               'Illegal speakeasies\n(thousands)']
@@ -518,7 +562,7 @@ def fig_godel_timeline():
     return fig
 
 def fig_windows_complexity():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         versions=['Win 1.0\n(1985)','Win 95\n(1995)','Win XP\n(2001)','Win 7\n(2009)','Win 10\n(2015)','Win 11\n(2021)']
         loc_million=[0.001,15,45,40,80,100]
@@ -535,7 +579,7 @@ def fig_windows_complexity():
     return fig
 
 def fig_social_media():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         years=np.array([2004,2007,2010,2013,2016,2019,2022])
         users_bn=np.array([0.001,0.05,0.5,1.2,2.1,3.5,4.7])
@@ -559,7 +603,7 @@ def fig_cascade_risk_index():
         ax.set_xlim(0,10); ax.set_ylim(0,10); ax.axis('off')
         ax.text(5,9.3,'Cascade Risk Index (CRI)', ha='center', fontsize=13, fontweight='bold')
         formula=r'CRI(s, E) = C(s) × Φ(s) × N(s)^α'
-        ax.text(5,7.8,formula,ha='center',fontsize=14,family='monospace',
+        ax.text(5,7.8,formula,ha='center',fontsize=14,family='monospace',zorder=5,
                 bbox=dict(boxstyle='round',fc='lightyellow',ec='black',lw=2))
         components=[
             (2,5.8,'C(s)','Cascade\nCoefficient\n(0–1)'),
@@ -567,11 +611,11 @@ def fig_cascade_risk_index():
             (8,5.8,'N(s)^α','Network\nReach\n(α > 1)'),
         ]
         for x,y,sym,desc in components:
-            ax.text(x,y+0.5,sym,ha='center',fontsize=12,fontweight='bold',
-                    bbox=dict(boxstyle='round',fc='white',ec='black',lw=1.5))
-            ax.text(x,y-0.6,desc,ha='center',fontsize=8.5,color='gray')
-            ax.annotate('',xy=(x,y+0.0),xytext=(5,7.2),
+            ax.annotate('',xy=(x,y+0.0),xytext=(5,7.2),zorder=1,
                         arrowprops=dict(arrowstyle='-',lw=0.8,color='gray'))
+            ax.text(x,y+0.5,sym,ha='center',fontsize=12,fontweight='bold',zorder=5,
+                    bbox=dict(boxstyle='round',fc='white',ec='black',lw=1.5))
+            ax.text(x,y-0.6,desc,ha='center',fontsize=8.5,color='gray',zorder=5)
         ax.text(5,2.8,'CRI < 0.3 -> Safe to deploy',ha='center',fontsize=9)
         ax.text(5,2.1,'CRI 0.3–0.6 -> Proceed with caution',ha='center',fontsize=9)
         ax.text(5,1.4,'CRI > 0.6 -> Redesign required',ha='center',fontsize=9,color='gray')
@@ -599,7 +643,7 @@ def fig_crispr():
     return fig
 
 def fig_goodhart():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         t=np.linspace(0,10,200)
         real=2+0.5*t+np.sin(t)*0.8+np.random.RandomState(3).randn(200)*0.3
@@ -677,7 +721,7 @@ def fig_historical_timeline():
     return fig
 
 def fig_green_revolution():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         years=np.array([1960,1970,1980,1990,2000,2010,2020])
         yield_idx=np.array([100,142,175,198,220,250,270])
@@ -726,7 +770,7 @@ def fig_quantum_problems():
     return fig
 
 def fig_drug_war():
-    with plt.xkcd():
+    with clean_style():
         fig,ax=plt.subplots(figsize=(6.5,3.6))
         years=np.array([1971,1980,1990,2000,2010,2020])
         spending_bn=np.array([1,3.5,7,18,26,35])
@@ -917,16 +961,17 @@ def callout(text, S):
     """Modern left-accent bar callout — clean white with 4pt black left bar.
     Wrapped in KeepTogether so the callout never splits across a page boundary."""
     ACCENT = colors.HexColor('#1C1C1C')
+    CREAM  = colors.HexColor('#F3F2EE')
     para = Paragraph(_fix_math(text), S['blockquote'])
     data = [[para]]
-    t = Table(data, colWidths=[TW - 48])
+    t = Table(data, colWidths=[TW - 40])
     t.setStyle(TableStyle([
-        ('LINEBEFORE',    (0,0), (-1,-1), 4,  ACCENT),
+        ('LINEBEFORE',    (0,0), (-1,-1), 3.5, ACCENT),
         ('LEFTPADDING',   (0,0), (-1,-1), 16),
-        ('RIGHTPADDING',  (0,0), (-1,-1), 12),
-        ('TOPPADDING',    (0,0), (-1,-1), 10),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 10),
-        ('BACKGROUND',    (0,0), (-1,-1), colors.white),
+        ('RIGHTPADDING',  (0,0), (-1,-1), 16),
+        ('TOPPADDING',    (0,0), (-1,-1), 11),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 12),
+        ('BACKGROUND',    (0,0), (-1,-1), CREAM),
     ]))
     return KeepTogether([t])
 
@@ -952,45 +997,30 @@ def math_img(latex_str, fontsize=13, w=5.0*inch, h=0.75*inch):
 
 
 def theorem_box(label, text, S, formula_img=None):
-    """Two-row styled box: dark-charcoal header + light body with left accent.
-    Wrapped in KeepTogether so the dark-charcoal header never appears at the
-    bottom of one page with the body trailing onto the next (a split that
-    looks broken to a reader).
-    """
-    DARK  = colors.HexColor('#1C1C1C')
-    LIGHT = colors.HexColor('#F8F8F8')
-    head  = Paragraph(_fix_math(label.upper()), S['theorem_head'])
+    """Editorial 'principle' treatment (no box): a heavy top rule, a small
+    letter-spaced label, the statement set in large italic, and a light closing
+    rule. Reads like a framed epigraph and sits naturally with the serif body.
+    Wrapped in KeepTogether so it never splits across a page boundary."""
+    CH   = colors.HexColor('#1C1C1C')
+    GREY = colors.HexColor('#6a6a6a')
+    INK  = colors.HexColor('#1a1a1a')
+    lab_style  = ParagraphStyle('pr_label', fontName='Helvetica-Bold', fontSize=8,
+                                textColor=GREY, leading=12, spaceBefore=0, spaceAfter=0,
+                                alignment=TA_LEFT)
+    stmt_style = ParagraphStyle('pr_stmt', fontName='Times-Italic', fontSize=12.5, leading=18,
+                                textColor=INK, leftIndent=10, rightIndent=10,
+                                spaceBefore=7, spaceAfter=0, alignment=TA_LEFT)
+    lab = _fix_math(label.upper())   # subtle letter-spacing
+    flows = [HRFlowable(width='100%', thickness=1.1, color=CH, spaceBefore=2, spaceAfter=8),
+             Paragraph(lab, lab_style)]
     if formula_img is not None:
-        if text:
-            body_content = [formula_img,
-                            Paragraph(_fix_math(text), S['theorem_b'])]
-        else:
-            body_content = formula_img
-    else:
-        body_content = Paragraph(_fix_math(f'<i>{text}</i>'), S['theorem_b'])
-    data  = [[head], [body_content]]
-    t = Table(data, colWidths=[TW - 36])
-    t.setStyle(TableStyle([
-        # outer border
-        ('BOX',           (0,0), (-1,-1), 0.8,  colors.black),
-        # header row
-        ('BACKGROUND',    (0,0), (0,0),   DARK),
-        ('TOPPADDING',    (0,0), (0,0),   7),
-        ('BOTTOMPADDING', (0,0), (0,0),   7),
-        ('LEFTPADDING',   (0,0), (0,0),   12),
-        ('RIGHTPADDING',  (0,0), (0,0),   12),
-        # divider
-        ('LINEBELOW',     (0,0), (0,0),   0.5,  colors.HexColor('#444444')),
-        # body row
-        ('BACKGROUND',    (0,1), (0,1),   LIGHT),
-        ('TOPPADDING',    (0,1), (0,1),   10),
-        ('BOTTOMPADDING', (0,1), (0,1),   12),
-        ('LEFTPADDING',   (0,1), (0,1),   14),
-        ('RIGHTPADDING',  (0,1), (0,1),   14),
-        # left accent bar across both rows
-        ('LINEBEFORE',    (0,0), (-1,-1), 4,    DARK),
-    ]))
-    return KeepTogether([t])
+        flows += [Spacer(1, 9), formula_img]
+    if text:
+        flows += [Paragraph(_fix_math(text), stmt_style)]
+    flows += [Spacer(1, 9),
+              HRFlowable(width='100%', thickness=0.4, color=colors.HexColor('#9a9a9a'),
+                         spaceBefore=0, spaceAfter=2)]
+    return KeepTogether(flows)
 
 
 def display_eq(latex_str, S, number=None, h=0.8*inch):
@@ -1021,15 +1051,22 @@ def display_eq(latex_str, S, number=None, h=0.8*inch):
     return KeepTogether([t])
 
 def part_page(num, title, desc, S):
+    # A clean, vertically-centred divider: small-cap PART label, a large title
+    # that fills the page, framing rules, and an italic description.
     return [
         PageBreak(),
         Mark(chapter=title, part=num),
+        _MarkDivider(),                # records this page as a clean divider page
+        SP(165),                       # push the block toward the vertical centre
+        Rule(w=1.1*inch, thick=1.0, spaceAfter=14, center=True),
         P(f'PART {num}', S['part_label']),
         P(title, S['part_title']),
-        SP(18),
+        SP(20),
         HR(),
-        SP(12),
+        SP(16),
         P(desc, S['part_desc']),
+        SP(14),
+        Rule(w=1.1*inch, thick=1.0, spaceAfter=0, center=True),
         PageBreak(),
     ]
 

@@ -1,0 +1,230 @@
+# Baseline Inventory — Reader's Edition (Phase 0)
+
+**Total prose words (approx):** 99,938
+
+Approximate: counts prose inside P()/callout()/theorem_box()/epigraph()/content-tuple calls, inline tags stripped. Excludes figure-internal matplotlib text and PDF chrome.
+
+| Module | Chapter fn | Words | Sections | Callouts | Theorem boxes | Epigraphs | Figures |
+|---|---|--:|--:|--:|--:|--:|--:|
+| intro | `preface` | 688 | 0 | 0 | 0 | 1 | 0 |
+| intro | `intro_chapter` | 4,990 | 9 | 2 | 0 | 1 | 2 |
+| intro | `chapter1` | 5,781 | 11 | 3 | 3 | 1 | 4 |
+| intro | `chapter2` | 3,451 | 8 | 2 | 0 | 2 | 0 |
+| intro | `chapter3` | 4,812 | 10 | 3 | 0 | 1 | 6 |
+| 4to6 | `chapter4` | 6,267 | 9 | 1 | 0 | 1 | 3 |
+| 4to6 | `chapter5` | 7,750 | 11 | 4 | 0 | 1 | 8 |
+| 4to6 | `chapter6` | 7,336 | 10 | 6 | 0 | 1 | 5 |
+| 7to9 | `chapter7` | 8,275 | 11 | 4 | 0 | 1 | 6 |
+| 7to9 | `chapter8` | 5,458 | 8 | 1 | 0 | 2 | 3 |
+| 7to9 | `chapter9` | 10,103 | 11 | 4 | 0 | 2 | 5 |
+| 10to13 | `chapter10` | 4,818 | 11 | 4 | 0 | 1 | 2 |
+| 10to13 | `chapter11` | 5,619 | 9 | 2 | 0 | 1 | 4 |
+| 10to13 | `chapter12` | 4,887 | 9 | 1 | 0 | 1 | 2 |
+| 10to13 | `chapter13` | 6,554 | 11 | 3 | 0 | 1 | 0 |
+| 10to13 | `chapter14` | 1,687 | 8 | 2 | 0 | 1 | 0 |
+| 10to13 | `conclusion` | 4,193 | 5 | 1 | 0 | 0 | 0 |
+| 10to13 | `appendices` | 7,269 | 1 | 0 | 0 | 0 | 0 |
+
+**TOTAL** — 99,938 words
+
+---
+
+## Structural map (section headings in order)
+
+### `preface`  (688 words)
+_(no detected section headings — opener-only or list-driven)_
+
+### `intro_chapter`  (4,990 words)
+- The Day Britain Created More Snakes
+- A Pattern Across All of Human Knowledge
+- What This Book Argues
+- How to Read This Book
+- The Cobra Effect Recurs Everywhere
+- The Central Claim, Stated Four Ways
+- Why This Book Is Different
+- A Map of the Book
+- A Message for Leaders, Founders, and Policymakers
+
+### `chapter1`  (5,781 words)
+- The Three Mechanisms
+- Murphy's Law Is Not a Joke
+- The Exponential Trap
+- Comparison: Murphy, Merton, Jevons, and Streisand
+- A Brief Taxonomy of Cascade Types
+- Why Previous Theories Are Insufficient
+- Five Historical Cases: The Cascade in Four Centuries
+- Three Principles of Cascade Innovation
+- Game Theory and the Strategic Cascade
+- Chapter 1 Synthesis: The Pattern Is the Message
+- Complexity Theory and the Limits of Anticipation
+
+### `chapter2`  (3,451 words)
+- The Bias of Now
+- The Dunning-Kruger Effect in Innovation
+- Institutional Incentives to Ignore Cascades
+- What Systems Thinking Offers
+- Historical Blindness: Celebrating the Solution, Ignoring the Cascade
+- The Narrative Fallacy and Cascade Invisibility
+- The Innovator's Blindspot: Why Creators Miss Cascades
+- Chapter 2 Synthesis: Redesigning Human Reasoning for a Cascade World
+
+### `chapter3`  (4,812 words)
+- Hilbert's Dream
+- Russell's Paradox and Its Descendants
+- The Halting Problem: When Computation Discovers Its Own Limits
+- P versus NP: The $1 Million Question
+- What Mathematics Teaches Us
+- The Calculus Cascade: Three Centuries of Foundations
+- Complexity Theory: The Cascade of Computational Questions
+- Statistics and the Replication Crisis: The Cascade of Measurement
+- Chapter 3 Synthesis: Mathematics as the Purest Cascade
+- Cryptography: Mathematics as the Backbone of Digital Trust
+
+### `chapter4`  (6,267 words)
+- Maxwell's Demon and the Birth of Information Theory
+- Quantum Mechanics and the Measurement Crisis
+- Nuclear Fission and the 100,000-Year Problem
+- The Nuclear Waste Cascade: 90,000 Years of Consequences
+- String Theory and the Landscape of Unfalsifiability
+- Dark Matter, Dark Energy, and the 95% Problem
+- The Hierarchy Problem and the Naturalness Crisis
+- Climate Science: Solving the Greenhouse Problem and the Attribution Cascade
+- Chapter 4 Synthesis: Physics and the Limits of Knowability
+
+### `chapter5`  (7,750 words)
+- Every Patch Opens a New Wound
+- Brooks' Law and the Coordination Collapse
+- Feature Bloat and the Legacy Trap
+- The Internet's Unintended Children
+- The AI Alignment Cascade
+- Platform Monopolies: The Winner-Take-All Cascade
+- Open Source Software: The Gift That Keeps Taking
+- Chapter 5 Synthesis: Software Eating Cascades
+- Apple Inc. and the Trillion-Dollar Cascade
+- Amazon: The Cascade of Convenience
+- The Cybersecurity Arms Race: A Perpetual Cascade
+
+### `chapter6`  (7,336 words)
+- The Cobra Effect — The Canonical Perverse Incentive
+- Jevons Paradox: Efficiency Is Its Own Enemy
+- Goodhart's Law: The Measurement Problem
+- The 2008 Financial Crisis: Risk Solutions as Risk Amplifiers
+- Quantitative Easing and the Inequality Cascade
+- Cryptocurrency: The Decentralisation Cascade
+- Trade Liberalisation: The Displacement Cascade
+- Chapter 6 Synthesis: Economics as the Study of Cascade
+- The Housing Crisis: When Affordability Becomes a Cascade System
+- Google: Organising the World's Information — and Its Attention
+
+### `chapter7`  (8,275 words)
+- The Antibiotic Revolution — and Its Reversal
+- The Opioid Crisis — A Pharmaceutical Cascade
+- Thalidomide — The Drug That Keeps Cascading
+- CRISPR and the Gene Editing Cascade
+- The Microbiome — Collateral Damage of Modern Medicine
+- The Vaccination Hesitancy Cascade
+- The Medical Cascade: What Medicine Has Learned — and Not Learned
+- The Diagnostic Cascade: More Tests, More Problems
+- The Mental Health Cascade: Solving Suffering at Scale
+- Chapter 7 Synthesis: The Healer's Infinite Task
+- Mental Health Treatment and the Diagnostic Cascade
+
+### `chapter8`  (5,458 words)
+- Prohibition — The American Cautionary Tale
+- The War on Drugs — Policy in a Feedback Loop
+- Soviet Collectivisation — How Solving Food Distribution Killed Millions
+- Urban Zoning — How Solving "City Chaos" Created Housing Inequality
+- GDPR and the Regulatory Cascade
+- NATO Expansion — Solving Security, Creating Instability
+- The European Union: Integration as Managed Cascade
+- Chapter 8 Synthesis: The State as Cascade Architecture
+
+### `chapter9`  (10,103 words)
+- Social Media — Connecting Humanity, Disconnecting Minds
+- GPS — Navigating Away from Our Own Minds
+- Air Conditioning — Solving Heat, Making It Worse
+- The Green Revolution — Feeding Billions, Depleting the Earth
+- Standardised Testing — How Solving Educational Inequality Created New Inequalities
+- The Attention Economy: Solving Information Access, Destroying Information Quality
+- Synthetic Chemistry: From Solutions to Persistent Problems
+- The Architecture of the Cascade — What Medicine, Politics, and Environment Share
+- Chapter 9 Synthesis: Technology and the Acceleration of Cascade
+- Environmental Policy: The Cascade of Conservation
+- The Energy Transition and the Resource Cascade
+
+### `chapter10`  (4,818 words)
+- The Solution-Problem Network
+- How Problems Multiply
+- The Central Claim
+- Why the Cascade Outruns Our Ability to Manage It
+- Connection to Complexity Theory
+- How the Cascade Differs from Other Familiar Patterns
+- The Tipping Point
+- How Fast Cascades Move
+- Information-Theoretic Interpretation of Cascade Complexity
+- Empirical Support for the Central Claim
+- The Shape of the Network Matters
+
+### `chapter11`  (5,619 words)
+- The Cascade Risk Index
+- Early Warning Signals
+- Case Study: Computing the CRI for Software Security
+- Computing the CRI in Practice: A Step-by-Step Guide
+- Case Study: The CRI for OxyContin's 1995 FDA Approval
+- Case Study: The CRI for Collateralised Debt Obligations (CDOs)
+- Limitations of the Cascade Risk Index
+- Applying Cascade Measurement to Artificial Intelligence Systems
+- Systemic Risk Assessment: Tools for Cascade Quantification
+
+### `chapter12`  (4,887 words)
+- The Hippocratic Principle for Innovation
+- Pre-Mortem Analysis
+- The Homogeneous Ecosystem Approach
+- The Role of Modularity and Reversibility
+- Case Studies in Cascade-Aware Design
+- Institutional Design for Cascade Management
+- Sunset Clauses and Reversibility Requirements
+- Minimum Viable Deployment and Staged Rollout
+- Cascade Governance: Building Institutions for the Long Run
+
+### `chapter13`  (6,554 words)
+- Second-Order Thinking
+- Institutional Structures for Cascade Awareness
+- The Call to Action
+- The Epistemology of Not Knowing
+- The Political Economy of Cascade Awareness
+- Cascade Awareness in Education
+- Meadows' Leverage Points and the Cascade Theory
+- Historical Cases of Cascade-Resistant Design
+- The Ethics of Innovation: From Heroism to Responsibility
+- The Cascade in Education and the Formation of Cascade-Aware Professionals
+- Chapter 13 Synthesis: The Philosophy of Cascade Wisdom
+
+### `chapter14`  (1,687 words)
+- Why This Chapter Exists
+- Objection 1: You Went Looking for Cascades
+- Objection 2: The Ledger Is Overwhelmingly Positive
+- Objection 3: The Theory Is Unfalsifiable
+- Objection 4: Cascade Thinking Can Do Real Harm
+- Objection 5: The Numbers Are Theatre
+- Objection 6: None of This Is New
+- What Survives
+
+### `conclusion`  (4,193 words)
+- A Summary of the Evidence
+- The Irreducibility of the Paradox
+- The Hopeful Case: Cascade-Aware Societies
+- What Progress Looks Like in a Cascade-Aware World
+- A Letter to Future Problem-Solvers
+
+### `appendices`  (7,269 words)
+    - Case Study E.1: The Montreal Protocol (1987): A Managed Cascade
+- Further Reading
+    - Robert K. Merton and the Sociology of Unintended Consequences
+    - Charles Perrow and Normal Accident Theory
+    - Donella Meadows and Systems Thinking
+    - Nassim Nicholas Taleb and the Fourth Quadrant
+    - The Santa Fe Institute and Complexity Science
+    - Albert-László Barabási and Network Science
+    - The Homogeneous Ecosystem Framework
+
