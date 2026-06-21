@@ -1,0 +1,14 @@
+[Unit]
+Description=Reservation backend (moresolustions-moreproblems.com)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/moresolustions-moreproblems.com
+ExecStart=/usr/bin/python3 /var/www/moresolustions-moreproblems.com/backend.py
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
