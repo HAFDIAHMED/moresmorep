@@ -5,6 +5,9 @@
 <!-- Favicon · swap polyfdor-logo.svg for your real PNG/ICO on the production host -->
 <link rel="icon" type="image/svg+xml" href="polyfdor-logo.svg">
 <link rel="alternate icon" href="polyfdor-logo.png">
+<!-- Leaflet (OpenStreetMap) for the location picker -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
 
 <style>
 /* ───────────────────────── reset & base ───────────────────────── */
@@ -578,6 +581,47 @@ section.reserve .tagline {
   margin-top: 12px;
 }
 .reserve-form .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Location picker — autocomplete dropdown + mini-map */
+.location-field { position: relative; }
+.suggest {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--paper); border: 1px solid var(--ink);
+  border-top: none; max-height: 260px; overflow-y: auto;
+  z-index: 30;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+.suggest:empty { display: none; }
+.suggest-item {
+  padding: 12px 16px; font-family: var(--book); font-size: 14px;
+  line-height: 1.4; cursor: pointer;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  transition: background 0.12s ease;
+}
+.suggest-item:last-child { border-bottom: none; }
+.suggest-item:hover { background: var(--paper-warm); }
+.suggest-empty {
+  padding: 12px 16px; font-family: var(--book); font-style: italic;
+  font-size: 13px; color: var(--muted);
+}
+.mini-map {
+  margin-top: 14px; height: 220px;
+  border: 1px solid var(--ink);
+  display: none;
+}
+.mini-map.visible { display: block; }
+.mini-map .leaflet-tile {
+  filter: grayscale(100%) contrast(1.05);
+}
+.mini-map .leaflet-control-attribution {
+  background: rgba(255,255,255,0.85);
+  font-family: var(--sans); font-size: 9px;
+}
+.location-hint {
+  margin-top: 8px;
+  font-family: var(--book); font-style: italic;
+  font-size: 12px; color: var(--muted);
+}
 
 .form-note {
   margin-top: 22px; text-align: center;
@@ -1186,15 +1230,94 @@ navLinks.forEach(a => a.addEventListener('click', () => { /* allow default smoot
           '<label for="rf-address">Complete shipping address</label>' +
           '<textarea id="rf-address" name="address" required rows="5" autocomplete="street-address" maxlength="800" placeholder="Street, building, postal code, city, country"></textarea>' +
         '</div>' +
-        '<div class="field">' +
+        '<div class="field location-field">' +
           '<label for="rf-location">Where you\'ll be reading this <span class="optional">— optional</span></label>' +
-          '<input type="text" id="rf-location" name="location" maxlength="120" placeholder="A city, a cafe, a beach, somewhere">' +
+          '<input type="text" id="rf-location" name="location" autocomplete="off" maxlength="200" placeholder="Type a city or place — e.g. Kenitra, Paris, Tokyo">' +
+          '<div id="rf-suggest" class="suggest" role="listbox"></div>' +
+          '<input type="hidden" id="rf-lat" name="lat">' +
+          '<input type="hidden" id="rf-lon" name="lon">' +
+          '<div id="rf-map" class="mini-map" aria-hidden="true"></div>' +
+          '<div class="location-hint">Pick from the suggestions to drop a pin on the map.</div>' +
         '</div>' +
         '<button type="submit" class="btn submit-btn" id="rf-submit">Reserve my signed copy</button>' +
         '<div class="form-note">No charge. No tracking. Shipped from Kenitra, by the author personally.</div>' +
         '<div class="form-error" id="rf-error"></div>' +
       '</form>';
     document.getElementById('rform').addEventListener('submit', handleSubmit);
+    setupLocationField();
+  }
+
+  // ─── Location picker — Nominatim autocomplete + Leaflet pin map ───
+  function setupLocationField() {
+    const input   = document.getElementById('rf-location');
+    const suggest = document.getElementById('rf-suggest');
+    const mapEl   = document.getElementById('rf-map');
+    const latEl   = document.getElementById('rf-lat');
+    const lonEl   = document.getElementById('rf-lon');
+    if (!input || !suggest || !mapEl) return;
+
+    let mapInstance = null;
+    let pinMarker   = null;
+    let searchTimer = null;
+
+    input.addEventListener('input', function () {
+      latEl.value = ''; lonEl.value = '';
+      clearTimeout(searchTimer);
+      const q = input.value.trim();
+      if (q.length < 2) { suggest.innerHTML = ''; return; }
+      searchTimer = setTimeout(function () { runSearch(q); }, 350);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.location-field')) suggest.innerHTML = '';
+    });
+
+    async function runSearch(q) {
+      try {
+        const url = 'https://nominatim.openstreetmap.org/search?format=json&limit=6&addressdetails=0&q=' + encodeURIComponent(q);
+        const r = await fetch(url, { headers: { 'Accept-Language': 'en' } });
+        const places = await r.json();
+        suggest.innerHTML = '';
+        if (!Array.isArray(places) || places.length === 0) {
+          suggest.innerHTML = '<div class="suggest-empty">No places matching that — you can still type freely.</div>';
+          return;
+        }
+        places.forEach(function (p) {
+          const item = document.createElement('div');
+          item.className = 'suggest-item';
+          item.setAttribute('role', 'option');
+          item.textContent = p.display_name;
+          item.addEventListener('click', function () { selectPlace(p); });
+          suggest.appendChild(item);
+        });
+      } catch (err) {
+        // silent — autocomplete is optional, free text still works
+      }
+    }
+
+    function selectPlace(p) {
+      input.value = p.display_name;
+      latEl.value = p.lat;
+      lonEl.value = p.lon;
+      suggest.innerHTML = '';
+      showMap(parseFloat(p.lat), parseFloat(p.lon));
+    }
+
+    function showMap(lat, lon) {
+      if (typeof L === 'undefined') return;  // Leaflet not loaded — degrade silently
+      mapEl.classList.add('visible');
+      if (!mapInstance) {
+        mapInstance = L.map(mapEl, { zoomControl: true, attributionControl: true, scrollWheelZoom: false });
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 18,
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(mapInstance);
+      }
+      mapInstance.setView([lat, lon], 11);
+      if (pinMarker) pinMarker.remove();
+      pinMarker = L.marker([lat, lon]).addTo(mapInstance);
+      setTimeout(function () { mapInstance.invalidateSize(); }, 100);
+    }
   }
 
   function renderFull() {
@@ -1228,7 +1351,9 @@ navLinks.forEach(a => a.addEventListener('click', () => { /* allow default smoot
     const data = {
       name:     form.name.value.trim(),
       address:  form.address.value.trim(),
-      location: form.location.value.trim()
+      location: form.location.value.trim(),
+      lat:      (form.lat && form.lat.value) || '',
+      lon:      (form.lon && form.lon.value) || ''
     };
 
     if (!data.name || !data.address) {
